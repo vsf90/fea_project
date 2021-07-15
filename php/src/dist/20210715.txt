@@ -1,0 +1,3 @@
+[INFO][6:32] demande avec ressource avec succès
+[ERROR][6:40] fonction : demande non authorisé à la ressource
+[WARNING][6:50] plusieurs tentives de l'utilisateur x
