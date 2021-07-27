@@ -17,12 +17,19 @@ import Body from '../page/Body.component';
 import { Link, NavLink, Route, Switch } from 'react-router-dom';
 import Avatar from 'antd/lib/avatar/avatar';
 import Acueil from '../page/Acueil.component';
-import BoostPro from '../page/BoostPro.component';
-import MeetUpPro from '../page/MeetUpPro.component';
-import Relais from '../page/Relais.component';
-import ShouraPro from '../page/ShouraPro.component';
-import SprintPro from '../page/SprintPro.component';
-import Services from '../page/Services.component';
+import BoostPro from '../page/Boostpro/Boostpro.component';
+import MeetUpPro from '../page/Meetup/Meetup.component';
+import Relais from '../page/RelaisBP/Relais.component';
+import Expert from '../page/ExpertBP/Expert.component';
+import ShouraPro from '../page/Shourapro/Shoura.component';
+import SprintPro from '../page/Sprint/Sprint.component';
+import Services from '../page/Services/Services.components';
+import Sprintform from '../page/Sprint/Sprintform/Sprintform';
+import Meetform from '../page/Meetup/Meetform/Meetform';
+import Shouraform from '../page/Shourapro/Shouraform/Shouraform';
+import Boostform from '../page/Boostpro/Boostform/Boostform';
+import Relaisform from '../page/RelaisBP/RelaisBP/Relaisform';
+import Expertform from '../page/ExpertBP/ExpertBP/Expertform';
 
 
 const { Header, Content, Footer, Sider } = Layout; 
@@ -61,19 +68,21 @@ function Navbar() {
         <SubMenu key="sub1" icon={<UserOutlined />} title="Nos Services">
               
               <Menu.Item key="3"><Link  to="/SprintPro"></Link>Sprint Pro</Menu.Item>
-              <Menu.Item key="4"><Link  to="/ShouraPro"></Link>Shoura Pro</Menu.Item>
-              <Menu.Item key="5"><Link  to="/MeetUpPro"></Link>Meet Up Pro</Menu.Item>
+              <Menu.Item key="4"><Link  to="/MeetUpPro"></Link>Meet'Up Pro</Menu.Item>
+              <Menu.Item key="5"><Link  to="/ShouraPro"></Link>Shoura Pro</Menu.Item>
               <Menu.Item key="6"><Link  to="/BoostPro"></Link>Boost Pro </Menu.Item>
               <Menu.Item key="7"><Link  to="/Relais"></Link>Relais BP</Menu.Item>
+              <Menu.Item key="8"><Link  to="/Expert"></Link>Expert BP</Menu.Item>
+
         </SubMenu></Link>
         
-        <Menu.Item key="8" icon={<BarChartOutlined />}>
+        <Menu.Item key="9" icon={<BarChartOutlined />}>
           Nos Partenaires
         </Menu.Item>
         <SubMenu key="sub2" icon={<UserOutlined />} title="Feedback">
-              <Menu.Item key="9">Mes besions Pro immédiate</Menu.Item>
-              <Menu.Item key="10">Mon feedback sur un service</Menu.Item>
-              <Menu.Item key="11">Un ticket Boussole Pro</Menu.Item>
+              <Menu.Item key="10">Mes besions Pro immédiate</Menu.Item>
+              <Menu.Item key="11">Mon feedback sur un service</Menu.Item>
+              <Menu.Item key="12">Un ticket Boussole Pro</Menu.Item>
              
             </SubMenu>
        
@@ -93,11 +102,16 @@ function Navbar() {
         <Route path="/BoostPro" exact component={BoostPro} />  
         <Route path="/MeetUpPro" exact component={MeetUpPro} />  
         <Route path="/Relais" exact component={Relais} />  
+        <Route path="/Expert" exact component={Expert} /> 
         <Route path="/ShouraPro" exact component={ShouraPro} />  
-        <Route path="/SprintPro" exact component={SprintPro} /> 
-        
+        <Route path="/SprintPro" exact component={SprintPro} />
+        <Route path="/Sprintform" exact component={Sprintform} /> 
+        <Route path="/Meetform" exact component={Meetform} /> 
+        <Route path="/Shouraform" exact component={Shouraform} /> 
+        <Route path="/Boostform" exact component={Boostform} /> 
+        <Route path="/Relaisform" exact component={Relaisform} /> 
+        <Route path="/Expertform" exact component={Expertform} /> 
 
-  
         </Switch>
          
     
