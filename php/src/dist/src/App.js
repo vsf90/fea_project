@@ -6,13 +6,15 @@ import { Content } from 'antd/lib/layout/layout';
 
 import Home from './components/home.component';
 
+import CompteAbonnée from './page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
+
 function App() {
   return (
     <div className="h">
      
        <Home></Home>
-    
-        {/* <Login></Login> */}        
+         
+        {/* <Login></Login>         */}
     </div>
   );
 }

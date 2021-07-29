@@ -1,9 +1,9 @@
 import React from 'react'
 import './Services.component.css';
-import shoura from "../../img/shoura.PNG";
-import meetup from "../../img/meetup.PNG";
+import shoura from "../../img/shoura.png";
+import meetup from "../../img/meetup.png";
 import boost from "../../img/boost.PNG";
-import sprint from "../../img/sprint.PNG";
+import sprint from "../../img/sprint.png";
 import relais from "../../img/relais.PNG";
 import expert from "../../img/expert.PNG";
 import { Link, NavLink, Route, Switch } from 'react-router-dom';

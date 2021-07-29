@@ -1,5 +1,4 @@
 
-import './home.component.css';
 import { Layout, Menu } from 'antd';
 import {
   AppstoreOutlined,
@@ -13,10 +12,13 @@ import {
 } from '@ant-design/icons';
 
 import SubMenu from 'antd/lib/menu/SubMenu';
-import Body from '../page/Body.component';
+import Body from '../page/Acueil/Body.component';
 import { Link, NavLink, Route, Switch } from 'react-router-dom';
 import Avatar from 'antd/lib/avatar/avatar';
-import Acueil from '../page/Acueil.component';
+import Acueil from '../page/Acueil/Acueil.component';
+ import NosReseaux from '../page/NosReseaux/NosReseaux.component';
+
+
 import BoostPro from '../page/Boostpro/Boostpro.component';
 import MeetUpPro from '../page/Meetup/Meetup.component';
 import Relais from '../page/RelaisBP/Relais.component';
@@ -32,6 +34,11 @@ import Relaisform from '../page/RelaisBP/RelaisBP/Relaisform';
 import Expertform from '../page/ExpertBP/ExpertBP/Expertform';
 
 
+import NosPartenaires from '../page/NosPartenaire/NosPartenaires.component';
+import CompteAbonnée from '../page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
+
+
+
 const { Header, Content, Footer, Sider } = Layout; 
 
 
@@ -43,17 +50,17 @@ function Navbar() {
     <div className="Navbar">
         <Layout>
   
-
+<div/>
     <Sider
       style={{
         overflow: 'auto',
-        height: '100vh',
+        height: '550vh',
         position: 'fixed',
+        width: '275px',
         left: 0,
       }}
     >
-      <div/>
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+      <Menu  theme="light" mode="inline" defaultSelectedKeys={['4']}>
         <Menu.Item key="1" icon={<UserOutlined />}>
          
         
@@ -62,7 +69,7 @@ function Navbar() {
       
         </Menu.Item>
         <Menu.Item key="2" icon={<UploadOutlined />}>
-          Notre Resaux
+        <Link  to="/NosReseaux"></Link>  Notre Resaux
         </Menu.Item>
         <Link  to="/Services">
         <SubMenu key="sub1" icon={<UserOutlined />} title="Nos Services">
@@ -77,6 +84,8 @@ function Navbar() {
         </SubMenu></Link>
         
         <Menu.Item key="9" icon={<BarChartOutlined />}>
+        <Link  to="/NosPartenaires"></Link>
+        
           Nos Partenaires
         </Menu.Item>
         <SubMenu key="sub2" icon={<UserOutlined />} title="Feedback">
@@ -84,20 +93,19 @@ function Navbar() {
               <Menu.Item key="11">Mon feedback sur un service</Menu.Item>
               <Menu.Item key="12">Un ticket Boussole Pro</Menu.Item>
              
-            </SubMenu>
+        </SubMenu>
        
       
       </Menu>
     </Sider>
-    <Layout className="site-layout" style={{ marginLeft: 200 }}>
-      <Header className="site-layout-background" style={{ padding: 0 }} >
-     
-      </Header>
+    <Layout  style={{ marginLeft: 200 }}>
       <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
 
         <Switch>
         <Route path="/Acueil" exact component={Acueil} />
-        <Route path="/Services" exact component={Services}/>  
+        <Route path="/Services" exact component={Services}/> 
+        <Route path="/NosReseaux" exact component={NosReseaux} />
+        <Route path="/NosPartenaires" exact component={NosPartenaires} />   
 
         <Route path="/BoostPro" exact component={BoostPro} />  
         <Route path="/MeetUpPro" exact component={MeetUpPro} />  
@@ -112,6 +120,7 @@ function Navbar() {
         <Route path="/Relaisform" exact component={Relaisform} /> 
         <Route path="/Expertform" exact component={Expertform} /> 
 
+        <Route path="/CompteAbonnée" exact component={CompteAbonnée} /> 
         </Switch>
          
     

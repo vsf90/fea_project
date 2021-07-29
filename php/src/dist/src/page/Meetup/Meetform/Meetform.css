@@ -35,7 +35,7 @@ box-shadow: 0 0 25px 0 #1c87c9;
 .banner {
 position: relative;
 height: 210px;
-background-image: url("../../../img/sprint.PNG");  
+background-image: url("../../../img/sprint.png");  
 background-size: cover;
 display: flex;
 justify-content: center;

@@ -18,7 +18,6 @@ export default class Home extends Component {
             <div className="col-md-12">
               
                 <Router history={history}>
-                {/* signout={this.props.signout} */}
                     <NavBar />
                 </Router>
              </div>

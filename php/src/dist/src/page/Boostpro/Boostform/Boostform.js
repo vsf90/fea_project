@@ -5,17 +5,16 @@ export default function Boostform() {
     return (
         
            <div>
-	
-	
+
     <div class="testbox">
       <form action="/">
         <div class="banner">
           <h1>Boost Pro</h1>
         </div>
         <h4 style={{marginTop:"5px"}}>Boost Pro</h4>
-        <p class="top-info" style={{color:"#171617",marginBottom:"20px"}}>
-Boussole Pro et tout le réseau FEA est là pour vous supporter à 200%. Après validation par l’équipe de votre demande nous créons un groupe Telegram de suivi dédié. Vous devez faire une vidéo de lancement inspirante qui pousse à l’action montrant toute la qualité de vos produits/services. Nous avons alors ensemble 2 semaines pour rythmer la communication. Dans certains cas vous devez faire une vidéo intermédiaire de mi-parcours pour rebooster la communauté. A la fin du cycle de 2 semaines il est impératif de faire une vidéo de clôture à destination des membres et remplir le certificat de remerciement 
-a la communauté FEA qui sera partagé en guise de clôture du Boost Pro.</p>
+                <p class="top-info" style={{color:"#171617",marginBottom:"20px"}}>
+                  Boussole Pro et tout le réseau FEA est là pour vous supporter à 200%. Après validation par l’équipe de votre demande nous créons un groupe Telegram de suivi dédié. Vous devez faire une vidéo de lancement inspirante qui pousse à l’action montrant toute la qualité de vos produits/services. Nous avons alors ensemble 2 semaines pour rythmer la communication. Dans certains cas vous devez faire une vidéo intermédiaire de mi-parcours pour rebooster la communauté. A la fin du cycle de 2 semaines il est impératif de faire une vidéo de clôture à destination des membres et remplir le certificat de remerciement 
+                  a la communauté FEA qui sera partagé en guise de clôture du Boost Pro.</p>
         <div class="question">
           <p style={{color:"#171617"}}>Êtes-vous bien abonné(e) de Boussole PRO ? (Ce service est réservé exclusivement aux abonné(e)s)  <span class="required">*</span></p>
           <div class="question-answer">
