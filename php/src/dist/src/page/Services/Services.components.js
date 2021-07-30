@@ -2,10 +2,23 @@ import React from 'react'
 import './Services.component.css';
 import shoura from "../../img/shoura.png";
 import meetup from "../../img/meetup.png";
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import boost from "../../img/boost.PNG";
 import sprint from "../../img/sprint.png";
 import relais from "../../img/relais.PNG";
 import expert from "../../img/expert.PNG";
+=======
+=======
+>>>>>>> Stashed changes
+import boost from "../../img/boost.png";
+import sprint from "../../img/sprint.png";
+import relais from "../../img/relais.png";
+import expert from "../../img/expert.png";
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 import { Link, NavLink, Route, Switch } from 'react-router-dom';
 import SprintPro from '../Sprint/Sprint.component';
 import Relais from '../RelaisBP/Relais.component';

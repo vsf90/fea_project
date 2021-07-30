@@ -1,5 +1,5 @@
 
-body, div, form, input, select, p { 
+body, div, .ss, .inputB, select, p { 
 padding: 0;
 margin: 0;
 outline: none;
@@ -25,36 +25,45 @@ align-items: center;
 height: inherit;
 padding: 20px;
 }
-form {
+.ss {
 width: 100%;
 padding: 20px;
 border-radius: 6px;
 background: #fff;
 box-shadow: 0 0 25px 0 #1c87c9; 
 }
-.banner {
+.relais {
 position: relative;
 height: 210px;
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 background-image: url("../../../img/sprint.png");  
+=======
+background-image: url("../../../img/relais.png");  
+>>>>>>> Stashed changes
+=======
+background-image: url("../../../img/relais.png");  
+>>>>>>> Stashed changes
 background-size: cover;
 display: flex;
 justify-content: center;
 align-items: center;
 text-align: center;
+background-position-y: 10%;
 }
-.banner::after {
+.relais::after {
 content: "";
 background-color: rgba(0, 0, 0, 0.6); 
 position: absolute;
 width: 100%;
 height: 100%;
 }
-input, select, textarea {
+.inputB, select, textarea {
 margin-bottom: 10px;
 border: 1px solid #ccc;
 border-radius: 3px;
 }
-input {
+.inputB {
 width: calc(100% - 10px);
 padding: 5px;
 }
@@ -66,10 +75,10 @@ width: 100%;
 padding: 7px 0;
 background: transparent;
 }
-.item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
+.item:hover p, .item:hover i, .question:hover p, .question label:hover,  .inputB:hover::placeholder {
 color: #1c87c9;
 }
-.item input:hover, .item select:hover {
+.item  .inputB:hover, .item select:hover {
 border: 1px solid transparent;
 box-shadow: 0 0 6px 0 #1c87c9;
 color: #1c87c9;
@@ -167,13 +176,13 @@ display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
 }
-.name-item input {
+.name-item  .inputB {
 width: calc(50% - 20px);
 }
 .contact-item .item, .position-item .item {
 width: calc(50% - 8px);
 }
-.contact-item input, .position-item input {
+.contact-item  .inputB, .position-item  .inputB {
 width: calc(100% - 12px);
 }
 .position-item select {
@@ -187,20 +196,20 @@ width: 100%;
     .item:hover p, .item:hover i {
     color: #095484;
     }
-    input:hover, select:hover, textarea:hover {
+    .inputB:hover, select:hover, textarea:hover {
     box-shadow: 0 0 5px 0 #095484;
     }
-    .status:hover input {
+    .status:hover  .inputB {
     box-shadow: none;
     }
-    .status label:hover input {
+    .status label:hover  .inputB {
     box-shadow: 0 0 5px 0 #095484;
     }
-    .status-item input, .status-item span {
+    .status-item  .inputB, .status-item span {
     width: auto;
     vertical-align: middle;
     }
-    .status-item input {
+    .status-item  .inputB {
     margin: 0;
     }
     .status-item span {

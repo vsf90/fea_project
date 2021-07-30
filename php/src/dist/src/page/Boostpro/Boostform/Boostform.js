@@ -7,8 +7,8 @@ export default function Boostform() {
            <div>
 
     <div class="testbox">
-      <form action="/">
-        <div class="banner">
+      <form action="/" className="ss">
+        <div class="boost">
           <h1>Boost Pro</h1>
         </div>
         <h4 style={{marginTop:"5px"}}>Boost Pro</h4>
@@ -19,11 +19,11 @@ export default function Boostform() {
           <p style={{color:"#171617"}}>Êtes-vous bien abonné(e) de Boussole PRO ? (Ce service est réservé exclusivement aux abonné(e)s)  <span class="required">*</span></p>
           <div class="question-answer">
             <div>
-              <input type="radio" value="none" id="radio_1" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_1" name="status" required/>
               <label for="radio_1" class="radio"><span>OUI</span></label>
             </div>
             <div>
-              <input type="radio" value="none" id="radio_2" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_2" name="status" required/>
               <label for="radio_2" class="radio"><span>NON</span></label>
             </div>
            
@@ -32,21 +32,21 @@ export default function Boostform() {
 		<div class="item">
           <p style={{color:"#171617"}}>Votre Nom complet<span class="required">*</span></p>
           <div class="name-item">
-            <input type="text" name="name" placeholder="Prénom" required/>
-            <input type="text" name="name" placeholder="Nom" required/>
+            <input className="inputB" type="text" name="name" placeholder="Prénom" required/>
+            <input className="inputB"  type="text" name="name" placeholder="Nom" required/>
           </div>
         </div>
       	<div class="item">
           <p style={{color:"#171617"}}>Votre entreprise <span class="required">*</span> </p>
           <div class="name-item">
-            <input type="text" name="name"  required/>
+            <input  className="inputB" type="text" name="name"  required/>
             
           </div>
         </div>
         <div class="item">
           <p style={{color:"#171617"}}>Votre secteur d'activité <span class="required">*</span> </p>
           <div class="name-item">
-            <input type="text" name="name"  required/>
+            <input className="inputB" type="text" name="name"  required/>
             
           </div>
         </div>
@@ -60,11 +60,11 @@ export default function Boostform() {
           <p style={{color:"#171617"}}>Quel type de campagne souhaitez-vous lancer?</p>
           <div class="question-answer">
             <div>
-              <input type="radio" value="none" id="radio_1" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_1" name="status" required/>
               <label for="radio_1" class="radio"><span>Développer les ventes de mes produits et services</span></label>
             </div>
             <div>
-              <input type="radio" value="none" id="radio_2" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_2" name="status" required/>
               <label for="radio_2" class="radio"><span>Autre</span></label>
             </div>
            
@@ -86,7 +86,7 @@ Toujours plus Haut </p>
 		<div class="item">
           <p style={{color:"#171617"}}>Souhaitez-vous donner un pourcentage ou un montant à Boussole Pro? Si oui, lequel?</p>
           <div class="name-item">
-            <input type="text" name="name" placeholder="Pour soutenir le développement de notre structure" required/>
+            <input className="inputB" type="text" name="name" placeholder="Pour soutenir le développement de notre structure" required/>
             
           </div>
         </div>

@@ -8,7 +8,7 @@ export default function Sprintform() {
 	
 	
     <div class="testbox">
-      <form action="/">
+      <form action="/" className="ss">
         <div class="banner" >
           <h1>Sprint Pro 15mn</h1>
         </div>
@@ -17,11 +17,11 @@ export default function Sprintform() {
           <p style={{color:"#171617"}}>Qui est-ce qui initie le Sprint Pro 15min ? <span class="required">*</span></p>
           <div class="question-answer">
             <div>
-              <input type="radio" value="none" id="radio_1" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_1" name="status" required/>
               <label for="radio_1" class="radio"><span>Vous en tant qu'abonné(e)</span></label>
             </div>
             <div>
-              <input type="radio" value="none" id="radio_2" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_2" name="status" required/>
               <label for="radio_2" class="radio"><span>Équipe Orga Boussole PRO</span></label>
             </div>
            
@@ -30,27 +30,27 @@ export default function Sprintform() {
 		<div class="item">
           <p style={{color:"#171617"}}>Votre Nom complet<span class="required">*</span></p>
           <div class="name-item">
-            <input type="text" name="name" placeholder="Prénom" required/>
-            <input type="text" name="name" placeholder="Nom" required/>
+            <input className="inputB" type="text" name="name" placeholder="Prénom" required/>
+            <input className="inputB" type="text" name="name" placeholder="Nom" required/>
           </div>
         </div>
 		<div class="question">
           <p style={{color:"#171617"}}>Avec-qui souhaitez vous avoir le sprint PRO?<span class="required">*</span></p>
           <div class="question-answer">
             <div>
-              <input type="radio" value="none" id="radio_1" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_1" name="status" required/>
               <label for="radio_1" class="radio"><span>Un-e abonné-e</span></label>
             </div>
             <div>
-              <input type="radio" value="none" id="radio_2" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_2" name="status" required/>
               <label for="radio_2" class="radio"><span>Un-e membre de FEA</span></label>
             </div>
             <div>
-              <input type="radio" value="none" id="radio_3" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_3" name="status" required/>
               <label for="radio_3" class="radio"><span>Un relais BP</span></label>
             </div>
             <div>
-              <input type="radio" value="none" id="radio_4" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_4" name="status" required/>
               <label for="radio_4" class="radio"><span>Une personne extérieure à FEA</span></label>
             </div>
           </div>
@@ -58,24 +58,24 @@ export default function Sprintform() {
         <div class="contact-item">
           <div class="item">
             <p style={{color:"#171617"}}>Dans le cas d’un abonné merci d’indiquer son prénom et son rang visible sur son profil sur l'appli</p>
-            <input type="text" name="name" placeholder="Prénom" />
+            <input className="inputB" type="text" name="name" placeholder="Prénom" />
           </div>
           <div class="item">
             <p style={{color:"#171617",marginTop:"23px"}}>RANG (Ne rien mettre si APPLI non disponible encore)</p>
-            <input type="text" name="name" />
+            <input className="inputB" type="text" name="name" />
           </div>
         </div>
 		<div class="item">
           <p style={{color:"#171617"}}>Dans le cas d’une personne extérieure merci d’indiquer son prénom et son numéro de téléphone</p>
           <div class="name-item">
-            <input type="text" name="name" placeholder="Prénom" required/>
+            <input className="inputB" type="text" name="name" placeholder="Prénom" required/>
             
           </div>
         </div>
 		<div class="item">
           <p style={{color:"#171617"}}>Pourquoi souhaitez-vous ce sprint Pro? </p>
           <div class="name-item">
-            <input type="text" name="name" placeholder="Prénom" required/>
+            <input className="inputB" type="text" name="name" placeholder="Prénom" required/>
             
           </div>
         </div>
@@ -83,11 +83,11 @@ export default function Sprintform() {
 		<div class="item status">
           <p style={{color:"#171617"}}>Quelles sont vos préférences pour les créneaux de 15min ? (Plusieurs choix)<span class="required">*</span></p>
           <div class="status-item">
-            <label><input type="checkbox" name="name"/> <span>Matin</span></label>
-            <label><input type="checkbox" name="name"/> <span>Après-midi</span></label>
-            <label><input type="checkbox" name="name"/> <span>Soir</span></label>
-			<label><input type="checkbox" name="name"/> <span>Semaine</span></label>
-            <label><input type="checkbox" name="name"/> <span>Weekend</span></label>
+            <label><input className="inputB" type="checkbox" name="name"/> <span>Matin</span></label>
+            <label><input className="inputB" type="checkbox" name="name"/> <span>Après-midi</span></label>
+            <label><input className="inputB" type="checkbox" name="name"/> <span>Soir</span></label>
+			<label><input className="inputB" type="checkbox" name="name"/> <span>Semaine</span></label>
+            <label><input className="inputB" type="checkbox" name="name"/> <span>Weekend</span></label>
 
           </div>
         </div>

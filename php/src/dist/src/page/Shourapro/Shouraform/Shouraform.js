@@ -8,7 +8,7 @@ export default function Shouraform() {
 	
 	
     <div class="testbox">
-      <form action="/">
+      <form action="/" className="ss">
         <div class="shoura">
           <h1>FEA Shoura Pro de 1h</h1>
         </div>
@@ -17,11 +17,11 @@ export default function Shouraform() {
           <p style={{color:"#171617"}}>Qui est-ce qui initie le Shoura pro ? <span class="required">*</span></p>
           <div class="question-answer">
             <div>
-              <input type="radio" value="none" id="radio_1" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_1" name="status" required/>
               <label for="radio_1" class="radio"><span>Vous en tant qu'abonné(e)</span></label>
             </div>
             <div>
-              <input type="radio" value="none" id="radio_2" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_2" name="status" required/>
               <label for="radio_2" class="radio"><span>Équipe Orga Boussole PRO</span></label>
             </div>
            
@@ -30,23 +30,23 @@ export default function Shouraform() {
 		<div class="item">
           <p style={{color:"#171617"}}>Votre Nom complet<span class="required">*</span></p>
           <div class="name-item">
-            <input type="text" name="name" placeholder="Prénom" required/>
-            <input type="text" name="name" placeholder="Nom" required/>
+            <input className="inputB" type="text" name="name" placeholder="Prénom" required/>
+            <input className="inputB" type="text" name="name" placeholder="Nom" required/>
           </div>
         </div>
 		<div class="question">
           <p style={{color:"#171617"}}>Avec-qui souhaitez vous avoir le FEA Shoura PRO?<span class="required">*</span></p>
           <div class="question-answer">
             <div>
-              <input type="radio" value="none" id="radio_1" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_1" name="status" required/>
               <label for="radio_1" class="radio"><span>Un-e abonné-e</span></label>
             </div>
             <div>
-              <input type="radio" value="none" id="radio_2" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_2" name="status" required/>
               <label for="radio_2" class="radio"><span>Un-e membre de FEA</span></label>
             </div>
             <div>
-              <input type="radio" value="none" id="radio_4" name="status" required/>
+              <input className="inputB" type="radio" value="none" id="radio_4" name="status" required/>
               <label for="radio_4" class="radio"><span>Une personne extérieure à FEA</span></label>
             </div>
           </div>
@@ -69,11 +69,11 @@ export default function Shouraform() {
 		<div class="item status">
           <p style={{color:"#171617"}}>Quelles sont vos préférences pour les créneaux de 15min ? (Plusieurs choix)<span class="required">*</span></p>
           <div class="status-item">
-            <label><input type="checkbox" name="name"/> <span>Matin</span></label>
-            <label><input type="checkbox" name="name"/> <span>Après-midi</span></label>
-            <label><input type="checkbox" name="name"/> <span>Soir</span></label>
-			<label><input type="checkbox" name="name"/> <span>Semaine</span></label>
-            <label><input type="checkbox" name="name"/> <span>Weekend</span></label>
+            <label><input className="inputB" type="checkbox" name="name"/> <span>Matin</span></label>
+            <label><input className="inputB" type="checkbox" name="name"/> <span>Après-midi</span></label>
+            <label><input className="inputB" type="checkbox" name="name"/> <span>Soir</span></label>
+			<label><input className="inputB" type="checkbox" name="name"/> <span>Semaine</span></label>
+            <label><input className="inputB" type="checkbox" name="name"/> <span>Weekend</span></label>
 
           </div>
         </div>
