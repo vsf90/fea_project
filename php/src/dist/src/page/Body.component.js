@@ -5,6 +5,8 @@ import photo2 from "../image/f2.jpg";
 import photo3 from "../image/f3.jpg";
 import photo4 from "../image/f4.jpg";
 import photo5 from "../image/f5.jpg";
+
+
 import { Alert, Collapse } from "antd";
 
 

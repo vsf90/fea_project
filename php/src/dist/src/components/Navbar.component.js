@@ -17,8 +17,6 @@ import { Link, NavLink, Route, Switch } from 'react-router-dom';
 import Avatar from 'antd/lib/avatar/avatar';
 import Acueil from '../page/Acueil/Acueil.component';
  import NosReseaux from '../page/NosReseaux/NosReseaux.component';
-
-
 import BoostPro from '../page/Boostpro/Boostpro.component';
 import MeetUpPro from '../page/Meetup/Meetup.component';
 import Relais from '../page/RelaisBP/Relais.component';
@@ -34,8 +32,13 @@ import Relaisform from '../page/RelaisBP/RelaisBP/Relaisform';
 import Expertform from '../page/ExpertBP/ExpertBP/Expertform';
 
 
+
+
 import NosPartenaires from '../page/NosPartenaire/NosPartenaires.component';
 import CompteAbonnée from '../page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
+import FeedbackMesBesions from '../page/FeedbackMesBesions.component';
+import FeedbackMonFeedback from '../page/FeedbackMonFeedback.component';
+import TicketBoussole from '../page/TicketBoussole.component';
 
 
 
@@ -89,11 +92,17 @@ function Navbar() {
           Nos Partenaires
         </Menu.Item>
         <SubMenu key="sub2" icon={<UserOutlined />} title="Feedback">
-              <Menu.Item key="10">Mes besions Pro immédiate</Menu.Item>
-              <Menu.Item key="11">Mon feedback sur un service</Menu.Item>
-              <Menu.Item key="12">Un ticket Boussole Pro</Menu.Item>
+
+
+              <Menu.Item key="10"><Link to="/MesBesoins"></Link>Mes besions Pro immédiate</Menu.Item>
+              <Menu.Item key="11"><Link to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
+              <Menu.Item key="12"><Link to="/TicketBoussole"></Link>Un ticket Boussole Pro</Menu.Item>
              
+
         </SubMenu>
+
+          
+
        
       
       </Menu>
@@ -112,6 +121,9 @@ function Navbar() {
         <Route path="/Relais" exact component={Relais} />  
         <Route path="/Expert" exact component={Expert} /> 
         <Route path="/ShouraPro" exact component={ShouraPro} />  
+        <Route path="/MesBesoins" exact component={FeedbackMesBesions} /> 
+        <Route path="/MonFeedback" exact component={FeedbackMonFeedback} /> 
+        <Route path="/TicketBoussole" exact component={TicketBoussole} /> 
         <Route path="/SprintPro" exact component={SprintPro} />
         <Route path="/Sprintform" exact component={Sprintform} /> 
         <Route path="/Meetform" exact component={Meetform} /> 
@@ -119,8 +131,8 @@ function Navbar() {
         <Route path="/Boostform" exact component={Boostform} /> 
         <Route path="/Relaisform" exact component={Relaisform} /> 
         <Route path="/Expertform" exact component={Expertform} /> 
-
         <Route path="/CompteAbonnée" exact component={CompteAbonnée} /> 
+
         </Switch>
          
     

@@ -51,13 +51,14 @@
 }
 
 body {
-  margin: 0;
+
+  margin:O;
   font-family: var(--bs-font-sans-serif);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: #171617;
-  background-color: #fff;
+  background-color: #30A8FF;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -85,6 +86,11 @@ body {
   .social {
     padding-left: 0px;
     list-style: none;
+  }
+  #FeedbackMesBesions #FeedbackMonFeedback{ 
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
   li {
     display: inline-block;
