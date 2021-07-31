@@ -17,16 +17,13 @@ export default class Home extends Component {
         return (
            
             <div className="col-md-12">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
               
-                <Router history={history}>
-=======
-=======
->>>>>>> Stashed changes
+               
+
              <Router history={history}>
                 {/* signout={this.props.signout} */}
->>>>>>> Stashed changes
+
                     <NavBar />
                 </Router>
                

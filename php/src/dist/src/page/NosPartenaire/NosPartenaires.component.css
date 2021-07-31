@@ -675,6 +675,7 @@ progress {
   padding-left: var(--bs-gutter-x, 0.75rem);
   margin-right: auto;
   margin-left: auto;
+  
 }
 
 @media (min-width: 576px) {
@@ -702,7 +703,7 @@ progress {
     max-width: 1320px;
   }
 }
-.row {
+.rowpartners {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   display: flex;
@@ -711,7 +712,7 @@ progress {
   margin-right: calc(var(--bs-gutter-x) * -.5);
   margin-left: calc(var(--bs-gutter-x) * -.5);
 }
-.row > * {
+.rowpartners > * {
   flex-shrink: 0;
   width: 100%;
   max-width: 100%;

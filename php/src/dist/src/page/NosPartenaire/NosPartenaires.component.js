@@ -14,9 +14,9 @@ function NosPartenaires() {
     return (
       
       <div className="containerBody">
-            <div className="row">
+            <div className="rowpartners" >
            
-                <div className="col-lg-10"> 
+                <div className="col-lg-10" style={{display:"block",margin:"auto",padding:"auto"}}> 
                 <Alert
                 message="Partenaires de Boussole Pro"
                 description="Bienveneu sur les Partenaires de Boussole Pro."
@@ -25,8 +25,8 @@ function NosPartenaires() {
                 />
                 <br></br>
                 
-                    <div className="se mb-4">
-                        <a href="http://www.loireatlantique-automotive.fr/"><img className="se-img-top" src={photo3} alt="f1" /></a>
+                    <div className="se mb-4 "   >
+                        <a href="http://www.loireatlantique-automotive.fr/" ><img className="se-img-top" src={photo3} alt="f1" /></a>
                         <div className="se-body">
                             
                             <h2 className="se-title">Loire Atlantique</h2>
@@ -38,7 +38,7 @@ function NosPartenaires() {
                         </div>
                        
                     </div>  
-                    <div className="se mb-4">
+                    <div className="se mb-4 " >
                         <a href="https://www.auditouestconsulting.com/"><img className="se-img-top" src={photo2} alt="f1" /></a>
                         <div className="se-body">
                             
@@ -49,8 +49,9 @@ function NosPartenaires() {
                             <p>3 abonnements standards annuls offerts</p>
                         </div>
                        
-                    </div> 
-                    <div className="se mb-4">
+                    </div>
+                  
+                    <div className="se mb-4 ">
                         <a href="https://leshuilesdebalqis.fr/"><img className="se-img-top" src={photo1} alt="f1" /></a>
                         <div className="se-body">
                             
@@ -61,7 +62,8 @@ function NosPartenaires() {
                             <p>15% de réduction.Pour bénificier de cette réduction, voici le code FEA15</p>
                         </div>
                        
-                    </div>                
+                    </div>   
+                               
                    
                 </div>
                 

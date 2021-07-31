@@ -51,8 +51,15 @@ const handleChangePrénom = (e)=> {
         <div class="item">
          <label>  <b>Votre nom</b><span class="required">*</span></label>
           <div class="name-item">
-            <input type="text" name="Nom" placeholder="Nom"  required  value={Nom} onChange={handleChangeNom} />
-            <input type="text"  name="Prénom" placeholder="Prénom" required value={Prénom} onChange={handleChangePrénom} />
+          <div className="row">
+              <div className="col-lg-6" style={{width:"500px",marginBottom:"10px"}} >
+            <Input  type="text" name="Nom" placeholder="Nom" value={Nom} onChange={handleChangeNom} required/>
+            </div>
+            <br></br>
+            <div className="col-lg-6" style={{width:"500px"}}>
+            <Input type="text" name="Prénom" placeholder="Prénom" value={Prénom} onChange={handleChangePrénom} required/>
+            </div>
+            </div>
           </div>
         </div>
       </Form.Item>

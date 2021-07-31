@@ -13,24 +13,19 @@ import Accueil from './page/Acueil.component';
 import Login from './components/Login/Login.component';
 import {BrowserRouter as Router, Link, NavLink, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar.component';
-<<<<<<< Updated upstream
+
 
 import CompteAbonnée from './page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
-=======
->>>>>>> Stashed changes
 
 function App() {
   return (
     <div className="h">
      
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-       <Home></Home>
+
+      
          
         {/* <Login></Login>         */}
-=======
-=======
->>>>>>> Stashed changes
+
      
       <Router>
     <Switch >
@@ -39,11 +34,7 @@ function App() {
   
     </Switch>
     </Router>
-            
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
     </div>
   );
 }

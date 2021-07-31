@@ -35,15 +35,9 @@ box-shadow: 0 0 25px 0 #1c87c9;
 .relais {
 position: relative;
 height: 210px;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-background-image: url("../../../img/sprint.png");  
-=======
-background-image: url("../../../img/relais.png");  
->>>>>>> Stashed changes
-=======
-background-image: url("../../../img/relais.png");  
->>>>>>> Stashed changes
+
+background-image: url("../../../img/relais.PNG");  
+
 background-size: cover;
 display: flex;
 justify-content: center;

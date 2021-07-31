@@ -2,23 +2,12 @@ import React from 'react'
 import './Services.component.css';
 import shoura from "../../img/shoura.png";
 import meetup from "../../img/meetup.png";
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
 import boost from "../../img/boost.PNG";
 import sprint from "../../img/sprint.png";
 import relais from "../../img/relais.PNG";
 import expert from "../../img/expert.PNG";
-=======
-=======
->>>>>>> Stashed changes
-import boost from "../../img/boost.png";
-import sprint from "../../img/sprint.png";
-import relais from "../../img/relais.png";
-import expert from "../../img/expert.png";
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 import { Link, NavLink, Route, Switch } from 'react-router-dom';
 import SprintPro from '../Sprint/Sprint.component';
 import Relais from '../RelaisBP/Relais.component';
@@ -29,8 +18,8 @@ import MeetUpPro from '../Meetup/Meetup.component';
 export default function Services() {
     return (
         <div>
-            <div class="container">
-  <div class="card">
+            <div class="servicecontainer">
+  <div class="servicecard">
     <div class="card-header">
       <img src={sprint} alt="rover" />
     </div>
@@ -45,7 +34,7 @@ export default function Services() {
   </div>
   
  
-  <div class="card">
+  <div class="servicecard">
     <div class="card-header">
       <img src={meetup} alt="ballons" />
     </div>
@@ -58,7 +47,7 @@ export default function Services() {
      
     </div>
   </div>
-  <div class="card">
+  <div class="servicecard">
     <div class="card-header">
       <img src={shoura} alt="city" />
     </div>
@@ -71,7 +60,7 @@ export default function Services() {
     
    </div>
   </div>
-  <div class="card">
+  <div class="servicecard">
     <div class="card-header">
       <img src={boost} alt="ballons" />
     </div>
@@ -84,7 +73,7 @@ export default function Services() {
     
    </div>
   </div>
-  <div class="card">
+  <div class="servicecard">
     <div class="card-header">
       <img src={relais} alt="ballons" />
     </div>
@@ -97,7 +86,7 @@ export default function Services() {
     
    </div>
   </div>
-  <div class="card">
+  <div class="servicecard">
     <div class="card-header">
       <img src={expert} alt="ballons" />
     </div>

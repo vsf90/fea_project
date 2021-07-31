@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 
-.container {
+.servicecontainer{
   display: flex;
   width: 1040px;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-.card {
+.servicecard {
   margin: 10px;
   background-color: #fff;
   border-radius: 10px;

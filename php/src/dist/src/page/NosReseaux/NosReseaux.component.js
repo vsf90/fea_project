@@ -3,6 +3,8 @@ import Search from "antd/lib/input/Search";
 import React, { Component } from "react";
 import history from "../../history";
 import "./NosReseaux.component.css";
+import CompteAbonnée from '../../page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
+import { Link, NavLink, Route, Switch } from 'react-router-dom';
 
 class NosReseaux extends Component {
   state = {

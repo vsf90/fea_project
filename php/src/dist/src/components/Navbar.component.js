@@ -1,12 +1,9 @@
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
+
 import './Navbar.component.css';
->>>>>>> Stashed changes
-=======
-import './Navbar.component.css';
->>>>>>> Stashed changes
+
+
+
 import { Layout, Menu } from 'antd';
 import { Dropdown, message } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
@@ -60,7 +57,7 @@ import Nosexperts from '../page/NosExperts/Nosexperts';
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons'
-<<<<<<< Updated upstream
+
 
 
 
@@ -71,8 +68,7 @@ import FeedbackMonFeedback from '../page/FeedbackMonFeedback.component';
 import TicketBoussole from '../page/TicketBoussole.component';
 
 
-=======
->>>>>>> Stashed changes
+
 
 const { Header, Content, Footer, Sider } = Layout; 
 const onClick = ({ key }) => {
@@ -93,9 +89,10 @@ function Navbar() {
   
   return (
     <div className="Navbar">
-        <Layout>
+       <Layout>
+        
   
-<div/>
+
     <Sider
       style={{
         overflow: 'auto',
@@ -106,42 +103,19 @@ function Navbar() {
         width:"1000px"
       }}
     >
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
+
       <Menu  theme="light" mode="inline" defaultSelectedKeys={['4']}>
-        <Menu.Item key="1" icon={<UserOutlined />}>
-=======
-=======
->>>>>>> Stashed changes
-       <div className="logo" style={{height: "60px",
- 
-  background: "rgba(255, 255, 255, 0.4)"}} ><img src={logo} style={{height:"60px",backgroundPositionY:"center"}} /></div>
-    
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} >
+      <div className="logo" style={{height: "60px", background: "rgba(255, 255, 255, 0.4)"}} ><img src={logo} style={{height:"60px",backgroundPositionY:"center"}} /></div>
+
+        <Menu.Item key="1" icon={<UserOutlined />}><Link  to="/Acueil"></Link>Accueil  </Menu.Item>
         
-        <Menu.Item key="1" icon={<HomeOutlined />}>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-         
-        
-        <Link  to="/Acueil"></Link>Acueil 
-  
-      
-        </Menu.Item>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        <Menu.Item key="2" icon={<UploadOutlined />}>
-        <Link  to="/NosReseaux"></Link>  Notre Resaux
-=======
-=======
->>>>>>> Stashed changes
-        <Menu.Item key="2" icon={<GlobalOutlined />}>
-          Notre Resaux
->>>>>>> Stashed changes
-        </Menu.Item>
        
+
+        <Menu.Item key="2" icon={<UploadOutlined />}> <Link  to="/NosReseaux"></Link>  Notre Resaux  </Menu.Item>
+       
+      
+     
         <Link  to="/Services">
        
         <SubMenu key="sub1" icon={<GiftOutlined />}  title="Nos Services" style={{marginLeft:"23px"}}>
@@ -169,34 +143,13 @@ function Navbar() {
         <Menu.Item key="9" icon={<BarChartOutlined />}>
         <Link  to="/NosPartenaires"></Link>
         
-          Nos Partenaires
-        </Menu.Item>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        <SubMenu key="sub2" icon={<UserOutlined />} title="Feedback">
-
-
-              <Menu.Item key="10"><Link to="/MesBesoins"></Link>Mes besions Pro immédiate</Menu.Item>
-              <Menu.Item key="11"><Link to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
-              <Menu.Item key="12"><Link to="/TicketBoussole"></Link>Un ticket Boussole Pro</Menu.Item>
-             
-
-        </SubMenu>
-
-          
-
+          Nos Partenaires   </Menu.Item>
        
-      
-      </Menu>
-    </Sider>
-    <Layout  style={{ marginLeft: 200 }}>
-=======
-=======
->>>>>>> Stashed changes
-        <SubMenu key="sub4" icon={<FormOutlined />} title="Feedback">
-              <Menu.Item key="10">Mes besions Pro immédiate</Menu.Item>
-              <Menu.Item key="11">Mon feedback sur un service</Menu.Item>
-              <Menu.Item key="12">Un ticket Boussole Pro</Menu.Item>
+
+            <SubMenu key="sub4" icon={<FormOutlined />} title="Feedback">
+              <Menu.Item key="10"> <Link  to="/MesBesoins"></Link>Mes besions Pro immédiate</Menu.Item>
+              <Menu.Item key="11"><Link  to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
+              <Menu.Item key="12"><Link  to="/TicketBoussole"></Link>Un ticket Boussole Pro</Menu.Item>
              
             </SubMenu>
             <Menu.Item key="13" icon={<FileDoneOutlined />}><Link  to="/SprintPro"></Link>Demandes Sprint Pro</Menu.Item>
@@ -210,9 +163,11 @@ function Navbar() {
             <Menu.Item key="20" icon={<ScheduleOutlined />}><Link  to="/SprintPro"></Link>Listes des feedbacks</Menu.Item>
             <Menu.Item key="21" icon={<ProfileOutlined />}><Link  to="/SprintPro"></Link>Les besions Pro</Menu.Item>
             <Menu.Item key="22" icon={<CarryOutOutlined />}><Link  to="/SprintPro"></Link>Les tickets BP</Menu.Item>
-      
+       
+           
       </Menu>
-    </Sider>
+      </Sider>
+   
     <Layout className="site-layout" style={{ marginLeft: 200 }} className="l">
       <Header className="site-layout-background"  >
       <Dropdown overlay={menu}  >
@@ -222,7 +177,7 @@ function Navbar() {
     </a>
   </Dropdown>
       </Header>
->>>>>>> Stashed changes
+
       <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
 
         <Switch>
@@ -246,17 +201,14 @@ function Navbar() {
         <Route path="/Boostform" exact component={Boostform} /> 
         <Route path="/Relaisform" exact component={Relaisform} /> 
         <Route path="/Expertform" exact component={Expertform} /> 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
         <Route path="/CompteAbonnée" exact component={CompteAbonnée} /> 
-=======
+
+      
+
         <Route path="/NosRelais" exact component={Nosrelais} /> 
         <Route path="/NosExperts" exact component={Nosexperts} /> 
->>>>>>> Stashed changes
-=======
-        <Route path="/NosRelais" exact component={Nosrelais} /> 
-        <Route path="/NosExperts" exact component={Nosexperts} /> 
->>>>>>> Stashed changes
+       
 
         </Switch>
          
@@ -264,7 +216,9 @@ function Navbar() {
       </Content>
       <Footer style={{ textAlign: 'center' }}>Boussole <span style={{color:"#30a8ff"}}>Pro</span> ©2021 - Tous les droits sont réservés</Footer>
     </Layout>
-  </Layout>
+   
+   
+    </Layout>
     </div>
   );
 }
