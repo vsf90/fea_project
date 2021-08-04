@@ -71,12 +71,12 @@ import TicketBoussole from '../page/TicketBoussole.component';
 
 
 const { Header, Content, Footer, Sider } = Layout; 
-const onClick = ({ key }) => {
+/*const onClick = ({ key }) => {
   message.info(`Click on item ${key}`);
-};
+};*/
 
 const menu = (
-  <Menu onClick={onClick}>
+  <Menu /*onClick={onClick}*/>
     <Menu.Item key="1" icon={<UserOutlined />}>Voir profile</Menu.Item>
     <Menu.Item key="2" icon={< EditOutlined/>}>Modifier profile</Menu.Item>
     <Menu.Item key="3" icon={<LogoutOutlined />}>Déconnexion</Menu.Item>
@@ -105,20 +105,20 @@ function Navbar() {
     >
 
 
-      <Menu  theme="light" mode="inline" defaultSelectedKeys={['4']}>
+      <Menu  theme="light" /*mode="inline"*/ defaultSelectedKeys={['4']}>
       <div className="logo" style={{height: "60px", background: "rgba(255, 255, 255, 0.4)"}} ><img src={logo} style={{height:"60px",backgroundPositionY:"center"}} /></div>
 
         <Menu.Item key="1" icon={<UserOutlined />}><Link  to="/Acueil"></Link>Accueil  </Menu.Item>
         
        
 
-        <Menu.Item key="2" icon={<UploadOutlined />}> <Link  to="/NosReseaux"></Link>  Notre Resaux  </Menu.Item>
+        <Menu.Item key="2" icon={<GlobalOutlined />}> <Link  to="/NosReseaux"></Link>  Notre Resaux  </Menu.Item>
        
       
      
         <Link  to="/Services">
        
-        <SubMenu key="sub1" icon={<GiftOutlined />}  title="Nos Services" style={{marginLeft:"23px"}}>
+        <SubMenu key="sub1" icon={<GiftOutlined />}  title="Nos Services" >
               
               <Menu.Item key="3"><Link  to="/SprintPro"></Link>Sprint Pro</Menu.Item>
               <Menu.Item key="4"><Link  to="/MeetUpPro"></Link>Meet'Up Pro</Menu.Item>
