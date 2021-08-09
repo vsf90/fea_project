@@ -6,8 +6,8 @@ export default function CompteAbonnée() {
     return (
         <div className="clearfix">
       <Alert
-                message="Notre Réseau Pro"
-                description="Bienveneu sur le Réseau Pro de Boussole Pro."
+                message="Compte Boussole Pro"
+                description="Bienveneu sur votre compte de Boussole Pro."
                 type="info"
                 showIcon
                 />

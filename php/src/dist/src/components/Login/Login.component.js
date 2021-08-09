@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Link, NavLink, Route, Switch } from 'react-rout
 import Home from '../home.component';
 import Register from './Register.component';
 import { withRouter } from "react-router-dom";
-import Acueil from '../../page/Acueil.component';
+import Acueil from '../../page/Acueil/Acueil.component';
 
 function Login() {
   const history = useHistory();
@@ -45,7 +45,7 @@ function Login() {
 		              <input type="password" className="form-control" placeholder="Mot de passe" style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
 		            </div>
 		            <div className="form-group">
-		           	<button onClick={() => {history.push('/Nav');}} type="submit" className="form-control register btn-primary submit px-3" style={{borderRadius:"50px"}}>Connexion</button>
+		           	<button onClick={() => {history.push('/Accueil');}} type="submit" className="form-control register btn-primary submit px-3" style={{borderRadius:"50px"}}>Connexion</button>
                   
                 </div>
 		            <div className="form-group d-md-flex">

@@ -1,11 +1,18 @@
 .App{
-    width: 600px;
-    margin-left: 311px;
+    width: 100%;
+    /* margin-left: 311px; */
     padding: 0px;
      font-family: sans-serif;
     text-align: center;
 }
 
+.bOf{
+    margin-left: 334px;
+    font-size: medium;
+    font-style: normal;
+    font-family: ui-sans-serif;
+
+}    
   
   header {
     margin-bottom: 30px;
@@ -58,9 +65,9 @@
     color: #30A8FF;
   }
   
-  @media (min-width: 1200px) {
+  @media (min-width: 100%) {
     .container {
-      max-width: 1040px;
+      max-width: 100%;
     }
   }
   

@@ -35,7 +35,7 @@ function FeedbackMesBesions() {
     console.log(Autredemandes);
   }
      return (
-        <form action="/" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
       
           <Row>
       <Col span={24}>

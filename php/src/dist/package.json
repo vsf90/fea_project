@@ -6,7 +6,6 @@
     "@ant-design/icons": "^4.6.2",
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.8",
-   
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "antd": "^4.16.7",
@@ -16,9 +15,6 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
-  
-  
- 
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
