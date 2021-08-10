@@ -1,12 +1,13 @@
 import React from 'react'
+import axios from 'axios';
 import './Boostform.css';
 import { useState } from 'react';
-import { message, Button, Space } from 'antd';
-
+import { message, Button, Space, Input,Radio } from 'antd';
   
 
 export default function Boostform() {
-  const [Radio, setRadio] = useState("");
+  const [Radioo, setRadioo] = useState("");
+  const [Radioo1, setRadioo1] = useState("");
 
   const [Nom, setNom] = useState("");
   const [Prénom, setPrénom] = useState("");
@@ -18,11 +19,12 @@ export default function Boostform() {
   const [Commentaire, setCommentaire] = useState("");
 
 
-  console.log(Radio);
+  console.log(Radioo);
   console.log(Nom);
   console.log(Prénom);
   console.log(Entreprise);
   console.log(Contact);
+  console.log(Radioo1);
   console.log(Secteur);
   console.log(Objectif);
   console.log(Montant);
@@ -31,29 +33,33 @@ export default function Boostform() {
   const handleFormSubmit=(e)=>{
     e.preventDefault();
     const Boost={
-      Radio,
-      Nom,
-      Prénom,
-      Entreprise,
-      Contact,
-      Secteur,
-      Objectif,
-      Montant,
-      Commentaire
+      radio:Radioo,
+      nom:Nom,
+      prenom:Prénom,
+      entreprise:Entreprise,
+      secteur:Secteur,
+     contact: Contact,
+      radio1:Radioo1,
+      objetif:Objectif,
+      montant:Montant,
+      commentaire:Commentaire
     }
     console.log(Boost);
-   
-if(Nom=='' || Prénom=='' || Radio=='' || Entreprise=='' || Contact=='' || Secteur=='' || Objectif=='' || Montant=='' || Commentaire=='' ){
+
+if(Nom=='' || Prénom=='' || Radioo=='' || Entreprise=='' || Contact=='' || Radioo1=='' || Secteur=='' || Objectif==''  ){
   
     message.error('Vous devez remplir les champs obligatoires');
   
   }else{
     message.success('La demande est faite avec succès');
-    setRadio('');
+    axios.post('http://localhost/BoussolePro-backend/insertBoost.php',Boost).then(res=>console.log(res.data));
+
+    setRadioo('');
     setNom('');
     setPrénom('');
     setEntreprise('');
     setContact('');
+    setRadioo1('');
     setSecteur('');
     setObjectif('');
     setMontant('');
@@ -78,11 +84,11 @@ if(Nom=='' || Prénom=='' || Radio=='' || Entreprise=='' || Contact=='' || Secte
           <p style={{color:"#171617"}}>Êtes-vous bien abonné(e) de Boussole PRO ? (Ce service est réservé exclusivement aux abonné(e)s)  <span class="required">*</span></p>
           <div class="question-answer">
             <div>
-              <input className="inputB" type="radio" value="OUI"  checked={Radio === "OUI"} onChange={(e)=>setRadio(e.target.value)} id="radio_1" name="status" required/>
+              <input className="inputB" type="radio" value="OUI"  checked={Radioo === "OUI"} onChange={(e)=>setRadioo(e.target.value)} id="radio_1" name="status" required/>
               <label for="radio_1" class="radio"><span>OUI</span></label>
             </div>
             <div>
-              <input className="inputB" type="radio" value="NON"  checked={Radio === "NON"} onChange={(e)=>setRadio(e.target.value)} id="radio_2" name="status" required/>
+              <input className="inputB" type="radio" value="NON"  checked={Radioo === "NON"} onChange={(e)=>setRadioo(e.target.value)} id="radio_2" name="status" required/>
               <label for="radio_2" class="radio"><span>NON</span></label>
             </div>
            
@@ -118,14 +124,11 @@ if(Nom=='' || Prénom=='' || Radio=='' || Entreprise=='' || Contact=='' || Secte
         <div class="question">
           <p style={{color:"#171617"}}>Quel type de campagne souhaitez-vous lancer?</p>
           <div class="question-answer">
-            <div>
-              <input className="inputB" type="radio" value="none" id="radio_1" name="status" required/>
-              <label for="radio_1" class="radio"><span>Développer les ventes de mes produits et services</span></label>
-            </div>
-            <div>
-              <input className="inputB" type="radio" value="none" id="radio_2" name="status" required/>
-              <label for="radio_2" class="radio"><span>Autre</span></label>
-            </div>
+            
+            <Space direction="vertical"  >
+          <Radio style={{color:"#666"}} value="Développer les ventes de mes produits et services"  checked={Radioo1 === "Développer les ventes de mes produits et services"} onChange={(e)=>setRadioo1(e.target.value)}>Développer les ventes de mes produits et services</Radio>
+          <Radio style={{color:"#666"}} value="Autre"  checked={Radioo1 === "Autre"} onChange={(e)=>setRadioo1(e.target.value)} >Autre</Radio>
+        </Space>
            
           </div>
         </div>

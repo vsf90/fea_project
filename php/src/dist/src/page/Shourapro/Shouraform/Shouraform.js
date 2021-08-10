@@ -1,14 +1,16 @@
 import React from 'react'
+import axios from 'axios';
 import './Shouraform.css';
 import { useState } from 'react';
-import { message, Button, Space } from 'antd';
+import { message, Button, Space,Radio } from 'antd';
 
  
 export default function Sprintform() {
-  const [Radio, setRadio] = useState("");
+  const [Radioo, setRadioo] = useState("");
 
   const [Nom, setNom] = useState("");
   const [Prénom, setPrénom] = useState("");
+  const [AvecQui, setAvecQui] = useState("");
   const [Problematique, setProblematique] = useState("");
   const [Domaines, setDomaines] = useState("");
  
@@ -18,9 +20,10 @@ export default function Sprintform() {
   const [Semaine, setSemaine] = useState(false);
   const [Weekend, setWeekend] = useState(false);
 
-  console.log(Radio);
+  console.log(Radioo);
   console.log(Nom);
   console.log(Prénom);
+  console.log(AvecQui);
   console.log(Problematique);
   console.log(Domaines);
   
@@ -36,28 +39,32 @@ export default function Sprintform() {
   const handleFormSubmit=(e)=>{
     e.preventDefault();
     const Shoura={
-      Radio,
-      Nom,
-      Prénom,
-      Problematique,
-      Domaines,
-      Matin,
-      ApresMidi,
-      Soir,
-      Semaine,
-      Weekend
+      radio:Radioo,
+      nom: Nom,
+      prenom:Prénom,
+      avecqui:AvecQui,
+      problematique:Problematique,
+      domaines:Domaines,
+      matin:Matin,
+      apresmidi:ApresMidi,
+      soir:Soir,
+      semaine:Semaine,
+      weekend:Weekend
     }
     console.log(Shoura);
-   
-if(Nom=='' || Prénom=='' || Problematique=='' || Domaines=='' || Radio=='' ||(Matin=='' && ApresMidi=='' && Soir=='' && Semaine=='' && Weekend=='')){
+
+if(Nom=='' || Prénom=='' || AvecQui=='' || Problematique=='' || Domaines=='' || Radioo=='' ||(Matin=='' && ApresMidi=='' && Soir=='' && Semaine=='' && Weekend=='')){
   
     message.error('Vous devez remplir les champs obligatoires');
   
   }else{
     message.success('La demande est faite avec succès');
-    setRadio('');
+    axios.post('http://localhost/BoussolePro-backend/insertShoura.php',Shoura).then(res=>console.log(res.data));
+
+    setRadioo('');
     setNom('');
     setPrénom('');
+    setAvecQui('');
     setProblematique('');
     setDomaines('');
    
@@ -85,11 +92,11 @@ if(Nom=='' || Prénom=='' || Problematique=='' || Domaines=='' || Radio=='' ||(M
           <p style={{color:"#171617"}}>Qui est-ce qui initie le Shoura pro ? <span class="required">*</span></p>
           <div class="question-answer">
             <div>
-              <input className="inputB" type="radio" value="Abonné"  checked={Radio === "Abonné"} onChange={(e)=>setRadio(e.target.value)} id="radio_1" name="status" required/>
+              <input className="inputB" type="radio" value="Moi en tant qu abonné(e)"  checked={Radioo === "Moi en tant qu abonné(e)"} onChange={(e)=>setRadioo(e.target.value)} id="radio_1" name="status" required/>
               <label for="radio_1" class="radio"><span>Vous en tant qu'abonné(e)</span></label>
             </div>
             <div>
-              <input className="inputB" type="radio" value="Orga"  checked={Radio === "Orga"} onChange={(e)=>setRadio(e.target.value)} id="radio_2" name="status" required/>
+              <input className="inputB" type="radio" value="Equipe Orga Boussole PRO"  checked={Radioo === "Équipe Orga Boussole PRO"} onChange={(e)=>setRadioo(e.target.value)} id="radio_2" name="status" required/>
               <label for="radio_2" class="radio"><span>Équipe Orga Boussole PRO</span></label>
             </div>
            
@@ -105,18 +112,12 @@ if(Nom=='' || Prénom=='' || Problematique=='' || Domaines=='' || Radio=='' ||(M
 		<div class="question">
           <p style={{color:"#171617"}}>Avec-qui souhaitez vous avoir le FEA Shoura PRO?<span class="required">*</span></p>
           <div class="question-answer">
-            <div>
-              <input className="inputB" type="radio" value="none" id="radio_1" name="status" required/>
-              <label for="radio_1" class="radio"><span>Un-e abonné-e</span></label>
-            </div>
-            <div>
-              <input className="inputB" type="radio" value="none" id="radio_2" name="status" required/>
-              <label for="radio_2" class="radio"><span>Un-e membre de FEA</span></label>
-            </div>
-            <div>
-              <input className="inputB" type="radio" value="none" id="radio_4" name="status" required/>
-              <label for="radio_4" class="radio"><span>Une personne extérieure à FEA</span></label>
-            </div>
+          <Space direction="vertical"  >
+          <Radio style={{color:"#666"}} value="Un-e abonné-e" checked={AvecQui === "Un-e abonné-e"}   onChange={(e)=>setAvecQui(e.target.value)}>Un-e abonné-e</Radio>
+          <Radio style={{color:"#666"}}   value="Un-e membre de FEA" checked={AvecQui === "Un-e membre de FEA"}   onChange={(e)=>setAvecQui(e.target.value)} >Un-e membre de FEA</Radio>
+          <Radio style={{color:"#666"}}   value="Un relais BP" checked={AvecQui === "Un relais BP"}   onChange={(e)=>setAvecQui(e.target.value)} >Un relais BP</Radio>
+          <Radio style={{color:"#666"}}  value="Une personne extérieure à FEA" checked={AvecQui === "Une personne extérieure à FEA"}   onChange={(e)=>setAvecQui(e.target.value)} >Une personne extérieure à FEA</Radio>
+        </Space>
           </div>
         </div>
        

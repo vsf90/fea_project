@@ -1,10 +1,8 @@
 import React from 'react'
 import './Meetform.css';
+import axios from 'axios';
 import { useState } from 'react';
 import { message, Button, Space } from 'antd';
-
-  
-
 
 export default function Meetform() {
   const [Nom, setNom] = useState("");
@@ -25,27 +23,27 @@ export default function Meetform() {
   console.log(Raison);
   console.log(Info);
  
-
-
   const handleFormSubmit=(e)=>{
     e.preventDefault();
     const Meet={
-      Nom,
-      Prénom,
-      Radio,
-      PrénomMeet,
-      NomMeet,
-      Raison,
-      Info
+     nom: Nom,
+      prenom:Prénom,
+      radio:Radio,
+      prenommeet:PrénomMeet,
+      nommeet:NomMeet,
+      raison:Raison,
+      info:Info
     }
     console.log(Meet);
-   
-if(Nom=='' || Prénom=='' || Radio=='' || PrénomMeet=='' || NomMeet=='' || Raison=='' ||Info==''){
+
+if(Nom=='' || Prénom=='' || Radio==''  || Raison=='' ){
   
     message.error('Vous devez remplir les champs obligatoires');
   
   }else{
     message.success('La demande est faite avec succès');
+    axios.post('http://localhost/BoussolePro-backend/insertMeet.php',Meet).then(res=>console.log(res.data));
+
     setNom('');
     setPrénom('');
     setRadio('');
@@ -81,19 +79,19 @@ if(Nom=='' || Prénom=='' || Radio=='' || PrénomMeet=='' || NomMeet=='' || Rais
           <p style={{color:"#171617"}}>Avec-qui souhaitez vous avoir le sprint PRO?<span class="required">*</span></p>
           <div class="question-answer">
             <div>
-              <input className="inputB" type="radio" value="Abonné"  checked={Radio === "Abonné"} onChange={(e)=>setRadio(e.target.value)} id="radio_1" name="status" required/>
+              <input className="inputB" type="radio" value="Un-e abonné-e"  checked={Radio === "Un-e abonné-e"} onChange={(e)=>setRadio(e.target.value)} id="radio_1" name="status" required/>
               <label for="radio_1" class="radio"><span>Un-e abonné-e</span></label>
             </div>
             <div>
-              <input className="inputB" type="radio" value="Fea"  checked={Radio === "Fea"} onChange={(e)=>setRadio(e.target.value)} id="radio_2" name="status" required/>
+              <input className="inputB" type="radio" value="Un-e membre de FEA"  checked={Radio === "Un-e membre de FEA"} onChange={(e)=>setRadio(e.target.value)} id="radio_2" name="status" required/>
               <label for="radio_2" class="radio"><span>Un-e membre de FEA</span></label>
             </div>
             <div>
-              <input className="inputB" type="radio" value="Relais"  checked={Radio === "Relais"} onChange={(e)=>setRadio(e.target.value)} id="radio_3" name="status" required/>
+              <input className="inputB" type="radio" value="Un relais BP"  checked={Radio === "Un relais BP"} onChange={(e)=>setRadio(e.target.value)} id="radio_3" name="status" required/>
               <label for="radio_3" class="radio"><span>Un relais BP</span></label>
             </div>
             <div>
-              <input className="inputB" type="radio" value="Exterieure"  checked={Radio === "Exterieure"} onChange={(e)=>setRadio(e.target.value)} id="radio_4" name="status" required/>
+              <input className="inputB" type="radio" value="Une personne extérieure à FEA"  checked={Radio === "Une personne extérieure à FEA"} onChange={(e)=>setRadio(e.target.value)} id="radio_4" name="status" required/>
               <label for="radio_4" class="radio"><span>Une personne extérieure à FEA</span></label>
             </div>
           </div>

@@ -1,7 +1,8 @@
 import React from 'react'
+import axios from 'axios';
 import './Sprintform.css';
 import { useState } from 'react';
-import { message, Button, Space } from 'antd';
+import { message, Button, Space,Radio } from 'antd';
 export default function Sprintform() {
   const [Nom, setNom] = useState("");
   const [Prénom, setPrénom] = useState("");
@@ -9,8 +10,8 @@ export default function Sprintform() {
   const [Rang, setRang] = useState("");
   const [PrénomExterieure, setPrénomExterieure] = useState("");
   const [RaisonSprint, setRaisonSprint] = useState("");
-  const [Radio, setRadio] = useState("");
-  const [AvecQui, setAvecQui] = useState("");
+  const [Radioo, setRadioo] = useState("");
+ const [AvecQui, setAvecQui] = useState("");
 
   const [Matin, setMatin] = useState(false);
   const [ApresMidi, setApresMidi] = useState(false);
@@ -26,7 +27,7 @@ export default function Sprintform() {
   console.log(Rang);
   console.log(PrénomExterieure);
   console.log(RaisonSprint);
- console.log(Radio);
+ console.log(Radioo);
  console.log(AvecQui);
 
  console.log(Matin);
@@ -41,23 +42,33 @@ export default function Sprintform() {
   const handleFormSubmit=(e)=>{
     e.preventDefault();
     const Sprint={
-      Nom,
-      Prénom,
-      PrénomAbonné,
-      PrénomExterieure,
-      Rang,
-      RaisonSprint
+      radio:Radioo,
+      nom:Nom,
+      prenom:Prénom,
+      avecqui:AvecQui,
+      prenomabonné:PrénomAbonné,
+      rang:Rang,
+      prenomexterieure:PrénomExterieure,
+      raisonsprint:RaisonSprint,
+      matin:Matin,
+      apresmidi:ApresMidi,
+      soir:Soir,
+      semaine:Semaine,
+      weekend:Weekend
     }
     console.log(Sprint);
-   
-if(Nom=='' || Prénom=='' || PrénomAbonné=='' || PrénomExterieure=='' || Rang=='' || RaisonSprint=='' ||(Matin=='' && ApresMidi=='' && Soir=='' && Semaine=='' && Weekend=='')){
+
+if(Radioo=='' || Nom=='' || Prénom=='' || AvecQui=='' || RaisonSprint=='' ||(Matin=='' && ApresMidi=='' && Soir=='' && Semaine=='' && Weekend=='')){
   
     message.error('Vous devez remplir les champs obligatoires');
   
   }else{
     message.success('La demande est faite avec succès');
+    axios.post('http://localhost/BoussolePro-backend/insertSprint.php',Sprint).then(res=>console.log(res.data));
+
     setNom('');
     setPrénom('');
+    setAvecQui('');
     setPrénomAbonné('');
     setPrénomExterieure('');
     setRang('');
@@ -67,7 +78,7 @@ if(Nom=='' || Prénom=='' || PrénomAbonné=='' || PrénomExterieure=='' || Rang
     setSoir('');
     setSemaine('');
     setWeekend('');
-    setRadio('');
+    setRadioo('');
     setAvecQui('');
   }
 }
@@ -87,11 +98,11 @@ if(Nom=='' || Prénom=='' || PrénomAbonné=='' || PrénomExterieure=='' || Rang
           <p style={{color:"#171617"}}>Qui est-ce qui initie le Sprint Pro 15min ? <span class="required">*</span></p>
           <div class="question-answer">
             <div>
-              <input className="inputB" type="radio" value="Abonné"  checked={Radio === "Abonné"} onChange={(e)=>setRadio(e.target.value)} id="radio_1"  required/>
+              <input className="inputB" type="radio" value="Moi en tant qu abonné"  checked={Radioo === "Moi en tant qu abonné"} onChange={(e)=>setRadioo(e.target.value)} id="radio_1"  required/>
               <label for="radio_1" class="radio"><span>Vous en tant qu'abonné(e)</span></label>
             </div>
             <div>
-              <input className="inputB" type="radio" value="Orga" checked={Radio === "Orga"}   onChange={(e)=>setRadio(e.target.value)} id="radio_2"  required/>
+              <input className="inputB" type="radio" value="Equipe Orga Boussole PRO" checked={Radioo === "Equipe Orga Boussole PRO"}   onChange={(e)=>setRadioo(e.target.value)} id="radio_2"  required/>
               <label for="radio_2" class="radio"><span>Équipe Orga Boussole PRO</span></label>
             </div>
            
@@ -108,22 +119,13 @@ if(Nom=='' || Prénom=='' || PrénomAbonné=='' || PrénomExterieure=='' || Rang
 		<div class="question">
           <p style={{color:"#171617"}}>Avec-qui souhaitez vous avoir le sprint PRO?<span class="required">*</span></p>
           <div class="question-answer">
-            <div>
-              <input className="inputB" type="radio"  value="Abo" checked={AvecQui === "Abo"}   onChange={(e)=>setAvecQui(e.target.value)} id="radio_3"  required/>
-              <label for="radio_1" class="radio"><span>Un-e abonné-e</span></label>
-            </div>
-            <div>
-              <input className="inputB" type="radio"  value="Fea" checked={AvecQui === "Fea"}   onChange={(e)=>setAvecQui(e.target.value)} id="radio_4"  required/>
-              <label for="radio_2" class="radio"><span>Un-e membre de FEA</span></label>
-            </div>
-            <div>
-              <input className="inputB" type="radio"  value="Relais" checked={AvecQui === "Relais"}   onChange={(e)=>setAvecQui(e.target.value)} id="radio_5"  required/>
-              <label for="radio_3" class="radio"><span>Un relais BP</span></label>
-            </div>
-            <div>
-              <input className="inputB" type="radio"  value="Exterieure" checked={AvecQui === "Exterieure"}   onChange={(e)=>setAvecQui(e.target.value)} id="radio_6" required/>
-              <label for="radio_4" class="radio"><span>Une personne extérieure à FEA</span></label>
-            </div>
+           
+            <Space direction="vertical"  >
+          <Radio style={{color:"#666"}} value="Un-e abonné-e" checked={AvecQui === "Un-e abonné-e"}   onChange={(e)=>setAvecQui(e.target.value)}>Un-e abonné-e</Radio>
+          <Radio style={{color:"#666"}}   value="Un-e membre de FEA" checked={AvecQui === "Un-e membre de FEA"}   onChange={(e)=>setAvecQui(e.target.value)} >Un-e membre de FEA</Radio>
+          <Radio style={{color:"#666"}}   value="Un relais BP" checked={AvecQui === "Un relais BP"}   onChange={(e)=>setAvecQui(e.target.value)} >Un relais BP</Radio>
+          <Radio style={{color:"#666"}}  value="Une personne extérieure à FEA" checked={AvecQui === "Une personne extérieure à FEA"}   onChange={(e)=>setAvecQui(e.target.value)} >Une personne extérieure à FEA</Radio>
+        </Space>
           </div>
         </div>
         <div class="contact-item">
@@ -147,7 +149,7 @@ if(Nom=='' || Prénom=='' || PrénomAbonné=='' || PrénomExterieure=='' || Rang
           
         </div>
 		<div class="item">
-          <p style={{color:"#171617"}}>Pourquoi souhaitez-vous ce sprint Pro? </p>
+          <p style={{color:"#171617"}}>Pourquoi souhaitez-vous ce sprint Pro? <span class="required">*</span> </p>
           <div class="name-item">
             <input className="inputB" type="text"  value={RaisonSprint} onChange={(e)=>setRaisonSprint(e.target.value)}  required/>
             

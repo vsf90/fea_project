@@ -13,25 +13,27 @@ import Accueil from './page/Acueil/Acueil.component';
 import Login from './components/Login/Login.component';
 import {BrowserRouter as Router, Link, NavLink, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar.component';
+import Meetform from './page/Meetup/Meetform/Meetform'
 
 
 import CompteAbonnée from './page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
 
 function App() {
   return (
-    <div>
-         <Home></Home>
-        {/* <Login></Login>         */}
-        {/* <CompteAbonnée></CompteAbonnée> */}
-
+    
      
-      {/* <Router>
-        <Switch >
-        <Route path="/Nav" exact component={Home} />
-        <Route path="/" exact component={Login} />
-      
-        </Switch>
-        </Router> */}
+    <div className="h">
+     
+     
+      <Router>
+    <Switch >
+    <Route path="/Nav" exact component={Home} />
+    <Route path="/" exact component={Login} />
+    <Route path="/Meetform" exact component={Meetform} /> 
+  
+    </Switch>
+    </Router>
+
 
     </div>
   );

@@ -6,10 +6,57 @@ import {BrowserRouter as Router, Link, NavLink, Route, Switch } from 'react-rout
 import Home from '../home.component';
 import Register from './Register.component';
 import { withRouter } from "react-router-dom";
-import Acueil from '../../page/Acueil/Acueil.component';
+
+
+import Acueil from '../../page/Acueil.component';
+import axios from 'axios';
+import { useState } from 'react';
+import { message, Button, Space } from 'antd';
 
 function Login() {
   const history = useHistory();
+
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+ 
+  console.log(Email);
+  console.log(Password);
+ 
+
+
+ 
+
+  const handleFormSubmit=(e)=>{
+    e.preventDefault();
+    const Login={
+     
+      email:Email,
+      pass:Password
+    
+    }
+    var config = {
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      };
+    console.log(Login);
+   // axios.post('http://localhost/BoussolePro-backend/insert.php',Login)
+   // .then((res)=>{console.log(res.data);});
+   
+      
+      axios.post('http://localhost/BoussolePro-backend/insert.php', Login, config)
+      .then(res => console.log(res.data));
+
+   
+/*if(Email=='' || Password==''){
+  
+    message.error('Vous devez remplir les champs obligatoires');
+  
+  }else{
+    message.success('La demande est faite avec succès');
+    setEmail('');
+    setPassword('');
+  
+  }*/
+}
   return (
   
       <div>
@@ -24,8 +71,7 @@ function Login() {
 						<div className="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
 							<div className="text w-100">
 								<h4 style={{marginBottom:"20px",lineHeight: "150%"}}>Se diriger vers le sens spirituel, vers la bonne information, la bonne personne</h4>
-							{	/*<p style={{marginBottom: "1rem", color:"white"}}>Vous n'avez pas de compte ?</p>*/}
-							{/*	<a href="#" className="register btn-white btn-outline-white" style={{textDecoration:"none"}}><Link  to="/Register" className="text">S'inscrire maintenant</Link></a>*/}
+						
 							</div>
 			      </div>
 						<div className="login-wrap p-4 p-lg-5">
@@ -38,14 +84,17 @@ function Login() {
 							<form action="#" className="signin-form" >
 			      		<div className="form-group mb-3">
 			      			<label className="label" for="name">Email</label>
-			      			<input type="text" className="form-control" placeholder="email" style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
+			      			<input type="text" className="form-control" value={Email} onChange={(e)=>setEmail(e.target.value)} placeholder="email" style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
 			      		</div>
 		            <div className="form-group mb-3">
 		            	<label className="label" for="password">Mot de passe</label>
-		              <input type="password" className="form-control" placeholder="Mot de passe" style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
+		              <input type="password" className="form-control" value={Password} onChange={(e)=>setPassword(e.target.value)} placeholder="Mot de passe" style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
 		            </div>
 		            <div className="form-group">
-		           	<button onClick={() => {history.push('/Accueil');}} type="submit" className="form-control register btn-primary submit px-3" style={{borderRadius:"50px"}}>Connexion</button>
+
+
+		           	<button onClick={() => {history.push('/Nav');}} /*onClick={handleFormSubmit}*/ type="submit" className="form-control register btn-primary submit px-3" style={{borderRadius:"50px"}}>Connexion</button>
+
                   
                 </div>
 		            <div className="form-group d-md-flex">
