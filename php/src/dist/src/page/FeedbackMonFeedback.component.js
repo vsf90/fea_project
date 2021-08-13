@@ -146,8 +146,9 @@ if(  Nom=='' || Prénom=='' || AvecQui=='' || Service=='' ||Organisation=='' || 
              <label><b>Avec qui?</b><span class="required">*</span></label> 
           <Input value={AvecQui} onChange={(e)=>setAvecQui(e.target.value)} />
         </Form.Item>
-        <label><b>A quel service avez-vous récemment participé ? </b><span class="required">*</span></label>
+        
           <Form.Item >
+            <label><b>A quel service avez-vous récemment participé ? </b><span class="required">*</span></label>
               <Radio.Group >
       <Radio value="Sprint Pro" checked={Service === "Sprint Pro"}   onChange={(e)=>setService(e.target.value)}>Sprint Pro</Radio><br/>
       <Radio value="Meet up Pro" checked={Service === "Meet up Pro"}   onChange={(e)=>setService(e.target.value)}>Meet'up Pro</Radio><br/>

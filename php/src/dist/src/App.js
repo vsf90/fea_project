@@ -14,7 +14,13 @@ import Login from './components/Login/Login.component';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar.component';
 import Meetform from './page/Meetup/Meetform/Meetform'
+<<<<<<< HEAD
 import { Component } from 'react';
+=======
+import FormAbonne from './page/FormAbonne.component';
+import FormAbonne2 from './page/FormAbonne2.component';
+import FormAbonne0 from './FormAbonne0.component';
+>>>>>>> cc157d087b16ac40a2bcbaf9ad9b5ead0943f543
 
 let  currentUser  ={};
 
@@ -54,6 +60,7 @@ export default class App extends Component {
 //   return (
     
      
+<<<<<<< HEAD
 //     <div className="h">
 //      {/* <Login></Login> */}
 //      {/* <Register></Register> */}
@@ -65,6 +72,19 @@ export default class App extends Component {
   
 //     </Switch>
 //     </Router>
+=======
+    <div className="h">
+    {/* <FormAbonne0></FormAbonne0> */}
+     
+       <Router>
+    <Switch >
+    <Route path="/Nav" exact component={Home} />
+    <Route path="/" exact component={Login} />
+    <Route path="/Meetform" exact component={Meetform} /> 
+  
+    </Switch>
+    </Router> 
+>>>>>>> cc157d087b16ac40a2bcbaf9ad9b5ead0943f543
 
 
 //     </div>
