@@ -5,6 +5,7 @@ import { Image } from 'antd';
 import logo from '../img/logo.PNG'
 import {
   HomeOutlined,
+  BookOutlined,
   SettingFilled,
   AppstoreOutlined,
   BarChartOutlined,
@@ -25,7 +26,12 @@ import {
   GiftOutlined,
   CarryOutOutlined,
   ProfileOutlined,
+<<<<<<< Updated upstream
   CaretDownFilled
+=======
+  WechatOutlined,
+  FileTextOutlined
+>>>>>>> Stashed changes
  
 } from '@ant-design/icons';
 
@@ -162,10 +168,10 @@ function Navbar() {
         <Menu.Item key="9" icon={<BarChartOutlined />}>
         <Link  to="/NosPartenaires"></Link>Nos Partenaires</Menu.Item>
         
-            <SubMenu key="sub4" icon={<FormOutlined />} title="Feedback">
-              <Menu.Item key="10"> <Link  to="/MesBesoins"></Link>Mes besions Pro immédiate</Menu.Item>
-              <Menu.Item key="11"><Link  to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
-              <Menu.Item key="12"><Link  to="/TicketBoussole"></Link>Un ticket Boussole Pro</Menu.Item>
+            <SubMenu key="sub4" icon={<WechatOutlined /> } title="Feedback">
+              <Menu.Item key="10" icon={<WechatOutlined /> }> <Link  to="/MesBesoins"></Link>Mes besions Pro immédiate</Menu.Item>
+              <Menu.Item key="11" icon={<WechatOutlined /> }><Link  to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
+              <Menu.Item key="12" icon={<BookOutlined />}><Link  to="/TicketBoussole"></Link>Un ticket Boussole Pro</Menu.Item>
             </SubMenu>
 
 
@@ -195,9 +201,9 @@ function Navbar() {
               <Menu.Item key="26" icon={<PullRequestOutlined />} ><Link  to="/OffreEmploi"></Link>Offres d'emploi</Menu.Item>
             </SubMenu>
 
-            <SubMenu key="sub8" icon={<FundOutlined />} title="les demandes">
-              <Menu.Item key="27" icon={<PullRequestOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
-              <Menu.Item key="28" icon={<PullRequestOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
+            <SubMenu key="sub8" icon={<FileTextOutlined />} title="les demandes">
+              <Menu.Item key="27" icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
+              <Menu.Item key="28" icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
             </SubMenu>
             
            
