@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Button,Table } from "antd";
@@ -101,3 +102,71 @@ export default class Besoins extends Component {
     )
     }
 }
+=======
+import { CheckCircleTwoTone } from "@ant-design/icons";
+import { Alert } from "antd";
+
+function BesionsPro() {
+  
+   
+  return (
+    <div className="BesionsPro">
+     <Alert
+                message="Liste des Besions Pro "
+                description="Vous trouverez ici la liste des Besions Pro  de boussole pro."
+                type="info"
+                showIcon
+                />
+    <h2>Les Besions Pro </h2>
+    
+                        <div className="se-body">
+                            <div className="input-group">
+                                <input className="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                <button className="btn btn-primary" id="button-search" type="button">Go!</button>
+                            </div>
+                        </div>
+                   
+       <table class="table">
+  <thead>
+    <tr>
+    <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Besoins les plus urgents</th>
+      <th scope="col">Date de Votre prochain déplacement</th>
+      <th scope="col">Autres demandes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Zennou</td>
+      <td>Khalid</td>
+      <td scope="col">Besoins les plus urgents</td>
+      <td scope="col">Date de Votre prochain déplacement</td>
+      <td scope="col">Autres demandes</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td scope="col">Besoins les plus urgents</td>
+      <td scope="col">Date de Votre prochain déplacement</td>
+      <td scope="col">Autres demandes</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>Depamy</td>
+      <td scope="col">Besoins les plus urgents</td>
+      <td scope="col">Date de Votre prochain déplacement</td>
+      <td scope="col">Autres demandes</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+  );
+}
+
+export default BesionsPro;
+>>>>>>> Stashed changes

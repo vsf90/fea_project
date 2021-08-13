@@ -1,7 +1,12 @@
+<<<<<<< Updated upstream
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Button,Table } from "antd";
 import RecordsList from './RecordsList.js';
+=======
+import { CheckCircleTwoTone } from "@ant-design/icons";
+import { Alert } from "antd";
+>>>>>>> Stashed changes
 
 export default class Feedbacks extends Component {
   //data=[];
@@ -11,6 +16,7 @@ export default class Feedbacks extends Component {
     //console.log(this.state.demandeSprint);
   }
   
+<<<<<<< Updated upstream
   componentDidMount(){
     axios.get('http://localhost/BoussolePro-backend/listFeedback.php')
     .then(response=>{
@@ -112,6 +118,68 @@ export default class Feedbacks extends Component {
            <tr>
              <th>ID</th>
              <th>initiateur</th>
+=======
+   
+  return (
+    <div>
+    <Alert
+                message="Liste des FEEDBACKs"
+                description="Vous trouverez ici la liste des feedbacks de boussole pro."
+                type="info"
+                showIcon
+                />
+                        <div className="se-body">
+                            <div className="input-group">
+                                <input className="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                <button className="btn btn-primary" id="button-search" type="button">Go!</button>
+                            </div>
+                        </div>
+                   
+       <table class="table">
+  <thead>
+    <tr>
+    <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Avec-qui?</th>
+      <th scope="col">Service</th>
+      <th scope="col">Niveau de satisfaction</th>
+      <th scope="col">Informations susceptibles </th>
+      <th scope="col">Confirmer notre utilité </th>
+      <th scope="col">Evaluation</th>
+      <th scope="col">Mots clés du Sprint</th>
+      <th scope="col">Feedback particulier</th>
+      <th scope="col">Autorisation</th>
+      <th scope="col">Feedbacks silencieux</th>
+      <th scope="col">Feedbacks </th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Zennou</td>
+      <td>Khalid</td>
+      <td>BP</td>
+      <td scope="col">Service</td>
+      <td scope="col">Niveau de satisfaction</td>
+      <td scope="col">Informations susceptibles </td>
+      <td scope="col">Confirmer notre utilité </td>
+      <td scope="col">Evaluation</td>
+      <td scope="col">Mots clés du Sprint</td>
+      <td scope="col">Feedback particulier</td>
+      <td scope="col">Autorisation</td>
+      <td scope="col">Feedbacks silencieux</td>
+      <td scope="col">Feedbacks </td>
+      <td><CheckCircleTwoTone twoToneColor="#52c41a" /></td>
+    </tr>
+   
+  </tbody>
+</table>
+    </div>
+  );
+}
+>>>>>>> Stashed changes
 
            </tr>
          </thead>

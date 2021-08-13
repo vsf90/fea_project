@@ -23,7 +23,7 @@ export default class Home extends Component {
 
              <Router history={history}>
                 {/* signout={this.props.signout} */}
-                    <Navbar />
+                    <Navbar signout={this.props.signout}/>
                 </Router>
                
              </div>

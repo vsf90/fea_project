@@ -8,6 +8,8 @@ function FeedbackMesBesions() {
   const [Prénom, setPrénom] = useState("");
   const [Besoins, setBesoins] = useState("");
   const [Autredemandes, setAutredemandes] = useState("");
+  const [DateE, setDateE] = useState(new Date());
+
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -30,6 +32,7 @@ function FeedbackMesBesions() {
     setBesoins(e.target.value);
     console.log(Besoins);
   }
+  
   const handleChangeAutredemandes = (e)=> {
     setAutredemandes(e.target.value);
     console.log(Autredemandes);
@@ -38,27 +41,25 @@ function FeedbackMesBesions() {
         <form  onSubmit={handleSubmit}>
       
           <Row>
-      <Col span={24}>
-          
-          <Alert
-                message="mes besoins pros immédiats"
-                description="Bienveneu sur les besoins pros immédiats."
-                type="info"
-                showIcon
-                />
-          <img className="card-img-top" src={tof1} alt="1" />
-          <h2 class="title">Vos besoins pros immédiats</h2>
-          
-          <p>Par ce formulaire nous souhaitons vous offrir la meilleure expérience abonné(e) Boussole Pro.
-              N'hésitez pas à nous indiquer vos besoins professionnels les plus urgents afin de vous proposer des interactions boussole pro pouvant vous être utile.</p>
-      
+            <Col span={24}>   
+                <Alert
+                      message="mes besoins pros immédiats"
+                      description="Bienveneu sur les besoins pros immédiats."
+                      type="info"
+                      showIcon
+                      />
+                <img className="card-img-top" src={tof1} alt="1" />
+                <h2 class="title">Vos besoins pros immédiats</h2>
+                
+                <p>Par ce formulaire nous souhaitons vous offrir la meilleure expérience abonné(e) Boussole Pro.
+                    N'hésitez pas à nous indiquer vos besoins professionnels les plus urgents afin de vous proposer des interactions boussole pro pouvant vous être utile.</p>
+            
       <Form.Item  >
       <div class="item">
           <label><b>Votre Nom complet</b><span class="required">*</span></label>
           <div class="name-item">
             <div className="row">
-              <div className="col-lg-6" style={{width:"500px",marginBottom:"10px"}} >
-              
+              <div className="col-lg-6" style={{width:"500px",marginBottom:"10px"}} >  
             <Input  type="text" name="Nom" placeholder="Nom" value={nom} onChange={handleChangeNom} required/>
             </div>
             <br></br>
@@ -79,7 +80,7 @@ function FeedbackMesBesions() {
 
       <Form.Item>
       <label><b>Date de Votre prochain déplacement</b><span class="required">*</span></label>
-      <DatePicker  />
+      <DatePicker  dateFormat="DD-MM-YYYY" selected={DateE} onChange={handleChangeDateE}/>
       </Form.Item>
 
       <p>N'hésitez pas à mentionner la ville et tout détail pouvant nous aider à vous proposer plus de meet up pro</p>

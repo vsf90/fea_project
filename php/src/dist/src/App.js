@@ -14,28 +14,61 @@ import Login from './components/Login/Login.component';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar.component';
 import Meetform from './page/Meetup/Meetform/Meetform'
+import { Component } from 'react';
 
+let  currentUser  ={};
 
-
-function App() {
-  return (
+export default class App extends Component {
+ 
+  constructor(props) {    
+    super(props);
+     currentUser = localStorage.getItem('user'); 
+    this.state = {
+      loggedIn: localStorage.getItem('loggedIn') === "true" ?  true : false,
+      user: {
+        email: currentUser ? currentUser.email : '',
+      },
+    }
+  }
+  DoIdsd(){
+    localStorage.removeItem('user')
+    localStorage.removeItem('loggedIn')
+    this.setState({ loggedIn: false, user: null})
+  }
+  render() {
+      console.log('this.state.loggedIn',this.state.loggedIn)
     
-     
-    <div className="h">
-     
-     
-      <Router>
-    <Switch >
-    <Route path="/Nav" exact component={Home} />
-    <Route path="/" exact component={Login} />
-    <Route path="/Meetform" exact component={Meetform} /> 
-  
-    </Switch>
-    </Router>
+    const app = this.state.loggedIn?
+    <Home signout={() =>  this.DoIdsd()  }  />  :
+    <Login signIn={(user) => this.setState({ loggedIn: true, user: user })} />;
 
-
-    </div>
-  );
+    return (
+      <div className="back">
+        {app}
+      </div>
+    )
+  }
 }
 
-export default App;
+// function App() {
+//   return (
+    
+     
+//     <div className="h">
+//      {/* <Login></Login> */}
+//      {/* <Register></Register> */}
+//     <Router>
+//     <Switch >
+//     <Route path="/Nav" exact component={Home} />
+//     <Route path="/" exact component={Login} />
+//     <Route path="/Meetform" exact component={Meetform} /> 
+  
+//     </Switch>
+//     </Router>
+
+
+//     </div>
+//   );
+// }
+
+// export default App;

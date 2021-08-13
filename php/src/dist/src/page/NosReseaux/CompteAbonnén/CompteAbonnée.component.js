@@ -1,5 +1,6 @@
 import { Alert } from 'antd';
 import React from 'react'
+import { Link } from 'react-router-dom';
 import './CompteAbonnée.component.css';
 
 export default function CompteAbonnée() {
@@ -42,7 +43,9 @@ export default function CompteAbonnée() {
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                   <Link to="/EditCompte"> 
+                   <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                   </Link>
                 </div>
             </div>
             <div class="row">

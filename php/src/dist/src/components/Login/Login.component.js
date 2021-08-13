@@ -13,7 +13,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { message, Button, Space } from 'antd';
 
-function Login() {
+function Login(props) {
   const history = useHistory();
 
   const [Email, setEmail] = useState("");
@@ -30,20 +30,27 @@ function Login() {
     e.preventDefault();
     const Login={
      
-      email:Email,
-      pass:Password
+      email:"khalid1zenno2u@gmail.com",
+      pass:"121212"
     
     }
     var config = {
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       };
-    console.log(Login);
+    console.log("---------------------------->Login",Login);
    // axios.post('http://localhost/BoussolePro-backend/insert.php',Login)
    // .then((res)=>{console.log(res.data);});
    
       
-      axios.post('http://localhost/BoussolePro-backend/insert.php', Login, config)
-      .then(res => console.log(res.data));
+      axios.post('http://localhost:8080/BoussolePro-backend/login.php', Login, config)
+      .then(res => {
+		console.log("--------*****-------->res.ata",res.data)
+		localStorage.setItem('loggedIn', true);
+		console.log('res------->>>>>',res)
+		props.signIn(res.data);
+		console.log("vous avez connecter props", props)
+	}
+		);
 
    
 /*if(Email=='' || Password==''){
@@ -93,7 +100,7 @@ function Login() {
 		            <div className="form-group">
 
 
-		           	<button onClick={() => {history.push('/Nav');}} /*onClick={handleFormSubmit}*/ type="submit" className="form-control register btn-primary submit px-3" style={{borderRadius:"50px"}}>Connexion</button>
+		           	<button onClick={handleFormSubmit} /* onClick={handleFormSubmit}*/ type="submit" className="form-control register btn-primary submit px-3" style={{borderRadius:"50px"}}>Connexion</button>
 
                   
                 </div>
