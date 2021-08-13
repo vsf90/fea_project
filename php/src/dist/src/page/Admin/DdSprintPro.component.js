@@ -1,12 +1,12 @@
-<<<<<<< Updated upstream
+
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Button,Table } from "antd";
 import RecordsList from './RecordsList.js';
-=======
+
 import { CheckCircleTwoTone } from "@ant-design/icons";
-import { Alert, Button } from "antd";
->>>>>>> Stashed changes
+
+
 
 export default class DdSprintPro extends Component {
   data=[];
@@ -16,9 +16,8 @@ export default class DdSprintPro extends Component {
     //console.log(this.state.demandeSprint);
   }
   
-<<<<<<< Updated upstream
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listSprint.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listSprint.php')
     .then(response=>{
       this.setState({demandeSprint: response.data});
    })
@@ -26,17 +25,7 @@ export default class DdSprintPro extends Component {
      console.log(error);
     })
     }
-=======
-   
-  return (
-    <div className="DdSprintPro">
-    <Alert
-                message="Liste des demandes de Sprint Pro"
-                description="Vous trouverez ici les demandes de Sprint Pro de boussole pro."
-                type="info"
-                showIcon
-                />
->>>>>>> Stashed changes
+
     
     SprintList(){
       console.log(this.state.demandeSprint);

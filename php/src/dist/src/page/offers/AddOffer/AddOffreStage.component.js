@@ -63,7 +63,7 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu==''  ){
   
   }else{
     message.success("L'offre de stage a été publiée avec succès");
-    axios.post('http://localhost/BoussolePro-backend/insertOffreStage.php',OffreStage).then(res=>console.log(res.data));
+    axios.post('http://localhost:8080/BoussolePro-backend/insertOffreStage.php',OffreStage).then(res=>console.log(res.data));
 
     setNom('');
     setPrénom('');

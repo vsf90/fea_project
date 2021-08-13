@@ -1,4 +1,4 @@
-import { Layout, Menu } from 'antd';
+import { Button, Layout, Menu } from 'antd';
 import { Dropdown, message } from 'antd';
 import { DownOutlined, FundOutlined, PullRequestOutlined } from '@ant-design/icons';
 import { Image } from 'antd';
@@ -78,19 +78,17 @@ import AddAdmin from '../page/Admin/AddAdmin/AddAdmin.component';
 import EditAdmin from '../page/Admin/EditAdmin/EditAdmin.component';
 import AdminList from '../page/Admin/AdminLists.component';
 import DdRelaisBP from '../page/Admin/DdRelaisBP.component';
-<<<<<<< Updated upstream
+
 import DdExpertBP from '../page/Admin/DdExpertBP.compnent';
-import AjouterRelaisOuExpert from '../page/AjouterRelais/AjouterRelais';
 import Besoins from '../page/Admin/Besions.component';
 import Feedbacks from '../page/Admin/Feedbacks.component';
 import AddPublication from '../page/Acueil/AddPublication';
-=======
+
 import DdExpairBP from '../page/Admin/DdExpairBP.compnent';
 
 import AjouterRelaisOuExpert from '../page/AjouterRelais/AjouterRelais'
->>>>>>> Stashed changes
 
-import Feedbacks from '../page/Admin/Feedbacks.component';
+
 import BesionsPro from '../page/Admin/Besions.component';
 import EditCompte from '../page/NosReseaux/EditCompte/EditCompte.component';
 
@@ -108,7 +106,7 @@ const menu = (
 
     <Menu.Item key="2" icon={< EditOutlined/>}>Modifier profile</Menu.Item>
 
-    <Menu.Item key="3" icon={<LogoutOutlined />}>Déconnexion</Menu.Item>
+    <Menu.Item key="3" icon={<LogoutOutlined />} >Déconnexion</Menu.Item>
   </Menu>
 );
 
@@ -135,11 +133,6 @@ function Navbar(props) {
       //   maxWidth: '250px'
       // }}
     >
-<<<<<<< Updated upstream
-      <Menu  theme="light" /*mode="inline"*/ defaultSelectedKeys={['4']}>
-      <div className="logo" style={{height: "60px",backgroundColor:"transparent"}} ><img src={logo} style={{height:"40px",backgroundPositionY:"center" ,marginTop:"10px"}} /></div>
-=======
->>>>>>> Stashed changes
 
 
 
@@ -221,11 +214,16 @@ function Navbar(props) {
     <Layout className="site-layout" className="l">
       <Header className="site-layout-background"  >
       <Dropdown overlay={menu}  >
-    <a className="ant-dropdown-link" onClick={e => e.preventDefault()} style={{color:"#fff",float: "right",marginRight:"10px"}}>
-      <Avatar icon={<UserOutlined style={{marginBottom:"20px"}} />} style={{marginLeft:"3px"}} /> <CaretDownFilled />
+    <a className="ant-dropdown-link" onClick={e => e.preventDefault()}
+     style={{color:"#fff",float: "right",marginRight:"10px"}}>
+      <Avatar icon={<UserOutlined style={{marginBottom:"20px"}} />} 
+      style={{marginLeft:"3px"}} /> <CaretDownFilled />
     
     </a>
   </Dropdown>
+  <Button onClick={props.signout}>
+    Log out
+  </Button>
       </Header>
 
       <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
@@ -267,12 +265,10 @@ function Navbar(props) {
         <Route path="/DdMeetUpPro" exact component={DdMeetUpPro} />
         <Route path="/DdBoostPro" exact component={DdBoostPro} />
         <Route path="/DdRelaisBP" exact component={DdRelaisBP} />
-<<<<<<< Updated upstream
-        <Route path="/DdExpertBP" exact component={DdExpertBP} />
-=======
-        <Route path="/DdExpairBP" exact component={DdExpairBP} />
 
->>>>>>> Stashed changes
+        <Route path="/DdExpertBP" exact component={DdExpertBP} />
+
+
         <Route path="/AjouterRelaisExpert" exact component={AjouterRelaisOuExpert} />
         <Route path="/Besoins" exact component={Besoins} />
         <Route path="/feedbacks" exact component={Feedbacks} />

@@ -1,12 +1,12 @@
-<<<<<<< Updated upstream
+
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Button,Table } from "antd";
 import RecordsList from './RecordsList.js';
-=======
+
 import { CheckCircleTwoTone } from "@ant-design/icons";
 import { Alert } from "antd";
->>>>>>> Stashed changes
+
 
 export default class Feedbacks extends Component {
   //data=[];
@@ -16,9 +16,9 @@ export default class Feedbacks extends Component {
     //console.log(this.state.demandeSprint);
   }
   
-<<<<<<< Updated upstream
+
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listFeedback.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listFeedback.php')
     .then(response=>{
       this.setState({listFeedback: response.data});
    })

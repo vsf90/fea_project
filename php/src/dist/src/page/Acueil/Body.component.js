@@ -23,7 +23,7 @@ import { Alert} from 'antd';
   }
   
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listPublication.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listPublication.php')
     .then(response=>{
       this.setState({Publication: response.data});
    })

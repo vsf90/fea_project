@@ -1,12 +1,11 @@
-<<<<<<< Updated upstream
+
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Button,Table } from "antd";
-import RecordsList from './RecordsList.js';
-=======
+
 import { CheckCircleTwoTone } from "@ant-design/icons";
 import { Alert } from "antd";
->>>>>>> Stashed changes
+
 
 export default class DdShouraPro extends Component {
   data=[];
@@ -16,9 +15,8 @@ export default class DdShouraPro extends Component {
     //console.log(this.state.demandeSprint);
   }
   
-<<<<<<< Updated upstream
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listShoura.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listShoura.php')
     .then(response=>{
       this.setState({demandeShoura: response.data});
    })
@@ -26,17 +24,9 @@ export default class DdShouraPro extends Component {
      console.log(error);
     })
     }
-=======
+
    
-  return (
-    <div className="DdShouraPro">
-     <Alert
-                message="Liste des demandes de Shoura Pro "
-                description="Vous trouverez ici les demandes de Shoura Pro  de boussole pro."
-                type="info"
-                showIcon
-                />
->>>>>>> Stashed changes
+ 
     
     ShouraList(){
       console.log(this.state.demandeShoura);

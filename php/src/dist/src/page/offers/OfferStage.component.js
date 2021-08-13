@@ -13,7 +13,7 @@ import RecordsListOffreStage from './RecordsListOffreStage.js';
   }
   
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listOffreStage.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listOffreStage.php')
     .then(response=>{
       this.setState({OffreStage: response.data});
    })
