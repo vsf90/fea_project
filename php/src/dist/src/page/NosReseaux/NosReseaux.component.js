@@ -51,7 +51,7 @@ class NosReseaux extends Component {
       <div className="clearfix">
         <Alert
                 message="Notre Réseau Pro"
-                description="Bienveneu sur le Réseau Pro de Boussole Pro."
+                description="Bienvenue sur le Réseau Pro de Boussole Pro."
                 type="info"
                 showIcon
                 />
@@ -63,10 +63,10 @@ class NosReseaux extends Component {
         <div className="row">
           {this.state.data.map(data => (
             <div className="col-md-4 animated fadeIn" key={data.id.value}>
-              <div className="card">
+              <div className="card" >
                 <div className="card-body">
-                  <div className="avatar">
-                    <img
+                  <div className="avatar" >
+                    <img style={{maxHeight:"170px"}}
                       src={data.picture.large}
                       className="card-img-top"
                       alt=""
@@ -83,7 +83,6 @@ class NosReseaux extends Component {
                       ", " +
                       this.uppercase(data.location.state)}
                     <br />
-                    <span className="phone">{data.phone}</span>
                   </p>
                 </div>
               </div>

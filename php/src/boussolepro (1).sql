@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 10 août 2021 à 13:44
+-- Généré le : ven. 13 août 2021 à 13:30
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -180,18 +180,37 @@ INSERT INTO `meetup` (`ID`, `prenom`, `nom`, `avecQui`, `prenomContactSouhaite`,
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `profilerelaisexpert`
+--
+
+DROP TABLE IF EXISTS `profilerelaisexpert`;
+CREATE TABLE IF NOT EXISTS `profilerelaisexpert` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(191) NOT NULL,
+  `image` varchar(191) NOT NULL,
+  `role` varchar(191) NOT NULL,
+  `competances` text NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `publication`
 --
 
 DROP TABLE IF EXISTS `publication`;
 CREATE TABLE IF NOT EXISTS `publication` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `prenom` varchar(191) NOT NULL,
+  `nom` varchar(191) NOT NULL,
   `titre` varchar(191) NOT NULL,
-  `image` varchar(191) NOT NULL,
+  `image` varchar(191) DEFAULT NULL,
   `contenu` varchar(191) NOT NULL,
+  `type` varchar(191) NOT NULL,
   `date` timestamp NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -312,27 +331,31 @@ INSERT INTO `users` (`ID`, `email`, `password`) VALUES
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `prenom` varchar(30) DEFAULT NULL,
-  `nom` varchar(30) DEFAULT NULL,
+  `nom` varchar(191) NOT NULL,
+  `prenom` varchar(191) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `pays` varchar(191) DEFAULT NULL,
-  `ville` varchar(100) DEFAULT NULL,
-  `role` varchar(100) DEFAULT NULL,
+  `pays` varchar(191) NOT NULL,
+  `ville` varchar(100) NOT NULL,
+  `entreprise` varchar(191) NOT NULL,
+  `objetEntreprise` varchar(191) NOT NULL,
+  `activiteProfessionnelle` varchar(191) NOT NULL,
+  `role` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `token` tinyint(100) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`ID`, `prenom`, `nom`, `email`, `pays`, `ville`, `role`, `password`, `token`) VALUES
-(1, NULL, NULL, 'salima', NULL, NULL, NULL, 'cham', NULL),
-(2, NULL, NULL, 'salima', NULL, NULL, NULL, 'cham', NULL),
-(3, NULL, NULL, 'salima', NULL, NULL, NULL, 'cham', NULL),
-(4, NULL, NULL, '', NULL, NULL, NULL, '', NULL),
-(5, NULL, NULL, '', NULL, NULL, NULL, '', NULL);
+INSERT INTO `utilisateur` (`ID`, `nom`, `prenom`, `email`, `pays`, `ville`, `entreprise`, `objetEntreprise`, `activiteProfessionnelle`, `role`, `password`, `token`) VALUES
+(14, 's', 'd', 'h', 'Bangladesh', 'k', 'n', 'm', 'n', 'Admin', '0000', NULL),
+(12, 'sd', 'cham', 'nn', 'Bangladesh', 'l', 'hkkk', 'm', 'n', 'ModÃ©rateur', '0000', NULL),
+(13, 's', 'd', 'h', 'Bangladesh', 'k', 'n', 'm', 'n', 'Admin', '0000', NULL),
+(15, 's', 'd', 'h', 'Bangladesh', 'k', 'n', 'm', 'n', 'Admin', '0000', NULL),
+(16, 'salia', 'cham', 'h@k.com', 'France', 'casa', 'altran', 'dd', 'ingeneer', 'Admin', '0000', NULL),
+(17, 'salima', 'f', 'ff', 'Argentine', 'f', 'f', 'dd', 'ff', 'ModÃ©rateur', 'dd', NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

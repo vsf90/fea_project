@@ -2,8 +2,10 @@ import React from 'react'
 import { Form,Input,Alert, Button, Radio,Rate, Checkbox, Row, Col,Upload,message } from 'antd';
 import { Link } from 'react-router-dom';
 import { UploadOutlined } from '@ant-design/icons';
+import axios from 'axios';
+import { useState } from 'react';
 
-const props = {
+/*const props = {
     name: 'file',
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
     headers: {
@@ -19,10 +21,45 @@ const props = {
         message.error(`${info.file.name} file upload failed.`);
       }
     },
-  };
+  };*/
 
 
 export default function AjouterRelais() {
+    const [Nom, setNom] = useState("");
+    const [Img, setImg] = useState("");
+    const [Role, setRole] = useState("");
+    const [Compétances, setCompétances] = useState("");
+  
+   console.log(Nom);
+   console.log(Img);
+   console.log(Role);
+   console.log(Compétances);
+   
+    const handleFormSubmit=(e)=>{
+      e.preventDefault();
+      const AjoutRE={
+        nom:Nom,
+        //img:Img,
+        role:Role,
+        compétances:Compétances
+       
+      }
+      console.log(AjoutRE);
+  
+  /*if(  Nom==''  || /*Img=='' || Role=='' || Compétances==''){
+    
+      message.error('Vous devez remplir les champs obligatoires');
+    
+    }else{
+      message.success('La demande est faite avec succès');
+     //axios.post('http://localhost/BoussolePro-backend/insertRelaisExpert.php',AjoutRE).then(res=>console.log(res.data));
+  
+      setNom('');
+      setRole('');
+      setCompétances('');
+      
+    }*/
+  }
     return (
       <div>
 	
@@ -47,26 +84,39 @@ export default function AjouterRelais() {
       <Form.Item  >
       <div class="item">
           <label><b>Le nom du relais ou de l'expert</b><span class="required">*</span></label>
-          <Input placeholder="nom" required/>
+          <Input value={Nom} onChange={(e)=>setNom(e.target.value)} placeholder="nom" required/>
         </div>
       </Form.Item>
       <Form.Item>
   <label><b>Image</b><span class="required">*</span></label>
   <br></br>
-   <Upload {...props}>
+   <Upload   listType="picture"
+      maxCount={1} selected={Img} onChange={(info)=>setImg(info.file.name)}>
     <Button icon={<UploadOutlined />}>Click to Upload</Button>
   </Upload>
   </Form.Item>
+  <Form.Item>
+  <input selected={Img} onChange={(info)=>setImg(info.target.selected)} type="file"></input>
+  </Form.Item>
+  <label><b>Vous allez ajouter </b><span class="required">*</span></label>
+  
+          <Form.Item >
+    <Radio.Group >
+      <Radio value="relais" checked={Role === "relais"}   onChange={(e)=>setRole(e.target.value)}>Un relais?</Radio><br/>
+      <Radio value="expert" checked={Role === "expert"}   onChange={(e)=>setRole(e.target.value)}>Un expert?</Radio><br/>
+     
+    </Radio.Group>
+        </Form.Item> 
 
      
   <Form.Item>
    <label><b>Expériance/Compétances</b><span class="required">*</span></label>
-<Input.TextArea placeholder="Ecrivez ici ..." required />
+<Input.TextArea  value={Compétances} onChange={(e)=>setCompétances(e.target.value)} placeholder="Ecrivez ici ..." required />
 </Form.Item>
       
        
       <Form.Item >
-     <Button type="primary" required style={{margin:"10px"}}>Ajoute</Button>
+     <Button type="primary" onClick={handleFormSubmit} style={{margin:"10px"}} required >Ajouter</Button>
         </Form.Item>
 
         </div>

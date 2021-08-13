@@ -1,68 +1,103 @@
-import { CheckCircleTwoTone } from "@ant-design/icons";
+import React, { Component } from 'react'
+import axios from 'axios';
+import { Button,Table } from "antd";
+import RecordsList from './RecordsList.js';
 
-function Feedbacks() {
+export default class Besoins extends Component {
+  //data=[];
+  constructor(props){
+    super(props);
+    this.state={listBesoins: []};
+    //console.log(this.state.demandeSprint);
+  }
   
-   
-  return (
-    <div className="Feedbacks">
-    <h2>Les demandes </h2>
+  componentDidMount(){
+    axios.get('http://localhost/BoussolePro-backend/listBesoins.php')
+    .then(response=>{
+      this.setState({listBesoins: response.data});
+   })
+   .catch(function (error){
+     console.log(error);
+    })
+    }
     
-                        <div className="se-body">
-                            <div className="input-group">
-                                <input className="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button className="btn btn-primary" id="button-search" type="button">Go!</button>
-                            </div>
-                        </div>
-                   
-       <table class="table">
-  <thead>
-    <tr>
-    <th scope="col">#</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Prénom</th>
-      <th scope="col">Avec-qui</th>
-      <th scope="col">Qui est-ce qui initie le Sprint Pro 15min ?</th>
-      <th scope="col">Raison professionnelle</th>
-      <th scope="col">Temps</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Zennou</td>
-      <td>Khalid</td>
-      <td>BP</td>
-      <td>Fatrui lorian</td>
-      <td>hayti nhtyd suy</td>
-      <td>raison ....</td>
-      <td>weekEnd</td>
-      <td><CheckCircleTwoTone twoToneColor="#52c41a" /></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>Fatrui lorian</td>
-      <td>hayti nhtyd suy</td>
-      <td>raison ....</td>
-      <td>weekEnd</td>
-      <td><CheckCircleTwoTone twoToneColor="#52c41a" /></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>Depamy</td>
-      <td>Fatrui lorian</td>
-      <td>hayti nhtyd suy</td>
-      <td>raison ....</td>
-      <td>weekEnd</td>
-      <td><CheckCircleTwoTone twoToneColor="#52c41a" /></td>
-    </tr>
-  </tbody>
-</table>
-    </div>
-  );
-}
+    BesoinsList(){
+      console.log(this.state.listBesoins);
+       return this.state.listBesoins.map(function(object,i){
+        return {
+            ID: object.ID,
+            nomComplet: object.prenom+" "+object.nom,
+            besoins: object.besoins,
+            dateDeplacement:object.dateDeplacement,
+            autresDemandes:object.autresDemandes,
+            date:object.date
+          }
+       
+       });
+    }
+ 
+  render() {
+    console.log(this.BesoinsList());
+    const columns = [
+      {
+        title: 'ID',
+        width: 100,
+        dataIndex: 'ID',
+        key: 'ID',
+        fixed: 'left',
+        align:'center'
+      },
+      {
+        title: 'Nom complet',
+        width: 100,
+        dataIndex: 'nomComplet',
+        key: 'nomComplet',
+        fixed: 'left',
+      },
+      { title: "Quels sont vos besoins les plus urgents d'un point de vue professionnel ?", dataIndex: 'besoins', key: 'besoins', align:'center' },
+      { title: 'Date de Votre prochain déplacement', dataIndex: 'dateDeplacement', key: 'dateDeplacement' , align:'center' },
+      { title: "Autres demandes", dataIndex: 'autresDemandes', key: 'autresDemandes' , align:'center' },
+      { title: 'Date', dataIndex: 'date', key: 'date' , align:'center' },
 
-export default Feedbacks;
+      {
+        title: 'Action',
+        key: 'operation',
+        fixed: 'right',
+        width: 100,
+        align:'center',
+        render: () => <a>Valider</a>,
+      },
+    ];
+    
+    console.log(this.BesoinsList());
+    return (
+      <div className="DdSprintPro">
+      <h2>Les besoins pros immédiats</h2>
+      
+                          <div className="se-body">
+                              <div className="input-group">
+                                  <input className="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                  <button className="btn btn-primary" id="button-search" type="button">Go!</button>
+                              </div>
+                          </div>
+
+       {/*<table>
+         <thead>
+           <tr>
+             <th>ID</th>
+             <th>initiateur</th>
+
+           </tr>
+         </thead>
+         <tbody>
+           {this.SprintList()}
+         </tbody>
+       </table>*/}
+      
+       <Table columns={columns} dataSource={this.BesoinsList()} scroll={{ x: 1300 }} />
+
+        
+      </div>
+    )
+    }
+}

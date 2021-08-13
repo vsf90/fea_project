@@ -1,6 +1,70 @@
-import { Form,Input,Alert, Button, Radio,Rate, Checkbox, Row, Col } from 'antd';
+import { Form,Input,Alert, Button, Radio,Rate, Checkbox, Row, Col,message } from 'antd';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
+import Password from 'antd/lib/input/Password';
 export default function AddModérateur() {
+  const [Nom, setNom] = useState("");
+  const [Prénom, setPrénom] = useState("");
+  const [Pays, setPays] = useState("");
+  const [Ville, setVille] = useState("");
+  const [Entreprise, setEntreprise] = useState("");
+  const [Objet, setObjet] = useState("");
+  const [Activité, setActivité] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const [ConfirmPassword, setConfirmPassword] = useState("");
+
+  console.log(Nom);
+  console.log(Prénom);
+ console.log(Pays);
+ console.log(Ville);
+ console.log(Entreprise);
+ console.log(Objet);
+ console.log(Activité);
+ console.log(Email);
+ console.log(Password);
+ console.log(ConfirmPassword);
+ 
+  const handleFormSubmit=(e)=>{
+    e.preventDefault();
+    const Moderateur={
+      nom:Nom,
+      prénom:Prénom,
+      pays:Pays,
+      ville:Ville,
+      entreprise:Entreprise,
+      objet:Objet,
+      activité:Activité,
+      email:Email,
+      password:Password,
+      confirmpassword:ConfirmPassword
+     
+    }
+    console.log(Moderateur);
+
+if(  Nom=='' || Prénom=='' || Pays=='' || Ville=='' || Entreprise=='' || Objet=='' || Activité=='' || Email=='' || Password=='' || ConfirmPassword==''){
+  
+    message.error('Vous devez remplir les champs obligatoires');
+  
+  }else if (Password!=ConfirmPassword) {
+    message.error('Le mot de passe confirmé est incorrect.');
+
+  } else {
+    message.success('L modérateur a été ajouté avec succès');
+    axios.post('http://localhost/BoussolePro-backend/insertModerateur.php',Moderateur).then(res=>console.log(res.data));
+     setNom('');
+     setPrénom('');
+     setPays('');
+     setVille('');
+     setEntreprise('');
+     setObjet('');
+     setActivité('');
+     setEmail('');
+     setPassword('');
+     setConfirmPassword('');
+  } 
+}
     return (
       <div>
 	
@@ -12,7 +76,7 @@ export default function AddModérateur() {
       <Col span={24}>
           
           <Alert
-                message="Bienveneu sur page de ajoute Modérateur"
+                message="Bienvenue sur la page ajouter Modérateur"
                  description=" Pour ajouter un Modérateur merci de remplir le formulaire suivant."
                 type="info"
                 showIcon
@@ -26,16 +90,16 @@ export default function AddModérateur() {
       <div class="item">
           <label><b>Votre Nom complet</b><span class="required">*</span></label>
           <div class="name-item">
-            <input  className="inputB" type="text" name="name" placeholder="Nom" required/>
-            <input  className="inputB" type="text" name="name" placeholder="Prénom" required/>
+            <input  className="inputB" type="text" value={Nom} onChange={(e)=>setNom(e.target.value)} name="name" placeholder="Nom" required/>
+            <input  className="inputB" type="text" value={Prénom} onChange={(e)=>setPrénom(e.target.value)} name="name" placeholder="Prénom" required/>
           </div>
         </div>
       </Form.Item>
 
       <Form.Item  >
       <label><b>Pays</b><span class="required">*</span></label>
-      <select name="pays">
-<option value="France" selected="selected">France </option>
+      <select name="pays"  value={Pays} onChange={(e)=>setPays(e.target.value)}>
+<option value="France" >France </option>
 
 <option value="Afghanistan">Afghanistan </option>
 <option value="Afrique_Centrale">Afrique_Centrale </option>
@@ -295,40 +359,40 @@ export default function AddModérateur() {
       </Form.Item>
       <Form.Item >
       <label><b>Ville</b><span class="required">*</span></label>
-         <input  className="inputB" type="text" name="Ville" placeholder="Ville" required/>
+         <input  className="inputB" type="text"  value={Ville} onChange={(e)=>setVille(e.target.value)} name="Ville" placeholder="Ville" required/>
         </Form.Item>
          <Form.Item >
        <label><b>Entreprise</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" name="Entreprise" placeholder="Entreprise" required/>
+          <input  className="inputB" type="text"  value={Entreprise} onChange={(e)=>setEntreprise(e.target.value)} name="Entreprise" placeholder="Entreprise" required/>
          </Form.Item>
          <Form.Item >
        <label><b>Objet de l'entreprise</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" name="Objetentreprise" required/>
+          <input  className="inputB" type="text" value={Objet} onChange={(e)=>setObjet(e.target.value)} name="Objetentreprise" required/>
          </Form.Item>
          <Form.Item >
        <label><b>Activité Professionnelle</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" name="ActivitéPro" required/>
+          <input  className="inputB" type="text" value={Activité} onChange={(e)=>setActivité(e.target.value)} name="ActivitéPro" required/>
          </Form.Item>
         <Form.Item name={['user', 'email']}  rules={[{ type: 'email' }]}>
       <label><b>Email</b><span class="required">*</span></label>
-        <Input  placeholder="Exmple: boussole@fea.com" required />
+        <Input value={Email} onChange={(e)=>setEmail(e.target.value)} placeholder="Exmple: boussole@fea.com" required />
         </Form.Item>
 
         <Form.Item>
         <label><b>mot de pass</b><span class="required">*</span></label>
-    <Input.Password placeholder=" mot de pass" required />
+    <Input.Password value={Password} onChange={(e)=>setPassword(e.target.value)} placeholder=" mot de pass" required />
     </Form.Item>
     <Form.Item>
     <label><b>Confirme mot de pass</b><span class="required">*</span></label>
-    <Input.Password
+    <Input.Password value={ConfirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)}
       placeholder="Confirme mot de pass" required />
 
         </Form.Item>
         
       <Form.Item >
       <div class="btn-block col">
-     <Button type="primary" required style={{margin:"10px"}}>Ajoute</Button>
-     <Link to="/AdminList"><Button required style={{margin:"10px"}} >Annuler</Button></Link>
+     <Button type="primary" onClick={handleFormSubmit} required style={{margin:"10px"}}>Ajouter</Button>
+     <Link to="/Modérateur"><Button required style={{margin:"10px"}} >Annuler</Button></Link>
    </div>
         </Form.Item>
 

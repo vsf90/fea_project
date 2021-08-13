@@ -1,50 +1,70 @@
+import React, { Component } from 'react'
 import { Alert } from "antd";
 import { Link } from "react-router-dom";
-import photo1 from "../../image/f9.jpg";
-
-
-function DemandeEmploi() {
-  return (
-    <div className="container">
+import axios from 'axios';
+import RecordsListDemandeEmploi from './RecordsListDemandeEmploi.js';
+  
+  export default class DemandeEmploi extends Component {
+       //data=[];
+  constructor(props){
+    super(props);
+    this.state={DemandeEmploi: []};
+    //console.log(this.state.OffreStage);
+  }
+  
+  componentDidMount(){
+    axios.get('http://localhost/BoussolePro-backend/listDemandeEmploi.php')
+    .then(response=>{
+      this.setState({DemandeEmploi: response.data});
+   })
+   .catch(function (error){
+     console.log(error);
+    })
+    }
+    
+    DemandeEmploiList(){
+      //console.log(this.state.OffreStage);
+       return this.state.DemandeEmploi.map(function(object,i){
+        return <RecordsListDemandeEmploi obj={object} key={i} />
+       
+       });
+    }
+ 
+      render() {
+          //console.log(this.state.OffreStage);
+          return (
+            <div className="container">
      
-             <Alert
-                message="Les Offres d'emploi"
-                description="Bienveneu sur Les Offres d'emploi."
-                type="info"
-                showIcon
-                />
-                <br></br>
-                <div className="se mb-4">
-                        <div className="se-header">Search</div>
-                        <div className="se-body">
-                            <div className="input-group">
-                                <input className="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button className="btn btn-primary" id="button-search" type="button">Go!</button>
+            <Alert
+               message="Les Demandes d'Emploi"
+               description="Bienveneu sur Les Demandes d'Emploi."
+               type="info"
+               showIcon
+               />
+               <br></br>
+               <div className="se mb-4">
+                            <div className="se-header">Search</div>
+                            <div className="se-body">
+                                <div className="input-group">
+                                    <input className="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                    <button className="btn btn-primary" id="button-search" type="button">Go!</button>
+                                </div>
                             </div>
-                        </div>
-                </div> 
-                
-                   <Link to="/AddDemandeEmploi"><div className="card">
-                     <b className="bOf">Ajouter une demande d'Emploi</b>
-                   </div> </Link>
-                <br></br>
-
-
-
-                    <div className="se mb-4">
-                        <a href="#!"><img className="se-img-top" style={{height:"350px"}} src={photo1} alt="f1" /></a>
-                        <div className="se-body">
-                            <div className="small text-muted">January 1, 2021</div>
-                            <h2 className="se-title">Demande D'emploi</h2>
-                            <p className="se-text">
-                            #offreemploi #recrutement
-                            <br></br>
-                            Vous êtes intéressé-e-s par cette offre. N'hésitez pas à nous contacter à mp pour plus de détails : <b>@feaboussolepro</b></p>    
-                        </div>
-                        
-                    </div>
-    </div>
-  );
-}
-
-export default DemandeEmploi;
+                </div>
+                        <Link to="/AddDemandeEmploi"><div className="card" >
+                          <b className="bOf">Ajouter une Demandes  d'Emploi</b>
+                        </div> </Link>
+                        <br></br>
+             
+                  
+                      {this.DemandeEmploiList()}
+                </div>
+                   
+    
+                  
+    
+          )
+      }
+  }
+  
+  

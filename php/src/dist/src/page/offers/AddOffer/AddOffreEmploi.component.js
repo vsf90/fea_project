@@ -1,8 +1,12 @@
 import { Form, Input, Alert, Row, Col } from 'antd';
-import { Upload, message, Button } from 'antd';
+import { Upload, message, Button,Space} from 'antd';
+import { Link } from 'react-router-dom';
 import { UploadOutlined } from '@ant-design/icons';
+import { useState } from 'react';
+import axios from 'axios';
 
-const props = {
+
+/*const props = {
     name: 'file',
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
     headers: {
@@ -18,9 +22,60 @@ const props = {
         message.error(`${info.file.name} file upload failed.`);
       }
     },
-  };
+  };*/
 
 function AddOffreEmploi() {
+
+  const [Nom, setNom] = useState("");
+  const [Prénom, setPrénom] = useState("");
+  const [Titre, setTitre] = useState("");
+  const [Contenu, setContenu] = useState("");
+  const [Img, setImg] = useState("");
+
+  const handleChange=(event) =>{
+    //console.log("comme",event.target.files[0]);
+    setImg(URL.createObjectURL(event.target.files[0]));
+  }
+
+  console.log(Nom);
+  console.log(Prénom);
+  console.log(Titre);
+  console.log(Contenu);
+  console.log(Img);
+
+ 
+  const handleFormSubmit=(e)=>{
+    e.preventDefault();
+    const OffreEmploi={
+     nom: Nom,
+      prenom:Prénom,
+      titre:Titre,
+      img:Img,
+      contenu:Contenu
+      
+     
+    }
+    console.log(OffreEmploi);
+
+if(Nom=='' || Prénom=='' || Titre==''  || Contenu==''  ){
+  
+    message.error('Vous devez remplir les champs obligatoires');
+  
+  }else{
+    message.success("L'offre d'emploi a été publiée avec succès");
+    axios.post('http://localhost/BoussolePro-backend/insertOffreEmploi.php',OffreEmploi).then(res=>console.log(res.data));
+
+    setNom('');
+    setPrénom('');
+    setContenu('');
+    setTitre('');
+    setImg('');
+   
+  
+    
+  }
+  }
+
     return (
         <div className="container">
       <form  >
@@ -29,8 +84,8 @@ function AddOffreEmploi() {
  <Col span={24}>
     
      <Alert
-           message="Ajouter une offre d'Emploi"
-           description="Pour ajouter une offre d'emploi merci de remplir le formulaire suivant."
+           message="Ajouter une offre d'emploi"
+           description="Pour ajouter une offre de d'emploi merci de remplir le formulaire suivant."
            type="info"
            showIcon
            />    
@@ -39,8 +94,8 @@ function AddOffreEmploi() {
  <div class="item">
      <label><b>Votre Nom complet</b><span class="required">*</span></label>
      <div class="name-item">
-       <input  className="inputB" type="text" name="name" placeholder="Nom" required/>
-       <input  className="inputB" type="text" name="name" placeholder="Prénom" required/>
+       <input  className="inputB" type="text" name="name"  value={Nom} onChange={(e)=>setNom(e.target.value)} placeholder="Nom" required/>
+       <input  className="inputB" type="text" name="name" value={Prénom} onChange={(e)=>setPrénom(e.target.value)} placeholder="Prénom" required/>
      </div>
    </div>
  </Form.Item>
@@ -48,34 +103,28 @@ function AddOffreEmploi() {
  <div class="item">
      <label><b>Titre</b><span class="required">*</span></label>
      <div class="name-item">
-       <input  className="input" type="text" name="titre" placeholder="Titre" required/>
+       <Input  className="input" type="text" name="titre"  value={Titre} onChange={(e)=>setTitre(e.target.value)} placeholder="Titre" required/>
      </div>
    </div>
  </Form.Item>
 
- <Form.Item name={['user', 'email']}  rules={[{ type: 'email' }]}>
- <label><b>Email</b><span class="required">*</span></label>
-   <Input required />
-   </Form.Item>
+
 
    <Form.Item>
-   <label><b>Description</b><span class="required">*</span></label>
-<Input.TextArea placeholder="Description" required />
+   <label><b>Contenu</b><span class="required">*</span></label>
+<Input.TextArea value={Contenu} onChange={(e)=>setContenu(e.target.value)}  placeholder="Contenu" required />
 </Form.Item>
 
-  <Form.Item>
-  <label><b>Image</b><span class="required">*</span></label>
-  <br></br>
-   <Upload {...props}>
-    <Button icon={<UploadOutlined />}>Click to Upload</Button>
-  </Upload>
-  </Form.Item>
+<Form.Item >
+   <label><b>Image</b></label> <br></br>
+<input type="file" className={Img != null  ? 'hidden' : ''} onChange={handleChange}/>
+</Form.Item >
 
  <Form.Item >
  <div className="row">
  <div class="btn-block col">
-     <Button type="primary" required style={{margin:"10px"}}>Ajouter</Button>
-     <Button required style={{margin:"10px"}} >Annuler</Button>
+     <Button type="primary" required style={{margin:"10px"}} onClick={handleFormSubmit}>Ajouter</Button>
+     <Link to="/OffreEmploi"><Button required style={{margin:"10px"}} >Annuler</Button></Link>
    </div>
 
  </div>

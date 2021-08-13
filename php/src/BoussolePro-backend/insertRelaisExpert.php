@@ -12,45 +12,20 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      print_r($request);
 
      $nom=$request->nom;
-     $prenom=$request->prenom;
-     $avecqui=$request->avecqui;
-     $service=$request->service;
-     $organisation=$request->organisation;
-     $ponctualité=$request->ponctualité;
-     $qualité=$request->qualité;
-     $informations=$request->informations;
-     $informations1=$request->informations1;
-     $importance=$request->importance;
-     $evaluation=$request->evaluation;
-     $valeurajoutée=$request->valeurajoutée;
-     $motsclés=$request->motsclés;
-     $feedbackparticulier=$request->feedbackparticulier;
-     $autorisation=$request->autorisation;
-     $amelioration=$request->amelioration;
-     $feedbackequipe=$request->feedbackequipe;
-    echo $nom;
-    echo $prenom;
-    echo $avecqui;
-    echo $service;
-    echo $organisation;
-    echo $ponctualité;
-    echo $qualité;
-    echo $informations;
-    echo $informations1;
-    echo $importance;
-    echo $evaluation;
-    echo $valeurajoutée;
-    echo $motsclés;
-    echo $feedbackparticulier;
-    echo $autorisation;
-    echo $amelioration;
-    echo $feedbackequipe;
+    // $img=$request->img;
+     $role=$request->role;
+     $compétances=$request->compétances;
     
+    echo $nom;
+    echo $role;
+   // echo $img;
+    echo $compétances;
+   
     $date=date("Y-m-d H:i:s");    
   echo $date;
  
-     $req="INSERT INTO feedback (`nom`, `prenom`, `avecQui`, `serviceRecent`, `organisation`, `ponctualite`, `qualite`, `informations`, `informationBoussolePro`, `importance`, `evaluation`, `valeurAjoutee`, `motsClesSprint`, `feedbackParticulier`, `autorisation`, `feedbackAmelioration`, `feedbackEquipe`, `date`) 
-     VALUES ( '{$nom}','{$prenom}', '{$avecqui}','{$service}', '{$organisation}', '{$ponctualité}', '{$qualité}', '{$informations}', '{$informations1}', '{$importance}', '{$evaluation}', '{$valeurajoutée}','{$motsclés}','{$feedbackparticulier}','{$autorisation}','{$amelioration}','{$feedbackequipe}', '{$date}' )";
+     $req="INSERT INTO profilerelaisexpert (`nom`, `image`, `role`, `competances`) 
+     VALUES ( '{$nom}','{$img}', '{$role}','{$compétances}')";
        
      $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
      if ($resultat){

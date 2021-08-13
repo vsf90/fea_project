@@ -76,7 +76,7 @@ if(Nom=='' || Prénom=='' || Radio==''  || Raison=='' ){
           </div>
         </div>
 		<div class="question">
-          <p style={{color:"#171617"}}>Avec-qui souhaitez vous avoir le sprint PRO?<span class="required">*</span></p>
+          <p style={{color:"#171617"}}>Avec-qui souhaitez vous avoir le MeetUp PRO?<span class="required">*</span></p>
           <div class="question-answer">
             <div>
               <input className="inputB" type="radio" value="Un-e abonné-e"  checked={Radio === "Un-e abonné-e"} onChange={(e)=>setRadio(e.target.value)} id="radio_1" name="status" required/>

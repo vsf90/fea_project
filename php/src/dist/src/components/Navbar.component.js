@@ -2,7 +2,7 @@ import { Layout, Menu } from 'antd';
 import { Dropdown, message } from 'antd';
 import { DownOutlined, FundOutlined, PullRequestOutlined } from '@ant-design/icons';
 import { Image } from 'antd';
-import logo from '../img/logo transparent.png'
+import logo from '../img/logo.PNG'
 import {
   HomeOutlined,
   SettingFilled,
@@ -24,7 +24,8 @@ import {
   FormOutlined,
   GiftOutlined,
   CarryOutOutlined,
-  ProfileOutlined
+  ProfileOutlined,
+  CaretDownFilled
  
 } from '@ant-design/icons';
 
@@ -77,8 +78,11 @@ import AddAdmin from '../page/Admin/AddAdmin/AddAdmin.component';
 import EditAdmin from '../page/Admin/EditAdmin/EditAdmin.component';
 import AdminList from '../page/Admin/AdminLists.component';
 import DdRelaisBP from '../page/Admin/DdRelaisBP.component';
-import DdExpairBP from '../page/Admin/DdExpairBP.compnent';
-import AjouterRelaisOuExpert from '../page/AjouterRelais/AjouterRelais'
+import DdExpertBP from '../page/Admin/DdExpertBP.compnent';
+import AjouterRelaisOuExpert from '../page/AjouterRelais/AjouterRelais';
+import Besoins from '../page/Admin/Besions.component';
+import Feedbacks from '../page/Admin/Feedbacks.component';
+import AddPublication from '../page/Acueil/AddPublication';
 
 
 
@@ -118,7 +122,7 @@ function Navbar() {
       }}
     >
       <Menu  theme="light" /*mode="inline"*/ defaultSelectedKeys={['4']}>
-      <div className="logo" style={{height: "60px", background: "rgba(255, 255, 255, 0.4)"}} ><img src={logo} style={{height:"60px",backgroundPositionY:"center"}} /></div>
+      <div className="logo" style={{height: "60px",backgroundColor:"transparent"}} ><img src={logo} style={{height:"40px",backgroundPositionY:"center" ,marginTop:"10px"}} /></div>
 
   
 
@@ -171,10 +175,10 @@ function Navbar() {
               <Menu.Item key="15" icon={<FileDoneOutlined />}><Link  to="/DdShouraPro"></Link>Demandes Shoura Pro</Menu.Item>
               <Menu.Item key="16" icon={<FileDoneOutlined />}><Link  to="/DdBoostPro"></Link>Demandes Boost Pro</Menu.Item>
               <Menu.Item key="17" icon={<FileDoneOutlined />}><Link  to="/DdRelaisBP"></Link>Demandes Relais BP</Menu.Item>
-              <Menu.Item key="18" icon={<FileDoneOutlined />}><Link  to="/DdExpairBP"></Link>Demandes Expert BP</Menu.Item>
+              <Menu.Item key="18" icon={<FileDoneOutlined />}><Link  to="/DdExpertBP"></Link>Demandes Expert BP</Menu.Item>
               
               <Menu.Item key="19" icon={<ScheduleOutlined />}><Link  to="/feedbacks"></Link>Listes des feedbacks</Menu.Item>
-              <Menu.Item key="20" icon={<ProfileOutlined />}><Link  to="/besions"></Link>Les besions Pro</Menu.Item>
+              <Menu.Item key="20" icon={<ProfileOutlined />}><Link  to="/besoins"></Link>Les besoins Pro</Menu.Item>
               <Menu.Item key="21" icon={<ProfileOutlined />}><Link  to="/AjouterRelaisExpert"></Link>Ajouter Relais/Expert</Menu.Item>
 
             </SubMenu>
@@ -204,13 +208,14 @@ function Navbar() {
       <Header className="site-layout-background"  >
       <Dropdown overlay={menu}  >
     <a className="ant-dropdown-link" onClick={e => e.preventDefault()} style={{color:"#fff",float: "right",marginRight:"10px"}}>
-      Mon profile<Avatar icon={<UserOutlined style={{marginBottom:"20px"}} />} style={{marginLeft:"3px"}} />
+      <Avatar icon={<UserOutlined style={{marginBottom:"20px"}} />} style={{marginLeft:"3px"}} /> <CaretDownFilled />
     
     </a>
   </Dropdown>
       </Header>
 
       <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+        
 
         <Switch>
         <Route path="/Acueil" exact component={Acueil} />
@@ -236,6 +241,8 @@ function Navbar() {
         <Route path="/CompteAbonnée" exact component={CompteAbonnée} /> 
         <Route path="/NosRelais" exact component={Nosrelais} /> 
         <Route path="/NosExperts" exact component={Nosexperts} /> 
+        <Route path="/AddPublication" exact component={AddPublication} /> 
+
 
 
 
@@ -245,8 +252,11 @@ function Navbar() {
         <Route path="/DdMeetUpPro" exact component={DdMeetUpPro} />
         <Route path="/DdBoostPro" exact component={DdBoostPro} />
         <Route path="/DdRelaisBP" exact component={DdRelaisBP} />
-        <Route path="/DdExpairBP" exact component={DdExpairBP} />
+        <Route path="/DdExpertBP" exact component={DdExpertBP} />
         <Route path="/AjouterRelaisExpert" exact component={AjouterRelaisOuExpert} />
+        <Route path="/Besoins" exact component={Besoins} />
+        <Route path="/feedbacks" exact component={Feedbacks} />
+
 
         
         {/* offer's routes */}
@@ -266,12 +276,12 @@ function Navbar() {
        {/* route de moderateur */}
        <Route path="/Modérateur" exact component={Modérateurs} /> 
        <Route path="/AddModérateur" exact component={AddModérateur} /> 
-       <Route path="/EditModérateur" exact component={EditModérateur} /> 
+       <Route path="/EditModérateur/:id" component={EditModérateur} />
 
      {/* route de admin */}
       <Route path="/AdminList" exact component={AdminList} /> 
       <Route path="/AddAdmin" exact component={AddAdmin} /> 
-      <Route path="/EditAdmin" exact component={EditAdmin} /> 
+      <Route path="/EditAdmin/:id"  component={EditAdmin} /> 
         </Switch>
          
     

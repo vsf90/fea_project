@@ -6,118 +6,62 @@ import photo2 from "../../image/f2.jpg";
 import photo3 from "../../image/f3.jpg";
 import photo4 from "../../image/f4.jpg";
 import photo5 from "../../image/f5.jpg";
-import { Alert, Collapse } from "antd";
+import {Link} from 'react-router-dom';
+import AddPublication from './AddPublication';
+import React, { Component } from 'react'
+import RecordsListPublication from './RecordsListPublication.js';
+import axios from 'axios';
+import { Alert} from 'antd';
 
-
-const { Panel } = Collapse;
-
-
-const text = `A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`; 
-function callback(key) {
-    console.log(key);
+  
+  export default class Body extends Component {
+       //data=[];
+  constructor(props){
+    super(props);
+    this.state={Publication: []};
+    //console.log(this.state.OffreStage);
   }
   
-function Body() {
+  componentDidMount(){
+    axios.get('http://localhost/BoussolePro-backend/listPublication.php')
+    .then(response=>{
+      this.setState({Publication: response.data});
+   })
+   .catch(function (error){
+     console.log(error);
+    })
+    }
     
-    return (
-      
-      <div className="containerBody">
+    PublicationList(){
+      //console.log(this.state.OffreStage);
+       return this.state.Publication.map(function(object,i){
+        return <RecordsListPublication obj={object} key={i} />
+       
+       });
+    }
+ 
+      render() {
+          return (
+            <div className="containerBody">
             <div className="row">
            
                 <div className="col-lg-8"> 
                 <Alert
-                message="Acctualitée de Boussole Pro"
-                description="Bienveneu sur les acctualitées de Boussole Pro."
+                message="Actualités Boussole Pro"
+                description="Bienvenue sur les actualités Boussole Pro." 
                 type="info"
                 showIcon
                 />
                 <br></br>
+                <Link to="/AddPublication"><div className="card" style={{marginBottom:"20px"}} >
+                          <b  style={{textAlign:"center",fontSize:"18px",fontWeight:"normal",fontFamily:"ui-sans-serif"}}>Ajouter une publication</b>
+                        </div> </Link>
                 
-                    <div className="se mb-4">
-                        <a href="#!"><img className="se-img-top" src={photo1} alt="f1" /></a>
-                        <div className="se-body">
-                            <div className="small text-muted">January 1, 2021</div>
-                            <h2 className="se-title">Featured Post Title</h2>
-                            <p className="se-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                            
-                        </div>
-                        <Collapse defaultActiveKey={['1']} onChange={callback}>
-                                <Panel header="Read more" key="1">
-                                <p>{text}</p>
-                                </Panel>
-                            </Collapse>
-                    </div>
+                        {this.PublicationList()}
                     
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <div className="se mb-4">
-                                <a href="#!"><img className="se-img-top" src={photo2} alt="f2" /></a>
-                                <div className="se-body">
-                                    <div className="small text-muted">January 1, 2021</div>
-                                    <h2 className="se-title h4">Post Title</h2>
-                                    <p className="se-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    
-                                </div>
-                                <Collapse defaultActiveKey={['1']} onChange={callback}>
-                                        <Panel header="Read more" key="2">
-                                        <p>{text}</p>
-                                        </Panel>
-                                    </Collapse>
-                            </div>
-                           
-                            <div className="se mb-4">
-                                <a href="#!"><img className="se-img-top" src={photo3} alt="f3" /></a>
-                                <div className="se-body">
-                                    <div className="small text-muted">January 1, 2021</div>
-                                    <h2 className="se-title h4">Post Title</h2>
-                                    <p className="se-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    
-                                </div>
-                                <Collapse defaultActiveKey={['1']} onChange={callback}>
-                                        <Panel header="Read more" key="3">
-                                        <p>{text}</p>
-                                        </Panel>
-                                    </Collapse>
-                            </div>
-                        </div>
-                        <div className="col-lg-6">
-                            
-                            <div className="se mb-4">
-                                <a href="#!"><img className="se-img-top" src={photo4} alt="f4" /></a>
-                                <div className="se-body">
-                                    <div className="small text-muted">January 1, 2021</div>
-                                    <h2 className="se-title h4">Post Title</h2>
-                                    <p className="se-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    
-                                </div>
-                                <Collapse defaultActiveKey={['1']} onChange={callback}>
-                                        <Panel header="Read more " key="4">
-                                        <p>{text}</p>
-                                        </Panel>
-                                    </Collapse>
-                            </div>
-                            
-                            <div className="se mb-4">
-                                <a href="#!"><img className="se-img-top" src={photo5} alt="f5" /></a>
-                                <div className="se-body">
-                                    <div className="small text-muted">January 1, 2021</div>
-                                    <h2 className="se-title h4">Post Title</h2>
-                                    <p className="se-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                                    
-                                </div>
-                                <Collapse defaultActiveKey={['1']} onChange={callback}>
-                                        <Panel header="Read more" key="5">
-                                        <p>{text}</p>
-                                        </Panel>
-                                    </Collapse>
-                            </div>
-                        </div>
-                    </div>
                    
-                    <nav aria-label="Pagination">
+                   
+                   { /*<nav aria-label="Pagination">
                         <hr className="my-0" />
                         <ul className="pagination justify-content-center my-4">
                             <li className="page-item disabled"><a className="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
@@ -136,7 +80,7 @@ function Body() {
                             <li className="page-item"><a className="page-link" href="#!">19</a></li>
                             <li className="page-item"><a className="page-link" href="#!">Older</a></li>
                         </ul>
-                    </nav>
+          </nav>*/}
                 </div>
                 
                 <div className="col-lg-4">
@@ -188,8 +132,8 @@ function Body() {
 
     
       </div>
-    );
+          )
+      }
   }
   
-  export default Body;
   

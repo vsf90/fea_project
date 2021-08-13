@@ -1,18 +1,48 @@
 import { Button,Alert,Row,Col  } from 'antd';
 import { EditFilled,DeleteFilled,PlusCircleOutlined} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
  import "./Modérateurs.css";
-function Modérateurs() {
+ import RecordsList from '../Admin/RecordsList.js'
 
-   
-  return (
-        <div className="Modérateurs">
+import React, { Component } from 'react'
+
+export default class Modérateurs extends Component {
+  
+ // data=[];
+ constructor(props){
+  super(props);
+  this.state={listModerateur: []};
+  //console.log(this.state.demandeSprint);
+}
+
+componentDidMount(){
+  axios.get('http://localhost/BoussolePro-backend/listModérateur.php')
+  .then(response=>{
+    this.setState({listModerateur: response.data});
+ })
+ .catch(function (error){
+   console.log(error);
+  })
+  }
+  
+  ModerateursList(){
+    //console.log(this.state.listModerateur);
+     return this.state.listModerateur.map(function(object,i){
+      return <RecordsList obj={object} key={i} />
+     
+     });
+  }
+
+  render() {
+    return (
+      <div className="Modérateurs">
     
     <div>
     <Row>
    <Col span={24}>
     <Alert
-                message="Bienveneu sur page de la liste des Modérateurs de Boussole Pro"
+                message="Bienveneu sur page de la liste des Modérateurs Boussole Pro"
                  
                 type="info"
                 showIcon
@@ -26,9 +56,9 @@ function Modérateurs() {
        <table className="table">
   <thead>
     <tr>
-      <th scope="col">Rang</th>
-      <th scope="col">Nom</th>
+      <th scope="col">ID</th>
       <th scope="col">Prénom</th>
+      <th scope="col">Nom</th>
       <th scope="col">Email</th>
       <th scope="col">Pays</th>
       <th scope="col">Ville</th>
@@ -39,43 +69,8 @@ function Modérateurs() {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mohamed</td>
-      <td>AL</td>
-      <td>mohamed@fea.com</td>
-      <td>Arabie Saoudite</td>
-      <td>Riyadh</td>
-      <td>Altoms</td>
-      <td>Transport ferroviaire</td>
-      <td>Responsable achats</td>
-      <td><Link to="/EditModérateur"><EditFilled style={{fontSize:"20px"}}/></Link> <Link> <DeleteFilled style={{fontSize:"20px"}}/></Link></td>
-     
-    </tr>
-    <tr>
-    <th scope="row">2</th>
-      <td>Mohamed</td>
-      <td>AL</td>
-      <td>mohamed@fea.com</td>
-      <td>Arabie Saoudite</td>
-      <td>Riyadh</td>
-      <td>Altoms</td>
-      <td>Transport ferroviaire</td>
-      <td>Responsable achats</td>
-      <td><Link to="/EditModérateur"><EditFilled style={{fontSize:"20px"}}/></Link> <Link> <DeleteFilled style={{fontSize:"20px"}}/></Link></td>
-    </tr>
-    <tr>
-    <th scope="row">3</th>
-      <td>Mohamed</td>
-      <td>AL</td>
-      <td>mohamed@fea.com</td>
-      <td>Arabie Saoudite</td>
-      <td>Riyadh</td>
-      <td>Altoms</td>
-      <td>Transport ferroviaire</td>
-      <td>Responsable achats</td>
-      <td><Link to="/EditModérateur"><EditFilled style={{fontSize:"20px"}}/></Link> <Link> <DeleteFilled style={{fontSize:"20px"}}/></Link></td>
-    </tr>
+  {this.ModerateursList()}
+    
   </tbody>
 </table>
 </Col></Row>
@@ -84,7 +79,7 @@ function Modérateurs() {
 
 </div>
 
-  );
+     
+    )
+  }
 }
-
-export default Modérateurs;
