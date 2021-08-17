@@ -1,82 +1,50 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './Nosrelais.css';
 import { Card, Avatar } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import relais1 from '../../img/picturesRelais/1.jpg';
 import relais2 from '../../img/picturesRelais/2.jpg';
 import relais3 from '../../img/picturesRelais/3.jpg'
-
+import axios from 'axios';
+import RecordsListRelais from './RecordsListRelais.js'
 
 const { Meta } = Card;
-export default function Nosrelais() {
-    return (
+
+
+export default class Nosrelais extends Component {
+    constructor(props){
+        super(props);
+        this.state={profilerelais: []};
+        //console.log(this.state.demandeSprint);
+      }
+      
+      componentDidMount(){
+        axios.get('http://localhost/BoussolePro-backend/listNosRelais.php')
+        .then(response=>{
+          this.setState({profilerelais: response.data});
+       })
+       .catch(function (error){
+         console.log(error);
+        })
+        }
         
-        <div className="contenair">
-        <Card className="carteRelais"
-            style={{ width: 300 }}
-            cover={
-            <img
-                alt="example"
-                src={relais1}
-            />
-            }
-            actions={[
-            <SettingOutlined key="setting" />,
-            <EditOutlined key="edit" />,
-            <EllipsisOutlined key="ellipsis" />,
-            ]}
-        >
-            <Meta style={{paddingBottom: "60px"}}
-            avatar={<Avatar src={relais1} />}
-            title="Mimoun ka"
-            description="Atelier cv - atelier lettre de motivation- entretien blanc. Bonnes pratiques. 
-            "
-            />
-        </Card>
-        <Card className="carteRelais"
-            style={{ width: 300 }}
-            cover={
-            <img
-                alt="example"
-                src={relais2}
-            />
-            }
-            actions={[
-            <SettingOutlined key="setting" />,
-            <EditOutlined key="edit" />,
-            <EllipsisOutlined key="ellipsis" />,
-            ]}
-        >
-            <Meta
-            avatar={<Avatar src={relais2} />}
-            title="Hamou Be"
-            description="Évaluation et gestion de réseaux de distribution- Management d'une force de vente- Démarches administratives pour enregistrement d'un produit à commercialiser en Asie. 
-            "
-            />
-        </Card>
-        <Card className="carteRelais"
-            style={{ width: 300 }}
-            cover={
-            <img
-                alt="example"
-                src={relais3}
-            />
-            }
-            actions={[
-            <SettingOutlined key="setting" />,
-            <EditOutlined key="edit" />,
-            <EllipsisOutlined key="ellipsis" />,
-            ]}
-        >
-            <Meta style={{paddingBottom: "60px"}}
-            avatar={<Avatar src={relais3} />}
-            title="Sid-Ahmed Be"
-            description="Conseil pour acheter un bien immobilier sans Riba
-            - Achat immobilier collectif via une SCI.
-            "
-            />
-        </Card>
-        
-                </div>
-    )
+        NosRelaisList(){
+          console.log(this.state.profilerelais);
+           return this.state.profilerelais.map(function(object,i){
+            return <RecordsListRelais obj={object} key={i} />
+           
+           });
+        }
+
+    render() {
+        return (
+            <div className="contenair">
+             {this.NosRelaisList()}
+
+            
+          
+        </div>
+        )
+    }
 }
+

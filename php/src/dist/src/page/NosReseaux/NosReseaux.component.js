@@ -5,46 +5,35 @@ import history from "../../history";
 import "./NosReseaux.component.css";
 import CompteAbonnée from '../../page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
 import { Link, NavLink, Route, Switch } from 'react-router-dom';
+import ss from '../../img/picturesExperts/2.jpg';
+import RecordsListNotreReseau from './RecordsListNotreReseau.js';
+import axios from 'axios';
 
 class NosReseaux extends Component {
-  state = {
-    data: [],
-    per: 9,
-    page: 1,
-    total_pages: null
-  };
-  onClick(){
-    console.log('go----------------->')
-    history.push('/CompteAbonnée')
-    window.location.reload(false);
-
-    
-}
-
-  uppercase = word => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  };
-
-  loadData = () => {
-    const { per, page, data } = this.state;
-    const endpoint = `https://randomuser.me/api/?nat=us&results=${per}&page=${page}`;
-    fetch(endpoint)
-      .then(response => response.json())
-      .then(json => {
-        
-        this.setState({
-          data: [...data, ...json.results],
-          scrolling: false,
-          total_pages: json.info.results
-        });
-      });
-  };
-
-  
-
-  componentDidMount() {
-    this.loadData();
+  constructor(props){
+    super(props);
+    this.state={listNotreReseau: []};
+    //console.log(this.state.demandeSprint);
   }
+  
+  componentDidMount(){
+    axios.get('http://localhost/BoussolePro-backend/listNotreReseau.php')
+    .then(response=>{
+      this.setState({listNotreReseau: response.data});
+   })
+   .catch(function (error){
+     console.log(error);
+    })
+    }
+    
+    NotreReseauList(){
+      console.log(this.state.listNotreReseau);
+       return this.state.listNotreReseau.map(function(object,i){
+        return <RecordsListNotreReseau obj={object} key={i} />
+       
+       });
+    }
+ 
 
   render() {
     return (
@@ -61,33 +50,9 @@ class NosReseaux extends Component {
                 <br></br>
 
         <div className="row">
-          {this.state.data.map(data => (
-            <div className="col-md-4 animated fadeIn" key={data.id.value}>
-              <div className="card" >
-                <div className="card-body">
-                  <div className="avatar" >
-                    <img style={{maxHeight:"170px"}}
-                      src={data.picture.large}
-                      className="card-img-top"
-                      alt=""
-                      onClick={()=>this.onClick()}
-                    />
-                  </div>
-                  <h5 className="card-title">
-                    {this.uppercase(data.name.first) +
-                      " " +
-                      this.uppercase(data.name.last)}
-                  </h5>
-                  <p className="card-text">
-                    {data.location.city +
-                      ", " +
-                      this.uppercase(data.location.state)}
-                    <br />
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+        {this.NotreReseauList()}
+           
+       
         </div>
         
       </div>

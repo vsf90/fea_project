@@ -1,8 +1,11 @@
 
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Button,Table } from "antd";
-import RecordsList from './RecordsList.js';
+import { Button } from "antd";
+import { EditFilled,DeleteFilled,PlusCircleOutlined} from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+import Table from 'react-bootstrap/Table';
+import RecordsListSprint from './RecordsListSprint.js';
 
 import { CheckCircleTwoTone } from "@ant-design/icons";
 
@@ -30,24 +33,14 @@ export default class DdSprintPro extends Component {
     SprintList(){
       console.log(this.state.demandeSprint);
        return this.state.demandeSprint.map(function(object,i){
-        return {
-            ID: object.ID,
-            initiateur: object.initiateur,
-            nomComplet: object.prenom+" "+object.nom,
-            avecQui: object.avecQui,
-            prenomAbonne:object.prenomAbonne,
-            rang:object.rangAbonne,
-            prenomExterieure:object.prenomExterieure,
-            raison:object.raison,
-            creneaux:object.creneaux,
-            date:object.date
-
-          }
+         console.log(i);
+        return <RecordsListSprint obj={object} key={i} />
        
        });
     }
  
   render() {
+    console.log("waw");
     console.log(this.SprintList());
     const columns = [
       {
@@ -80,8 +73,8 @@ export default class DdSprintPro extends Component {
         fixed: 'right',
         width: 100,
         align:'center',
-        render: () => <a>Valider</a>,
-      },
+        render: () => <a>Valider <Link to={"/EditSprint/"+this.SprintList()[0].ID}><EditFilled style={{fontSize:"20px"}}/></Link></a>,
+      },  
     ];
     
     console.log(this.SprintList());
@@ -109,7 +102,35 @@ export default class DdSprintPro extends Component {
          </tbody>
        </table>*/}
       
-       <Table columns={columns} dataSource={this.SprintList()} scroll={{ x: 1300 }} />
+      { /*<Table columns={columns} dataSource={this.SprintList()} scroll={{ x: 1300 }} />*/}
+      <Table responsive bordered>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th >Qui est-ce qui initie le Sprint Pro?</th>
+      <th >Nom complet</th>
+      <th >Avec-qui souhaitez vous avoir le sprint PRO?</th>
+      <th >informations dans le cas d'un abonné</th>
+      <th >RANG</th>
+      <th >informations personne extérieure</th>
+      <th >Pourquoi souhaitez-vous ce sprint Pro?</th>
+      <th >Créneaux</th>
+      <th >Date</th>
+      <th >Actions</th>
+
+
+
+
+   
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    
+   {this.SprintList()}
+  </tbody>
+</Table>
 
         
       </div>

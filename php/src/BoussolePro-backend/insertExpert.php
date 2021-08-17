@@ -38,7 +38,7 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
    $creneaux.="matin";
     }
     if($apresmidi){
-        $creneaux.="  apres midi";
+        $creneaux.="  après midi";
     }
     if($soir){
         $creneaux.="  soir";

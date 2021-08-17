@@ -136,7 +136,7 @@ if(Nom=='' || Prénom=='' || AvecQui=='' || Problematique=='' || Domaines=='' ||
 		
         
 		<div class="item status">
-          <p style={{color:"#171617"}}>Quelles sont vos préférences pour les créneaux de 15min ? (Plusieurs choix)<span class="required">*</span></p>
+          <p style={{color:"#171617"}}>Quelles sont vos préférences pour le FEA Shoura Pro ? (Plusieurs choix)<span class="required">*</span></p>
           <div class="status-item">
           <label><input className="inputB" type="checkbox" checked={Matin} onChange={(e)=>setMatin(e.target.checked)} name="name"/> <span>Matin</span></label>
             <label><input className="inputB" type="checkbox" checked={ApresMidi} onChange={(e)=>setApresMidi(e.target.checked)} name="name"/> <span>Après-midi</span></label>

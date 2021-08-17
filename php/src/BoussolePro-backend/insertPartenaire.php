@@ -10,23 +10,22 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      $request=json_decode($postdata);
    
      print_r($request);
-     $prenom=$request->prenom;
-     $nom=$request->nom;
+
      $img=$request->img;
-     $role=$request->role;
-     $compétances=$request->compétances;
-     
-    echo $prenom;
-    echo $nom;
-    echo $role;
+     $nom=$request->nom;
+     $activité=$request->activité;
+     $avantage=$request->avantage;
+     $lien=$request->lien;
+
     echo $img;
-    echo $compétances;
-   
-  
- 
-     $req="INSERT INTO profilerelaisexpert (`prenom`, `nom`, `image`, `role`, `competances`) 
-     VALUES ( '{$prenom}','{$nom}','{$img}', '{$role}','{$compétances}')";
-       
+    echo $nom;
+    echo $activité;
+    echo $avantage;
+    echo $lien;
+
+     $req="INSERT INTO partenaire ( `image`, `nom`, `activite`, `avantage`, `lien`) 
+     VALUES ( '{$img}','{$nom}', '{$activité}', '{$avantage}','{$lien}')";
+      
      $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
      if ($resultat){
          http_response_code(201);

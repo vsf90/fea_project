@@ -34,7 +34,7 @@ export default class RecordsListAdmin extends Component {
       <td>{this.props.obj.nom}</td>
       <td>{this.props.obj.email}</td>
       <td>{this.props.obj.pays}</td>
-      <td>{this.props.obj.ville}</td>
+      <td>{this.props.obj.ville}</td> 
       <td>{this.props.obj.entreprise}</td>
       <td>{this.props.obj.objetEntreprise}</td>
       <td>{this.props.obj.activiteProfessionnelle}</td>

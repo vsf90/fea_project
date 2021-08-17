@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Button,Table } from "antd";
-import RecordsList from './RecordsList.js';
-
+import { Button} from "antd";
+import Table from 'react-bootstrap/Table';
+import RecordsListExpert from './RecordsListExpert.js';
 export default class DdExpertBP extends Component {
  // data=[];
   constructor(props){
     super(props);
     this.state={demandeExpert: []};
     //console.log(this.state.demandeSprint);
-  }
+  } 
   
   componentDidMount(){
     axios.get('http://localhost:8080/BoussolePro-backend/listExpert.php')
@@ -24,54 +24,13 @@ export default class DdExpertBP extends Component {
     ExpertList(){
       console.log(this.state.demandeExpert);
        return this.state.demandeExpert.map(function(object,i){
-        return {
-            ID: object.ID,
-            initiateur: object.initiateur,
-            nomComplet: object.prenom+" "+object.nom,
-            avecQui: object.avecQui,
-            objet:object.objet,
-            creneaux:object.creneaux,
-            date:object.date
-          }
+        return <RecordsListExpert obj={object} key={i} />
        
        });
     }
  
   render() {
-    console.log(this.ExpertList());
-    const columns = [
-      {
-        title: 'ID',
-        width: 100,
-        dataIndex: 'ID',
-        key: 'ID',
-        fixed: 'left',
-        align:'center'
-      },
-      {
-        title: 'Qui est-ce qui initie le Sprint Pro?',
-        width: 100,
-        dataIndex: 'initiateur',
-        key: 'initiateur',
-        fixed: 'left',
-      },
-      { title: 'Nom complet', dataIndex: 'nomComplet', key: 'nomComplet', align:'center' },
-      { title: 'Avec-qui souhaitez vous avoir le sprint PRO?', dataIndex: 'avecQui', key: 'avecQui' , align:'center' },
-      { title: "Objet de la demande", dataIndex: 'objet', key: 'objet' , align:'center' },
-      { title: 'Créneaux', dataIndex: 'creneaux', key: 'creneaux' , align:'center' },
-      { title: 'Date', dataIndex: 'date', key: 'date' , align:'center' },
-
-      {
-        title: 'Action',
-        key: 'operation',
-        fixed: 'right',
-        width: 100,
-        align:'center',
-        render: () => <a>Valider</a>,
-      },
-    ];
-    
-   // console.log(this.ExpertList());
+  
     return (
       <div className="DdSprintPro">
       <h2>Les demandes Expert BP</h2>
@@ -83,20 +42,24 @@ export default class DdExpertBP extends Component {
                               </div>
                           </div>
 
-       {/*<table>
-         <thead>
-           <tr>
-             <th>ID</th>
-             <th>initiateur</th>
+                          <Table responsive bordered>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th >Qui est-ce qui initie le Sprint Pro?</th>
+      <th >Nom complet</th>
+      <th >Avec-qui souhaitez vous avoir le sprint PRO?</th>
+      <th >Objet de la demande</th>
+      <th >Créneaux</th>
+      <th >Date</th>
+      <th >Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+   {this.ExpertList()}
+  </tbody>
+</Table>
 
-           </tr>
-         </thead>
-         <tbody>
-           {this.SprintList()}
-         </tbody>
-       </table>*/}
-      
-       <Table columns={columns} dataSource={this.ExpertList()} scroll={{ x: 1300 }} />
 
         
       </div>

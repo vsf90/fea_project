@@ -26,12 +26,9 @@ import {
   GiftOutlined,
   CarryOutOutlined,
   ProfileOutlined,
-<<<<<<< Updated upstream
-  CaretDownFilled
-=======
   WechatOutlined,
-  FileTextOutlined
->>>>>>> Stashed changes
+  FileTextOutlined,
+  CaretDownFilled
  
 } from '@ant-design/icons';
 
@@ -89,6 +86,14 @@ import DdExpertBP from '../page/Admin/DdExpertBP.compnent';
 import Besoins from '../page/Admin/Besions.component';
 import Feedbacks from '../page/Admin/Feedbacks.component';
 import AddPublication from '../page/Acueil/AddPublication';
+import AddPartenaire from '../page/Admin/AddPartenaire';
+import EditSprint from '../page/Admin/EditSprint/EditSprint.component';
+import EditMeet from '../page/Admin/EditMeet/EditMeet.component';
+import EditShoura from '../page/Admin/EditShoura/EditShoura.component';
+import EditBoost from '../page/Admin/EditBoost/EditBoost.component';
+import EditRelais from '../page/Admin/EditRelais/EditRelais.component';
+import EditExpert from '../page/Admin/EditExpert/EditExpert.component';
+
 
 import DdExpairBP from '../page/Admin/DdExpairBP.compnent';
 
@@ -171,16 +176,6 @@ function Navbar(props) {
       </Link>
 
         <Menu.Item key="9" icon={<BarChartOutlined />}>
-<<<<<<< HEAD
-          <Link  to="/NosPartenaires"></Link>Nos Partenaires
-        </Menu.Item>
-
-        <SubMenu key="sub4" icon={<FormOutlined />} title="Feedback">
-              <Menu.Item key="10"> <Link  to="/MesBesoins"></Link>Mes besions Pro immédiate</Menu.Item>
-              <Menu.Item key="11"><Link  to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
-              <Menu.Item key="12"><Link  to="/TicketBoussole"></Link>Un ticket Boussole Pro</Menu.Item>
-        </SubMenu>
-=======
         <Link  to="/NosPartenaires"></Link>Nos Partenaires</Menu.Item>
         
             <SubMenu key="sub4" icon={<WechatOutlined /> } title="Feedback">
@@ -188,7 +183,6 @@ function Navbar(props) {
               <Menu.Item key="11" icon={<WechatOutlined /> }><Link  to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
               <Menu.Item key="12" icon={<BookOutlined />}><Link  to="/TicketBoussole"></Link>Un ticket Boussole Pro</Menu.Item>
             </SubMenu>
->>>>>>> cc157d087b16ac40a2bcbaf9ad9b5ead0943f543
 
 
             <SubMenu key="sub5" icon={<UserOutlined />} title="Admin">
@@ -203,6 +197,8 @@ function Navbar(props) {
               <Menu.Item key="19" icon={<ScheduleOutlined />}><Link  to="/feedbacks"></Link>Listes des feedbacks</Menu.Item>
               <Menu.Item key="20" icon={<ProfileOutlined />}><Link  to="/besoins"></Link>Les besoins Pro</Menu.Item>
               <Menu.Item key="21" icon={<ProfileOutlined />}><Link  to="/AjouterRelaisExpert"></Link>Ajouter Relais/Expert</Menu.Item>
+              <Menu.Item key="29" icon={<ProfileOutlined />}><Link  to="/AjouterPartenaire"></Link>Ajouter Partenaire</Menu.Item>
+
 
             </SubMenu>
 
@@ -288,6 +284,16 @@ function Navbar(props) {
         <Route path="/AjouterRelaisExpert" exact component={AjouterRelaisOuExpert} />
         <Route path="/Besoins" exact component={Besoins} />
         <Route path="/feedbacks" exact component={Feedbacks} />
+        <Route path="/AjouterPartenaire" exact component={AddPartenaire} />
+        <Route path="/EditSprint/:id" exact component={EditSprint} />
+        <Route path="/EditShoura/:id" exact component={EditShoura} />
+        <Route path="/EditMeet/:id" exact component={EditMeet} />
+        <Route path="/EditBoost/:id" exact component={EditBoost} />
+        <Route path="/EditRelais/:id" exact component={EditRelais} />
+        <Route path="/EditExpert/:id" exact component={EditExpert} />
+
+
+
 
 
         <Route path="/Feedbacks" exact component={Feedbacks} />

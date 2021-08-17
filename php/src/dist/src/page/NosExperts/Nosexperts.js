@@ -1,60 +1,48 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './Nosexperts.css';
 import { Card, Avatar } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import expert1 from '../../img/picturesExperts/1.jpg';
-import expert2 from '../../img/picturesExperts/2.jpg';
 
+import axios from 'axios';
+import RecordsListExpert from './RecordsListExpert.js'
 
 const { Meta } = Card;
-export default function Nosexperts() {
-    return (
-        
-        <div className="contenair">
-        <Card className="carteRelais"
-            style={{ width: 300 }}
-            cover={
-            <img
-                alt="example"
-                src={expert1}
-            />
-            }
-            actions={[
-            <SettingOutlined key="setting" />,
-            <EditOutlined key="edit" />,
-            <EllipsisOutlined key="ellipsis" />,
-            ]}
-        >
-            <Meta
-            avatar={<Avatar src={expert1} />}
-            title="Mohamed"
-            description="Fiscalité des entreprises
-            Gestion, développement et stratégie"
-            />
-        </Card>
-        <Card className="carteRelais"
-            style={{ width: 300 }}
-            cover={
-            <img
-                alt="example"
-                src={expert2}
-            />
-            }
-            actions={[
-            <SettingOutlined key="setting" />,
-            <EditOutlined key="edit" />,
-            <EllipsisOutlined key="ellipsis" />,
-            ]}
-        >
-            <Meta
-            avatar={<Avatar src={expert2} />}
-            title="SONIA"
-            description="Avocat au Barreau de Paris
-            Conseil et Contentieux 
-            Docteur en droit " />
-        </Card>
+
+
+export default class NosExperts extends Component {
+    constructor(props){
+        super(props);
+        this.state={profileExpert: []};
+        //console.log(this.state.demandeSprint);
+      }
       
+      componentDidMount(){
+        axios.get('http://localhost/BoussolePro-backend/listNosExperts.php')
+        .then(response=>{
+          this.setState({profileExpert: response.data});
+       })
+       .catch(function (error){
+         console.log(error);
+        })
+        }
         
-                </div>
-    )
+        NosExpertList(){
+          console.log(this.state.profileExpert);
+           return this.state.profileExpert.map(function(object,i){
+            return <RecordsListExpert obj={object} key={i} />
+           
+           });
+        }
+
+    render() {
+        return (
+            <div className="contenair">
+             {this.NosExpertList()}
+
+            
+          
+        </div>
+        )
+    }
 }
+
