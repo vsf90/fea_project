@@ -101,7 +101,7 @@ import AjouterRelaisOuExpert from '../page/AjouterRelais/AjouterRelais'
 
 import BesionsPro from '../page/Admin/Besions.component';
 import EditCompte from '../page/NosReseaux/EditCompte/EditCompte.component';
-
+import ModifierProfile from '../page/ModifierProfile/ModifierProfile.component';
 
 
 
@@ -269,6 +269,8 @@ function Navbar(props) {
         <Route path="/NosRelais" exact component={Nosrelais} /> 
         <Route path="/NosExperts" exact component={Nosexperts} /> 
         <Route path="/AddPublication" exact component={AddPublication} /> 
+        <Route path="/ModifierProfile" exact component={ModifierProfile} /> 
+
 
 
 

@@ -42,7 +42,7 @@ function Login(props) {
    // .then((res)=>{console.log(res.data);});
    
       
-      axios.post('http://localhost:8080/BoussolePro-backend/login.php', Login, config)
+      axios.post('http://localhost/BoussolePro-backend/login.php', Login, config)
       .then(res => {
 		console.log("--------*****-------->res",res)
 		localStorage.setItem('loggedIn', true);
