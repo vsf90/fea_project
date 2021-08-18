@@ -14,10 +14,8 @@ import Login from './components/Login/Login.component';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar.component';
 import Meetform from './page/Meetup/Meetform/Meetform'
-import FormAbonne from './page/FormAbonne.component';
-import FormAbonne2 from './page/FormAbonne2.component';
-import FormAbonne0 from './FormAbonne0.component';
 import { Component } from 'react';
+
 let  currentUser  ={};
 
 export default class App extends Component {
@@ -43,34 +41,14 @@ export default class App extends Component {
     const app = this.state.loggedIn?
     <Home signout={() =>  this.DoIdsd()  }  />  :
     <Login signIn={(user) => this.setState({ loggedIn: true, user: user })} />;
-
+    
     return (
       <div className="back">
         {app}
+{/* <Register></Register> */}
       </div>
     )
   }
 }
 
-// function App() {
-//   return (
-    
-     
-//     <div className="h">
-//      {/* <Login></Login> */}
-//      {/* <Register></Register> */}
-//     <Router>
-//     <Switch >
-//     <Route path="/Nav" exact component={Home} />
-//     <Route path="/" exact component={Login} />
-//     <Route path="/Meetform" exact component={Meetform} /> 
-  
-//     </Switch>
-//     </Router>
 
-
-//     </div>
-//   );
-// }
-
-// export default App;

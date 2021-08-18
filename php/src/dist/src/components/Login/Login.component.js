@@ -30,8 +30,8 @@ function Login(props) {
     e.preventDefault();
     const Login={
      
-      email:"khalid1zenno2u@gmail.com",
-      pass:"121212"
+      email:Email,
+      pass:Password
     
     }
     var config = {
@@ -44,7 +44,7 @@ function Login(props) {
       
       axios.post('http://localhost:8080/BoussolePro-backend/login.php', Login, config)
       .then(res => {
-		console.log("--------*****-------->res.ata",res.data)
+		console.log("--------*****-------->res",res)
 		localStorage.setItem('loggedIn', true);
 		console.log('res------->>>>>',res)
 		props.signIn(res.data);
@@ -91,17 +91,25 @@ function Login(props) {
 							<form action="#" className="signin-form" >
 			      		<div className="form-group mb-3">
 			      			<label className="label" for="name">Email</label>
-			      			<input type="text" className="form-control" value={Email} onChange={(e)=>setEmail(e.target.value)} placeholder="email" style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
+			      			<input type="text" className="form-control" value={Email}
+							   onChange={(e)=>setEmail(e.target.value)} placeholder="email" 
+							   style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
 			      		</div>
 		            <div className="form-group mb-3">
 		            	<label className="label" for="password">Mot de passe</label>
-		              <input type="password" className="form-control" value={Password} onChange={(e)=>setPassword(e.target.value)} placeholder="Mot de passe" style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
+		              <input type="password" className="form-control" value={Password} 
+					  onChange={(e)=>setPassword(e.target.value)} placeholder="Mot de passe" 
+					  style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
 		            </div>
 		            <div className="form-group">
 
 
-		           	<button onClick={handleFormSubmit} /* onClick={handleFormSubmit}*/ type="submit" className="form-control register btn-primary submit px-3" style={{borderRadius:"50px"}}>Connexion</button>
-
+		           	<button onClick={handleFormSubmit} /* onClick={handleFormSubmit}*/ 
+					   type="submit" className="form-control register btn-primary submit px-3" 
+					   style={{borderRadius:"50px"}}>Connexion</button>
+					<p style={{marginBottom: "1rem", color:"white"}}> Avez Vous déjà un compte ?</p>
+								{/* <a href="#" className="register btn-white btn-outline-white" 
+								style={{textDecoration:"none"}}><Link  to="/Login" className="text">Se connecter maintenant</Link></a> */}
                   
                 </div>
 		            <div className="form-group d-md-flex">

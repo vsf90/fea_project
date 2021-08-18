@@ -17,7 +17,7 @@ class NosReseaux extends Component {
   }
   
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listNotreReseau.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listNotreReseau.php')
     .then(response=>{
       this.setState({listNotreReseau: response.data});
    })
@@ -35,6 +35,21 @@ class NosReseaux extends Component {
     }
  
 
+  OnchangeState(e){
+       console.log("we are here !!!!")
+    this.setState({
+        
+        val:e.target.value,
+
+    },()=>{
+        this.setState({
+          ListPubs:this.state.Publication.filter(elm=>(elm.nom.includes(this.state.val)))
+            })
+        }
+    )
+    console.log(this.state.val)
+}
+
   render() {
     return (
       <div className="clearfix">
@@ -45,7 +60,8 @@ class NosReseaux extends Component {
                 showIcon
                 />
                 <br></br>
-                <Search placeholder="Recherche" allowClear  size="large" enterButton  />
+                <Search placeholder="Recherche" allowClear  size="large" enterButton 
+                value={this.state.val} onChange={(e)=>{this.OnchangeState(e)}}  />
                 <br></br>
                 <br></br>
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : ven. 13 août 2021 à 13:30
--- Version du serveur :  5.7.31
--- Version de PHP : 7.3.21
+-- Hôte : 127.0.0.1
+-- Généré le : mer. 18 août 2021 à 12:50
+-- Version du serveur : 10.4.20-MariaDB
+-- Version de PHP : 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,17 +27,15 @@ SET time_zone = "+00:00";
 -- Structure de la table `besoins`
 --
 
-DROP TABLE IF EXISTS `besoins`;
-CREATE TABLE IF NOT EXISTS `besoins` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `besoins` (
+  `ID` int(11) NOT NULL,
   `nom` varchar(191) NOT NULL,
   `prenom` varchar(191) NOT NULL,
   `besoins` text NOT NULL,
   `dateDeplacement` varchar(191) NOT NULL,
   `autresDemandes` text NOT NULL,
-  `date` timestamp NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `besoins`
@@ -56,9 +54,8 @@ INSERT INTO `besoins` (`ID`, `nom`, `prenom`, `besoins`, `dateDeplacement`, `aut
 -- Structure de la table `boostpro`
 --
 
-DROP TABLE IF EXISTS `boostpro`;
-CREATE TABLE IF NOT EXISTS `boostpro` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `boostpro` (
+  `ID` int(11) NOT NULL,
   `confirmationAbonne` varchar(191) NOT NULL,
   `prenom` varchar(191) NOT NULL,
   `nom` varchar(191) NOT NULL,
@@ -68,10 +65,9 @@ CREATE TABLE IF NOT EXISTS `boostpro` (
   `typeCompagne` varchar(191) NOT NULL,
   `objetCompagne` text NOT NULL,
   `montant` varchar(191) DEFAULT NULL,
-  `commentaire` text,
-  `date` timestamp NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+  `commentaire` text DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `boostpro`
@@ -89,18 +85,16 @@ INSERT INTO `boostpro` (`ID`, `confirmationAbonne`, `prenom`, `nom`, `entreprise
 -- Structure de la table `expertbp`
 --
 
-DROP TABLE IF EXISTS `expertbp`;
-CREATE TABLE IF NOT EXISTS `expertbp` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `expertbp` (
+  `ID` int(11) NOT NULL,
   `initiateur` varchar(191) NOT NULL,
   `prenom` varchar(191) NOT NULL,
   `nom` varchar(191) NOT NULL,
   `avecQui` varchar(191) NOT NULL,
   `objet` varchar(191) NOT NULL,
   `creneaux` varchar(191) NOT NULL,
-  `date` timestamp NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `expertbp`
@@ -116,9 +110,8 @@ INSERT INTO `expertbp` (`ID`, `initiateur`, `prenom`, `nom`, `avecQui`, `objet`,
 -- Structure de la table `feedback`
 --
 
-DROP TABLE IF EXISTS `feedback`;
-CREATE TABLE IF NOT EXISTS `feedback` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `feedback` (
+  `ID` int(11) NOT NULL,
   `nom` varchar(191) NOT NULL,
   `prenom` varchar(191) NOT NULL,
   `avecQui` varchar(191) NOT NULL,
@@ -136,9 +129,8 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `autorisation` varchar(191) NOT NULL,
   `feedbackAmelioration` varchar(191) DEFAULT NULL,
   `feedbackEquipe` varchar(191) DEFAULT NULL,
-  `date` timestamp NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `feedback`
@@ -153,19 +145,17 @@ INSERT INTO `feedback` (`ID`, `nom`, `prenom`, `avecQui`, `serviceRecent`, `orga
 -- Structure de la table `meetup`
 --
 
-DROP TABLE IF EXISTS `meetup`;
-CREATE TABLE IF NOT EXISTS `meetup` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `meetup` (
+  `ID` int(11) NOT NULL,
   `prenom` varchar(191) NOT NULL,
   `nom` varchar(191) NOT NULL,
   `avecQui` varchar(191) NOT NULL,
   `prenomContactSouhaite` varchar(191) DEFAULT NULL,
   `nomContactSouhaite` varchar(191) DEFAULT NULL,
   `raisonMeet` varchar(191) NOT NULL,
-  `autreInfos` text,
-  `date` timestamp NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+  `autreInfos` text DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `meetup`
@@ -180,17 +170,39 @@ INSERT INTO `meetup` (`ID`, `prenom`, `nom`, `avecQui`, `prenomContactSouhaite`,
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `partenaire`
+--
+
+CREATE TABLE `partenaire` (
+  `ID` int(11) NOT NULL,
+  `image` varchar(191) NOT NULL,
+  `nom` varchar(191) NOT NULL,
+  `activite` varchar(191) NOT NULL,
+  `avantage` varchar(191) NOT NULL,
+  `lien` varchar(191) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `partenaire`
+--
+
+INSERT INTO `partenaire` (`ID`, `image`, `nom`, `activite`, `avantage`, `lien`) VALUES
+(6, 'blob:http://localhost:3000/b69d0304-181f-4bc8-8f33-907f9dd8dda2', 'Loire Atlantique', 'PiÃ¨ce de rechange automobiles', '10 abonnements standards annuels offerts', 'http://www.loireatlantique-automotive.fr/'),
+(7, 'blob:http://localhost:3000/733a6a84-8772-45fa-9789-62f86b32aae8', 'AUDIT OUEST CONSULTIONG', 'Expertise comptable, conseil fiscal et juridique', '3 abonnements standards annuels offerts', 'https://www.auditouestconsulting.com/'),
+(8, 'blob:http://localhost:3000/51f2b1b3-ee30-4f58-ae65-f968bdf7b8a2', 'BALQIS FRANCE', 'Votre grossiste en produit cosmÃ©tique bio 100% naturel pour particulier et revendeur', '15% de rÃ©duction .Pour bÃ©nÃ©ficier de cette rÃ©duction, voici le code FEA15', 'https://leshuilesdebalqis.fr/');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `profilerelaisexpert`
 --
 
-DROP TABLE IF EXISTS `profilerelaisexpert`;
-CREATE TABLE IF NOT EXISTS `profilerelaisexpert` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `profilerelaisexpert` (
+  `ID` int(11) NOT NULL,
   `nom` varchar(191) NOT NULL,
   `image` varchar(191) NOT NULL,
   `role` varchar(191) NOT NULL,
-  `competances` text NOT NULL,
-  PRIMARY KEY (`ID`)
+  `competances` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -199,18 +211,16 @@ CREATE TABLE IF NOT EXISTS `profilerelaisexpert` (
 -- Structure de la table `publication`
 --
 
-DROP TABLE IF EXISTS `publication`;
-CREATE TABLE IF NOT EXISTS `publication` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `publication` (
+  `ID` int(11) NOT NULL,
   `prenom` varchar(191) NOT NULL,
   `nom` varchar(191) NOT NULL,
   `titre` varchar(191) NOT NULL,
   `image` varchar(191) DEFAULT NULL,
   `contenu` varchar(191) NOT NULL,
   `type` varchar(191) NOT NULL,
-  `date` timestamp NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -218,18 +228,16 @@ CREATE TABLE IF NOT EXISTS `publication` (
 -- Structure de la table `relaisbp`
 --
 
-DROP TABLE IF EXISTS `relaisbp`;
-CREATE TABLE IF NOT EXISTS `relaisbp` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `relaisbp` (
+  `ID` int(11) NOT NULL,
   `initiateur` varchar(191) NOT NULL,
   `prenom` varchar(191) NOT NULL,
   `nom` varchar(191) NOT NULL,
   `avecQui` varchar(191) NOT NULL,
   `objet` varchar(191) NOT NULL,
   `creneaux` varchar(191) NOT NULL,
-  `date` timestamp NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `relaisbp`
@@ -245,9 +253,8 @@ INSERT INTO `relaisbp` (`ID`, `initiateur`, `prenom`, `nom`, `avecQui`, `objet`,
 -- Structure de la table `shourapro`
 --
 
-DROP TABLE IF EXISTS `shourapro`;
-CREATE TABLE IF NOT EXISTS `shourapro` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `shourapro` (
+  `ID` int(11) NOT NULL,
   `initiateur` varchar(191) NOT NULL,
   `prenom` varchar(191) NOT NULL,
   `nom` varchar(191) NOT NULL,
@@ -255,9 +262,8 @@ CREATE TABLE IF NOT EXISTS `shourapro` (
   `problematique` text NOT NULL,
   `domainesExpert` text NOT NULL,
   `creneaux` varchar(191) NOT NULL,
-  `date` timestamp NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `shourapro`
@@ -275,9 +281,8 @@ INSERT INTO `shourapro` (`ID`, `initiateur`, `prenom`, `nom`, `avecQui`, `proble
 -- Structure de la table `sprintpro`
 --
 
-DROP TABLE IF EXISTS `sprintpro`;
-CREATE TABLE IF NOT EXISTS `sprintpro` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sprintpro` (
+  `ID` int(11) NOT NULL,
   `initiateur` varchar(191) NOT NULL,
   `prenom` varchar(191) NOT NULL,
   `nom` varchar(191) NOT NULL,
@@ -287,9 +292,8 @@ CREATE TABLE IF NOT EXISTS `sprintpro` (
   `prenomExterieure` varchar(191) DEFAULT NULL,
   `raison` varchar(191) NOT NULL,
   `creneaux` varchar(191) NOT NULL,
-  `date` timestamp NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `sprintpro`
@@ -305,13 +309,11 @@ INSERT INTO `sprintpro` (`ID`, `initiateur`, `prenom`, `nom`, `avecQui`, `prenom
 -- Structure de la table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `ID` int(11) NOT NULL,
   `email` varchar(191) NOT NULL,
-  `password` varchar(191) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+  `password` varchar(191) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `users`
@@ -328,9 +330,8 @@ INSERT INTO `users` (`ID`, `email`, `password`) VALUES
 -- Structure de la table `utilisateur`
 --
 
-DROP TABLE IF EXISTS `utilisateur`;
-CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `utilisateur` (
+  `ID` int(11) NOT NULL,
   `nom` varchar(191) NOT NULL,
   `prenom` varchar(191) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -341,9 +342,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `activiteProfessionnelle` varchar(191) NOT NULL,
   `role` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `token` tinyint(100) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+  `token` tinyint(100) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `utilisateur`
@@ -356,6 +356,170 @@ INSERT INTO `utilisateur` (`ID`, `nom`, `prenom`, `email`, `pays`, `ville`, `ent
 (15, 's', 'd', 'h', 'Bangladesh', 'k', 'n', 'm', 'n', 'Admin', '0000', NULL),
 (16, 'salia', 'cham', 'h@k.com', 'France', 'casa', 'altran', 'dd', 'ingeneer', 'Admin', '0000', NULL),
 (17, 'salima', 'f', 'ff', 'Argentine', 'f', 'f', 'dd', 'ff', 'ModÃ©rateur', 'dd', NULL);
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `besoins`
+--
+ALTER TABLE `besoins`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `boostpro`
+--
+ALTER TABLE `boostpro`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `expertbp`
+--
+ALTER TABLE `expertbp`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `meetup`
+--
+ALTER TABLE `meetup`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `partenaire`
+--
+ALTER TABLE `partenaire`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `profilerelaisexpert`
+--
+ALTER TABLE `profilerelaisexpert`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `publication`
+--
+ALTER TABLE `publication`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `relaisbp`
+--
+ALTER TABLE `relaisbp`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `shourapro`
+--
+ALTER TABLE `shourapro`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `sprintpro`
+--
+ALTER TABLE `sprintpro`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `besoins`
+--
+ALTER TABLE `besoins`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT pour la table `boostpro`
+--
+ALTER TABLE `boostpro`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `expertbp`
+--
+ALTER TABLE `expertbp`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT pour la table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `meetup`
+--
+ALTER TABLE `meetup`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `partenaire`
+--
+ALTER TABLE `partenaire`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `profilerelaisexpert`
+--
+ALTER TABLE `profilerelaisexpert`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `publication`
+--
+ALTER TABLE `publication`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT pour la table `relaisbp`
+--
+ALTER TABLE `relaisbp`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `shourapro`
+--
+ALTER TABLE `shourapro`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `sprintpro`
+--
+ALTER TABLE `sprintpro`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

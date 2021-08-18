@@ -1,11 +1,10 @@
 import { Button, Layout, Menu } from 'antd';
 import { Dropdown, message } from 'antd';
-import { DownOutlined, FundOutlined, PullRequestOutlined } from '@ant-design/icons';
+import { BookOutlined, DownOutlined, FundOutlined, PullRequestOutlined } from '@ant-design/icons';
 import { Image } from 'antd';
 import logo from '../img/logo.PNG'
 import {
   HomeOutlined,
-  BookOutlined,
   SettingFilled,
   AppstoreOutlined,
   BarChartOutlined,
@@ -134,7 +133,7 @@ function Navbar(props) {
   
 
     <Sider
-      // style={{
+      style={{
       //   overflow: 'auto',
       //   height: '550vh',
       //   // position: 'fixed',
@@ -142,14 +141,17 @@ function Navbar(props) {
       //   left: 0,
       //   width:"1000px",
       //   maxWidth: '250px'
-      // }}
+      maxWidth: "310px",
+      minWidth: "242px",
+      width: "269px"
+      }}
     >
 
 
 
       <Menu  theme="light" mode="inline" defaultSelectedKeys={['4']}>
-      <div className="logo" style={{height: "60px", background: "rgba(255, 255, 255, 0.4)"}} >
-      <img src={logo} style={{height:"60px",backgroundPositionY:"center"}} />
+      <div className="logo" style={{height: "39px", background: "rgba(255, 255, 255, 0.4)"}} >
+      <img src={logo} style={{height:"39px",backgroundPositionY:"center"}} />
       </div>
 
         <Menu.Item key="1" icon={< HomeOutlined />}><Link  to="/Acueil"></Link>Accueil  </Menu.Item>
@@ -214,9 +216,9 @@ function Navbar(props) {
            
             </SubMenu>
 
-            <SubMenu key="sub8" icon={<FileTextOutlined />} title="les demandes">
-              <Menu.Item key="27" icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
-              <Menu.Item key="28" icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
+            <SubMenu key="sub8" icon={<FundOutlined />} title="les demandes">
+              <Menu.Item key="27" icon={<PullRequestOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
+              <Menu.Item key="28" icon={<PullRequestOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
             </SubMenu>
             
            
@@ -233,7 +235,7 @@ function Navbar(props) {
     
     </a>
   </Dropdown>
-  <Button onClick={props.signout}>
+  <Button onClick={props.signout}  style={{marginLeft:"1028px"}}>
     Log out
   </Button>
       </Header>
@@ -262,7 +264,7 @@ function Navbar(props) {
         <Route path="/Boostform" exact component={Boostform} /> 
         <Route path="/Relaisform" exact component={Relaisform} /> 
         <Route path="/Expertform" exact component={Expertform} /> 
-        <Route path="/CompteAbonnée" exact component={CompteAbonnée} /> 
+        <Route path="/CompteAbonnée/:id" exact component={CompteAbonnée} /> 
         <Route path="/EditCompte" exact component={EditCompte} /> 
         <Route path="/NosRelais" exact component={Nosrelais} /> 
         <Route path="/NosExperts" exact component={Nosexperts} /> 

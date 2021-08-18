@@ -33,6 +33,7 @@ import axios from 'axios';
         console.log(this.props.match.params.id);
         axios.get('http://localhost:8080/BoussolePro-backend/getAdminById.php?id='+this.props.match.params.id)
         .then(response=>{
+          console.log("------------------------> response!!!!!",response)
           this.setState({
                         nom: response.data.nom,
                         Prénom:response.data.prenom,

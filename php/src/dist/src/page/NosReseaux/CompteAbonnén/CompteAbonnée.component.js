@@ -1,9 +1,32 @@
 import { Alert } from 'antd';
-import React from 'react'
+import axios from 'axios';
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import './CompteAbonnée.component.css';
 
-export default function CompteAbonnée() {
+export default class CompteAbonnée extends Component{
+    constructor(props){
+        super(props);
+        
+        this.state={
+         users:[]
+        }
+        
+      }
+    componentDidMount(){
+        console.log("id",this.props.match.params.id);
+        axios.get('http://localhost:8080/BoussolePro-backend/listUser.php?id='+this.props.match.params.id)
+        .then(response=>{
+          console.log("------------------------> response!!!!!",response)
+          this.setState({
+                      users:response.data
+                      });
+       })
+       .catch(function (error){
+         console.log(error);
+        })
+      }
+    render() {
     return (
         <div className="clearfix">
       <Alert
@@ -26,7 +49,7 @@ export default function CompteAbonnée() {
                 <div class="col-md-6">
                     <div class="profile-head">
                                 <h5>
-                                    Kshiti Ghelani
+                                    {this.state.users.nom}
                                 </h5>
                                 <h6>
                                     Web Developer and Designer
@@ -179,5 +202,6 @@ export default function CompteAbonnée() {
         </form>           
     </div>
        </div>
-    )
+    );
+}
 }
