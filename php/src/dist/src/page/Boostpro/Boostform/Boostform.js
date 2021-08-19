@@ -52,7 +52,7 @@ if(Nom=='' || Prénom=='' || Radioo=='' || Entreprise=='' || Contact=='' || Radi
   
   }else{
     message.success('La demande est faite avec succès');
-    axios.post('http://localhost:8080/BoussolePro-backend/insertBoost.php',Boost).then(res=>console.log(res.data));
+    axios.post('http://localhost/BoussolePro-backend/insertBoost.php',Boost).then(res=>console.log(res.data));
 
     setRadioo('');
     setNom('');

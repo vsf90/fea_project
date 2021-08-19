@@ -52,7 +52,7 @@ if(  Nom=='' || Prénom=='' || Pays=='' || Ville=='' || Entreprise=='' || Objet=
 
   } else {
     message.success('Le modérateur a été fait avec succès');
-    axios.post('http://localhost:8080/BoussolePro-backend/insertAdmin.php',Admin).then(res=>console.log(res.data));
+    axios.post('http://localhost/BoussolePro-backend/insertAdmin.php',Admin).then(res=>console.log(res.data));
 
  
      setNom('');

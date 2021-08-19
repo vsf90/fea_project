@@ -16,7 +16,7 @@ export default class DdBoostPro extends Component {
   
 
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listBoost.php')
+    axios.get('http://localhost/BoussolePro-backend/listBoost.php')
     .then(response=>{
       this.setState({demandeBoost: response.data});
    })

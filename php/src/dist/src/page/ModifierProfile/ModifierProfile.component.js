@@ -3,53 +3,72 @@ import { Link } from 'react-router-dom';
 import React, { Component } from 'react'
 import axios from 'axios';
 
-     export default class EditAdmin extends Component {
+     export default class ModifierProfile extends Component {
        
       
       constructor(props){
         super(props);
+        this.onChangeTopVille=this.onChangeTopVille.bind(this);
         this.onChangeNom=this.onChangeNom.bind(this);
         this.onChangePrénom=this.onChangePrénom.bind(this);
-        this.onChangePays=this.onChangePays.bind(this);
-        this.onChangeVille=this.onChangeVille.bind(this);
+        this.onChangeVerset=this.onChangeVerset.bind(this);
+        this.onChangeActivité=this.onChangeActivité.bind(this);
         this.onChangeEntreprise=this.onChangeEntreprise.bind(this);
         this.onChangeObjet=this.onChangeObjet.bind(this);
-        this.onChangeActivité=this.onChangeActivité.bind(this);
+        this.onChangePays=this.onChangePays.bind(this);
+        this.onChangeVille=this.onChangeVille.bind(this);
         this.onChangeEmail=this.onChangeEmail.bind(this);
+        this.onChangeExpertise=this.onChangeExpertise.bind(this);
+        this.onChangeExpertiseSouhaitez=this.onChangeExpertiseSouhaitez.bind(this);
+        this.onChangeCentresInteret=this.onChangeCentresInteret.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
         this.state={
-          nom:'',
-          Prénom:'',
-          Pays:'',
-          Ville:'',
-          Entreprise:'',
-          Objet:'',
-          Activité:'',
-          Email:''
+                   topVille:'',
+                    nom:'',
+                    Prenom:'',
+                    verset:'',
+                    activiteProfessionnelle:'',
+                    Entreprise:'',
+                    objetEntreprise:'',
+                    Pays:'',
+                    Ville:'',
+                    Email:'',
+                    expertise:'',
+                    expertiseSouhaitez:'',
+                    centresInteret:''              
         }
-        
+         
       }
       componentDidMount(){
-        console.log(this.props.match.params.id);
-        axios.get('http://localhost:8080/BoussolePro-backend/getAdminById.php?id='+this.props.match.params.id)
+
+        axios.get('http://localhost/BoussolePro-backend/getAbonnéById.php?email='+localStorage.getItem('email'))
         .then(response=>{
           console.log("------------------------> response!!!!!",response)
           this.setState({
-                        nom: response.data.nom,
-                        Prénom:response.data.prenom,
-                        Email:response.data.email,
-                        Pays:response.data.pays,
-                        Ville:response.data.ville,
-                        Entreprise:response.data.entreprise,
-                        Objet:response.data.objetEntreprise,
-                        Activité:response.data.activiteProfessionnelle
+                      topVille:response.data.topVille,
+                      nom:response.data.nom,
+                      Prenom:response.data.prenom,
+                      verset:response.data.verset,
+                      activiteProfessionnelle:response.data.activiteProfessionnelle,
+                      Entreprise:response.data.entreprise,
+                      objetEntreprise:response.data.objetEntreprise,
+                      Pays:response.data.pays,
+                      Ville:response.data.ville,
+                      Email:response.data.email,
+                      expertise:response.data.expertise,
+                      expertiseSouhaitez:response.data.expertiseSouhaitez,
+                      centresInteret:response.data.centresInteret,
                       });
        })
        .catch(function (error){
          console.log(error);
         })
       }
-      
+      onChangeTopVille(e){
+        this.setState({
+          topVille:e.target.value
+        })
+      };
       onChangeNom(e){
         this.setState({
           nom:e.target.value
@@ -57,7 +76,7 @@ import axios from 'axios';
       };
       onChangePrénom(e){
         this.setState({
-          Prénom:e.target.value
+          Prenom:e.target.value
         })
       };
       onChangePays(e){
@@ -77,12 +96,12 @@ import axios from 'axios';
       };
       onChangeObjet(e){
         this.setState({
-          Objet:e.target.value
+          objetEntreprise:e.target.value
         })
       };
       onChangeActivité(e){
         this.setState({
-          Activité:e.target.value
+          activiteProfessionnelle:e.target.value
         })
       };
       onChangeEmail(e){
@@ -90,26 +109,51 @@ import axios from 'axios';
           Email:e.target.value
         })
       }
+      onChangeVerset(e){
+        this.setState({
+          verset:e.target.value
+        })
+      }
+      onChangeExpertiseSouhaitez(e){
+        this.setState({
+          expertiseSouhaitez:e.target.value
+        })
+      }
+      onChangeCentresInteret(e){
+        this.setState({
+          centresInteret:e.target.value
+        })
+      }
+      onChangeExpertise(e){
+        this.setState({
+          expertise:e.target.value
+        })
+      }
       onSubmit(e){
         e.preventDefault();
-        const EditAdmin={
+        const EditAbonné={
+          topVille:this.state.topVille,
           nom:this.state.nom,
-          prenom:this.state.Prénom,
+          prenom:this.state.Prenom,
           pays:this.state.Pays,
           ville:this.state.Ville,
           entreprise:this.state.Entreprise,
-          objetEntreprise:this.state.Objet,
-          activiteProfessionnelle:this.state.Activité,
-          email:this.state.Email
+          objetEntreprise:this.state.objetEntreprise,
+          activiteProfessionnelle:this.state.activiteProfessionnelle,
+          email:this.state.Email,
+          verset:this.state.verset,
+          expertiseSouhaitez:this.state.expertiseSouhaitez,
+          expertise:this.state.expertise,
+          centresInteret:this.state.centresInteret
         };
-        console.log(EditAdmin);       
-        if(  this.state.nom=='' || this.state.Prénom=='' || this.state.Pays=='' || this.state.Ville=='' || this.state.Entreprise=='' || this.state.Objet=='' || this.state.Activité=='' || this.state.Email=='' ){
+        console.log(EditAbonné);       
+        if( this.state.topVille=='' || this.state.nom=='' || this.state.Prenom=='' || this.state.Pays=='' || this.state.Ville=='' || this.state.Entreprise=='' || this.state.objetEntreprise=='' || this.state.activiteProfessionnelle=='' || this.state.Email==''|| this.state.verset==''|| this.state.expertise=='' || this.state.expertiseSouhaitez=='' || this.state.centresInteret=='' ){
   
           message.error('Vous devez remplir tous les champs obligatoires');
         
         } else {
           message.success('Les informations ont été modifiées avec succès');
-        axios.post('http://localhost/BoussolePro-backend/updateAdmin.php?id='+this.props.match.params.id,EditAdmin).then(res=>console.log(res.data));
+        axios.post('http://localhost/BoussolePro-backend/updateAbonne.php?id='+localStorage.getItem('ID'),EditAbonné).then(res=>console.log(res.data));
 
         }
 
@@ -129,7 +173,7 @@ import axios from 'axios';
          <Col span={24}>
              
              <Alert
-             message="Bienveneu sur la page modifier Profile"
+             message="Bienvenue sur la page modifier Profile"
              description=" Pour Modifier les informations de votre profile merci de remplir le formulaire suivant."
                    type="info"
                    showIcon
@@ -145,8 +189,9 @@ import axios from 'axios';
          <div class="item">
              <label><b>Votre Nom complet</b><span class="required">*</span></label>
              <div class="name-item">
+               <input  className="inputB" type="text" name="name" value={this.state.Prenom} onChange={this.onChangePrénom} placeholder="Prénom" required/>
                <input  className="inputB" type="text" name="name" value={this.state.nom} onChange={this.onChangeNom} placeholder="Nom" required/>
-               <input  className="inputB" type="text" name="name" value={this.state.Prénom} onChange={this.onChangePrénom} placeholder="Prénom" required/>
+
              </div>
            </div>
          </Form.Item>
@@ -154,16 +199,16 @@ import axios from 'axios';
          <div class="item">
              <label><b>Email</b><span class="required">*</span></label><br></br>
             
-               <Input  className="inputB" type="text" name="name" value={this.state.Prénom} onChange={this.onChangePrénom} placeholder="Email" required/>
+               <Input  className="inputB" type="text" name="name" value={this.state.Email} onChange={this.onChangeEmail} placeholder="Email" required/>
            </div>
          </Form.Item>
-         <Form.Item name={['user', 'email']}  rules={[{ type: 'email' }]}>
+         <Form.Item >
          <label><b>Verset Qui vous inspire</b><span class="required">*</span></label>
-           <Input value={this.state.Email} onChange={this.onChangeEmail}  required />
+           <Input value={this.state.verset} onChange={this.onChangeVerset}  required />
            </Form.Item>
            <Form.Item >
           <label><b>Activité Professionnelle</b><span class="required">*</span></label>
-             <Input  className="inputB" type="text" value={this.state.Activité} onChange={this.onChangeActivité} name="ActivitéPro" required/>
+             <Input  className="inputB" type="text" value={this.state.activiteProfessionnelle} onChange={this.onChangeActivité} name="ActivitéPro" required/>
             </Form.Item>
            <Form.Item >
           <label><b>Entreprise</b><span class="required">*</span></label>
@@ -171,7 +216,7 @@ import axios from 'axios';
             </Form.Item>
             <Form.Item >
           <label><b>Objet de l'entreprise</b><span class="required">*</span></label>
-             <Input  className="inputB" type="text" value={this.state.Objet} onChange={this.onChangeObjet} name="Objetentreprise" required/>
+             <Input  className="inputB" type="text" value={this.state.objetEntreprise} onChange={this.onChangeObjet} name="Objetentreprise" required/>
             </Form.Item>
    
          <Form.Item  >
@@ -442,21 +487,21 @@ import axios from 'axios';
          
            
            
-           <Form.Item name={['user', 'email']}  rules={[{ type: 'email' }]}>
+           <Form.Item >
          <label><b>Top trois villes où je me déplace</b><span class="required">*</span></label>
-           <Input value={this.state.Email} onChange={this.onChangeEmail}  required />
+           <Input value={this.state.topVille} onChange={this.onChangeTopVille}  required />
            </Form.Item>
-           <Form.Item name={['user', 'email']}  rules={[{ type: 'email' }]}>
+           <Form.Item >
          <label><b>Mon expertise pour networker avec vous</b><span class="required">*</span></label>
-           <Input.TextArea value={this.state.Email} onChange={this.onChangeEmail}  required />
+           <Input.TextArea value={this.state.expertise} onChange={this.onChangeExpertise}  required />
            </Form.Item>
-           <Form.Item name={['user', 'email']}  rules={[{ type: 'email' }]}>
+           <Form.Item >
          <label><b>Les expertises que je souhaite développer avec vous</b><span class="required">*</span></label>
-           <Input.TextArea value={this.state.Email} onChange={this.onChangeEmail}  required />
+           <Input.TextArea value={this.state.expertiseSouhaitez} onChange={this.onChangeExpertiseSouhaitez}  required />
            </Form.Item>
-           <Form.Item name={['user', 'email']}  rules={[{ type: 'email' }]}>
+           <Form.Item >
          <label><b>Mes centres d'interets professionnels</b><span class="required">*</span></label>
-           <Input.TextArea value={this.state.Email} onChange={this.onChangeEmail}  required />
+           <Input.TextArea value={this.state.centresInteret} onChange={this.onChangeCentresInteret}  required />
            </Form.Item>
    
    

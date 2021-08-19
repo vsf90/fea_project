@@ -5,7 +5,7 @@ import { EditFilled,DeleteFilled,PlusCircleOutlined} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import "../Modérateur/Modérateurs.css";
 import {Redirect} from 'react-router';
-import CompteAbonnée from '../../page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
+import CompteAbonnéeReseau from '../../page/NosReseaux/CompteAbonnén/CompteAbonnéeReseau.component';
 import ss from '../../img/picturesExperts/2.jpg';
 
 export default class RecordsListNotreReseau extends Component {
@@ -17,7 +17,7 @@ export default class RecordsListNotreReseau extends Component {
      <div className="card" >
        <div className="card-body">
          <div className="avatar" >
-         <Link  to="/CompteAbonnée" className="button" > <img style={{maxHeight:"170px"}}
+         <Link  to={"/CompteAbonnéeReseau/"+this.props.obj.ID} className="button" > <img style={{maxHeight:"170px"}} 
              src={this.props.obj.image}
              className="card-img-top"
              alt=""

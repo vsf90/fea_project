@@ -30,8 +30,8 @@ function Login(props) {
     e.preventDefault();
     const Login={
      
-      email:"khalid1zenno2u@gmail.com",
-      pass:"121212"
+      email:Email,
+      pass:Password 
     
     }
     var config = {
@@ -46,6 +46,12 @@ function Login(props) {
       .then(res => {
 		console.log("--------*****-------->res.ata",res.data)
 		localStorage.setItem('loggedIn', true);
+		console.log(res.data);
+		console.log(res.data.email);
+		
+		localStorage.setItem('email', res.data.email);
+		localStorage.setItem('ID', res.data.ID);
+
 		console.log('res------->>>>>',res)
 		props.signIn(res.data);
 		console.log("vous avez connecter props", props)

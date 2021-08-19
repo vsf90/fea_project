@@ -18,7 +18,7 @@ export default class DdRelaisBP extends Component {
   
 
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listRelais.php')
+    axios.get('http://localhost/BoussolePro-backend/listRelais.php')
     .then(response=>{
       this.setState({demandeRelais: response.data});
    })

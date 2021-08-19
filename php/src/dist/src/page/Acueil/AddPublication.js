@@ -63,7 +63,7 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu=='' /*|| Img==''*/ ){
   
   }else{
     message.success("La publication a été publiée avec succès");
-    axios.post('http://localhost:8080/BoussolePro-backend/insertPublication.php',publication).then(res=>console.log(res.data));
+    axios.post('http://localhost/BoussolePro-backend/insertPublication.php',publication).then(res=>console.log(res.data));
 
     setNom('');
     setPrénom('');

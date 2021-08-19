@@ -96,8 +96,8 @@ import AjouterRelaisOuExpert from '../page/AjouterRelais/AjouterRelais'
 
 import BesionsPro from '../page/Admin/Besions.component';
 import EditCompte from '../page/NosReseaux/EditCompte/EditCompte.component';
-
-
+import ModifierProfile from '../page/ModifierProfile/ModifierProfile.component';
+import CompteAbonnéeReseau from '../page/NosReseaux/CompteAbonnén/CompteAbonnéeReseau.component';
 
 
 
@@ -109,9 +109,8 @@ const menu = (
   <Menu>
     <Menu.Item key="1" icon={<UserOutlined />}> <Link  to="/CompteAbonnée"></Link>Voir profile</Menu.Item>
 
-    <Menu.Item key="2" icon={< EditOutlined/>}><Link  to="/EditCompte"></Link> Modifier profile</Menu.Item>
+    <Menu.Item key="2" icon={< EditOutlined/>}><Link  to="/ModifierProfile"></Link>Modifier profile</Menu.Item>
 
-    <Menu.Item key="3" icon={<LogoutOutlined />} >Déconnexion</Menu.Item>
   </Menu>
 );
 
@@ -225,17 +224,17 @@ function Navbar(props) {
    
     <Layout className="site-layout" className="l">
       <Header className="site-layout-background"  >
+      <Button onClick={props.signout} style={{float:"right",marginTop:"15px",padding:"2px",borderRadius:"16px"}}  >
+   <LogoutOutlined/> <span style={{color:"#30a8ff"}}>Déconnexion</span>
+  </Button>
       <Dropdown overlay={menu}  >
     <a className="ant-dropdown-link" onClick={e => e.preventDefault()}
      style={{color:"#fff",float: "right",marginRight:"10px"}}>
       <Avatar icon={<UserOutlined style={{marginBottom:"20px"}} />} 
       style={{marginLeft:"3px"}} /> <CaretDownFilled />
-    
     </a>
   </Dropdown>
-  <Button onClick={props.signout}>
-    Log out
-  </Button>
+ 
       </Header>
 
       <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
@@ -262,11 +261,16 @@ function Navbar(props) {
         <Route path="/Boostform" exact component={Boostform} /> 
         <Route path="/Relaisform" exact component={Relaisform} /> 
         <Route path="/Expertform" exact component={Expertform} /> 
+        <Route path="/CompteAbonnée/:id" exact component={CompteAbonnée} /> 
         <Route path="/CompteAbonnée" exact component={CompteAbonnée} /> 
         <Route path="/EditCompte" exact component={EditCompte} /> 
         <Route path="/NosRelais" exact component={Nosrelais} /> 
         <Route path="/NosExperts" exact component={Nosexperts} /> 
         <Route path="/AddPublication" exact component={AddPublication} /> 
+        <Route path="/ModifierProfile" exact component={ModifierProfile} /> 
+        <Route path="/CompteAbonnéeReseau/:id" exact component={CompteAbonnéeReseau} /> 
+
+
 
 
 
