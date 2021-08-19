@@ -6,6 +6,7 @@ import First from './First.component';
 import FormAbonne2 from './FormAbonne2.component';
 import FormAbonne from './FormAbonne.component';
 import FormAbonne0 from './FormAbonne0.component';
+import history from '../../../history';
 
 
 const { Step } = Steps;
@@ -39,7 +40,7 @@ export default function EditCompte(){
   
         return (
            
-            <div className="col-md-12">
+            <div className="col-md-10" style={{padding: "20px",margin:"50px",marginRight:"100px"}}>
                <Steps current={current}>
                     <Step key="First" title="First" />
                     <Step key="Second" title="Second" />
@@ -53,7 +54,10 @@ export default function EditCompte(){
           </Button>
         )}
         {current === steps.length - 1 && (
-          <Button type="primary" onClick={() => message.success('Processing complete!')}>
+          <Button type="primary" onClick={() =>{
+            message.success('Processing complete!');
+
+          } }>
             Done
           </Button>
         )}

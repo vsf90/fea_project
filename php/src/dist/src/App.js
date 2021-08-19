@@ -15,6 +15,7 @@ import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar.component';
 import Meetform from './page/Meetup/Meetform/Meetform'
 import { Component } from 'react';
+import EditCompte from './page/NosReseaux/EditCompte/EditCompte.component';
 
 let  currentUser  ={};
 
@@ -39,13 +40,22 @@ export default class App extends Component {
       console.log('this.state.loggedIn',this.state.loggedIn)
     
     const app = this.state.loggedIn?
-    <Home signout={() =>  this.DoIdsd()  }  />  :
-    <Login signIn={(user) => this.setState({ loggedIn: true, user: user })} />;
+   <Route to='/'> <Home signout={() =>  this.DoIdsd()  }/> </Route> : 
+    <Route to='/Regester'>
+    <Register signIn={(user) => this.setState({ loggedIn: true })} />
+    </Route>;
     
     return (
       <div className="back">
-        {app}
-{/* <Register></Register> */}
+     <Router>
+        <Switch>
+          <Route exact path = "/"><Login/></Route>
+          <Route path = "/register"><Register/></Route>
+          <Route exact path='/inscription'><EditCompte/></Route>
+          <Route exact path='/home'><Home/></Route>
+        </Switch>
+      </Router>
+      {/* <Register></Register> */}
       </div>
     )
   }

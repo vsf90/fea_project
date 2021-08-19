@@ -44,6 +44,7 @@ function Login(props) {
       
       axios.post('http://localhost:8080/BoussolePro-backend/login.php', Login, config)
       .then(res => {
+<<<<<<< Updated upstream
 		console.log("--------*****-------->res.ata",res.data)
 		localStorage.setItem('loggedIn', true);
 		console.log(res.data);
@@ -55,8 +56,19 @@ function Login(props) {
 		console.log('res------->>>>>',res)
 		props.signIn(res.data);
 		console.log("vous avez connecter props", props)
+=======
+		history.push('/home');
+		// console.log("--------*****-------->res",res.data)
+		// localStorage.setItem('loggedIn', true);
+		// console.log('res------->>>>>',res)
+		// props.signIn(res.data);
+		// console.log("vous avez connecter props", props)
+>>>>>>> Stashed changes
 	}
-		);
+		).then(err=>{
+			console.log("login is valid");
+			
+		});
 
    
 /*if(Email=='' || Password==''){
@@ -106,8 +118,18 @@ function Login(props) {
 		            <div className="form-group">
 
 
+<<<<<<< Updated upstream
 		           	<button onClick={handleFormSubmit} /* onClick={handleFormSubmit}*/ type="submit" className="form-control register btn-primary submit px-3" style={{borderRadius:"50px"}}>Connexion</button>
 
+=======
+		           	<button onClick={handleFormSubmit} /* onClick={handleFormSubmit}*/ 
+					   type="submit" className="form-control register btn-primary submit px-3" 
+					   style={{borderRadius:"50px"}}>Connexion</button>
+					<p style={{marginBottom: "1rem", color:"white"}}> Avez Vous déjà un compte ?</p>
+					
+					<a href="#" className="register btn-white btn-outline-white" style={{textDecoration:"none"}}>
+								<Link  to="/register" className="text">S'inscrire maintenant</Link></a>
+>>>>>>> Stashed changes
                   
                 </div>
 		            <div className="form-group d-md-flex">

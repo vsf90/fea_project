@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Link, NavLink, Route, Switch } from 'react-rout
 import Home from '../home.component';
 import Login from './Login.component';
 import axios from 'axios';
+import history from '../../history';
 function Register() {
 	const [Nom, setNom] = useState("");
   	const [Prenom, setPrenom] = useState("");
@@ -33,8 +34,17 @@ function Register() {
 		  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		  };
 		
+<<<<<<< Updated upstream
 		  axios.post('http://localhost/BoussolePro-backend/regestre.php', user, config)
 		  .then(res => console.log("------------------------>data returned",res.data));
+=======
+		  axios.post('http://localhost:8080/BoussolePro-backend/regestre.php', user, config)
+		  .then(res =>{
+			console.log("------------------------>data returned",res.data);
+			history.push('/inscription');
+			window.location.reload(false)
+		  } );
+>>>>>>> Stashed changes
 	
 	   
 	/*if(Email=='' || Password==''){
@@ -49,7 +59,7 @@ function Register() {
 	  }*/
 	}
   return (
-	<Router>
+	
       <div>
     <section className="ftco-section">
 		<div className="container">
@@ -63,7 +73,8 @@ function Register() {
 							<div className="text w-100">
 								<h4 style={{marginBottom:"20px",lineHeight: "150%"}}>Se diriger vers le sens spirituel, vers la bonne information, la bonne personne</h4>
 								<p style={{marginBottom: "1rem", color:"white"}}> Avez Vous déjà un compte ?</p>
-								<a href="#" className="register btn-white btn-outline-white" style={{textDecoration:"none"}}><Link  to="/Login" className="text">Se connecter maintenant</Link></a>
+								<a href="#" className="register btn-white btn-outline-white" style={{textDecoration:"none"}}>
+								<Link  to="/Login" className="text">Se connecter maintenant</Link></a>
 							</div>
 			      </div>
 						<div className="login-wrap p-4 p-lg-5">
@@ -126,17 +137,10 @@ function Register() {
 		      </div>
 				</div>
 			</div>
-		</div>
-		
+		</div>		
 	</section>
-	
-	<Switch>
-					<Route exact path="/" exact component={Login} />
-					<Route path="/Home" exact component={Home} />  
-					
-				</Switch>
     </div>
-	</Router>
+	
 
   );
 }

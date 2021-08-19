@@ -40,7 +40,7 @@ if(  Nom=='' || Img=='' || Activité=='' || Avantage=='' || Lien=='' ){
   
   } else {
     message.success('Le Partenaire a été ajouté avec succès');
-    axios.post('http://localhost/BoussolePro-backend/insertPartenaire.php',Partenaire).then(res=>console.log(res.data));
+    axios.post('http://localhost:8080/BoussolePro-backend/insertPartenaire.php',Partenaire).then(res=>console.log(res.data));
 
  
      setNom('');

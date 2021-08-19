@@ -59,10 +59,17 @@ import ReactDOM from 'react-dom'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons'
 import NosPartenaires from '../page/NosPartenaire/NosPartenaires.component';
+<<<<<<< Updated upstream
 import CompteAbonnée from '../page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
 import FeedbackMesBesions from '../page/FeedBack/FeedbackMesBesions.component';
 import FeedbackMonFeedback from '../page/FeedBack/FeedbackMonFeedback.component';
 import TicketBoussole from '../page/FeedBack/TicketBoussole.component';
+=======
+// import CompteAbonnée from '../page/NosReseaux/CompteAbonnén/EditAdmin.component';
+import FeedbackMesBesions from '../page/FeedbackMesBesions.component';
+import FeedbackMonFeedback from '../page/FeedbackMonFeedback.component';
+import TicketBoussole from '../page/TicketBoussole.component';
+>>>>>>> Stashed changes
 import DdSprintPro from '../page/Admin/DdSprintPro.component';
 import OfferStage from '../page/offers/OfferStage.component';
 import OfferEmploi from '../page/offers/OfferEmploi.component';
@@ -107,7 +114,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const menu = (
 
   <Menu>
-    <Menu.Item key="1" icon={<UserOutlined />}> <Link  to="/CompteAbonnée"></Link>Voir profile</Menu.Item>
+    <Menu.Item key="1" icon={<UserOutlined />}> <Link  to="/EditAdmin"></Link>Voir profile</Menu.Item>
 
     <Menu.Item key="2" icon={< EditOutlined/>}><Link  to="/ModifierProfile"></Link>Modifier profile</Menu.Item>
 
@@ -117,7 +124,7 @@ const menu = (
 
 function Navbar(props) {
 
-  console.log('---------------------> id',localStorage)
+  // console.log('---------------------> id',localStorage.getItem('user'))
 
   
   return (
@@ -261,16 +268,24 @@ function Navbar(props) {
         <Route path="/Boostform" exact component={Boostform} /> 
         <Route path="/Relaisform" exact component={Relaisform} /> 
         <Route path="/Expertform" exact component={Expertform} /> 
+<<<<<<< Updated upstream
         <Route path="/CompteAbonnée/:id" exact component={CompteAbonnée} /> 
         <Route path="/CompteAbonnée" exact component={CompteAbonnée} /> 
+=======
+        {/* <Route path="/CompteAbonnée/:id" exact component={CompteAbonnée} />  */}
+>>>>>>> Stashed changes
         <Route path="/EditCompte" exact component={EditCompte} /> 
         <Route path="/NosRelais" exact component={Nosrelais} /> 
         <Route path="/NosExperts" exact component={Nosexperts} /> 
         <Route path="/AddPublication" exact component={AddPublication} /> 
+<<<<<<< Updated upstream
         <Route path="/ModifierProfile" exact component={ModifierProfile} /> 
         <Route path="/CompteAbonnéeReseau/:id" exact component={CompteAbonnéeReseau} /> 
 
 
+=======
+        <Route path="/EditAdmin" exact component={EditAdmin}/>
+>>>>>>> Stashed changes
 
 
 

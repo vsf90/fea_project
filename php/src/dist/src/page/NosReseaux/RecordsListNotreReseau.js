@@ -5,20 +5,32 @@ import { EditFilled,DeleteFilled,PlusCircleOutlined} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import "../Modérateur/Modérateurs.css";
 import {Redirect} from 'react-router';
+<<<<<<< Updated upstream
 import CompteAbonnéeReseau from '../../page/NosReseaux/CompteAbonnén/CompteAbonnéeReseau.component';
+=======
+>>>>>>> Stashed changes
 import ss from '../../img/picturesExperts/2.jpg';
 
 export default class RecordsListNotreReseau extends Component {
-    
+    onclick(id){
+      window.location.push('/CompteAbonnée/'+id);
+       } 
     render() {
-       
+      
         return (
      <div className="col-md-4 animated fadeIn" >
      <div className="card" >
        <div className="card-body">
          <div className="avatar" >
+<<<<<<< Updated upstream
          <Link  to={"/CompteAbonnéeReseau/"+this.props.obj.ID} className="button" > <img style={{maxHeight:"170px"}} 
+=======
+         <Link  className="button" > <img style={{maxHeight:"170px"}}
+>>>>>>> Stashed changes
              src={this.props.obj.image}
+             onClick={()=>{
+               onclick(this.props.obj.ID)
+             }}
              className="card-img-top"
              alt=""
              
