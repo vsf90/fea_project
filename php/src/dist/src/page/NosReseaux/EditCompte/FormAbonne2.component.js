@@ -1,84 +1,132 @@
 import React from 'react';
+import axios from 'axios';
 import { useState } from 'react';
-import tof1 from '../../../image/1.png';
+import tof1 from "../../../image/1.png";
 import './FormAbonne.css';
 import { Form, Input,Checkbox, Alert, Button,  Radio, Space , Row, Col,message  } from 'antd';
 function FormAbonne2() {
-
-    const [Nom, setNom] = useState("");
-    const [Prénom, setPrénom] = useState("");
+    
+   
     const [chosesessentielles, setchosesessentielles] = useState("");
-    const [etap3, setetap3] = useState("");
-    const [etap4, setetap4] = useState("");
-    const [etap5, setetap5] = useState("");
-    const [etap6, setetap6] = useState("");
-    const [etap7, setetap7] = useState("");
-    const [etap8, setetap8] = useState("");
-    const [etap9, setetap9] = useState("");
+    const [CadreTravail, setCadreTravail] = useState("");
+    const [FontConfiance1, setFontConfiance1] = useState("");
+    const [FontConfiance2, setFontConfiance2] = useState("");
+    const [FontConfiance3, setFontConfiance3] = useState("");
+    
+    const [RéseauQualité1, setRéseauQualité1] = useState("");
+    const [RéseauQualité2, setRéseauQualité2] = useState("");
+    const [RéseauQualité3, setRéseauQualité3] = useState("");
+    const [RéseauQualité4, setRéseauQualité4] = useState("");
 
-    const [NomErr, setNomErr] = useState("");
-    const [PrénomErr, setPrénomErr] = useState("");
+    const [InformationImportante1, setInformationImportante1] = useState("");
+    const [InformationImportante2, setInformationImportante2] = useState("");
+    const [InformationImportante3, setInformationImportante3] = useState("");
+
+    const [NouveauxClients1, setNouveauxClients1] = useState("");
+    const [NouveauxClients2, setNouveauxClients2] = useState("");
+    const [NouveauxClients3, setNouveauxClients3] = useState("");
+
+    const [AiderDévelopper, setAiderDévelopper] = useState("");
+
+    const [Bénéfices1, setBénéfices1] = useState("");
+    const [Bénéfices2, setBénéfices2] = useState("");
+    const [Bénéfices3, setBénéfices3] = useState("");
+    
+  
     const [chosesessentiellesErr, setchosesessentiellesErr] = useState("");
-    const [etap3Err, setetap3Err] = useState("");
-    const [etap4Err, setetap4Err] = useState("");
-    const [etap5Err, setetap5Err] = useState("");
-    const [etap6Err, setetap6Err] = useState("");
-    const [etap7Err, setetap7Err] = useState("");
-    const [etap8Err, setetap8Err] = useState("");
-    const [etap9Err, setetap9Err] = useState("");
+    const [CadreTravailErr, setCadreTravailErr] = useState("");
+    const [FontConfianceErr, setFontConfianceErr] = useState("");
+    const [RéseauQualitéErr, setRéseauQualitéErr] = useState("");
+    const [InformationImportanteErr, setInformationImportanteErr] = useState("");
+    const [NouveauxClientsErr, setNouveauxClientsErr] = useState("");
+    const [AiderDévelopperErr, setAiderDévelopperErr] = useState("");
+    const [BénéficesErr, setBénéficesErr] = useState("");
 
-    console.log(Nom);
-    console.log(Prénom);
+   
     console.log(chosesessentielles);
     const handleFormSubmit=(e)=>{
         e.preventDefault();
        
-        const abonnement={
-          nom:Nom,
-          prenom:Prénom,
-          chosesessentielles:  chosesessentielles,
-          etap3Err:etap3Err,
-          etap4Err:etap4Err,
-          etap5Err:etap5Err,
-          etap6Err:etap6Err,
-          etap7Err:etap7Err,
-          etap8Err:etap8Err,
-          etap9Err:etap9Err,
+        const abonnement2={
+        
+          chosesessentielles:chosesessentielles,
+          CadreTravail:CadreTravail,
+          FontConfiance1:FontConfiance2,
+          FontConfiance2:FontConfiance2,
+          FontConfiance3:FontConfiance3,
+          RéseauQualité1:RéseauQualité1,
+          RéseauQualité2:RéseauQualité2,
+          RéseauQualité3:RéseauQualité3,
+          RéseauQualité4:RéseauQualité4,
+          InformationImportante1:InformationImportante1,
+          InformationImportante2:InformationImportante2,
+          InformationImportante3:InformationImportante3,
+          NouveauxClients1:NouveauxClients1,
+          NouveauxClients2:NouveauxClients2,
+          NouveauxClients3:NouveauxClients3,
+          AiderDévelopper:AiderDévelopper,
+          Bénéfices1:Bénéfices1,
+          Bénéfices2:Bénéfices2,
+          Bénéfices3:Bénéfices3,
         }
-        console.log(abonnement);
-     
-    
-    if(  Nom=='' || Prénom=='' ||   chosesessentielles==''|| etap3==''|| etap4==''||
-     etap5==''|| etap6==''|| etap7==''|| etap8==''|| etap9==''){
+        console.log(abonnement2);
+       var config = {
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+          };
+        axios.post('http://localhost/BoussolePro-backend/insertAbonnement2.php',abonnement2,config)
+        .then(res=>console.log(res.data));
+
+          if(chosesessentielles==''){
+             setchosesessentiellesErr("Ce champ est obligatoire !!")
+          }
+          if(CadreTravail==''){
+           setCadreTravailErr("Ce champ est obligatoire !!")
+         }
+         if(RéseauQualité1==''&&RéseauQualité2==''&&RéseauQualité3==''&&RéseauQualité3==''){
+          setRéseauQualitéErr("Ce champ est obligatoire !!")
+        }
+        if(InformationImportante1==''&&InformationImportante2==''&&InformationImportante3==''){
+          setInformationImportanteErr("Ce champ est obligatoire !!")
+        }
+        if(FontConfiance1==''&&FontConfiance2==''&&FontConfiance3==''){
+            setFontConfianceErr("Ce champ est obligatoire !!")
+        }
+        if(NouveauxClients1=='' &&NouveauxClients2=='' &&NouveauxClients3=='' ){
+          setNouveauxClientsErr("Ce champ est obligatoire !!")
+        }
+        if(AiderDévelopper==''){
+          setAiderDévelopperErr("Ce champ est obligatoire !!")
+        }
+        if(Bénéfices1=='' &&Bénéfices2=='' &&Bénéfices3=='' ){
+          
+          setBénéficesErr("Ce champ est obligatoire !!")
+        }
+    if(chosesessentielles==''|| CadreTravail==''||
+    (RéseauQualité1==''&&RéseauQualité2==''&&RéseauQualité3==''&&RéseauQualité3=='')|| 
+    (InformationImportante1==''&&InformationImportante2==''&&InformationImportante3=='')||
+    (FontConfiance1==''&&FontConfiance2==''&&FontConfiance3=='')||
+     (NouveauxClients1=='' &&NouveauxClients2=='' &&NouveauxClients3=='') || AiderDévelopper==''||
+       (Bénéfices1=='' &&Bénéfices2=='' &&Bénéfices3=='' )){
       
         message.error('Vous devez remplir les champs obligatoires');
-        setNomErr("le champ Nom est obligatoire merci de le remplir !!")
-        setPrénomErr("le champ Prénom est obligatoire merci de le remplir !!")
-        setchosesessentiellesErr("Ce champ est obligatoire !!")
-        setetap3Err("Ce champ est obligatoire !!")
-        setetap4Err("Ce champ est obligatoire !!")
-        setetap5Err("Ce champ est obligatoire !!")
-        setetap6Err("Ce champ est obligatoire !!")
-        setetap7Err("Ce champ est obligatoire !!")
-        setetap8Err("Ce champ est obligatoire !!")
-        setetap9Err("Ce champ est obligatoire !!")
-      }else{
+     }
+      else{
         message.success('La demande est faite avec succès');
       
-        setNom('');
-        setPrénom('');
+      
+       
         setchosesessentielles('');
-        setetap3Err('')
-        setetap4Err('')
-        setetap5Err('')
-        setetap6Err('')
-        setetap7Err('')
-        setetap8Err('')
-        setetap9Err('')
+        setCadreTravailErr('')
+        setFontConfianceErr('')
+        setRéseauQualitéErr('')
+        setInformationImportanteErr('')
+        setNouveauxClientsErr('')
+        setAiderDévelopperErr('')
+        setBénéficesErr('')
       }
     }
     return (
-        <form  className="Last" style={{padding: "14px",marginTop:"19px"}}>
+        <form  className="ss">
         <Row>
         <Col span={24}>
             
@@ -104,27 +152,7 @@ function FormAbonne2() {
                    Après avoir répondu aux différentes questions vous aurez un retour expliquant le
                     pourquoi de ces questions et mettant en valeur vos réponses si c’est nécessaire.  
                 </p>
-                <p style={{color:"#171617"}}><b>Votre Nom complet</b><span class="required">*</span></p>
-                <div class="name-item">
-                    <div className="col-md-6">
-                    <Input className="inputB" type="text" style={{width: "400px"}} name="name"  placeholder="Prénom"  value={Prénom} onChange={(e)=>setPrénom(e.target.value)}  required/>
-                    </div>
-                    
-                    <div className="col-md-6">
-                    <Input className="inputB" style={{width: "430px"}} type="text" name="name" placeholder="Nom"  value={Nom} onChange={(e)=>setNom(e.target.value)} required/>
-                    </div>
-                    <div className="col-md-6">
-                        <spam><b style={{color: "red"}}>{PrénomErr}</b></spam>
-                    </div>
-                    <div className="col-md-6">
-                        <spam><b style={{color: "red"}}>{NomErr}</b></spam>
-                    </div>
-                    
-                    </div>
-
-
-                  
-                
+               
                 <Form.Item name="chosesessentielles"> 
         <label><b>Pour vous, quelles sont les trois choses essentielles pour construire un réseau de qualité pour vous et la communauté ?</b><span class="required">*</span></label>
             <Input.TextArea value={chosesessentielles} onChange={(e)=>setchosesessentielles(e.target.value)} required />
@@ -132,81 +160,84 @@ function FormAbonne2() {
       </Form.Item>
       <Form.Item >
             <label><b>Dans votre réseau vous savez que Rachid a une information pouvant grandement aider Mohamed dans le cadre de son travail ? Qu’est-ce que vous faites ?</b><span class="required">*</span></label>
-              <Radio.Group value={etap3} onChange={(e)=>setetap3(e.target.value)}>
-      <Radio value="etap31" >Mohamed n’a qu’à se débrouiller avec son réseau. Moi hamdoullah j’ai mon réseau</Radio><br/>
-      <Radio value="etap32" >Sans aucune hésitation j’envoi le numéro de Rachid à Mohamed</Radio><br/>
-      <Radio value="etap33" >Je demande l’accord de Rachid avant de partager son numéro avec Mohamed</Radio><br/>
-      <Radio value="etap34"    >J’appelle Rachid d’abord pour lui expliquer la situation et lui demande de me faire un feedback après qu’il ait eu Mohamed au téléphone</Radio><br/>
+              <Radio.Group value={CadreTravail} onChange={(e)=>setCadreTravail(e.target.value)}>
+      <Radio value="Mohamed n’a qu’à se débrouiller avec son réseau. Moi hamdoullah j’ai mon réseau"  >Mohamed n’a qu’à se débrouiller avec son réseau. Moi hamdoullah j’ai mon réseau</Radio><br/>
+      <Radio value="Sans aucune hésitation j’envoi le numéro de Rachid à Mohamed" >Sans aucune hésitation j’envoi le numéro de Rachid à Mohamed</Radio><br/>
+      <Radio value="Je demande l’accord de Rachid avant de partager son numéro avec Mohamed" >Je demande l’accord de Rachid avant de partager son numéro avec Mohamed</Radio><br/>
+      <Radio value="J’appelle Rachid d’abord pour lui expliquer la situation et lui demande de me faire un feedback après qu’il ait eu Mohamed au téléphone"    >J’appelle Rachid d’abord pour lui expliquer la situation et lui demande de me faire un feedback après qu’il ait eu Mohamed au téléphone</Radio><br/>
     </Radio.Group><br/>
-    <spam><b style={{color: "red"}}>{etap3Err}</b></spam>
-        </Form.Item> 
-        <Form.Item >
-            <label><b>Comment pouvez-vous détruire votre réseau et celui de celles et ceux qui vous font confiance?</b><span class="required">*</span></label>
-              <Checkbox.Group >
-       <Checkbox value="etap41" value={etap4} onChange={(value)=>setetap4(value)}>En promettant d’appeler un contact qui vous a été communiqué&nbsp;a tel jour et telle heure mais vous ne le&nbsp;faites pas et
-     vous n’informez pas</Checkbox><br/>
-       <Checkbox value="etap42" value={etap4} onChange={(value)=>setetap4(value)}>En ayant accéder à une super information très importante pour vous et en ne 
-                donnant pas le FEEDBACK a celle ou celui qui vous a permis d’y accéder</Checkbox><br/>
-       <Checkbox value="etap43" value={etap4} onChange={(value)=>setetap4(value)}>En restant flou sur ce que vous allez faire lorsqu’on partage avec vous un contact de confiance</Checkbox><br/>
-    </Checkbox.Group><br/>
-    <spam><b style={{color: "red"}}>{etap4Err}</b></spam>
+    <spam><b style={{color: "red"}}>{CadreTravailErr}</b></spam>
         </Form.Item> 
 
         <Form.Item >
-            <label><b>Quelles sont les clés pour ouvrir un réseau de qualité utile pour soi et les autres?</b><span class="required">*</span></label>
-              <Checkbox.Group value={etap5} onChange={(e)=>setetap5(e.target.value)}>
-       <Checkbox value="etap51">En posant régulièrement des questions a son réseau</Checkbox><br/>
-       <Checkbox value="etap52">En provoquant la rencontre physique à chaque fois que possible en complément des échanges virtuels</Checkbox><br/>
-       <Checkbox value="etap53">En devenant une OPPORTUNITÉ vous-même pour votre réseau. Vous comprenez qu’une information peut ne pas être importante pour vous mais extrêmement importante pour un frère ou une sœur</Checkbox><br/>
-       <Checkbox value="etap54">En étant visible, en rendant ses besoins professionnels visibles</Checkbox><br/>
-    </Checkbox.Group><br/>
-    <spam><b style={{color: "red"}}>{etap5Err}</b></spam>
-        </Form.Item> 
-             
-        <Form.Item >
-            <label><b>Vous venez d’obtenir une information importante pour la communauté, par exemple une entreprise en pleine croissance qui va recruter et vous êtes en connexion avec un salarié de cette entreprise. Que faites-vous?</b><span class="required">*</span></label>
-              <Checkbox.Group  value={etap6} onChange={(e)=>setetap6(e.target.value)}>
-       <Checkbox value="etap61">Hamdoullah c’est une bonne nouvelle pour l’entreprise</Checkbox><br/>
-       <Checkbox value="etap62">Vous regarder qui dans votre réseau peut bénéficier de cette info</Checkbox><br/>
-       <Checkbox value="etap63">Vous informez votre réseau et vous faites le feedback a Boussole Pro qui partagera plus largement</Checkbox><br/> 
-    </Checkbox.Group><br/>
-    <spam><b style={{color: "red"}}>{etap6Err}</b></spam>
-        </Form.Item>
+        <label><b>Comment pouvez-vous détruire votre réseau et celui de celles et ceux qui vous font confiance?</b><span class="required">*</span></label>
+          <div class="status-item">
+            <label><input className="inputB" type="checkbox" checked={FontConfiance1} onChange={(e)=>setFontConfiance1(e.target.checked)} name="name"/> <span>En promettant d’appeler un contact qui vous a été communiqué&nbsp;a tel jour et telle heure mais vous ne le&nbsp;faites pas et
+     vous n’informez pas</span></label><br/>
+            <label><input className="inputB" type="checkbox" checked={FontConfiance2} onChange={(e)=>setFontConfiance2(e.target.checked)} name="name"/> <span>n ayant accéder à une super information très importante pour vous et en ne donnant pas le FEEDBACK a celle ou celui qui vous a permis d’y accéder</span></label>
+            <label><input className="inputB" type="checkbox" checked={FontConfiance3} onChange={(e)=>setFontConfiance3(e.target.checked)} name="name"/> <span>En restant flou sur ce que vous allez faire lorsqu’on partage avec vous un contact de confiance</span></label>
+          </div>
+          <spam><b style={{color: "red"}}>{FontConfianceErr}</b></spam>
+          </Form.Item>
 
         <Form.Item >
-            <label><b>Grâce à Boussole Pro vous avez été connecté à des personnes qui vous ont aidé professionnellement et dans
+        <label><b>Quelles sont les clés pour ouvrir un réseau de qualité utile pour soi et les autres?</b><span class="required">*</span></label>
+          <div class="status-item">
+            <label><input className="inputB" type="checkbox" checked={RéseauQualité1} onChange={(e)=>setRéseauQualité1(e.target.checked)} name="name"/> <span>En posant régulièrement des questions a son réseau</span></label><br/>
+            <label><input className="inputB" type="checkbox" checked={RéseauQualité2} onChange={(e)=>setRéseauQualité2(e.target.checked)} name="name"/> <span>En provoquant la rencontre physique à chaque fois que possible en complément des échanges virtuels</span></label>
+            <label><input className="inputB" type="checkbox" checked={RéseauQualité3} onChange={(e)=>setRéseauQualité3(e.target.checked)} name="name"/> <span>En devenant une OPPORTUNITÉ vous-même pour votre réseau. Vous comprenez qu’une information peut ne pas être importante pour vous mais extrêmement importante pour un frère ou une sœur</span></label>
+            <label><input className="inputB" type="checkbox" checked={RéseauQualité4} onChange={(e)=>setRéseauQualité4(e.target.checked)} name="name"/> <span>En étant visible, en rendant ses besoins professionnels visibles</span></label>
+          </div>
+          <spam><b style={{color: "red"}}>{RéseauQualitéErr}</b></spam>
+          </Form.Item>
+        
+       
+
+       
+        <Form.Item >
+        <label><b>Vous venez d’obtenir une information importante pour la communauté, par exemple une entreprise en pleine croissance qui va recruter et vous êtes en connexion avec un salarié de cette entreprise. Que faites-vous?</b><span class="required">*</span></label>
+          <div class="status-item">
+            <label><input className="inputB" type="checkbox" checked={InformationImportante1} onChange={(e)=>setInformationImportante1(e.target.checked)} name="name"/> <span>Hamdoullah c’est une bonne nouvelle pour l’entreprise</span></label><br/>
+            <label><input className="inputB" type="checkbox" checked={InformationImportante2} onChange={(e)=>setInformationImportante2(e.target.checked)} name="name"/> <span>Vous regarder qui dans votre réseau peut bénéficier de cette info</span></label>
+            <label><input className="inputB" type="checkbox" checked={InformationImportante3} onChange={(e)=>setInformationImportante3(e.target.checked)} name="name"/> <span>Vous informez votre réseau et vous faites le feedback a Boussole Pro qui partagera plus largement</span></label>
+          </div>
+          <spam><b style={{color: "red"}}>{InformationImportanteErr}</b></spam>
+          </Form.Item>
+        <Form.Item >
+        <label><b>Grâce à Boussole Pro vous avez été connecté à des personnes qui vous ont aidé professionnellement et dans
  certains cas permis d’accéder a de nouveaux clients. Que faites-vous ?</b><span class="required">*</span></label>
-              <Checkbox.Group value={etap7} onChange={(e)=>setetap7(e.target.value)} >
-       <Checkbox value="etap71">Vous résilier votre abonnement</Checkbox><br/>
-       <Checkbox value="etap72">Vous donner le feedback a Boussole Pro</Checkbox><br/>
-       <Checkbox value="etap73">Vous donnez le feedback à Boussole Pro et regardez comment sponsoriser financièrement Boussole Pro</Checkbox><br/> 
-    </Checkbox.Group><br/>
-    <spam><b style={{color: "red"}}>{etap7Err}</b></spam>
-        </Form.Item>
-
+          <div class="status-item">
+            <label><input className="inputB" type="checkbox" checked={NouveauxClients1} onChange={(e)=>setNouveauxClients1(e.target.checked)} name="name"/> <span>Vous résilier votre abonnement</span></label><br/>
+            <label><input className="inputB" type="checkbox" checked={NouveauxClients2} onChange={(e)=>setNouveauxClients2(e.target.checked)} name="name"/> <span>Vous donner le feedback a Boussole Pro</span></label>
+            <label><input className="inputB" type="checkbox" checked={NouveauxClients3} onChange={(e)=>setNouveauxClients3(e.target.checked)} name="name"/> <span>Vous donnez le feedback à Boussole Pro et regardez comment sponsoriser financièrement Boussole Pro</span></label>
+          </div>
+          <spam><b style={{color: "red"}}>{NouveauxClientsErr}</b></spam>
+          </Form.Item>
         <Form.Item >
             <label><b>Amine vous a bien aidé. Il vient de vous communiquer le numéro de Karima qui a 
 des informations pouvant vous aider à développer votre entreprise. Que faites-vous ?</b><span class="required">*</span></label>
-              <Checkbox.Group  value={etap8} onChange={(e)=>setetap8(e.target.value)}>
-       <Checkbox value="etap81">Vous remerciez bien sûr Amine</Checkbox><br/>
-       <Checkbox value="etap82">Vous remerciez Amine et vous lui dites quand vous allez appeler Karima</Checkbox><br/>
-       <Checkbox value="etap83">Les 2 options précédentes puis vous appeler Amine pour lui faire un feedback</Checkbox><br/> 
-    </Checkbox.Group><br/>
-    <spam><b style={{color: "red"}}>{etap8Err}</b></spam>
+<Radio.Group  value={AiderDévelopper} onChange={(e)=>setAiderDévelopper(e.target.value)}>
+       <Radio value="Vous remerciez bien sûr Amine">Vous remerciez bien sûr Amine</Radio><br/>
+       <Radio value="Vous remerciez Amine et vous lui dites quand vous allez appeler Karima">Vous remerciez Amine et vous lui dites quand vous allez appeler Karima</Radio><br/>
+       <Radio value="Les 2 options précédentes puis vous appeler Amine pour lui faire un feedback">Les 2 options précédentes puis vous appeler Amine pour lui faire un feedback</Radio><br/> 
+    </Radio.Group><br/>
+    <spam><b style={{color: "red"}}>{AiderDévelopperErr}</b></spam>
         </Form.Item>
 
+        
+       
         <Form.Item >
-            <label><b>Malgré votre abonnement à Boussole Pro vous avez aidé des frères et sœurs
+        <label><b>Malgré votre abonnement à Boussole Pro vous avez aidé des frères et sœurs
  professionnellement mais cependant professionnellement dans votre travail au quotidien concrètement
  vous n’en avez pas encore vu les bénéfices. Que faites-vous ?</b><span class="required">*</span></label>
-              <Checkbox.Group value={etap9} onChange={(e)=>setetap9(e.target.value)}>
-       <Checkbox value="etap91">Vous résiliez votre abonnement</Checkbox><br/>
-       <Checkbox value="etap92">Vous donnez le feedback à Boussole Pro pour vous trouver des interactions pouvant vous servir</Checkbox><br/>
-       <Checkbox value="etap93">L'option précédente et vous êtes malgré tout satisfait :-) Vous savez que les bénéfices retournent à la communauté FEA et que Boussole Pro a été monté spécialement pour ça,
-        pour faciliter nos frères et sœurs dans leur besoin professionnellement, Votre abonnement finance la structure qui encourage la résilience professionnelle et économique de notre communauté</Checkbox><br/> 
-    </Checkbox.Group><br/>
-    <spam><b style={{color: "red"}}>{etap9Err}</b></spam>
-        </Form.Item>
+          <div class="status-item">
+            <label><input className="inputB" type="checkbox" checked={Bénéfices1} onChange={(e)=>setBénéfices1(e.target.checked)} name="name"/> <span>Vous résiliez votre abonnement</span></label><br/>
+            <label><input className="inputB" type="checkbox" checked={Bénéfices2} onChange={(e)=>setBénéfices2(e.target.checked)} name="name"/> <span>Vous donnez le feedback à Boussole Pro pour vous trouver des interactions pouvant vous servir</span></label>
+            <label><input className="inputB" type="checkbox" checked={Bénéfices3} onChange={(e)=>setBénéfices3(e.target.checked)} name="name"/> <span>L'option précédente et vous êtes malgré tout satisfait :-) Vous savez que les bénéfices retournent à la communauté FEA et que Boussole Pro a été monté spécialement pour ça,
+        pour faciliter nos frères et sœurs dans leur besoin professionnellement, Votre abonnement finance la structure qui encourage la résilience professionnelle et économique de notre communauté</span></label>
+          </div>
+          <spam><b style={{color: "red"}}>{BénéficesErr}</b></spam>
+          </Form.Item>
 
               <div class="btn-block">
               <Button type="primary" value="Submit" onClick={handleFormSubmit}  required href="/" required style={{margin:"10px"}}>Soumettre</Button>

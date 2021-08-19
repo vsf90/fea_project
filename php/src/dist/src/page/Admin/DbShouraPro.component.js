@@ -1,10 +1,11 @@
 
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Button } from "antd";
-import RecordsList from './RecordsList.js';
-import Table from 'react-bootstrap/Table';
-import RecordsListShoura from './RecordsListShoura.js';
+import { Button,Table } from "antd";
+
+import { CheckCircleTwoTone } from "@ant-design/icons";
+import { Alert } from "antd";
+
 
 export default class DdShouraPro extends Component {
   data=[];
@@ -30,7 +31,17 @@ export default class DdShouraPro extends Component {
     ShouraList(){
       console.log(this.state.demandeShoura);
        return this.state.demandeShoura.map(function(object,i){
-        return <RecordsListShoura obj={object} key={i} />
+        return {
+            ID: object.ID,
+            initiateur: object.initiateur,
+            nomComplet: object.prenom+" "+object.nom,
+            avecQui: object.avecQui,
+            problematique:object.problematique,
+            domainesExpert:object.domainesExpert,
+            creneaux:object.creneaux,
+            date:object.date
+
+          }
        
        });
     }
@@ -95,27 +106,7 @@ export default class DdShouraPro extends Component {
          </tbody>
        </table>*/}
       
-      <Table responsive bordered>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th >Qui est-ce qui initie le Shoura pro ?</th>
-      <th >Nom complet</th>
-      <th >Avec-qui souhaitez vous avoir le FEA Shoura PRO?</th>
-      <th >Quelle est votre problématique?</th>
-      <th >Quels sont les domaines des experts/consultants souhaités?</th>
-      <th >Créneaux</th>
-      <th >Date</th>
-      <th >Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    
-    
-   {this.ShouraList()}
-  </tbody>
-</Table>
+       <Table columns={columns} dataSource={this.ShouraList()} scroll={{ x: 1300 }} />
 
         
       </div>

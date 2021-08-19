@@ -5,52 +5,64 @@ import photo2 from "../../image/fp2.png";
 import photo3 from "../../image/fp3.jpg";
 
 import { Alert } from "antd";
-import axios from 'axios';
-import RecordsListPartenaire from './RecordsListPartenaire.js'
 
-import React, { Component } from 'react'
+
+
   
-  export default class NosPartenaires extends Component {
-    constructor(props){
-        super(props);
-        this.state={listPartenaire: []};
-        //console.log(this.state.demandeSprint);
-      }
+function NosPartenaires() {
+    
+    return (
       
-      componentDidMount(){
-        axios.get('http://localhost:8080/BoussolePro-backend/listPartenaire.php')
-        .then(response=>{
-          this.setState({listPartenaire: response.data});
-       })
-       .catch(function (error){
-         console.log(error);
-        })
-        }
-        
-        PartenaireList(){
-          console.log(this.state.listPartenaire);
-           return this.state.listPartenaire.map(function(object,i){
-            return <RecordsListPartenaire obj={object} key={i} />
-           
-           });
-        }
-      render() {
-          return (
-            <div className="containerBody">
+      <div className="containerBody">
             <div className="rowpartners" >
            
                 <div className="col-lg-10" style={{display:"block",margin:"auto",padding:"auto"}}> 
                 <Alert
                 message="Partenaires de Boussole Pro"
-                description="Bienvenue sur la page Partenaires de Boussole Pro."
+                description="Bienveneu sur les Partenaires de Boussole Pro."
                 type="info"
                 showIcon
                 />
                 <br></br>
                 
-                {this.PartenaireList()}
-
-                    
+                    <div className="se mb-4 "   >
+                        <a href="http://www.loireatlantique-automotive.fr/" ><img className="se-img-top" src={photo3} alt="f1" /></a>
+                        <div className="se-body">
+                            
+                            <h2 className="se-title">Loire Atlantique</h2>
+                            <div className="small text-muted">Activité</div>
+                            <p className="se-text"> Pièce de rechange automobiles</p>
+                            <b>Avantages pour nos abonnées </b>
+                            <p>10 abonnements standards annuls offerts</p>
+                            
+                        </div>
+                       
+                    </div>  
+                    <div className="se mb-4 " >
+                        <a href="https://www.auditouestconsulting.com/"><img className="se-img-top" src={photo2} alt="f1" /></a>
+                        <div className="se-body">
+                            
+                            <h2 className="se-title">AUDIT OUEST CONSULTIONG</h2>
+                            <div className="small text-muted">Activité</div>
+                            <p className="se-text">Expertise contable, conseil fiscal et juridique</p>
+                            <b>Avantages pour nos abonnées </b>
+                            <p>3 abonnements standards annuls offerts</p>
+                        </div>
+                       
+                    </div>
+                  
+                    <div className="se mb-4 ">
+                        <a href="https://leshuilesdebalqis.fr/"><img className="se-img-top" src={photo1} alt="f1" /></a>
+                        <div className="se-body">
+                            
+                            <h2 className="se-title">BALQIS FRANCE</h2>
+                            <div className="small text-muted">Activité</div>
+                            <p className="se-text">Votre grossiste en produit cosmitique bio 100% naturel pour particulier et revendeur</p>
+                            <b>Avantages pour nos abonnées </b>
+                            <p>15% de réduction.Pour bénificier de cette réduction, voici le code FEA15</p>
+                        </div>
+                       
+                    </div>   
                                
                    
                 </div>
@@ -61,8 +73,8 @@ import React, { Component } from 'react'
 
     
       </div>
-          )
-      }
+    );
   }
   
+  export default NosPartenaires;
   

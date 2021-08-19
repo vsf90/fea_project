@@ -37,6 +37,10 @@ function FeedbackMesBesions() {
     setAutredemandes(e.target.value);
     console.log(Autredemandes);
   }
+  const handleChangeDateE = (e)=> {
+    setDateE(e.target.value);
+    console.log(DateE);
+  }
      return (
         <form  onSubmit={handleSubmit}>
       

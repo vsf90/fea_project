@@ -26,18 +26,11 @@ import { useState } from 'react';
 
 export default function AjouterRelais() {
     const [Nom, setNom] = useState("");
-    const [Prénom, setPrénom] = useState("");
-    const [Img, setImg] = useState(""); 
+    const [Img, setImg] = useState("");
     const [Role, setRole] = useState("");
     const [Compétances, setCompétances] = useState("");
-
-  const handleChange=(event) =>{
-    //console.log("comme",event.target.files[0]);
-    setImg(URL.createObjectURL(event.target.files[0]));
-  }
   
    console.log(Nom);
-   console.log(Prénom);
    console.log(Img);
    console.log(Role);
    console.log(Compétances);
@@ -45,30 +38,27 @@ export default function AjouterRelais() {
     const handleFormSubmit=(e)=>{
       e.preventDefault();
       const AjoutRE={
-        prenom:Prénom,
         nom:Nom,
-        img:Img,
+        //img:Img,
         role:Role,
         compétances:Compétances
        
       }
       console.log(AjoutRE);
-
   
-  if( Prénom=='' || Nom==''  || Img=='' || Role=='' || Compétances==''){
+  /*if(  Nom==''  || /*Img=='' || Role=='' || Compétances==''){
     
       message.error('Vous devez remplir les champs obligatoires');
     
     }else{
       message.success('La demande est faite avec succès');
-      axios.post('http://localhost/BoussolePro-backend/insertRelaisExpert.php',AjoutRE).then(res=>console.log(res.data));
-
-     setPrénom('');
+     //axios.post('http://localhost/BoussolePro-backend/insertRelaisExpert.php',AjoutRE).then(res=>console.log(res.data));
+  
       setNom('');
       setRole('');
       setCompétances('');
       
-    }
+    }*/
   }
     return (
       <div>
@@ -81,7 +71,7 @@ export default function AjouterRelais() {
       <Col span={24}>
           
           <Alert
-                message="Bienvenue sur la page Ajouter Relais ou Expert"
+                message="Bienveneu sur la page Ajouter Relais ou Expert"
                  description=" Pour ajouter un Relais ou un Expert merci de remplir le formulaire suivant."
                 type="info"
                 showIcon
@@ -93,17 +83,21 @@ export default function AjouterRelais() {
       
       <Form.Item  >
       <div class="item">
-          <label><b>Le nom complet du relais ou de l'expert</b><span class="required">*</span></label>
-          <div class="name-item">
-            <input className="inputB" type="text" name="name" value={Prénom} onChange={(e)=>setPrénom(e.target.value)} placeholder="Prénom" required/>
-            <input className="inputB"  type="text" name="name" value={Nom } onChange={(e)=>setNom(e.target.value)} placeholder="Nom" required/>
-          </div>
+          <label><b>Le nom du relais ou de l'expert</b><span class="required">*</span></label>
+          <Input value={Nom} onChange={(e)=>setNom(e.target.value)} placeholder="nom" required/>
         </div>
       </Form.Item>
-      <Form.Item >
-   <label><b>Image</b></label><span class="required"> *</span> <br></br>
-<input type="file" className={Img != null  ? 'hidden' : ''} onChange={handleChange}/>
-</Form.Item >
+      <Form.Item>
+  <label><b>Image</b><span class="required">*</span></label>
+  <br></br>
+   <Upload   listType="picture"
+      maxCount={1} selected={Img} onChange={(info)=>setImg(info.file.name)}>
+    <Button icon={<UploadOutlined />}>Click to Upload</Button>
+  </Upload>
+  </Form.Item>
+  <Form.Item>
+  <input selected={Img} onChange={(info)=>setImg(info.target.selected)} type="file"></input>
+  </Form.Item>
   <label><b>Vous allez ajouter </b><span class="required">*</span></label>
   
           <Form.Item >

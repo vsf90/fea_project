@@ -1,11 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 import { useState } from 'react';
 import { Form, Input, Alert, Button,  DatePicker, Space ,Checkbox, Row, Col ,message } from 'antd';
 
 
 function FormAbonne() {
-  const [Nom, setNom] = useState("");
-  const [Prénom, setPrénom] = useState("");
+ 
   const [PrénomContact1, setPrénomContact1] = useState("");
   const [PrénomContact2, setPrénomContact2] = useState("");
   const [NomContact1, setNomContact1] = useState("");
@@ -13,47 +13,69 @@ function FormAbonne() {
   const [TeleContact2, setTeleContact2] = useState("");
   const [TeleContact1, setTeleContact1] = useState("");
 
-  const [NomErr, setNomErr] = useState("");
-  const [PrénomErr, setPrénomErr] = useState("");
+  
   const [PrénomContact1Err, setPrénomContact1Err] = useState("");
   const [PrénomContact2Err, setPrénomContact2Err] = useState("");
   const [NomContact1Err, setNomContact1Err] = useState("");
   const [NomContact2Err, setNomContact2Err] = useState("");
   const [TeleContact2Err, setTeleContact2Err] = useState("");
   const [TeleContact1Err, setTeleContact1Err] = useState("");
-  console.log(Nom);
-  console.log(Prénom);
  
   const handleFormSubmit=(e)=>{
       e.preventDefault();
       const abonnement={
-        nom:Nom,
-        prenom:Prénom,
-        
-       
+        NomContact1:NomContact1,
+        PrénomContact1:PrénomContact1,
+        TeleContact1:TeleContact1,
+
+        NomContact2:NomContact2,
+        PrénomContact2:PrénomContact2,
+        TeleContact2:TeleContact2,
       }
       console.log(abonnement);
-  
-  if(  Nom=='' || Prénom=='' ||PrénomContact1==''||PrénomContact2==''||
-  NomContact1==''||NomContact2==''||TeleContact1==''||TeleContact2=='' ){
+      var config = {
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        };
+      axios.post('http://localhost/BoussolePro-backend/insertAbonnement.php',abonnement,config)
+      .then(res=>console.log(res.data));
+
+      if( PrénomContact1==''){
+        setPrénomContact1Err("le champ est obligatoire !!")
+      }
+
+      if( PrénomContact2==''){
+        setPrénomContact2Err("le champ est obligatoire !!")
+      }
+
+      if( NomContact1==''){
+           setNomContact1Err("le champ est obligatoire !!")
+      }
+
+      if( NomContact2==''){
+        setNomContact2Err("le champ est obligatoire !!")
+      }
+
+      if( TeleContact1==''){
+         setTeleContact1Err("le champ est obligatoire !!")
+      }
+
+      if( TeleContact2==''){
+        setTeleContact2Err("le champ est obligatoire !!")
+      }
+
+  if( PrénomContact1==''||PrénomContact2==''|| NomContact1==''||NomContact2==''||TeleContact1==''||TeleContact2=='' ){
+    message.error('Vous devez remplir les champs obligatoires');
+    }
     
-      message.error('Vous devez remplir les champs obligatoires');
-      setNomErr("le champ Nom est obligatoire !!")
-      setPrénomErr("le champ Prénom est obligatoire !!")
-      setPrénomContact1Err("le champ est obligatoire !!")
-      setPrénomContact2Err("le champ est obligatoire !!")
-      setNomContact1Err("le champ est obligatoire !!")
-      setPrénomContact2Err("le champ est obligatoire !!")
-      setTeleContact1Err("le champ est obligatoire !!")
-      setTeleContact2Err("le champ est obligatoire !!")
-     
-    }else{
+    else{
       message.success('La demande est faite avec succès');
-    
-  
-      setNom('');
-      setPrénom('');
-      
+     
+     setNomContact1Err("")
+     setPrénomContact1Err("")
+     setTeleContact1Err("")
+      setNomContact2Err("")
+      setPrénomContact2Err("")
+      setTeleContact2Err("")
     }
   }
     return (
@@ -81,9 +103,19 @@ function FormAbonne() {
               <div class="item">
               <p style={{color:"#171617"}}> <b>Contacts 1ere recommandation </b><span class="required">*</span> </p>
               <div class="name-item">
-              <Input className="inputB" type="text" name="name"  placeholder="Prénom" value={PrénomContact1} onChange={(e)=>setPrénomContact1(e.target.value)} required/>
-                <Input className="inputB"  type="text" name="name" placeholder="Nom" value={NomContact1} onChange={(e)=>setNomContact1(e.target.value)} required/>
-              </div> 
+                    <div className="col-md-6">
+                        <Input className="inputB" type="text" style={{width: "400px"}} name="name"  placeholder="Prénom" value={PrénomContact1} onChange={(e)=>setPrénomContact1(e.target.value)} required/>
+                    </div>
+                    <div className="col-md-6">
+                        <Input className="inputB" style={{width: "430px"}} type="text" name="name" placeholder="Nom"  value={NomContact1} onChange={(e)=>setNomContact1(e.target.value)} required/>
+                    </div>
+                    <div className="col-md-6">
+                        <spam><b style={{color: "red"}}>{PrénomContact1Err}</b></spam>
+                    </div>
+                    <div className="col-md-6">
+                        <spam><b style={{color: "red"}}>{NomContact1Err}</b></spam>
+                    </div>
+                </div>
             </div>
             <div class="item">
             <label class="form-label form-label-left form-label-auto" id="label_6" for="input_6">
@@ -97,9 +129,19 @@ function FormAbonne() {
             <div class="item">
               <p style={{color:"#171617"}}><b> Contacts 2nde recommandation</b><span class="required">*</span> </p>
               <div class="name-item">
-              <Input className="inputB" type="text" name="name"  placeholder="Prénom" value={PrénomContact2} onChange={(e)=>setPrénomContact2(e.target.value)} required />
-                <Input className="inputB"  type="text" name="name" placeholder="Nom" value={NomContact2} onChange={(e)=>setNomContact2(e.target.value)} required/>
-              </div>
+                    <div className="col-md-6">
+                        <Input className="inputB" type="text" style={{width: "400px"}} name="name"  placeholder="Prénom" value={PrénomContact2} onChange={(e)=>setPrénomContact2(e.target.value)} required/>
+                    </div>
+                    <div className="col-md-6">
+                        <Input className="inputB" style={{width: "430px"}} type="text" name="name" placeholder="Nom"  value={NomContact2} onChange={(e)=>setNomContact2(e.target.value)} required/>
+                    </div>
+                    <div className="col-md-6">
+                        <spam><b style={{color: "red"}}>{PrénomContact2Err}</b></spam>
+                    </div>
+                    <div className="col-md-6">
+                        <spam><b style={{color: "red"}}>{NomContact2Err}</b></spam>
+                    </div>
+                </div>
             </div>
             <div class="item">
             <label class="form-label form-label-left form-label-auto" id="label_6" for="input_6">

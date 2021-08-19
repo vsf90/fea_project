@@ -1,10 +1,11 @@
 import { Button, Layout, Menu } from 'antd';
 import { Dropdown, message } from 'antd';
-import { BookOutlined, DownOutlined, FundOutlined, PullRequestOutlined } from '@ant-design/icons';
+import { DownOutlined, FundOutlined, PullRequestOutlined } from '@ant-design/icons';
 import { Image } from 'antd';
 import logo from '../img/logo.PNG'
 import {
   HomeOutlined,
+  BookOutlined,
   SettingFilled,
   AppstoreOutlined,
   BarChartOutlined,
@@ -25,9 +26,11 @@ import {
   GiftOutlined,
   CarryOutOutlined,
   ProfileOutlined,
+
+  CaretDownFilled,
+
   WechatOutlined,
-  FileTextOutlined,
-  CaretDownFilled
+  FileTextOutlined
  
 } from '@ant-design/icons';
 
@@ -57,9 +60,9 @@ import ReactDOM from 'react-dom'
 // import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons'
 import NosPartenaires from '../page/NosPartenaire/NosPartenaires.component';
 import CompteAbonnée from '../page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
-import FeedbackMesBesions from '../page/FeedbackMesBesions.component';
-import FeedbackMonFeedback from '../page/FeedbackMonFeedback.component';
-import TicketBoussole from '../page/TicketBoussole.component';
+import FeedbackMesBesions from '../page/FeedBack/FeedbackMesBesions.component';
+import FeedbackMonFeedback from '../page/FeedBack/FeedbackMonFeedback.component';
+import TicketBoussole from '../page/FeedBack/TicketBoussole.component';
 import DdSprintPro from '../page/Admin/DdSprintPro.component';
 import OfferStage from '../page/offers/OfferStage.component';
 import OfferEmploi from '../page/offers/OfferEmploi.component';
@@ -85,14 +88,6 @@ import DdExpertBP from '../page/Admin/DdExpertBP.compnent';
 import Besoins from '../page/Admin/Besions.component';
 import Feedbacks from '../page/Admin/Feedbacks.component';
 import AddPublication from '../page/Acueil/AddPublication';
-import AddPartenaire from '../page/Admin/AddPartenaire';
-import EditSprint from '../page/Admin/EditSprint/EditSprint.component';
-import EditMeet from '../page/Admin/EditMeet/EditMeet.component';
-import EditShoura from '../page/Admin/EditShoura/EditShoura.component';
-import EditBoost from '../page/Admin/EditBoost/EditBoost.component';
-import EditRelais from '../page/Admin/EditRelais/EditRelais.component';
-import EditExpert from '../page/Admin/EditExpert/EditExpert.component';
-
 
 import DdExpairBP from '../page/Admin/DdExpairBP.compnent';
 
@@ -101,7 +96,7 @@ import AjouterRelaisOuExpert from '../page/AjouterRelais/AjouterRelais'
 
 import BesionsPro from '../page/Admin/Besions.component';
 import EditCompte from '../page/NosReseaux/EditCompte/EditCompte.component';
-import ModifierProfile from '../page/ModifierProfile/ModifierProfile.component';
+
 
 
 
@@ -114,7 +109,7 @@ const menu = (
   <Menu>
     <Menu.Item key="1" icon={<UserOutlined />}> <Link  to="/CompteAbonnée"></Link>Voir profile</Menu.Item>
 
-    <Menu.Item key="2" icon={< EditOutlined/>}>Modifier profile</Menu.Item>
+    <Menu.Item key="2" icon={< EditOutlined/>}><Link  to="/EditCompte"></Link> Modifier profile</Menu.Item>
 
     <Menu.Item key="3" icon={<LogoutOutlined />} >Déconnexion</Menu.Item>
   </Menu>
@@ -134,57 +129,58 @@ function Navbar(props) {
 
     <Sider
       style={{
-      //   overflow: 'auto',
-      //   height: '550vh',
-      //   // position: 'fixed',
-      //   width: '250px',
-      //   left: 0,
-      //   width:"1000px",
-      //   maxWidth: '250px'
-      maxWidth: "310px",
-      minWidth: "242px",
-      width: "269px"
+        overflow: 'auto',
+        height: '550vh',
+        // position: 'fixed',
+        width: '250px',
+        left: 0,
+        width:"1000px",
+        maxWidth: '250px'
       }}
     >
 
 
 
       <Menu  theme="light" mode="inline" defaultSelectedKeys={['4']}>
-      <div className="logo" style={{height: "39px", background: "rgba(255, 255, 255, 0.4)"}} >
-      <img src={logo} style={{height:"39px",backgroundPositionY:"center"}} />
+      <div className="logo" style={{height: "60px", background: "rgba(255, 255, 255, 0.4)"}} >
+      <img src={logo} style={{height:"60px",backgroundPositionY:"center"}} />
       </div>
 
         <Menu.Item key="1" icon={< HomeOutlined />}><Link  to="/Acueil"></Link>Accueil  </Menu.Item>
         <Menu.Item key="2" icon={<GlobalOutlined />}> <Link  to="/NosReseaux"></Link>  Notre Resaux  </Menu.Item>
         
-        <Link  to="/Services">
-            <SubMenu key="sub1" icon={<GiftOutlined />}  title="Nos Services" >
+        
+            <SubMenu key="sub1" icon={<GiftOutlined />}  title="Nos Services" ><Link  to="/Services"></Link>
                   <Menu.Item key="3"><Link  to="/SprintPro"></Link>Sprint Pro</Menu.Item>
                   <Menu.Item key="4"><Link  to="/MeetUpPro"></Link>Meet'Up Pro</Menu.Item>
                   <Menu.Item key="5"><Link  to="/ShouraPro"></Link>Shoura Pro</Menu.Item>
                   <Menu.Item key="6"><Link  to="/BoostPro"></Link>Boost Pro </Menu.Item>
-          </SubMenu>
-        </Link>
-
-      <Link  to="/Relais">          
-        <SubMenu key="sub2" icon={<TagOutlined />} title="Relais BP">
+                         
+        <SubMenu key="sub2" icon={<TagOutlined />} title="Relais BP"> <Link  to="/Relais"></Link> 
                 <Menu.Item key="7" icon={<TeamOutlined />}><Link  to="/NosRelais" ></Link>Nos Relais</Menu.Item>
         </SubMenu>
-      </Link>
-      <Link  to="/Expert">    
-             <SubMenu key="sub3" icon={<TagOutlined />} title="Expert BP">
+      
+         
+             <SubMenu key="sub3" icon={<TagOutlined />} title="Expert BP"><Link  to="/Expert"> </Link>
                  <Menu.Item key="8" icon={<TeamOutlined />}><Link  to="/NosExperts" ></Link>Nos Experts</Menu.Item>
-           </SubMenu>
-      </Link>
+          </SubMenu>
+       </SubMenu>
 
         <Menu.Item key="9" icon={<BarChartOutlined />}>
-        <Link  to="/NosPartenaires"></Link>Nos Partenaires</Menu.Item>
+
+          <Link  to="/NosPartenaires"></Link  >Nos Partenaires
+        </Menu.Item>
+
+       
+
+       
         
             <SubMenu key="sub4" icon={<WechatOutlined /> } title="Feedback">
               <Menu.Item key="10" icon={<WechatOutlined /> }> <Link  to="/MesBesoins"></Link>Mes besions Pro immédiate</Menu.Item>
               <Menu.Item key="11" icon={<WechatOutlined /> }><Link  to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
               <Menu.Item key="12" icon={<BookOutlined />}><Link  to="/TicketBoussole"></Link>Un ticket Boussole Pro</Menu.Item>
             </SubMenu>
+
 
 
             <SubMenu key="sub5" icon={<UserOutlined />} title="Admin">
@@ -196,29 +192,31 @@ function Navbar(props) {
               <Menu.Item key="18" icon={<FileDoneOutlined />}><Link  to="/DdExpertBP"></Link>Demandes Expert BP</Menu.Item>
               
 
-              <Menu.Item key="19" icon={<ScheduleOutlined />}><Link  to="/feedbacks"></Link>Listes des feedbacks</Menu.Item>
+              <Menu.Item key="29" icon={<ScheduleOutlined />}><Link  to="/feedbacks"></Link>Listes des feedbacks</Menu.Item>
               <Menu.Item key="20" icon={<ProfileOutlined />}><Link  to="/besoins"></Link>Les besoins Pro</Menu.Item>
               <Menu.Item key="21" icon={<ProfileOutlined />}><Link  to="/AjouterRelaisExpert"></Link>Ajouter Relais/Expert</Menu.Item>
-              <Menu.Item key="29" icon={<ProfileOutlined />}><Link  to="/AjouterPartenaire"></Link>Ajouter Partenaire</Menu.Item>
-
 
             </SubMenu>
 
 
               <SubMenu key="sub6" icon={< SettingFilled />} title="Parametres">
                <Menu.Item key="22"  icon={<ProfileOutlined />}><Link  to="/Modérateur"></Link>Liste des Modérateurs</Menu.Item>
-                <Menu.Item key="24"  icon={<ProfileOutlined />} ><Link  to="/AdminList"></Link>Liste des admins</Menu.Item>
+                <Menu.Item key="23"  icon={<ProfileOutlined />} ><Link  to="/AdminList"></Link>Liste des admins</Menu.Item>
               </SubMenu>
              
             <SubMenu key="sub7" icon={<FundOutlined />} title="les offres">
-              <Menu.Item key="25" icon={<PullRequestOutlined />}><Link  to="/OffreStage"></Link>Offres de stage</Menu.Item>
-              <Menu.Item key="26" icon={<PullRequestOutlined />} ><Link  to="/OffreEmploi"></Link>Offres d'emploi</Menu.Item>
+              <Menu.Item key="24" icon={<PullRequestOutlined />}><Link  to="/OffreStage"></Link>Offres de stage</Menu.Item>
+              <Menu.Item key="25" icon={<PullRequestOutlined />} ><Link  to="/OffreEmploi"></Link>Offres d'emploi</Menu.Item>
            
             </SubMenu>
 
-            <SubMenu key="sub8" icon={<FundOutlined />} title="les demandes">
-              <Menu.Item key="27" icon={<PullRequestOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
-              <Menu.Item key="28" icon={<PullRequestOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
+            <SubMenu key="sub8" icon={<FileTextOutlined />} title="les demandes">
+
+              <Menu.Item key="26" icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
+              <Menu.Item key="27" icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
+
+             
+
             </SubMenu>
             
            
@@ -235,7 +233,7 @@ function Navbar(props) {
     
     </a>
   </Dropdown>
-  <Button onClick={props.signout}  style={{marginLeft:"1028px"}}>
+  <Button onClick={props.signout}>
     Log out
   </Button>
       </Header>
@@ -264,13 +262,11 @@ function Navbar(props) {
         <Route path="/Boostform" exact component={Boostform} /> 
         <Route path="/Relaisform" exact component={Relaisform} /> 
         <Route path="/Expertform" exact component={Expertform} /> 
-        <Route path="/CompteAbonnée/:id" exact component={CompteAbonnée} /> 
+        <Route path="/CompteAbonnée" exact component={CompteAbonnée} /> 
         <Route path="/EditCompte" exact component={EditCompte} /> 
         <Route path="/NosRelais" exact component={Nosrelais} /> 
         <Route path="/NosExperts" exact component={Nosexperts} /> 
         <Route path="/AddPublication" exact component={AddPublication} /> 
-        <Route path="/ModifierProfile" exact component={ModifierProfile} /> 
-
 
 
 
@@ -286,21 +282,8 @@ function Navbar(props) {
 
 
         <Route path="/AjouterRelaisExpert" exact component={AjouterRelaisOuExpert} />
-        <Route path="/Besoins" exact component={Besoins} />
+        <Route path="/Besoins" exact component={Besoins}/>
         <Route path="/feedbacks" exact component={Feedbacks} />
-        <Route path="/AjouterPartenaire" exact component={AddPartenaire} />
-        <Route path="/EditSprint/:id" exact component={EditSprint} />
-        <Route path="/EditShoura/:id" exact component={EditShoura} />
-        <Route path="/EditMeet/:id" exact component={EditMeet} />
-        <Route path="/EditBoost/:id" exact component={EditBoost} />
-        <Route path="/EditRelais/:id" exact component={EditRelais} />
-        <Route path="/EditExpert/:id" exact component={EditExpert} />
-
-
-
-
-
-        <Route path="/Feedbacks" exact component={Feedbacks} />
         <Route path="/BesionsPro" exact component={BesionsPro} />
 
 

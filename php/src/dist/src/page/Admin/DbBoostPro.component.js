@@ -1,9 +1,10 @@
 
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Button } from "antd";
-import Table from 'react-bootstrap/Table';
-import RecordsListBoost from './RecordsListBoost.js';
+import { Button,Table } from "antd";
+import { CheckCircleTwoTone } from "@ant-design/icons";
+import { Alert } from "antd";
+
 
 export default class DdBoostPro extends Component {
   //data=[];
@@ -21,13 +22,26 @@ export default class DdBoostPro extends Component {
    })
    .catch(function (error){
      console.log(error);
-    }) 
+    })
     }
     
     BoostList(){
       console.log(this.state.demandeBoost);
        return this.state.demandeBoost.map(function(object,i){
-        return <RecordsListBoost obj={object} key={i} />
+        return {
+            ID: object.ID,
+            confirmationAbonne:object.confirmationAbonne,
+            nomComplet: object.prenom+" "+object.nom,
+            entreprise: object.entreprise,
+            secteur:object.secteur,
+            contact:object.contact,
+            typeCompagne:object.typeCompagne,
+            objetCompagne:object.objetCompagne,
+            montant:object.montant,
+            commentaire:object.commentaire,
+            date:object.date
+           
+          }
        
        });
     }
@@ -96,32 +110,8 @@ export default class DdBoostPro extends Component {
            {this.SprintList()}
          </tbody>
        </table>*/}
-     <Table responsive bordered>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th >Êtes-vous bien abonné(e) de Boussole PRO ?</th>
-      <th >Nom complet</th>
-      <th >Votre entreprise</th>
-      <th >Votre secteur d'activité</th>
-      <th >Qui sera notre contact pour toute demande de support concernant la campagne?</th>
-      <th >Quel type de campagne souhaitez-vous lancer?</th>
-      <th >Quel est l'objet de la campagne et en quoi est-ce important pour vous ?</th>
-      <th >Souhaitez-vous donner un pourcentage ou un montant à Boussole Pro? Si oui, lequel?</th>
-      <th >Tout commentaire est le bienvenue si vous en avez</th>
-      <th >Date</th>
-      <th >Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    
-    
-   {this.BoostList()}
-  </tbody>
-</Table>
-
-        
+      
+       <Table columns={columns} dataSource={this.BoostList()} scroll={{ x: 1300 }} />
 
         
       </div>

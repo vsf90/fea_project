@@ -1,9 +1,8 @@
 
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Button } from "antd";
-import RecordsListMeet from './RecordsListMeet.js';
-import Table from 'react-bootstrap/Table';
+import { Button,Table } from "antd";
+import RecordsList from './RecordsList.js';
 
 import { CheckCircleTwoTone } from "@ant-design/icons";
 import { Alert } from "antd";
@@ -31,13 +30,56 @@ export default class DdMeetUpPro extends Component {
     MeetList(){
       console.log(this.state.demandeMeet);
        return this.state.demandeMeet.map(function(object,i){
-        return <RecordsListMeet obj={object} key={i} />
+        return {
+            ID: object.ID,
+            nomComplet: object.prenom+" "+object.nom,
+            avecQui: object.avecQui,
+            prenomContactSouhaite:object.prenomContactSouhaite,
+            nomContactSouhaite:object.nomContactSouhaite,
+            raisonMeet:object.raisonMeet,
+            autreInfos:object.autreInfos,
+            date:object.date
+          }
        
        });
     }
  
   render() {
+    console.log(this.MeetList());
+    const columns = [
+      {
+        title: 'ID',
+        width: 100,
+        dataIndex: 'ID',
+        key: 'ID',
+        fixed: 'left',
+        align:'center'
+      },
+      {
+        title: 'Nom complet',
+        width: 100,
+        dataIndex: 'nomComplet',
+        key: 'nomComplet',
+        fixed: 'left',
+      },
+      { title: 'Avec-qui souhaitez vous avoir le FEA Meet Up PRO?', dataIndex: 'avecQui', key: 'avecQui' , align:'center' },     
+      { title: "Prénom complet du contact souhaité", dataIndex: 'prenomContactSouhaite', key: 'prenomContactSouhaite' , align:'center' },
+      { title: 'Nom complet du contact souhaité', dataIndex: 'nomContactSouhaite', key: 'nomContactSouhaite' , align:'center' },
+      { title: 'la raison professionnelle de ce meetUp pro', dataIndex: 'raisonMeet', key: 'raisonMeet' , align:'center' },
+      { title: 'Autres infos utiles', dataIndex: 'autreInfos', key: 'autreInfos' , align:'center' },
+      { title: 'Date', dataIndex: 'date', key: 'date' , align:'center' },
+
+      {
+        title: 'Action',
+        key: 'operation',
+        fixed: 'right',
+        width: 100,
+        align:'center',
+        render: () => <a>Valider</a>,
+      },
+    ];
     
+    console.log(this.MeetList());
     return (
       <div className="DdSprintPro">
       <h2>Les demandes Meet'Up Pro</h2>
@@ -61,35 +103,10 @@ export default class DdMeetUpPro extends Component {
          </thead>
          <tbody>
            {this.SprintList()}
-         </tbody> 
+         </tbody>
        </table>*/}
       
-      <Table responsive bordered>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th >Nom complet</th>
-      <th >Avec-qui souhaitez vous avoir le FEA Meet Up PRO?</th>
-      <th >Prénom complet du contact souhaité</th>
-      <th >Nom complet du contact souhaité</th>
-      <th >la raison professionnelle de ce meetUp pro</th>
-      <th >Autres infos utiles</th>
-      <th >Date</th>
-      <th >Actions</th>
-
-
-
-
-   
-    </tr>
-  </thead>
-  <tbody>
-    
-    
-    
-   {this.MeetList()}
-  </tbody>
-</Table>
+       <Table columns={columns} dataSource={this.MeetList()} scroll={{ x: 1300 }} />
 
         
       </div>
