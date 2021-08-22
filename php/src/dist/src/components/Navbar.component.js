@@ -26,9 +26,7 @@ import {
   GiftOutlined,
   CarryOutOutlined,
   ProfileOutlined,
-
   CaretDownFilled,
-
   WechatOutlined,
   FileTextOutlined
  
@@ -59,17 +57,11 @@ import ReactDOM from 'react-dom'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons'
 import NosPartenaires from '../page/NosPartenaire/NosPartenaires.component';
-<<<<<<< Updated upstream
+
 import CompteAbonnée from '../page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
 import FeedbackMesBesions from '../page/FeedBack/FeedbackMesBesions.component';
 import FeedbackMonFeedback from '../page/FeedBack/FeedbackMonFeedback.component';
-import TicketBoussole from '../page/FeedBack/TicketBoussole.component';
-=======
-// import CompteAbonnée from '../page/NosReseaux/CompteAbonnén/EditAdmin.component';
-import FeedbackMesBesions from '../page/FeedbackMesBesions.component';
-import FeedbackMonFeedback from '../page/FeedbackMonFeedback.component';
-import TicketBoussole from '../page/TicketBoussole.component';
->>>>>>> Stashed changes
+
 import DdSprintPro from '../page/Admin/DdSprintPro.component';
 import OfferStage from '../page/offers/OfferStage.component';
 import OfferEmploi from '../page/offers/OfferEmploi.component';
@@ -105,8 +97,8 @@ import BesionsPro from '../page/Admin/Besions.component';
 import EditCompte from '../page/NosReseaux/EditCompte/EditCompte.component';
 import ModifierProfile from '../page/ModifierProfile/ModifierProfile.component';
 import CompteAbonnéeReseau from '../page/NosReseaux/CompteAbonnén/CompteAbonnéeReseau.component';
-
-
+import listInscrit from '../page/Inscrit/listInscrit.component';
+import EditInscrit from '../page/Inscrit/EditInscrit';
 
 
 const { Header, Content, Footer, Sider } = Layout; 
@@ -114,7 +106,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const menu = (
 
   <Menu>
-    <Menu.Item key="1" icon={<UserOutlined />}> <Link  to="/EditAdmin"></Link>Voir profile</Menu.Item>
+    <Menu.Item key="1" icon={<UserOutlined />}> <Link  to="/CompteAbonnéeReseau "></Link>Voir profile</Menu.Item>
 
     <Menu.Item key="2" icon={< EditOutlined/>}><Link  to="/ModifierProfile"></Link>Modifier profile</Menu.Item>
 
@@ -147,7 +139,7 @@ function Navbar(props) {
 
 
 
-      <Menu  theme="light" mode="inline" defaultSelectedKeys={['4']}>
+      <Menu  theme="light" mode="inline" defaultSelectedKeys={['4']} mode="vertical">
       <div className="logo" style={{height: "60px", background: "rgba(255, 255, 255, 0.4)"}} >
       <img src={logo} style={{height:"60px",backgroundPositionY:"center"}} />
       </div>
@@ -184,7 +176,7 @@ function Navbar(props) {
             <SubMenu key="sub4" icon={<WechatOutlined /> } title="Feedback">
               <Menu.Item key="10" icon={<WechatOutlined /> }> <Link  to="/MesBesoins"></Link>Mes besions Pro immédiate</Menu.Item>
               <Menu.Item key="11" icon={<WechatOutlined /> }><Link  to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
-              <Menu.Item key="12" icon={<BookOutlined />}><Link  to="/TicketBoussole"></Link>Un ticket Boussole Pro</Menu.Item>
+             
             </SubMenu>
 
 
@@ -206,23 +198,24 @@ function Navbar(props) {
 
 
               <SubMenu key="sub6" icon={< SettingFilled />} title="Parametres">
-               <Menu.Item key="22"  icon={<ProfileOutlined />}><Link  to="/Modérateur"></Link>Liste des Modérateurs</Menu.Item>
-                <Menu.Item key="23"  icon={<ProfileOutlined />} ><Link  to="/AdminList"></Link>Liste des admins</Menu.Item>
+              <Menu.Item key="22"  icon={<ProfileOutlined />} ><Link  to="/AdminList"></Link>Liste des admins</Menu.Item>
+               <Menu.Item key="23"  icon={<ProfileOutlined />}><Link  to="/Modérateur"></Link>Liste des Modérateurs</Menu.Item>
+                <Menu.Item key="24"  icon={<ProfileOutlined />} ><Link  to="/listInscrit"></Link>Liste des inscrits </Menu.Item>
               </SubMenu>
              
             <SubMenu key="sub7" icon={<FundOutlined />} title="les offres">
-              <Menu.Item key="24" icon={<PullRequestOutlined />}><Link  to="/OffreStage"></Link>Offres de stage</Menu.Item>
-              <Menu.Item key="25" icon={<PullRequestOutlined />} ><Link  to="/OffreEmploi"></Link>Offres d'emploi</Menu.Item>
+              <Menu.Item key="25" icon={<PullRequestOutlined />}><Link  to="/OffreStage"></Link>Offres de stage</Menu.Item>
+              <Menu.Item key="26" icon={<PullRequestOutlined />} ><Link  to="/OffreEmploi"></Link>Offres d'emploi</Menu.Item>
            
             </SubMenu>
 
             <SubMenu key="sub8" icon={<FileTextOutlined />} title="les demandes">
 
-              <Menu.Item key="26" icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
-              <Menu.Item key="27" icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
+
+              <Menu.Item key="27" icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
+              <Menu.Item key="28" icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
 
              
-
             </SubMenu>
             
            
@@ -260,7 +253,7 @@ function Navbar(props) {
         <Route path="/ShouraPro" exact component={ShouraPro} />  
         <Route path="/MesBesoins" exact component={FeedbackMesBesions} /> 
         <Route path="/MonFeedback" exact component={FeedbackMonFeedback} /> 
-        <Route path="/TicketBoussole" exact component={TicketBoussole} /> 
+        
         <Route path="/SprintPro" exact component={SprintPro} />
         <Route path="/Sprintform" exact component={Sprintform} /> 
         <Route path="/Meetform" exact component={Meetform} /> 
@@ -268,24 +261,23 @@ function Navbar(props) {
         <Route path="/Boostform" exact component={Boostform} /> 
         <Route path="/Relaisform" exact component={Relaisform} /> 
         <Route path="/Expertform" exact component={Expertform} /> 
-<<<<<<< Updated upstream
+
         <Route path="/CompteAbonnée/:id" exact component={CompteAbonnée} /> 
         <Route path="/CompteAbonnée" exact component={CompteAbonnée} /> 
-=======
+
         {/* <Route path="/CompteAbonnée/:id" exact component={CompteAbonnée} />  */}
->>>>>>> Stashed changes
+
         <Route path="/EditCompte" exact component={EditCompte} /> 
         <Route path="/NosRelais" exact component={Nosrelais} /> 
         <Route path="/NosExperts" exact component={Nosexperts} /> 
         <Route path="/AddPublication" exact component={AddPublication} /> 
-<<<<<<< Updated upstream
+
         <Route path="/ModifierProfile" exact component={ModifierProfile} /> 
         <Route path="/CompteAbonnéeReseau/:id" exact component={CompteAbonnéeReseau} /> 
 
 
-=======
         <Route path="/EditAdmin" exact component={EditAdmin}/>
->>>>>>> Stashed changes
+
 
 
 
@@ -330,6 +322,9 @@ function Navbar(props) {
       <Route path="/AdminList" exact component={AdminList} /> 
       <Route path="/AddAdmin" exact component={AddAdmin} /> 
       <Route path="/EditAdmin/:id"  component={EditAdmin} /> 
+          {/* route de inscrit */}
+      <Route path="/listInscrit" exact component={listInscrit} /> 
+      <Route path="/EditInscrit/:id" exact component={EditInscrit} /> 
         </Switch>
          
     

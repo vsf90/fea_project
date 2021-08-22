@@ -8,7 +8,9 @@ import {Redirect} from 'react-router';
 import axios from 'axios';
 
 export default class RecordsListAdmin extends Component {
-    
+    refreshPage(){ 
+        window.location.reload(); 
+    }
     constructor(props){
         super(props);
         this.delete=this.delete.bind(this);
@@ -38,7 +40,7 @@ export default class RecordsListAdmin extends Component {
       <td>{this.props.obj.entreprise}</td>
       <td>{this.props.obj.objetEntreprise}</td>
       <td>{this.props.obj.activiteProfessionnelle}</td>
-      <td><Link to={"/EditAdmin/"+this.props.obj.ID}><EditFilled style={{fontSize:"20px"}}/></Link> <button id="delete" onClick={this.delete}  style={{backgroundColor:"transparent",color:"#0d6efd",padding:"2px"}} ><DeleteFilled style={{fontSize:"20px"}}/></button></td>
+      <td><Link to={"/EditAdmin/"+this.props.obj.ID}><EditFilled style={{fontSize:"20px"}}/></Link> <button id="delete" onClick={this.delete}  style={{backgroundColor:"transparent",color:"#0d6efd",padding:"2px"}} ><DeleteFilled onClick={ this.refreshPage } style={{fontSize:"20px"}}/></button></td>
      
     </tr>
    

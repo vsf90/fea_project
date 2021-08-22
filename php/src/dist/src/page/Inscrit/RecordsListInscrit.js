@@ -1,34 +1,32 @@
-
 import React, { Component } from 'react'
 import { Button,Alert,Row,Col  } from 'antd';
 import { EditFilled,DeleteFilled,PlusCircleOutlined} from '@ant-design/icons';
-import { Link, Switch ,Route } from 'react-router-dom';
-import axios from 'axios';
 import "../Modérateur/Modérateurs.css";
+import { Link } from 'react-router-dom';
 import {Redirect} from 'react-router';
-import EditModérateur from '../Modérateur/EditModérateur/EditModérateur.component';
-export default class RecordsList extends Component {
+import axios from 'axios';
+
+export default class RecordsListInscrit extends Component {
     refreshPage(){ 
         window.location.reload(); 
     }
     constructor(props){
         super(props);
-        this.delete=this.delete.bind(this); 
+        this.delete=this.delete.bind(this);
         this.state={
             redirect:false
         }
     }
+
     delete(){
-        axios.get('http://localhost/BoussolePro-backend/deleteModerateur.php/?id='+this.props.obj.ID)
-  .then(console.log('deleted'))
- .catch(err=>console.log(err))
-    }
-    
+        axios.get('http://localhost/BoussolePro-backend/deleteInscrit.php/?id='+this.props.obj.ID)
+      .then(console.log('deleted'))
+     .catch(err=>console.log(err))
+        }
     render() {
-        
         const {redirect}=this.state;
         if(redirect){
-            return <Redirect to='/Modérateur' />;
+            return <Redirect to='/ListInscrit' />;
         }
         return (
           
@@ -42,11 +40,12 @@ export default class RecordsList extends Component {
       <td>{this.props.obj.entreprise}</td>
       <td>{this.props.obj.objetEntreprise}</td>
       <td>{this.props.obj.activiteProfessionnelle}</td>
-      
-      <td><Link to={"/EditModérateur/"+this.props.obj.ID} ><EditFilled style={{fontSize:"20px"}}/></Link> <button id="delete" onClick={this.delete}  style={{backgroundColor:"transparent",color:"#0d6efd",padding:"2px"}} ><DeleteFilled onClick={ this.refreshPage } style={{fontSize:"20px"}}/></button> </td>
-      {/*{"/EditModérateur/"+this.props.obj.ID}*/}
+      <td><Link to={"/EditInscrit/"+this.props.obj.ID}><EditFilled style={{fontSize:"20px"}}/></Link>
+
+       <button id="delete" onClick={this.delete}
+        style={{backgroundColor:"transparent",color:"#0d6efd",padding:"2px"}} >
+            <DeleteFilled onClick={ this.refreshPage } style={{fontSize:"20px"}}/></button></td>
      
-   
     </tr>
    
         )

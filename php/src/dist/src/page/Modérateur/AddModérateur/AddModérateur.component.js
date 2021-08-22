@@ -52,7 +52,7 @@ if(  Nom=='' || Prénom=='' || Pays=='' || Ville=='' || Entreprise=='' || Objet=
 
   } else {
     message.success('L modérateur a été ajouté avec succès');
-    axios.post('http://localhost:8080/BoussolePro-backend/insertModerateur.php',Moderateur).then(res=>console.log(res.data));
+    axios.post('http://localhost/BoussolePro-backend/insertModerateur.php',Moderateur).then(res=>console.log(res.data));
      setNom('');
      setPrénom('');
      setPays('');
@@ -95,9 +95,9 @@ if(  Nom=='' || Prénom=='' || Pays=='' || Ville=='' || Entreprise=='' || Objet=
           </div>
         </div>
       </Form.Item>
-
+<label><b>Pays</b><span class="required">*</span></label>
       <Form.Item  >
-      <label><b>Pays</b><span class="required">*</span></label>
+      
       <select name="pays"  value={Pays} onChange={(e)=>setPays(e.target.value)}>
 <option value="France" >France </option>
 
@@ -357,33 +357,33 @@ if(  Nom=='' || Prénom=='' || Pays=='' || Ville=='' || Entreprise=='' || Objet=
 </select>
             
       </Form.Item>
-      <Form.Item >
       <label><b>Ville</b><span class="required">*</span></label>
+      <Form.Item >
          <input  className="inputB" type="text"  value={Ville} onChange={(e)=>setVille(e.target.value)} name="Ville" placeholder="Ville" required/>
         </Form.Item>
+
+         <label><b>Entreprise</b><span class="required">*</span></label>
          <Form.Item >
-       <label><b>Entreprise</b><span class="required">*</span></label>
           <input  className="inputB" type="text"  value={Entreprise} onChange={(e)=>setEntreprise(e.target.value)} name="Entreprise" placeholder="Entreprise" required/>
          </Form.Item>
+         <label><b>Objet de l'entreprise</b><span class="required">*</span></label>
          <Form.Item >
-       <label><b>Objet de l'entreprise</b><span class="required">*</span></label>
           <input  className="inputB" type="text" value={Objet} onChange={(e)=>setObjet(e.target.value)} name="Objetentreprise" required/>
          </Form.Item>
+         <label><b>Activité Professionnelle</b><span class="required">*</span></label>
          <Form.Item >
-       <label><b>Activité Professionnelle</b><span class="required">*</span></label>
           <input  className="inputB" type="text" value={Activité} onChange={(e)=>setActivité(e.target.value)} name="ActivitéPro" required/>
          </Form.Item>
+           <label><b>Email</b><span class="required">*</span></label>
         <Form.Item name={['user', 'email']}  rules={[{ type: 'email' }]}>
-      <label><b>Email</b><span class="required">*</span></label>
         <Input value={Email} onChange={(e)=>setEmail(e.target.value)} placeholder="Exmple: boussole@fea.com" required />
         </Form.Item>
-
+            <label><b>mot de pass</b><span class="required">*</span></label>
         <Form.Item>
-        <label><b>mot de pass</b><span class="required">*</span></label>
     <Input.Password value={Password} onChange={(e)=>setPassword(e.target.value)} placeholder=" mot de pass" required />
     </Form.Item>
-    <Form.Item>
     <label><b>Confirme mot de pass</b><span class="required">*</span></label>
+    <Form.Item>
     <Input.Password value={ConfirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)}
       placeholder="Confirme mot de pass" required />
 

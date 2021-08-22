@@ -2,47 +2,45 @@ import { Button,Alert,Row,Col  } from 'antd';
 import { EditFilled,DeleteFilled,PlusCircleOutlined} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
- import "./Modérateurs.css";
- import RecordsList from '../Admin/RecordsList.js'
-
+import RecordsListInscrit from '../Inscrit/RecordsListInscrit'
 import React, { Component } from 'react'
 
-export default class Modérateurs extends Component {
+export default class Inscrit extends Component {
   
 
  constructor(props){
   super(props);
-  this.state={listModerateur: []};
+  this.state={listInscrit: []};
  
 }
 
 componentDidMount(){
-  axios.get('http://localhost/BoussolePro-backend/listModérateur.php')
+  axios.get('http://localhost/BoussolePro-backend/listInscrit.php')
   .then(response=>{
-    this.setState({listModerateur: response.data});
+    this.setState({listInscrit: response.data});
  })
  .catch(function (error){
    console.log(error);
   })
   }
   
-  ModerateursList(){
-    console.log(this.state.listModerateur);
-     return this.state.listModerateur.map(function(object,i){
-      return <RecordsList obj={object} key={i} />
+  InscritList(){
+    console.log(this.state.listInscrit);
+     return this.state.listInscrit.map(function(object,i){
+      return <RecordsListInscrit obj={object} key={i} />
      
      });
   }
 
   render() {
     return (
-      <div className="Modérateurs">
+      <div className="inscrit">
     
     <div>
     <Row>
    <Col span={24}>
     <Alert
-                message="Bienveneu sur page de la liste des Modérateurs Boussole Pro"
+                message="Bienveneu sur page de la liste des inscrits Boussole Pro"
                  
                 type="info"
                 showIcon
@@ -51,7 +49,7 @@ componentDidMount(){
                  <br/>
  
     <div className="ajouteM">
-    <Link  to="/AddModérateur"><PlusCircleOutlined style={{fontSize:"30px"}} /></Link>
+   
     </div>
        <table className="table">
   <thead>
@@ -69,7 +67,7 @@ componentDidMount(){
     </tr>
   </thead>
   <tbody>
-  {this.ModerateursList()}
+  {this.InscritList()}
     
   </tbody>
 </table>

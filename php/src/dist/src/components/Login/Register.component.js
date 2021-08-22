@@ -34,17 +34,8 @@ function Register() {
 		  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		  };
 		
-<<<<<<< Updated upstream
 		  axios.post('http://localhost/BoussolePro-backend/regestre.php', user, config)
 		  .then(res => console.log("------------------------>data returned",res.data));
-=======
-		  axios.post('http://localhost:8080/BoussolePro-backend/regestre.php', user, config)
-		  .then(res =>{
-			console.log("------------------------>data returned",res.data);
-			history.push('/inscription');
-			window.location.reload(false)
-		  } );
->>>>>>> Stashed changes
 	
 	   
 	/*if(Email=='' || Password==''){
