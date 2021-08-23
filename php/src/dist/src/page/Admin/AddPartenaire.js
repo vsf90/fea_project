@@ -50,7 +50,7 @@ if(  Nom==='' || Img==='' || Activité==='' || Avantage==='' || Lien==='' ){
   } 
 }
     return (
-        <div> 
+        <div style={{minWidth:'800px'}}> 
         <div class="testboxM">
        <form  className="ajoutM">
        
@@ -58,7 +58,7 @@ if(  Nom==='' || Img==='' || Activité==='' || Avantage==='' || Lien==='' ){
        <Col span={24}>
            
            <Alert
-                 message="Bienveneu sur la page ajouter partenaire"
+                 message="Bienvenue sur la page ajouter partenaire"
                  description=" Pour ajouter un partenaire merci de remplir le formulaire suivant."
                 
                  type="info"
@@ -80,19 +80,19 @@ if(  Nom==='' || Img==='' || Activité==='' || Avantage==='' || Lien==='' ){
       
        <Form.Item >
        <label><b>Nom du partenaire (nom de la societé)</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" value={Nom} onChange={(e)=>setNom(e.target.value)} name="Ville" placeholder="Nom" required/>
+          <Input  className="input" type="text" value={Nom} onChange={(e)=>setNom(e.target.value)} name="Ville" placeholder="Nom" required/>
          </Form.Item>
          <Form.Item >
        <label><b>Activité</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" value={Activité} onChange={(e)=>setActivité(e.target.value)} name="Entreprise" placeholder="Activité" required/>
+          <Input  className="input" type="text" value={Activité} onChange={(e)=>setActivité(e.target.value)} name="Entreprise" placeholder="Activité" required/>
          </Form.Item>
          <Form.Item >
        <label><b>Lien du site du partenaire</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" value={Lien} onChange={(e)=>setLien(e.target.value)} name="Entreprise" placeholder="Lien" required/>
+          <Input  className="input" type="text" value={Lien} onChange={(e)=>setLien(e.target.value)} name="Entreprise" placeholder="Lien" required/>
          </Form.Item>
          <Form.Item >
        <label><b>Avantages pour nos abonnées</b><span class="required">*</span></label>
-          <input  className="inputB" type="text"  value={Avantage} onChange={(e)=>setAvantage(e.target.value)} name="Avantage" required/>
+          <Input  className="input" type="text"  value={Avantage} onChange={(e)=>setAvantage(e.target.value)} name="Avantage" required/>
          </Form.Item>
          
         

@@ -33,11 +33,11 @@ import RecordsListOffreEmploi from './RecordsListOffreEmploi.js';
       render() {
           //console.log(this.state.OffreStage);
           return (
-            <div className="container">
+            <div className="container" style={{minWidth:'900px'}}>
      
             <Alert
                message="Les Offres d'emploi"
-               description="Bienveneu sur Les Offres d'emploi."
+               description="Bienvenue sur Les Offres d'emploi."
                type="info"
                showIcon
                />
@@ -52,7 +52,7 @@ import RecordsListOffreEmploi from './RecordsListOffreEmploi.js';
                             </div>
                 </div>
                         <Link to="/AddOffreEmploi"><div className="card" >
-                          <b className="bOf">Ajouter une offre d'emploi</b>
+                          <b style={{textAlign:"center",fontSize:"18px",fontWeight:"normal",fontFamily:"ui-sans-serif"}}>Ajouter une offre d'emploi</b>
                         </div> </Link>
                         <br></br>
              

@@ -58,15 +58,14 @@ export default class Besoins extends Component {
       { title: "Quels sont vos besoins les plus urgents d'un point de vue professionnel ?", dataIndex: 'besoins', key: 'besoins', align:'center' },
       { title: 'Date de Votre prochain déplacement', dataIndex: 'dateDeplacement', key: 'dateDeplacement' , align:'center' },
       { title: "Autres demandes", dataIndex: 'autresDemandes', key: 'autresDemandes' , align:'center' },
-      { title: 'Date', dataIndex: 'date', key: 'date' , align:'center' },
 
       {
-        title: 'Action',
-        key: 'operation',
+        title: 'Date',
+        key: 'date',
+        dataIndex: 'date',
         fixed: 'right',
         width: 100,
         align:'center',
-        render: () => <a>Valider</a>,
       },
     ];
     

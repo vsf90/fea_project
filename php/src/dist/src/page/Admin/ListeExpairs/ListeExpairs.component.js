@@ -40,13 +40,13 @@ export default class ListeExpairs extends Component {
        
         return (
 <>
-            <Alert
-                message="Liste des expairs Boussole Pro"
-                description="Bienvenue sur Liste des Expairs Boussole Pro." 
+            <Alert style={{minWidth:'900px'}}
+                message="Liste des experts Boussole Pro"
+                description="Bienvenue sur Liste des Experts Boussole Pro." 
                 type="info"
                 showIcon
                 />
-            <h1>Liste des Expairs</h1>
+            <h1>Liste des Experts</h1>
             <br></br>
             <br></br>
             <br></br>

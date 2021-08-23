@@ -63,7 +63,7 @@ export default function AjouterRelais() {
     }
   }
     return (
-      <div>
+      <div style={{minWidth:'800px'}}>
 	
 	
        <div class="testboxM">
@@ -73,7 +73,7 @@ export default function AjouterRelais() {
       <Col span={24}>
           
           <Alert
-                message="Bienveneu sur la page Ajouter Relais ou Expert"
+                message="Bienvenue sur la page Ajouter Relais ou Expert"
                  description=" Pour ajouter un Relais ou un Expert merci de remplir le formulaire suivant."
                 type="info"
                 showIcon

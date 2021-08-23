@@ -117,7 +117,7 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu==''  ){
 
 <Form.Item >
    <label><b>Image</b></label> <br></br>
-<input type="file" className={Img != null  ? 'hidden' : ''} onChange={handleChange}/>
+<input type="file" className={Img} onChange={handleChange}/>
 </Form.Item >
 
  <Form.Item >

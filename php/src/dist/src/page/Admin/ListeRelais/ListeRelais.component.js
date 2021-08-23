@@ -40,8 +40,8 @@ export default class ListeRelais extends Component {
        
         return (
 
-            <>
-            <Alert
+            <div >
+            <Alert style={{minWidth:'900px'}}
             message="Liste des Relais Boussole Pro"
             description="Bienvenue sur Liste des Relais Boussole Pro." 
             type="info"
@@ -81,6 +81,6 @@ export default class ListeRelais extends Component {
            
              
             </Row>
-            </> 
+            </ div> 
         )}
 }

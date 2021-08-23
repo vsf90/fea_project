@@ -10,7 +10,7 @@ const { Meta } = Card;
 export default function ListExpairs() {
     return (
         
-        <div className="contenair">
+        <div className="contenair" >
         <Card className="carteRelais"
             style={{ width: 300 }}
             cover={

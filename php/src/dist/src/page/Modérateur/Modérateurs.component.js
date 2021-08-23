@@ -43,7 +43,7 @@ componentDidMount(){
     <Row>
    <Col span={24}>
     <Alert
-                message="Bienveneu sur page de la liste des Modérateurs Boussole Pro"
+                message="Bienvenue sur page de la liste des Modérateurs Boussole Pro"
                  
                 type="info"
                 showIcon
@@ -54,7 +54,7 @@ componentDidMount(){
     <div className="ajouteM">
     <b style={{padding: "5px",margin:"5px"}}>Ajouter Modérateur</b>
     <Link  to="/AddModérateur"><PlusCircleOutlined style={{fontSize:"30px"}} /></Link>
-    </div>
+    </div> 
     <hr></hr>
        <table className="table">
   <thead>

@@ -34,7 +34,7 @@ import RecordsListPublications from "./RecordsListPublications.component";
  
       render() {
           return (
-            <div className="containerBody">
+            <div className="containerBody" style={{minWidth:'1000px'}}>
             <div className="row">
            
                 <div className="col-lg-8"> 

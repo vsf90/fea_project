@@ -95,10 +95,8 @@ import { Alert} from 'antd';
                     </div>
                    
                     <div className="se mb-4">
-                        <div className="se-header">Side Widget</div>
-                        <div className="se-body">You can put anything you want 
-                        inside of these side widgets. They are easy to use, 
-                        and feature the Bootstrap 5 se component!</div>
+                        <div className="se-header">par Boussole PRO</div>
+                        <div className="se-body">Se diriger vers le sens spirituel, vers la bonne information, la bonne personne</div>
                     </div>
                    
                 </div>

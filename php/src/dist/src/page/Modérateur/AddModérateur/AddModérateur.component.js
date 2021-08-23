@@ -363,19 +363,19 @@ if(  Nom=='' || Prénom=='' || Pays=='' || Ville=='' || Entreprise=='' || Objet=
       </Form.Item>
       <Form.Item >
       <label><b>Ville</b><span class="required">*</span></label>
-         <input  className="inputB" type="text"  value={Ville} onChange={(e)=>setVille(e.target.value)} name="Ville" placeholder="Ville" required/>
+         <Input  className="input" type="text"  value={Ville} onChange={(e)=>setVille(e.target.value)} name="Ville" placeholder="Ville" required/>
         </Form.Item>
          <Form.Item >
        <label><b>Entreprise</b><span class="required">*</span></label>
-          <input  className="inputB" type="text"  value={Entreprise} onChange={(e)=>setEntreprise(e.target.value)} name="Entreprise" placeholder="Entreprise" required/>
+          <Input  className="input" type="text"  value={Entreprise} onChange={(e)=>setEntreprise(e.target.value)} name="Entreprise" placeholder="Entreprise" required/>
          </Form.Item>
          <Form.Item >
        <label><b>Objet de l'entreprise</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" value={Objet} onChange={(e)=>setObjet(e.target.value)} name="Objetentreprise" required/>
+          <Input  className="input" type="text" value={Objet} onChange={(e)=>setObjet(e.target.value)} name="Objetentreprise" required/>
          </Form.Item>
          <Form.Item >
        <label><b>Activité Professionnelle</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" value={Activité} onChange={(e)=>setActivité(e.target.value)} name="ActivitéPro" required/>
+          <Input  className="input" type="text" value={Activité} onChange={(e)=>setActivité(e.target.value)} name="ActivitéPro" required/>
          </Form.Item>
         <Form.Item name={['user', 'email']}  rules={[{ type: 'email' }]}>
       <label><b>Email</b><span class="required">*</span></label>

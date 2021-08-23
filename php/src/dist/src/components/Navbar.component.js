@@ -96,6 +96,8 @@ import axios from 'axios';
 import ListPublications from '../page/Admin/publications/ListPublications.component';
 import ListeRelais from '../page/Admin/ListeRelais/ListeRelais.component';
 import ListeExpairs from '../page/Admin/ListeExpairs/ListeExpairs.component';
+import CompteAbonnée from '../page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
+
 import CompteAbonnéeReseau from '../page/NosReseaux/CompteAbonnén/CompteAbonnéeReseau.component';
 import EditSprint from '../page/Admin/EditSprint/EditSprint.component';
 import EditShoura from '../page/Admin/EditShoura/EditShoura.component';
@@ -103,6 +105,7 @@ import EditRelais from '../page/Admin/EditRelais/EditRelais.component';
 import EditMeet from '../page/Admin/EditMeet/EditMeet.component';
 import EditBoost from '../page/Admin/EditBoost/EditBoost.component';
 import EditExpert from '../page/Admin/EditExpert/EditExpert.component';
+import ModifierProfile from '../page/ModifierProfile/ModifierProfile.component';
 
 
 
@@ -112,7 +115,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const menu = (
 
   <Menu>
-    <Menu.Item key="1" icon={<UserOutlined />}> <Link  to="/EditAdmin"></Link>Voir profile</Menu.Item>
+    <Menu.Item key="1" icon={<UserOutlined />}> <Link  to="/CompteAbonnée"></Link>Voir profile</Menu.Item>
 
     <Menu.Item key="2" icon={< EditOutlined/>}><Link  to="/ModifierProfile"></Link>Modifier profile</Menu.Item>
 
@@ -280,13 +283,17 @@ function Navbar(props) {
         <Route path="/Boostform" exact component={Boostform} /> 
         <Route path="/Relaisform" exact component={Relaisform} /> 
         <Route path="/Expertform" exact component={Expertform} /> 
-        <Route path="/CompteAbonnée/:id" exact component={CompteAbonnéeReseau} /> 
+        <Route path="/CompteAbonnée/" exact component={CompteAbonnée} /> 
+
+        <Route path="/CompteAbonnéeReseau/:id" exact component={CompteAbonnéeReseau} /> 
         <Route path="/EditCompte" exact component={EditCompte} /> 
         <Route path="/NosRelais" exact component={Nosrelais} /> 
         <Route path="/NosExperts" exact component={Nosexperts} /> 
         <Route path="/AddPublication" exact component={AddPublication} /> 
         <Route path="/EditAdmin" exact component={EditAdmin}/>
         <Route path="/AddPartenaire" exact component={AddPartenaire}/>
+        <Route path="/ModifierProfile" exact component={ModifierProfile}/>
+
 
 
 

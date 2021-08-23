@@ -89,15 +89,14 @@ export default class Feedbacks extends Component {
       { title: "14", dataIndex: 'feedbackEquipe', key: 'feedbackEquipe' , align:'center' },
 
 
-      { title: 'Date', dataIndex: 'date', key: 'date' , align:'left' },
 
       {
-        title: 'Action',
-        key: 'operation',
-        fixed: 'right',
-        width: 77,
+        title: 'Date',
+        width: 100,
+        dataIndex: 'date',
+        key: 'date',
         align:'center',
-        render: () => <a>Valider</a>,
+        fixed:'right'
       },
     ];
     
