@@ -7,10 +7,12 @@ $result=mysqli_query($con,$sql) or die(mysqli_error($con));;
 if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
+        $Publication[$cr]['ID']=$row['ID'];
         $Publication[$cr]['prenom']=$row['prenom'];
         $Publication[$cr]['nom']=$row['nom'];
         $Publication[$cr]['titre']=$row['titre'];
         $Publication[$cr]['image']=$row['image'];
+        $Publication[$cr]['type']=$row['type'];
         $Publication[$cr]['contenu']=$row['contenu'];
         $Publication[$cr]['date']=$row['date'];
         $cr++;

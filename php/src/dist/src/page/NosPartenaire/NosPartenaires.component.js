@@ -18,7 +18,7 @@ import React, { Component } from 'react'
       }
       
       componentDidMount(){
-        axios.get('http://localhost:8080/BoussolePro-backend/listPartenaire.php')
+        axios.get('http://localhost/BoussolePro-backend/listPartenaire.php')
         .then(response=>{
           this.setState({listPartenaire: response.data});
        })
@@ -36,7 +36,7 @@ import React, { Component } from 'react'
         }
       render() {
           return (
-            <div className="containerBody">
+            <div className="containerBody" style={{minWidth:"900px"}}>
             <div className="rowpartners" >
            
                 <div className="col-lg-10" style={{display:"block",margin:"auto",padding:"auto"}}> 

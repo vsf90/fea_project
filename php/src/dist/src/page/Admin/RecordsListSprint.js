@@ -14,7 +14,7 @@ export default class RecordsListSprint extends Component {
         return (
           
     
-     <tr>
+     <tr key={this.props.key}>
      
      <td >{this.props.obj.ID}</td>
      <td >{this.props.obj.initiateur}</td>
@@ -26,7 +26,8 @@ export default class RecordsListSprint extends Component {
      <td >{this.props.obj.raison}</td>
      <td >{this.props.obj.creneaux}</td>
      <td >{this.props.obj.date}</td>
-     <td > Valider <Link to={"/EditSprint/"+this.props.obj.ID}><EditFilled style={{fontSize:"20px"}}/></Link></td>
+     <td > Valider <Link to={"/EditSprint/"+this.props.obj.ID}>
+     <EditFilled style={{fontSize:"20px"}}/></Link></td>
 
   
  </tr>

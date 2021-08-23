@@ -64,18 +64,18 @@ export default class CompteAbonnée extends Component{
     render() {
        
     return (
-        <div className="clearfix">
+        <div className="clearfix" style={{minWidth:"1000px"}}>
       <Alert
                 message="Compte Boussole Pro"
-                description="Bienveneu sur votre compte de Boussole Pro."
+                description="Bienvenue sur votre compte de Boussole Pro."
                 type="info"
                 showIcon
                 />
                 <br></br>
-        <div>
+        <div style={{backgroundColor:"white",paddingTop:"10px"}} >
        
         <form method="post">
-            <div class="row">
+            <div class="row" >
                 <div class="col-md-4">
                     <div class="profile-img">
                         <img src={this.state.urlImage} />
@@ -118,7 +118,7 @@ export default class CompteAbonnée extends Component{
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>User Id</label>
+                                            <label>Rang</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>{this.state.Rang}</p>
@@ -126,7 +126,7 @@ export default class CompteAbonnée extends Component{
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Name</label>
+                                            <label>Membre de "Compagnon"</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>OUI</p>
@@ -134,7 +134,7 @@ export default class CompteAbonnée extends Component{
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Email</label>
+                                            <label>Un verset qui vous inspire</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>{this.state.verset}</p>
@@ -142,7 +142,7 @@ export default class CompteAbonnée extends Component{
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Phone</label>
+                                            <label>2 recommandations validées</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>OUI</p>
@@ -189,10 +189,9 @@ export default class CompteAbonnée extends Component{
                                         </div>
                                     </div>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Experience</label>
+                                            <label>Ville</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>{this.state.Ville}</p>
@@ -200,7 +199,7 @@ export default class CompteAbonnée extends Component{
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Hourly Rate</label>
+                                            <label>Mon expertise pour networker avec vous</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>{this.state.expertise}</p>
@@ -208,7 +207,7 @@ export default class CompteAbonnée extends Component{
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Total Projects</label>
+                                            <label>Les expertises que je souhaite développer avec vous</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>{this.state.expertiseSouhaitez}</p>
@@ -216,7 +215,7 @@ export default class CompteAbonnée extends Component{
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>English Level</label>
+                                            <label>Mes centres d'intérets professionnels</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>{this.state.centresInteret}</p>
@@ -224,22 +223,18 @@ export default class CompteAbonnée extends Component{
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Availability</label>
+                                            <label>Type d'abonnement</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>{this.state.abonnement}</p>
                                         </div>
                                     </div>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <label>Your Bio</label><br/>
-                                    <p>Your detail description</p>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </form>           
     </div>
        </div>

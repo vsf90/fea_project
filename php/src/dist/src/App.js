@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import './App.css';
+import "antd/dist/antd.css";
+import "@ant-design/icons"
 import Home from './components/home.component';
 import Login from './components/Login/Login.component';
-import "antd/dist/antd.css";
-import "@ant-design/icons";
+import { Component } from 'react';
 
 let  currentUser  ={};
 class App extends Component {
@@ -21,16 +22,24 @@ class App extends Component {
       localStorage.removeItem('loggedIn')
       this.setState({ loggedIn: false, user: null})
     }
-   render() {
-      const app = this.state.loggedIn?
-      <Home signout={() =>  this.DoIdsd()  }/> :  
-       <Login signIn={() => this.setState({ loggedIn: true })} />;
-      return (
-         <div>
-            {app}
-         </div>
-      );
-   }
+ 
+ 
+ 
+  render() {
+
+    console.log('this.state.loggedIn',this.state.loggedIn)
+    const app = this.state.loggedIn?
+    <Home signout={() =>  this.DoIdsd()  }/>: 
+    <Login signIn={() => this.setState({ loggedIn: true })} />;
+    
+    return (
+      <div className="back">
+     
+        {app}
+     
+      </div>
+    )
+  }
 }
 
 export default App;

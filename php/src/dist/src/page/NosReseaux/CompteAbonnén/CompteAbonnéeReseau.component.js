@@ -29,7 +29,7 @@ export default class CompteAbonnéeReseau extends Component{
     render() {
         console.log(this.state.user);
     return (
-        <div className="clearfix">
+        <div className="clearfix" style={{minWidth:"1000px"}}>
       <Alert
                 message="Profile Boussole Pro"
                 description="Bienvenue sur le profile d'un de nos abonnés Boussole Pro."
@@ -95,7 +95,7 @@ export default class CompteAbonnéeReseau extends Component{
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Unverset qui vous inspire</label>
+                                            <label>Un verset qui vous inspire</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>{this.state.user.verset}</p>

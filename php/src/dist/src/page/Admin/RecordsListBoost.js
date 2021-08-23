@@ -14,7 +14,7 @@ export default class RecordsListBoost extends Component {
         return (
           
     
-     <tr>
+     <tr key={this.props.key}>
      
      <td >{this.props.obj.ID}</td>
      <td >{this.props.obj.confirmationAbonne}</td>

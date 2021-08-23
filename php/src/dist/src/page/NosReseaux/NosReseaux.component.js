@@ -16,7 +16,7 @@ class NosReseaux extends Component {
   }
   
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listNotreReseau.php')
+    axios.get('http://localhost/BoussolePro-backend/listNotreReseau.php')
     .then(response=>{
       this.setState({listNotreReseau: response.data});
    })

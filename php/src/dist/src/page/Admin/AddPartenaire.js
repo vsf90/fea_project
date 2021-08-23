@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Form,Input,Alert, Button, Radio,Rate, Checkbox, Row, Col,message } from 'antd';
 import axios from 'axios';
 import { useState } from 'react';
-import NosPartenaires from '../NosPartenaires.component';
 function AddPartenaire() {
   const [Img, setImg] = useState("");
   const [Nom, setNom] = useState("");
@@ -34,13 +33,13 @@ function AddPartenaire() {
     console.log(Partenaire);
 
 
-if(  Nom=='' || Img=='' || Activité=='' || Avantage=='' || Lien=='' ){
+if(  Nom==='' || Img==='' || Activité==='' || Avantage==='' || Lien==='' ){
   
     message.error('Vous devez remplir les champs obligatoires');
   
   } else {
     message.success('Le Partenaire a été ajouté avec succès');
-    axios.post('http://localhost:8080/BoussolePro-backend/insertPartenaire.php',Partenaire).then(res=>console.log(res.data));
+    axios.post('http://localhost/BoussolePro-backend/insertPartenaire.php',Partenaire).then(res=>console.log(res.data));
 
  
      setNom('');
@@ -51,7 +50,7 @@ if(  Nom=='' || Img=='' || Activité=='' || Avantage=='' || Lien=='' ){
   } 
 }
     return (
-        <div> 
+        <div style={{minWidth:'800px'}}> 
         <div class="testboxM">
        <form  className="ajoutM">
        
@@ -59,7 +58,7 @@ if(  Nom=='' || Img=='' || Activité=='' || Avantage=='' || Lien=='' ){
        <Col span={24}>
            
            <Alert
-                 message="Bienveneu sur la page ajouter partenaire"
+                 message="Bienvenue sur la page ajouter partenaire"
                  description=" Pour ajouter un partenaire merci de remplir le formulaire suivant."
                 
                  type="info"
@@ -75,25 +74,25 @@ if(  Nom=='' || Img=='' || Activité=='' || Avantage=='' || Lien=='' ){
        
         <Form.Item >
         <label><b>Image</b></label><span class="required"> *</span> <br></br>
-        <input type="file" className={Img != null  ? 'hidden' : ''} onChange={handleChange}/>
+        <input type="file" className={Img} onChange={handleChange}/>
         </Form.Item >
         
       
        <Form.Item >
        <label><b>Nom du partenaire (nom de la societé)</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" value={Nom} onChange={(e)=>setNom(e.target.value)} name="Ville" placeholder="Nom" required/>
+          <Input  className="input" type="text" value={Nom} onChange={(e)=>setNom(e.target.value)} name="Ville" placeholder="Nom" required/>
          </Form.Item>
          <Form.Item >
        <label><b>Activité</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" value={Activité} onChange={(e)=>setActivité(e.target.value)} name="Entreprise" placeholder="Activité" required/>
+          <Input  className="input" type="text" value={Activité} onChange={(e)=>setActivité(e.target.value)} name="Entreprise" placeholder="Activité" required/>
          </Form.Item>
          <Form.Item >
        <label><b>Lien du site du partenaire</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" value={Lien} onChange={(e)=>setLien(e.target.value)} name="Entreprise" placeholder="Lien" required/>
+          <Input  className="input" type="text" value={Lien} onChange={(e)=>setLien(e.target.value)} name="Entreprise" placeholder="Lien" required/>
          </Form.Item>
          <Form.Item >
        <label><b>Avantages pour nos abonnées</b><span class="required">*</span></label>
-          <input  className="inputB" type="text"  value={Avantage} onChange={(e)=>setAvantage(e.target.value)} name="Avantage" required/>
+          <Input  className="input" type="text"  value={Avantage} onChange={(e)=>setAvantage(e.target.value)} name="Avantage" required/>
          </Form.Item>
          
         

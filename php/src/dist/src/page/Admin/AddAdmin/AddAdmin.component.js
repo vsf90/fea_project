@@ -43,7 +43,7 @@ function AddAdmin() {
     }
     console.log(Admin);
 
-if(  Nom=='' || Prénom=='' || Pays=='' || Ville=='' || Entreprise=='' || Objet=='' || Activité=='' || Email=='' || Password=='' || ConfirmPassword==''){
+if(  Nom==='' || Prénom==='' || Pays==='' || Ville==='' || Entreprise==='' || Objet==='' || Activité==='' || Email==='' || Password==='' || ConfirmPassword===''){
   
     message.error('Vous devez remplir les champs obligatoires');
   

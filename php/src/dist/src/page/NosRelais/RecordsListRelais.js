@@ -1,10 +1,6 @@
 
 import React, { Component } from 'react'
-import { Button,Alert,Row,Col  } from 'antd';
-import { EditFilled,DeleteFilled,PlusCircleOutlined} from '@ant-design/icons';
 import { Card, Avatar } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
 const { Meta } = Card;
 
 export default class RecordsListRelais extends Component {
@@ -22,11 +18,7 @@ export default class RecordsListRelais extends Component {
                 src={this.props.obj.image}
             />
             }
-            actions={[
-            <SettingOutlined key="setting" />,
-            <EditOutlined key="edit" />,
-            <EllipsisOutlined key="ellipsis" />,
-            ]}
+           
         >
             <Meta style={{paddingBottom: "60px"}}
             avatar={<Avatar src={this.props.obj.image} />}

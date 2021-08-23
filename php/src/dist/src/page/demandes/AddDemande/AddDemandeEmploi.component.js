@@ -63,7 +63,7 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu=='' /*|| Img==''*/ ){
   
   }else{
     message.success("La demande d'emploi a été publiée avec succès");
-    axios.post('http://localhost:8080/BoussolePro-backend/insertDemandeEmploi.php',DemandeEmploi).then(res=>console.log(res.data));
+    axios.post('http://localhost/BoussolePro-backend/insertDemandeEmploi.php',DemandeEmploi).then(res=>console.log(res.data));
 
     setNom('');
     setPrénom('');
@@ -117,7 +117,7 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu=='' /*|| Img==''*/ ){
 
 <Form.Item >
   <label><b>Image</b></label> <br></br>
-  <input type="file" className={Img != null  ? 'hidden' : ''} onChange={handleChange}/>
+  <input type="file" className={Img} onChange={handleChange}/>
   </Form.Item >
 
 

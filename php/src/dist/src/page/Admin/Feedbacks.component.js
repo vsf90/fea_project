@@ -89,22 +89,28 @@ export default class Feedbacks extends Component {
       { title: "14", dataIndex: 'feedbackEquipe', key: 'feedbackEquipe' , align:'center' },
 
 
-      { title: 'Date', dataIndex: 'date', key: 'date' , align:'left' },
 
       {
-        title: 'Action',
-        key: 'operation',
-        fixed: 'right',
-        width: 77,
+        title: 'Date',
+        width: 100,
+        dataIndex: 'date',
+        key: 'date',
         align:'center',
-        render: () => <a>Valider</a>,
+        fixed:'right'
       },
     ];
     
     console.log(this.FeedbacksList());
     return (
       <div className="DdSprintPro">
-      <h2>Les besoins pros immédiats</h2>
+          <Alert
+                 message="Les besoins pros immédiats"
+                 description=" "
+                
+                 type="info"
+                 showIcon
+                 />
+      
       
                           <div className="se-body">
                               <div className="input-group">

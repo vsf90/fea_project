@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { Button,Alert,Row,Col ,Avatar } from 'antd';
 import { EditFilled,DeleteFilled,PlusCircleOutlined} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-//import photo1 from "../../image/OffreStage/f8.jpg";
 
 export default class RecordsListDemandeStage extends Component {
     render() {

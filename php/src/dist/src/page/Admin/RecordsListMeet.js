@@ -14,7 +14,7 @@ export default class RecordsListMeet extends Component {
         return (
           
     
-     <tr>
+     <tr key={this.props.key}>
      
      <td >{this.props.obj.ID}</td>
      <td >{this.props.obj.prenom+" "+this.props.obj.nom}</td>

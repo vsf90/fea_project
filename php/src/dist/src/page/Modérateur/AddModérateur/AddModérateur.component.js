@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import Password from 'antd/lib/input/Password';
+import history from '../../../history';
 export default function AddModérateur() {
   const [Nom, setNom] = useState("");
   const [Prénom, setPrénom] = useState("");
@@ -63,6 +64,9 @@ if(  Nom=='' || Prénom=='' || Pays=='' || Ville=='' || Entreprise=='' || Objet=
      setEmail('');
      setPassword('');
      setConfirmPassword('');
+     
+     history.push("/Modérateur");
+     window.location.reload(false);
   } 
 }
     return (

@@ -44,6 +44,7 @@ import axios from 'axios';
                         Ville:response.data.ville,
                         Entreprise:response.data.entreprise,
                         Objet:response.data.objetEntreprise,
+                        Role:response.data.Role,
                         Activité:response.data.activiteProfessionnelle
                       
                       });
@@ -112,7 +113,7 @@ import axios from 'axios';
           email:this.state.Email
         };
         console.log(EditInscrit);       
-        if(  this.state.nom=='' || this.state.Prénom=='' || this.state.Pays=='' || this.state.Ville=='' || this.state.Entreprise=='' || this.state.Objet=='' || this.state.Activité==''|| this.state.Role=='' || this.state.Email=='' ){
+        if(  this.state.nom=='' || this.state.Prénom=='' || this.state.Pays=='' || this.state.Ville=='' || this.state.Entreprise=='' || this.state.Objet=='' || this.state.Activité==''||  this.state.Email=='' ){
   
           message.error('Vous devez remplir tous les champs obligatoires');
         

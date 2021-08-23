@@ -1,26 +1,25 @@
 
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Button,Table } from "antd";
+import { Button} from "antd";
+import Table from 'react-bootstrap/Table';
 import RecordsList from './RecordsList.js';
-
 import { CheckCircleTwoTone } from "@ant-design/icons";
 import { Alert } from "antd";
+import RecordsListRelais from './RecordsListRelais.js';
 
 
 export default class DdRelaisBP extends Component {
   data=[];
   constructor(props){
     super(props);
-    this.state={demandeRelais: []};
-    //console.log(this.state.demandeSprint);
+    this.state={listRelais: []};
   }
-  
 
   componentDidMount(){
     axios.get('http://localhost/BoussolePro-backend/listRelais.php')
     .then(response=>{
-      this.setState({demandeRelais: response.data});
+      this.setState({listRelais: response.data});
    })
    .catch(function (error){
      console.log(error);
@@ -28,59 +27,24 @@ export default class DdRelaisBP extends Component {
     }
     
     RelaisList(){
-      console.log(this.state.demandeRelais);
-       return this.state.demandeRelais.map(function(object,i){
-        return {
-            ID: object.ID,
-            initiateur: object.initiateur,
-            nomComplet: object.prenom+" "+object.nom,
-            avecQui: object.avecQui,
-           objet:object.objet,
-            creneaux:object.creneaux,
-            date:object.date
-          }
-       
-       });
+      console.log(this.state.listRelais);
+       return this.state.listRelais.map(function(object,i){
+        return <RecordsListRelais obj={object} key={i} />
+      });
     }
  
   render() {
-    console.log(this.RelaisList());
-    const columns = [
-      {
-        title: 'ID',
-        width: 100,
-        dataIndex: 'ID',
-        key: 'ID',
-        fixed: 'left',
-        align:'center'
-      },
-      {
-        title: 'Qui est-ce qui initie le Sprint Pro?',
-        width: 100,
-        dataIndex: 'initiateur',
-        key: 'initiateur',
-        fixed: 'left',
-      },
-      { title: 'Nom complet', dataIndex: 'nomComplet', key: 'nomComplet', align:'center' },
-      { title: 'Avec-qui souhaitez vous avoir le sprint PRO?', dataIndex: 'avecQui', key: 'avecQui' , align:'center' },
-      { title: "Objet de la demande", dataIndex: 'objet', key: 'objet' , align:'center' },
-      { title: 'Créneaux', dataIndex: 'creneaux', key: 'creneaux' , align:'center' },
-      { title: 'Date', dataIndex: 'date', key: 'date' , align:'center' },
 
-      {
-        title: 'Action',
-        key: 'operation',
-        fixed: 'right',
-        width: 100,
-        align:'center',
-        render: () => <a>Valider</a>,
-      },
-    ];
-    
-    console.log(this.RelaisList());
     return (
       <div className="DdSprintPro">
-      <h2>Les demandes de Relais BP</h2>
+          <Alert
+                 message="Les demandes de Relais BP"
+                 description=" "
+                
+                 type="info"
+                 showIcon
+                 />
+    
       
                           <div className="se-body">
                               <div className="input-group">
@@ -89,20 +53,23 @@ export default class DdRelaisBP extends Component {
                               </div>
                           </div>
 
-       {/*<table>
-         <thead>
-           <tr>
-             <th>ID</th>
-             <th>initiateur</th>
-
-           </tr>
-         </thead>
-         <tbody>
-           {this.SprintList()}
-         </tbody>
-       </table>*/}
-      
-       <Table columns={columns} dataSource={this.RelaisList()} scroll={{ x: 1300 }} />
+                          <Table responsive bordered>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th >Qui est-ce qui initie le Sprint Pro?</th>
+      <th >Nom complet</th>
+      <th >Avec-qui souhaitez vous avoir le sprint PRO?</th>
+      <th >Objet de la demande</th>
+      <th >Créneaux</th>
+      <th >Date</th>
+      <th >Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+   {this.RelaisList()}
+  </tbody>
+</Table>
 
         
       </div>

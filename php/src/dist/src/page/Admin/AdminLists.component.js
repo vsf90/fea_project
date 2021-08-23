@@ -35,7 +35,7 @@ componentDidMount(){
     return (
         <div className="Administrateur">
   <Alert
-                message="Bienveneu sur page de la liste des Administatuers Boussole Pro"
+                message="Bienvenue sur page de la liste des Administatuers Boussole Pro"
                  
                 type="info"
                 showIcon
@@ -45,8 +45,11 @@ componentDidMount(){
         <div>
         
             <div className="ajouteM">
+            <b style={{padding: "5px",margin:"5px"}}>Ajouter Admin</b>
+
     <Link  to="/AddAdmin"><PlusCircleOutlined style={{fontSize:"30px"}} /></Link>
     </div>
+    <hr></hr>
            <table className="table">
       <thead>
         <tr>

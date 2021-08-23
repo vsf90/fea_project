@@ -39,31 +39,31 @@ function FormAbonne() {
       axios.post('http://localhost/BoussolePro-backend/insertAbonnement.php',abonnement,config)
       .then(res=>console.log(res.data));
 
-      if( PrénomContact1==''){
+      if( PrénomContact1===''){
         setPrénomContact1Err("le champ est obligatoire !!")
       }
 
-      if( PrénomContact2==''){
+      if( PrénomContact2===''){
         setPrénomContact2Err("le champ est obligatoire !!")
       }
 
-      if( NomContact1==''){
+      if( NomContact1===''){
            setNomContact1Err("le champ est obligatoire !!")
       }
 
-      if( NomContact2==''){
+      if( NomContact2===''){
         setNomContact2Err("le champ est obligatoire !!")
       }
 
-      if( TeleContact1==''){
+      if( TeleContact1===''){
          setTeleContact1Err("le champ est obligatoire !!")
       }
 
-      if( TeleContact2==''){
+      if( TeleContact2===''){
         setTeleContact2Err("le champ est obligatoire !!")
       }
 
-  if( PrénomContact1==''||PrénomContact2==''|| NomContact1==''||NomContact2==''||TeleContact1==''||TeleContact2=='' ){
+  if( PrénomContact1===''||PrénomContact2===''|| NomContact1===''||NomContact2===''||TeleContact1===''||TeleContact2==='' ){
     message.error('Vous devez remplir les champs obligatoires');
     }
     

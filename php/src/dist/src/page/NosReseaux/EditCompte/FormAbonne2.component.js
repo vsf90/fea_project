@@ -47,7 +47,6 @@ function FormAbonne2() {
     console.log(chosesessentielles);
     const handleFormSubmit=(e)=>{
         e.preventDefault();
-
        
         const abonnement2={
         
@@ -70,8 +69,6 @@ function FormAbonne2() {
           Bénéfices1:Bénéfices1,
           Bénéfices2:Bénéfices2,
           Bénéfices3:Bénéfices3,
-
-
         }
         console.log(abonnement2);
        var config = {
@@ -80,37 +77,37 @@ function FormAbonne2() {
         axios.post('http://localhost/BoussolePro-backend/insertAbonnement2.php',abonnement2,config)
         .then(res=>console.log(res.data));
 
-          if(chosesessentielles==''){
+          if(chosesessentielles===''){
              setchosesessentiellesErr("Ce champ est obligatoire !!")
           }
-          if(CadreTravail==''){
+          if(CadreTravail===''){
            setCadreTravailErr("Ce champ est obligatoire !!")
          }
-         if(RéseauQualité1==''&&RéseauQualité2==''&&RéseauQualité3==''&&RéseauQualité3==''){
+         if(RéseauQualité1===''&&RéseauQualité2===''&&RéseauQualité3===''&&RéseauQualité3===''){
           setRéseauQualitéErr("Ce champ est obligatoire !!")
         }
-        if(InformationImportante1==''&&InformationImportante2==''&&InformationImportante3==''){
+        if(InformationImportante1===''&&InformationImportante2===''&&InformationImportante3===''){
           setInformationImportanteErr("Ce champ est obligatoire !!")
         }
-        if(FontConfiance1==''&&FontConfiance2==''&&FontConfiance3==''){
+        if(FontConfiance1===''&&FontConfiance2===''&&FontConfiance3===''){
             setFontConfianceErr("Ce champ est obligatoire !!")
         }
-        if(NouveauxClients1=='' &&NouveauxClients2=='' &&NouveauxClients3=='' ){
+        if(NouveauxClients1==='' &&NouveauxClients2==='' &&NouveauxClients3==='' ){
           setNouveauxClientsErr("Ce champ est obligatoire !!")
         }
-        if(AiderDévelopper==''){
+        if(AiderDévelopper===''){
           setAiderDévelopperErr("Ce champ est obligatoire !!")
         }
-        if(Bénéfices1=='' &&Bénéfices2=='' &&Bénéfices3=='' ){
+        if(Bénéfices1==='' &&Bénéfices2==='' &&Bénéfices3==='' ){
           
           setBénéficesErr("Ce champ est obligatoire !!")
         }
-    if(chosesessentielles==''|| CadreTravail==''||
-    (RéseauQualité1==''&&RéseauQualité2==''&&RéseauQualité3==''&&RéseauQualité3=='')|| 
-    (InformationImportante1==''&&InformationImportante2==''&&InformationImportante3=='')||
-    (FontConfiance1==''&&FontConfiance2==''&&FontConfiance3=='')||
-     (NouveauxClients1=='' &&NouveauxClients2=='' &&NouveauxClients3=='') || AiderDévelopper==''||
-       (Bénéfices1=='' &&Bénéfices2=='' &&Bénéfices3=='' )){
+    if(chosesessentielles===''|| CadreTravail===''||
+    (RéseauQualité1===''&&RéseauQualité2===''&&RéseauQualité3===''&&RéseauQualité3==='')|| 
+    (InformationImportante1===''&&InformationImportante2===''&&InformationImportante3==='')||
+    (FontConfiance1===''&&FontConfiance2==''&&FontConfiance3=='')||
+     (NouveauxClients1==='' &&NouveauxClients2==='' &&NouveauxClients3==='') || AiderDévelopper===''||
+       (Bénéfices1==='' &&Bénéfices2==='' &&Bénéfices3==='' )){
       
         message.error('Vous devez remplir les champs obligatoires');
      }

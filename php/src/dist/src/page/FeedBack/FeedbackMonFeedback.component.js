@@ -108,7 +108,7 @@ if(  Nom=='' || Prénom=='' || AvecQui=='' || Service=='' ||Organisation=='' || 
       <div>
       <Alert style={{marginLeft:"40px"}}
                   message="Mon Feedback sur les services BP"
-                  description="Bienveneu sur le Feedback sur les services BP"
+                  description="Bienvenue sur le Feedback sur les services BP"
                   type="info"
                   showIcon
                   />

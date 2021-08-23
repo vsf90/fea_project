@@ -13,7 +13,7 @@ import RecordsListOffreStage from './RecordsListOffreStage.js';
   }
   
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listOffreStage.php')
+    axios.get('http://localhost/BoussolePro-backend/listOffreStage.php')
     .then(response=>{
       this.setState({OffreStage: response.data});
    })
@@ -33,11 +33,11 @@ import RecordsListOffreStage from './RecordsListOffreStage.js';
       render() {
           //console.log(this.state.OffreStage);
           return (
-            <div className="container">
+            <div className="container" style={{minWidth:'900px'}}>
      
             <Alert
                message="Les Offres de stages"
-               description="Bienveneu sur Les Offres de Stages."
+               description="Bienvenue sur Les Offres de Stages."
                type="info"
                showIcon
                />
@@ -52,7 +52,7 @@ import RecordsListOffreStage from './RecordsListOffreStage.js';
                             </div>
                 </div>
                         <Link to="/AddOffreStage"><div className="card" >
-                          <b className="bOf">Ajouter une offre de stage</b>
+                          <b style={{textAlign:"center",fontSize:"18px",fontWeight:"normal",fontFamily:"ui-sans-serif"}}>Ajouter une offre de stage</b>
                         </div> </Link>
                         <br></br>
              

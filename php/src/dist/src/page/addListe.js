@@ -20,7 +20,7 @@ export default class addListe extends Component {
         };
     }
     componentDidMount(){
-        console.log("haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhh");
+       
     }
 
     handleChange = event => {

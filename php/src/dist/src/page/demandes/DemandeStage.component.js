@@ -13,7 +13,7 @@ import RecordsListDemandeStage from './RecordsListDemandeStage.js';
   }
   
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listDemandeStage.php')
+    axios.get('http://localhost/BoussolePro-backend/listDemandeStage.php')
     .then(response=>{
       this.setState({DemandeStageList: response.data});
    })
@@ -33,11 +33,11 @@ import RecordsListDemandeStage from './RecordsListDemandeStage.js';
       render() {
           //console.log(this.state.OffreStage);
           return (
-            <div className="container">
+            <div className="container" style={{minWidth:'900px'}}>
      
             <Alert
                message="Les Demandes de stages"
-               description="Bienveneu sur Les Demandes de Stages."
+               description="Bienvenue sur Les Demandes de Stages."
                type="info"
                showIcon
                />
@@ -52,7 +52,7 @@ import RecordsListDemandeStage from './RecordsListDemandeStage.js';
                             </div>
                 </div>
                         <Link to="/AddDemandeStage"><div className="card" >
-                          <b className="bOf">Ajouter une Demandes de stage</b>
+                          <b style={{textAlign:"center",fontSize:"18px",fontWeight:"normal",fontFamily:"ui-sans-serif"}}>Ajouter une Demandes de stage</b>
                         </div> </Link>
                         <br></br>
              

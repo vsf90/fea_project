@@ -13,7 +13,7 @@ import RecordsListDemandeEmploi from './RecordsListDemandeEmploi.js';
   }
   
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listDemandeEmploi.php')
+    axios.get('http://localhost/BoussolePro-backend/listDemandeEmploi.php')
     .then(response=>{
       this.setState({DemandeEmploi: response.data});
    })
@@ -33,11 +33,11 @@ import RecordsListDemandeEmploi from './RecordsListDemandeEmploi.js';
       render() {
           //console.log(this.state.OffreStage);
           return (
-            <div className="container">
+            <div className="container" style={{minWidth:'900px'}}>
      
             <Alert
                message="Les Demandes d'Emploi"
-               description="Bienveneu sur Les Demandes d'Emploi."
+               description="Bienvenue sur Les Demandes d'Emploi."
                type="info"
                showIcon
                />
@@ -52,7 +52,7 @@ import RecordsListDemandeEmploi from './RecordsListDemandeEmploi.js';
                             </div>
                 </div>
                         <Link to="/AddDemandeEmploi"><div className="card" >
-                          <b className="bOf">Ajouter une Demandes  d'Emploi</b>
+                          <b style={{textAlign:"center",fontSize:"18px",fontWeight:"normal",fontFamily:"ui-sans-serif"}}>Ajouter une Demandes  d'Emploi</b>
                         </div> </Link>
                         <br></br>
              
