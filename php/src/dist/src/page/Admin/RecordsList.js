@@ -17,7 +17,7 @@ export default class RecordsList extends Component {
         }
     }
     delete(){
-        axios.get('http://localhost/BoussolePro-backend/deleteModerateur.php/?id='+this.props.obj.ID)
+        axios.get('http://localhost:8080/BoussolePro-backend/deleteModerateur.php/?id='+this.props.obj.ID)
   .then(console.log('deleted'))
  .catch(err=>console.log(err))
     }
@@ -40,7 +40,10 @@ export default class RecordsList extends Component {
       <td>{this.props.obj.entreprise}</td>
       <td>{this.props.obj.objetEntreprise}</td>
       <td>{this.props.obj.activiteProfessionnelle}</td>
-      <td><Link to={"/EditModérateur/"+this.props.obj.ID} ><EditFilled style={{fontSize:"20px"}}/></Link> <button id="delete" onClick={this.delete}  style={{backgroundColor:"transparent",color:"#0d6efd",padding:"2px"}} ><DeleteFilled style={{fontSize:"20px"}}/></button> </td>
+      <td><Link to={"/EditModérateur/"+this.props.obj.ID} >
+      <EditFilled style={{fontSize:"20px"}}/></Link> <button id="delete" onClick={this.delete} 
+       style={{backgroundColor:"transparent",color:"#0d6efd",padding:"2px"}} >
+       <DeleteFilled style={{fontSize:"20px"}}/></button> </td>
       {/*{"/EditModérateur/"+this.props.obj.ID}*/}
      
    

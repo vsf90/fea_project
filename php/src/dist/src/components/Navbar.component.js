@@ -2,7 +2,8 @@ import { Button, Layout, Menu } from 'antd';
 import { Dropdown, message } from 'antd';
 import { DownOutlined, FundOutlined, PullRequestOutlined } from '@ant-design/icons';
 import { Image } from 'antd';
-import logo from '../img/logo.PNG'
+import logo from '../img/logo.PNG';
+import './Navbar.component.css';
 import {
   HomeOutlined,
   BookOutlined,
@@ -26,16 +27,13 @@ import {
   GiftOutlined,
   CarryOutOutlined,
   ProfileOutlined,
-
   CaretDownFilled,
-
   WechatOutlined,
   FileTextOutlined
  
 } from '@ant-design/icons';
 
 import SubMenu from 'antd/lib/menu/SubMenu';
-import Body from '../page/Acueil/Body.component';
 import { Link, NavLink, Route, Switch } from 'react-router-dom';
 import Avatar from 'antd/lib/avatar/avatar';
 import Acueil from '../page/Acueil/Acueil.component';
@@ -56,20 +54,10 @@ import Expertform from '../page/ExpertBP/ExpertBP/Expertform';
 import Nosrelais from '../page/NosRelais/Nosrelais';
 import Nosexperts from '../page/NosExperts/Nosexperts';
 import ReactDOM from 'react-dom'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons'
+
 import NosPartenaires from '../page/NosPartenaire/NosPartenaires.component';
-<<<<<<< Updated upstream
-import CompteAbonnée from '../page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
 import FeedbackMesBesions from '../page/FeedBack/FeedbackMesBesions.component';
 import FeedbackMonFeedback from '../page/FeedBack/FeedbackMonFeedback.component';
-import TicketBoussole from '../page/FeedBack/TicketBoussole.component';
-=======
-// import CompteAbonnée from '../page/NosReseaux/CompteAbonnén/EditAdmin.component';
-import FeedbackMesBesions from '../page/FeedbackMesBesions.component';
-import FeedbackMonFeedback from '../page/FeedbackMonFeedback.component';
-import TicketBoussole from '../page/TicketBoussole.component';
->>>>>>> Stashed changes
 import DdSprintPro from '../page/Admin/DdSprintPro.component';
 import OfferStage from '../page/offers/OfferStage.component';
 import OfferEmploi from '../page/offers/OfferEmploi.component';
@@ -81,7 +69,6 @@ import DemandeStage from '../page/demandes/DemandeStage.component';
 import DemandeEmploi from '../page/demandes/DemandeEmploi.component';
 import DdShouraPro from '../page/Admin/DbShouraPro.component';
 import DdMeetUpPro from '../page/Admin/DdMeetUpPro.component';
-import DdRelaisPro from '../page/Admin/DdRelaisBP.component';
 import DdBoostPro from '../page/Admin/DbBoostPro.component';
 import Modérateurs from '../page/Modérateur/Modérateurs.component';
 import AddModérateur from '../page/Modérateur/AddModérateur/AddModérateur.component';
@@ -103,8 +90,19 @@ import AjouterRelaisOuExpert from '../page/AjouterRelais/AjouterRelais'
 
 import BesionsPro from '../page/Admin/Besions.component';
 import EditCompte from '../page/NosReseaux/EditCompte/EditCompte.component';
-import ModifierProfile from '../page/ModifierProfile/ModifierProfile.component';
+import AddPartenaire from '../page/Admin/AddPartenaire';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import ListPublications from '../page/Admin/publications/ListPublications.component';
+import ListeRelais from '../page/Admin/ListeRelais/ListeRelais.component';
+import ListeExpairs from '../page/Admin/ListeExpairs/ListeExpairs.component';
 import CompteAbonnéeReseau from '../page/NosReseaux/CompteAbonnén/CompteAbonnéeReseau.component';
+import EditSprint from '../page/Admin/EditSprint/EditSprint.component';
+import EditShoura from '../page/Admin/EditShoura/EditShoura.component';
+import EditRelais from '../page/Admin/EditRelais/EditRelais.component';
+import EditMeet from '../page/Admin/EditMeet/EditMeet.component';
+import EditBoost from '../page/Admin/EditBoost/EditBoost.component';
+import EditExpert from '../page/Admin/EditExpert/EditExpert.component';
 
 
 
@@ -124,8 +122,24 @@ const menu = (
 
 function Navbar(props) {
 
-  // console.log('---------------------> id',localStorage.getItem('user'))
+  const [role, SetRole] = useState("")
 
+   console.log('---------------------> id',localStorage.getItem('ID'));
+
+   useEffect(() => {
+    console.log(localStorage.getItem('ID'));
+    axios.get('http://localhost:8080/BoussolePro-backend/getUserById.php?id='+localStorage.getItem('ID'))
+    .then(response=>{
+      console.log("reponse of request ===>",response.data);
+      SetRole(response.data.role);
+      console.log("--------------------->role",role);
+
+   })
+   .catch(function (error){
+     console.log(error);
+    })
+  });
+   
   
   return (
     <div className="Navbar">
@@ -134,9 +148,10 @@ function Navbar(props) {
   
 
     <Sider
+    className="logo"
       style={{
         overflow: 'auto',
-        height: '550vh',
+        height: '100vh',
         // position: 'fixed',
         width: '250px',
         left: 0,
@@ -148,78 +163,76 @@ function Navbar(props) {
 
 
       <Menu  theme="light" mode="inline" defaultSelectedKeys={['4']}>
-      <div className="logo" style={{height: "60px", background: "rgba(255, 255, 255, 0.4)"}} >
-      <img src={logo} style={{height:"60px",backgroundPositionY:"center"}} />
+      <div className="logo" style={{height: "42px", background: "rgba(255, 255, 255, 0.4)"}} >
+      <img src={logo} style={{height:"42px",backgroundPositionY:"center"}} />
       </div>
 
-        <Menu.Item key="1" icon={< HomeOutlined />}><Link  to="/Acueil"></Link>Accueil  </Menu.Item>
-        <Menu.Item key="2" icon={<GlobalOutlined />}> <Link  to="/NosReseaux"></Link>  Notre Resaux  </Menu.Item>
+        <Menu.Item key="1" className={role === "Inscrit" ? 'hidden' : ''} icon={< HomeOutlined />}><Link  to="/Acueil"></Link>Accueil  </Menu.Item>
+        <Menu.Item key="2" className={role === "Inscrit" ? 'hidden' : ''} icon={<GlobalOutlined />}> <Link  to="/NosReseaux"></Link>  Notre Resaux  </Menu.Item>
         
         
-            <SubMenu key="sub1" icon={<GiftOutlined />}  title="Nos Services" ><Link  to="/Services"></Link>
-                  <Menu.Item key="3"><Link  to="/SprintPro"></Link>Sprint Pro</Menu.Item>
-                  <Menu.Item key="4"><Link  to="/MeetUpPro"></Link>Meet'Up Pro</Menu.Item>
-                  <Menu.Item key="5"><Link  to="/ShouraPro"></Link>Shoura Pro</Menu.Item>
-                  <Menu.Item key="6"><Link  to="/BoostPro"></Link>Boost Pro </Menu.Item>
+            <SubMenu key="sub1" className={role === "Inscrit" ? 'hidden' : ''} icon={<GiftOutlined />}  title="Nos Services" ><Link  to="/Services"
+           ></Link>
+                  <Menu.Item key="3"  className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/SprintPro"></Link>Sprint Pro</Menu.Item>
+                  <Menu.Item key="4" className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/MeetUpPro"></Link>Meet'Up Pro</Menu.Item>
+                  <Menu.Item key="5" className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/ShouraPro"></Link>Shoura Pro</Menu.Item>
+                  <Menu.Item key="6" className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/BoostPro"></Link>Boost Pro </Menu.Item>
                          
-        <SubMenu key="sub2" icon={<TagOutlined />} title="Relais BP"> <Link  to="/Relais"></Link> 
-                <Menu.Item key="7" icon={<TeamOutlined />}><Link  to="/NosRelais" ></Link>Nos Relais</Menu.Item>
+        <SubMenu key="sub2" className={role === "Inscrit" ? 'hidden' : ''} icon={<TagOutlined />} title="Relais BP"> <Link  to="/Relais"></Link> 
+                <Menu.Item key="7"  className={role === "Inscrit" ? 'hidden' : ''} icon={<TeamOutlined />}><Link  to="/NosRelais" ></Link>Nos Relais</Menu.Item>
         </SubMenu>
       
          
-             <SubMenu key="sub3" icon={<TagOutlined />} title="Expert BP"><Link  to="/Expert"> </Link>
-                 <Menu.Item key="8" icon={<TeamOutlined />}><Link  to="/NosExperts" ></Link>Nos Experts</Menu.Item>
+             <SubMenu key="sub3" className={role === "Inscrit" ? 'hidden' : ''} icon={<TagOutlined />} title="Expert BP"><Link  to="/Expert"> </Link>
+                 <Menu.Item key="8" className={role === "Inscrit" ? 'hidden' : ''} icon={<TeamOutlined />}><Link  to="/NosExperts" ></Link>Nos Experts</Menu.Item>
           </SubMenu>
        </SubMenu>
 
-        <Menu.Item key="9" icon={<BarChartOutlined />}>
+        <Menu.Item key="9" className={role === "Inscrit" ? 'hidden' : ''} icon={<BarChartOutlined />}>
 
           <Link  to="/NosPartenaires"></Link  >Nos Partenaires
         </Menu.Item>
-
-       
-
-       
-        
-            <SubMenu key="sub4" icon={<WechatOutlined /> } title="Feedback">
-              <Menu.Item key="10" icon={<WechatOutlined /> }> <Link  to="/MesBesoins"></Link>Mes besions Pro immédiate</Menu.Item>
-              <Menu.Item key="11" icon={<WechatOutlined /> }><Link  to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
-              <Menu.Item key="12" icon={<BookOutlined />}><Link  to="/TicketBoussole"></Link>Un ticket Boussole Pro</Menu.Item>
+            <SubMenu key="sub4" className={role === "Inscrit" ? 'hidden' : ''} icon={<WechatOutlined /> } title="Feedback">
+              <Menu.Item key="10" className={role === "Inscrit" ? 'hidden' : ''} icon={<WechatOutlined /> }> <Link  to="/MesBesoins"></Link>Mes besions Pro immédiate</Menu.Item>
+              <Menu.Item key="11" className={role === "Inscrit" ? 'hidden' : ''} icon={<WechatOutlined /> }><Link  to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
             </SubMenu>
 
 
 
-            <SubMenu key="sub5" icon={<UserOutlined />} title="Admin">
-              <Menu.Item key="13" icon={<FileDoneOutlined />}><Link  to="/DdSprintPro"></Link>Demandes Sprint Pro</Menu.Item>
-              <Menu.Item key="14" icon={<FileDoneOutlined />} ><Link  to="/DdMeetUpPro"></Link>Demandes Meet'Up Pro</Menu.Item>
-              <Menu.Item key="15" icon={<FileDoneOutlined />}><Link  to="/DdShouraPro"></Link>Demandes Shoura Pro</Menu.Item>
-              <Menu.Item key="16" icon={<FileDoneOutlined />}><Link  to="/DdBoostPro"></Link>Demandes Boost Pro</Menu.Item>
-              <Menu.Item key="17" icon={<FileDoneOutlined />}><Link  to="/DdRelaisBP"></Link>Demandes Relais BP</Menu.Item>
-              <Menu.Item key="18" icon={<FileDoneOutlined />}><Link  to="/DdExpertBP"></Link>Demandes Expert BP</Menu.Item>
-              
-
-              <Menu.Item key="29" icon={<ScheduleOutlined />}><Link  to="/feedbacks"></Link>Listes des feedbacks</Menu.Item>
-              <Menu.Item key="20" icon={<ProfileOutlined />}><Link  to="/besoins"></Link>Les besoins Pro</Menu.Item>
-              <Menu.Item key="21" icon={<ProfileOutlined />}><Link  to="/AjouterRelaisExpert"></Link>Ajouter Relais/Expert</Menu.Item>
+            <SubMenu key="sub5" className={role === "Inscrit" ? 'hidden' : ''} icon={<UserOutlined />} title="Admin">
+              <Menu.Item key="13" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdSprintPro"></Link>Demandes Sprint Pro</Menu.Item>
+              <Menu.Item key="14" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileDoneOutlined />} ><Link  to="/DdMeetUpPro"></Link>Demandes Meet'Up Pro</Menu.Item>
+              <Menu.Item key="15" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdShouraPro"></Link>Demandes Shoura Pro</Menu.Item>
+              <Menu.Item key="16" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdBoostPro"></Link>Demandes Boost Pro</Menu.Item>
+              <Menu.Item key="17" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdRelaisBP"></Link>Demandes Relais BP</Menu.Item>
+              <Menu.Item key="18" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdExpertBP"></Link>Demandes Expert BP</Menu.Item>
+              <Menu.Item key="29" className={role === "Inscrit" ? 'hidden' : ''} icon={<ScheduleOutlined />}><Link  to="/feedbacks"></Link>Listes des feedbacks</Menu.Item>
+              <Menu.Item key="20" className={role === "Inscrit" ? 'hidden' : ''} icon={<ProfileOutlined />}><Link  to="/besoins"></Link>Les besoins Pro</Menu.Item>
+              <Menu.Item key="21" className={role === "Inscrit" ? 'hidden' : ''} icon={<ProfileOutlined />}><Link  to="/AjouterRelaisExpert"></Link>Ajouter Relais/Expert</Menu.Item>
+              <Menu.Item key="22" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} ><Link  to="/AddPartenaire"></Link>Ajouter un partenaire</Menu.Item>
 
             </SubMenu>
 
 
-              <SubMenu key="sub6" icon={< SettingFilled />} title="Parametres">
-               <Menu.Item key="22"  icon={<ProfileOutlined />}><Link  to="/Modérateur"></Link>Liste des Modérateurs</Menu.Item>
-                <Menu.Item key="23"  icon={<ProfileOutlined />} ><Link  to="/AdminList"></Link>Liste des admins</Menu.Item>
+              <SubMenu key="sub6" className={role === "Inscrit" ? 'hidden' : ''} icon={< SettingFilled />} title="Parametres">
+               <Menu.Item key="23" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />}><Link  to="/Modérateur"></Link>Liste des Modérateurs</Menu.Item>
+                <Menu.Item key="24" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/AdminList"></Link>Liste des admins</Menu.Item>
+                <Menu.Item key="25" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListPublications"></Link>Liste des publication</Menu.Item>
+                <Menu.Item key="26" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListeExpairs"></Link>Liste des Expaire</Menu.Item>
+                <Menu.Item key="27" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListeRelais"></Link>Liste des Relais</Menu.Item>
+
+
               </SubMenu>
              
-            <SubMenu key="sub7" icon={<FundOutlined />} title="les offres">
-              <Menu.Item key="24" icon={<PullRequestOutlined />}><Link  to="/OffreStage"></Link>Offres de stage</Menu.Item>
-              <Menu.Item key="25" icon={<PullRequestOutlined />} ><Link  to="/OffreEmploi"></Link>Offres d'emploi</Menu.Item>
-           
+            <SubMenu key="sub7" className={role === "Inscrit" ? 'hidden' : ''} icon={<FundOutlined />} title="les offres">
+              <Menu.Item key="28" className={role === "Inscrit" ? 'hidden' : ''} icon={<PullRequestOutlined />}><Link  to="/OffreStage"></Link>Offres de stage</Menu.Item>
+              <Menu.Item key="29" className={role === "Inscrit" ? 'hidden' : ''} icon={<PullRequestOutlined />} ><Link  to="/OffreEmploi"></Link>Offres d'emploi</Menu.Item>
             </SubMenu>
 
-            <SubMenu key="sub8" icon={<FileTextOutlined />} title="les demandes">
+            <SubMenu key="sub8" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} title="les demandes">
 
-              <Menu.Item key="26" icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
-              <Menu.Item key="27" icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
+              <Menu.Item key="30" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
+              <Menu.Item key="31" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
 
              
 
@@ -235,7 +248,7 @@ function Navbar(props) {
    <LogoutOutlined/> <span style={{color:"#30a8ff"}}>Déconnexion</span>
   </Button>
       <Dropdown overlay={menu}  >
-    <a className="ant-dropdown-link" onClick={e => e.preventDefault()}
+    <a className="ant-dropdown-link" 
      style={{color:"#fff",float: "right",marginRight:"10px"}}>
       <Avatar icon={<UserOutlined style={{marginBottom:"20px"}} />} 
       style={{marginLeft:"3px"}} /> <CaretDownFilled />
@@ -244,7 +257,7 @@ function Navbar(props) {
  
       </Header>
 
-      <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+      <Content >
         
 
         <Switch>
@@ -260,7 +273,6 @@ function Navbar(props) {
         <Route path="/ShouraPro" exact component={ShouraPro} />  
         <Route path="/MesBesoins" exact component={FeedbackMesBesions} /> 
         <Route path="/MonFeedback" exact component={FeedbackMonFeedback} /> 
-        <Route path="/TicketBoussole" exact component={TicketBoussole} /> 
         <Route path="/SprintPro" exact component={SprintPro} />
         <Route path="/Sprintform" exact component={Sprintform} /> 
         <Route path="/Meetform" exact component={Meetform} /> 
@@ -268,25 +280,13 @@ function Navbar(props) {
         <Route path="/Boostform" exact component={Boostform} /> 
         <Route path="/Relaisform" exact component={Relaisform} /> 
         <Route path="/Expertform" exact component={Expertform} /> 
-<<<<<<< Updated upstream
-        <Route path="/CompteAbonnée/:id" exact component={CompteAbonnée} /> 
-        <Route path="/CompteAbonnée" exact component={CompteAbonnée} /> 
-=======
-        {/* <Route path="/CompteAbonnée/:id" exact component={CompteAbonnée} />  */}
->>>>>>> Stashed changes
+        <Route path="/CompteAbonnée/:id" exact component={CompteAbonnéeReseau} /> 
         <Route path="/EditCompte" exact component={EditCompte} /> 
         <Route path="/NosRelais" exact component={Nosrelais} /> 
         <Route path="/NosExperts" exact component={Nosexperts} /> 
         <Route path="/AddPublication" exact component={AddPublication} /> 
-<<<<<<< Updated upstream
-        <Route path="/ModifierProfile" exact component={ModifierProfile} /> 
-        <Route path="/CompteAbonnéeReseau/:id" exact component={CompteAbonnéeReseau} /> 
-
-
-=======
         <Route path="/EditAdmin" exact component={EditAdmin}/>
->>>>>>> Stashed changes
-
+        <Route path="/AddPartenaire" exact component={AddPartenaire}/>
 
 
 
@@ -296,8 +296,10 @@ function Navbar(props) {
         <Route path="/DdMeetUpPro" exact component={DdMeetUpPro} />
         <Route path="/DdBoostPro" exact component={DdBoostPro} />
         <Route path="/DdRelaisBP" exact component={DdRelaisBP} />
-
         <Route path="/DdExpertBP" exact component={DdExpertBP} />
+        <Route path="/ListPublications" exact component={ListPublications} />
+        <Route path="/ListeRelais" exact component={ListeRelais} />
+        <Route path="/ListeExpairs" exact component={ListeExpairs} />
 
 
         <Route path="/AjouterRelaisExpert" exact component={AjouterRelaisOuExpert} />
@@ -330,6 +332,18 @@ function Navbar(props) {
       <Route path="/AdminList" exact component={AdminList} /> 
       <Route path="/AddAdmin" exact component={AddAdmin} /> 
       <Route path="/EditAdmin/:id"  component={EditAdmin} /> 
+
+
+
+      {/* edit services */}
+      <Route path="/EditSprint/:id"  component={EditSprint} /> 
+      <Route path="/EditShoura/:id"  component={EditShoura} /> 
+      <Route path="/EditRelais/:id"  component={EditRelais} /> 
+      <Route path="/EditMeet/:id"  component={EditMeet} />
+      <Route path="/EditBoost/:id"  component={EditBoost} /> 
+      <Route path="/EditExpert/:id"  component={EditExpert} />  
+
+
         </Switch>
          
     

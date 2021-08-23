@@ -57,13 +57,14 @@ function AddPublication() {
     }
     console.log(publication);
 
-if(Nom=='' || Prénom=='' || Titre==''  || Contenu=='' /*|| Img==''*/ ){
+if(Nom=='' || Prénom=='' || Titre==''  || Contenu==''){
   
     message.error('Vous devez remplir les champs obligatoires');
   
   }else{
     message.success("La publication a été publiée avec succès");
-    axios.post('http://localhost/BoussolePro-backend/insertPublication.php',publication).then(res=>console.log(res.data));
+    axios.post('http://localhost:8080/BoussolePro-backend/insertPublication.php',publication)
+    .then(res=>console.log(res.data));
 
     setNom('');
     setPrénom('');
@@ -115,10 +116,10 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu=='' /*|| Img==''*/ ){
 <Input.TextArea value={Contenu} onChange={(e)=>setContenu(e.target.value)}  placeholder="Contenu" required />
 </Form.Item>
 
-<Form.Item >
+<Form.Item>
   <label><b>Image</b></label> <br></br>
-  <input type="file" className={Img != null  ? 'hidden' : ''} onChange={handleChange}/>
-  </Form.Item >
+  <input type="file"  onChange={handleChange}/>
+</Form.Item>
 
 
  <Form.Item >

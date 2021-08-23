@@ -13,7 +13,7 @@ export default class Besoins extends Component {
   }
   
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listBesoins.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listBesoins.php')
     .then(response=>{
       this.setState({listBesoins: response.data});
    })

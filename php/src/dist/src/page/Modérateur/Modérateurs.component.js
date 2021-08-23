@@ -19,6 +19,7 @@ export default class Modérateurs extends Component {
 componentDidMount(){
   axios.get('http://localhost:8080/BoussolePro-backend/listModérateur.php')
   .then(response=>{
+    console.log("*-*-*-*->",response);
     this.setState({listModerateur: response.data});
  })
  .catch(function (error){
@@ -51,8 +52,10 @@ componentDidMount(){
                  <br/>
  
     <div className="ajouteM">
+    <b style={{padding: "5px",margin:"5px"}}>Ajouter Modérateur</b>
     <Link  to="/AddModérateur"><PlusCircleOutlined style={{fontSize:"30px"}} /></Link>
     </div>
+    <hr></hr>
        <table className="table">
   <thead>
     <tr>

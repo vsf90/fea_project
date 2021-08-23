@@ -18,7 +18,7 @@ export default class Feedbacks extends Component {
   
 
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listFeedback.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listFeedback.php')
     .then(response=>{
       this.setState({listFeedback: response.data});
    })

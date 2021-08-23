@@ -37,7 +37,7 @@ import axios from 'axios';
       }
       componentDidMount(){
         console.log(this.props.match.params.id);
-        axios.get('http://localhost/BoussolePro-backend/getSprintById.php?id='+this.props.match.params.id)
+        axios.get('http://localhost:8080/BoussolePro-backend/getSprintById.php?id='+this.props.match.params.id)
         .then(response=>{
           this.setState({
                         Initiateur:response.data.initiateur,
@@ -115,13 +115,13 @@ import axios from 'axios';
           creneaux:this.state.creneaux
         };
         console.log(EditSprint);       
-        if(  this.state.Initiateur==''|| this.state.nom=='' || this.state.Prénom=='' || this.state.AvecQui=='' || this.state.raison=='' || this.state.creneaux=='' ){
+        if(  this.state.Initiateur===''|| this.state.nom==='' || this.state.Prénom==='' || this.state.AvecQui==='' || this.state.raison==='' || this.state.creneaux==='' ){
   
           message.error('Vous devez remplir tous les champs obligatoires');
         
         } else {
           message.success('Les informations ont été modifiées avec succès');
-        axios.post('http://localhost/BoussolePro-backend/updateSprint.php?id='+this.props.match.params.id,EditSprint).then(res=>console.log(res.data));
+        axios.post('http://localhost:8080/BoussolePro-backend/updateSprint.php?id='+this.props.match.params.id,EditSprint).then(res=>console.log(res.data));
 
         }
 
@@ -163,7 +163,7 @@ import axios from 'axios';
         </Radio.Group>
           </div>
         </div>
-        </Form.Item  >
+        </Form.Item>
         
          <Form.Item  >
          <div class="item">
@@ -202,21 +202,17 @@ import axios from 'axios';
        
          <Form.Item >
          <label><b>Dans le cas d’une personne extérieure merci d’indiquer son prénom et son numéro de téléphone</b></label>
-            <input  className="inputB" type="text" name="Ville" value={this.state.prenomExterieure} onChange={this.onChangePrenomExterieure}  required/>
+            <Input  className="input" type="text" name="Ville" value={this.state.prenomExterieure} onChange={this.onChangePrenomExterieure}  required/>
            </Form.Item>
            <Form.Item >
           <label><b>Pourquoi souhaitez-vous ce sprint Pro?</b><span class="required">*</span></label>
-             <input  className="inputB" type="text" name="Entreprise"  value={this.state.raison} onChange={this.onChangeRaison}   required/>
+             <Input  className="input" type="text" name="Entreprise"  value={this.state.raison} onChange={this.onChangeRaison}   required/>
             </Form.Item>
             <Form.Item >
           <label><b>Quelles sont vos préférences pour les créneaux de 15min ? (Plusieurs choix)</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" name="Ville" value={this.state.creneaux} onChange={this.onChangeCreneaux}  required/>
+          <Input  className="input" type="text" name="Ville" value={this.state.creneaux} onChange={this.onChangeCreneaux}  required/>
 
          </Form.Item>
-            
-           
-   
-         
            
          <Form.Item > 
          <div class="btn-block col">

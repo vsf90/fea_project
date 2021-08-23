@@ -47,7 +47,6 @@ function FormAbonne2() {
     console.log(chosesessentielles);
     const handleFormSubmit=(e)=>{
         e.preventDefault();
-<<<<<<< Updated upstream
        
         const abonnement2={
         
@@ -70,22 +69,6 @@ function FormAbonne2() {
           Bénéfices1:Bénéfices1,
           Bénéfices2:Bénéfices2,
           Bénéfices3:Bénéfices3,
-=======
-        history.push('/');
-
-        window.location.reload(false);
-        const abonnement={
-          nom:Nom,
-          prenom:Prénom,
-          chosesessentielles:  chosesessentielles,
-          etap3Err:etap3Err,
-          etap4Err:etap4Err,
-          etap5Err:etap5Err,
-          etap6Err:etap6Err,
-          etap7Err:etap7Err,
-          etap8Err:etap8Err,
-          etap9Err:etap9Err,
->>>>>>> Stashed changes
         }
         console.log(abonnement2);
        var config = {

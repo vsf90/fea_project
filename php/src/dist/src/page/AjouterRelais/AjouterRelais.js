@@ -39,26 +39,28 @@ export default function AjouterRelais() {
       e.preventDefault();
       const AjoutRE={
         nom:Nom,
-        //img:Img,
+        img:Img,
         role:Role,
         compétances:Compétances
        
       }
       console.log(AjoutRE);
+      
   
-  /*if(  Nom==''  || /*Img=='' || Role=='' || Compétances==''){
+  if(  Nom===''  || Img==='' || Role==='' || Compétances===''){
     
       message.error('Vous devez remplir les champs obligatoires');
     
     }else{
       message.success('La demande est faite avec succès');
-     //axios.post('http://localhost/BoussolePro-backend/insertRelaisExpert.php',AjoutRE).then(res=>console.log(res.data));
+     axios.post('http://localhost:8080/BoussolePro-backend/insertRelaisExpert.php',AjoutRE).then(res=>console.log(res.data));
   
       setNom('');
       setRole('');
       setCompétances('');
+      setImg('');
       
-    }*/
+    }
   }
     return (
       <div>
@@ -90,17 +92,16 @@ export default function AjouterRelais() {
       <Form.Item>
   <label><b>Image</b><span class="required">*</span></label>
   <br></br>
-   <Upload   listType="picture"
+   {/* <Upload   listType="picture"
       maxCount={1} selected={Img} onChange={(info)=>setImg(info.file.name)}>
     <Button icon={<UploadOutlined />}>Click to Upload</Button>
-  </Upload>
+  </Upload> */}
   </Form.Item>
   <Form.Item>
-  <input selected={Img} onChange={(info)=>setImg(info.target.selected)} type="file"></input>
+  <input selected={Img} onChange={(info)=>setImg(URL.createObjectURL(info.target.files[0]))} type="file"></input>
   </Form.Item>
   <label><b>Vous allez ajouter </b><span class="required">*</span></label>
-  
-          <Form.Item >
+  <Form.Item >
     <Radio.Group >
       <Radio value="relais" checked={Role === "relais"}   onChange={(e)=>setRole(e.target.value)}>Un relais?</Radio><br/>
       <Radio value="expert" checked={Role === "expert"}   onChange={(e)=>setRole(e.target.value)}>Un expert?</Radio><br/>

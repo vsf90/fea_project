@@ -25,9 +25,6 @@ export default class DdShouraPro extends Component {
     })
     }
 
-   
- 
-    
     ShouraList(){
       console.log(this.state.demandeShoura);
        return this.state.demandeShoura.map(function(object,i){

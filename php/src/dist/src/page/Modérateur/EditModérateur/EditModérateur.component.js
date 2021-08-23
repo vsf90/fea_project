@@ -2,6 +2,7 @@ import { Form,Input,Alert, Button, Radio,Rate, Checkbox, Row, Col,message } from
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react'
 import axios from 'axios';
+import history from '../../../history';
 
      export default class EditModérateur extends Component {
        
@@ -102,13 +103,21 @@ import axios from 'axios';
           email:this.state.Email
         };
         console.log(EditModerateur);       
-        if(  this.state.nom=='' || this.state.Prénom=='' || this.state.Pays=='' || this.state.Ville=='' || this.state.Entreprise=='' || this.state.Objet=='' || this.state.Activité=='' || this.state.Email=='' ){
+        if(  this.state.nom==='' || this.state.Prénom==='' || this.state.Pays==='' ||
+         this.state.Ville==='' || this.state.Entreprise==='' || this.state.Objet==='' ||
+          this.state.Activité==='' || this.state.Email==='' ){
   
           message.error('Vous devez remplir tous les champs obligatoires');
         
         } else {
           message.success('Les informations ont été modifiées avec succès');
-        axios.post('http://localhost/BoussolePro-backend/updateModerateur.php?id='+this.props.match.params.id,EditModerateur).then(res=>console.log(res.data));
+        axios.post('http://localhost:8080/BoussolePro-backend/updateModerateur.php?id='+this.props.match.params.id,EditModerateur)
+        .then(res=>
+          {
+            console.log(res.data);
+            history.push("/Modérateur");
+            window.location.reload(false);
+          });
 
         }
 

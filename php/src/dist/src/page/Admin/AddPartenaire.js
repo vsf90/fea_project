@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Form,Input,Alert, Button, Radio,Rate, Checkbox, Row, Col,message } from 'antd';
 import axios from 'axios';
 import { useState } from 'react';
-import NosPartenaires from '../NosPartenaires.component';
 function AddPartenaire() {
   const [Img, setImg] = useState("");
   const [Nom, setNom] = useState("");
@@ -34,7 +33,7 @@ function AddPartenaire() {
     console.log(Partenaire);
 
 
-if(  Nom=='' || Img=='' || Activité=='' || Avantage=='' || Lien=='' ){
+if(  Nom==='' || Img==='' || Activité==='' || Avantage==='' || Lien==='' ){
   
     message.error('Vous devez remplir les champs obligatoires');
   
@@ -75,7 +74,7 @@ if(  Nom=='' || Img=='' || Activité=='' || Avantage=='' || Lien=='' ){
        
         <Form.Item >
         <label><b>Image</b></label><span class="required"> *</span> <br></br>
-        <input type="file" className={Img != null  ? 'hidden' : ''} onChange={handleChange}/>
+        <input type="file" className={Img} onChange={handleChange}/>
         </Form.Item >
         
       

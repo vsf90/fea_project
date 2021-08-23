@@ -1,13 +1,7 @@
 
-import "../Acueil/Body.component.css";
-//import "../Acueil/Acueil.component.css";
-import photo1 from "../../image/f1.jpg";
-import photo2 from "../../image/f2.jpg";
-import photo3 from "../../image/f3.jpg";
-import photo4 from "../../image/f4.jpg";
-import photo5 from "../../image/f5.jpg";
+
+
 import {Link} from 'react-router-dom';
-import AddPublication from './AddPublication';
 import React, { Component } from 'react'
 import RecordsListPublication from './RecordsListPublication.js';
 import axios from 'axios';
@@ -61,26 +55,7 @@ import { Alert} from 'antd';
                     
                    
                    
-                   { /*<nav aria-label="Pagination">
-                        <hr className="my-0" />
-                        <ul className="pagination justify-content-center my-4">
-                            <li className="page-item disabled"><a className="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-                            <li className="page-item active" aria-current="page"><a className="page-link" href="#!">1</a></li>
-                            <li className="page-item"><a className="page-link" href="#!">2</a></li>
-                            <li className="page-item"><a className="page-link" href="#!">3</a></li>
-                            <li className="page-item"><a className="page-link" href="#!">4</a></li>
-                            <li className="page-item"><a className="page-link" href="#!">5</a></li>
-                            <li className="page-item"><a className="page-link" href="#!">6</a></li>
-                            <li className="page-item"><a className="page-link" href="#!">7</a></li>
-                            <li className="page-item disabled"><a className="page-link" href="#!">...</a></li>
-                            <li className="page-item"><a className="page-link" href="#!">15</a></li>
-                            <li className="page-item"><a className="page-link" href="#!">16</a></li>
-                            <li className="page-item"><a className="page-link" href="#!">17</a></li>
-                            <li className="page-item"><a className="page-link" href="#!">18</a></li>
-                            <li className="page-item"><a className="page-link" href="#!">19</a></li>
-                            <li className="page-item"><a className="page-link" href="#!">Older</a></li>
-                        </ul>
-          </nav>*/}
+                  
                 </div>
                 
                 <div className="col-lg-4">
