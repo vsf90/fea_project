@@ -8,11 +8,11 @@ if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
         $NotreReseau[$cr]['ID']=$row['ID'];
-        $NotreReseau[$cr]['prenom']=$row['prenom'];
-        $NotreReseau[$cr]['nom']=$row['nom'];
-        $NotreReseau[$cr]['image']=$row['image'];
-        $NotreReseau[$cr]['pays']=$row['pays'];
-        $NotreReseau[$cr]['ville']=$row['ville'];
+        $NotreReseau[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $NotreReseau[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $NotreReseau[$cr]['image']=htmlspecialchars_decode($row['image'],ENT_QUOTES);
+        $NotreReseau[$cr]['pays']=htmlspecialchars_decode($row['pays'],ENT_QUOTES);
+        $NotreReseau[$cr]['ville']=htmlspecialchars_decode($row['ville'],ENT_QUOTES);
 
         $cr++;
     } 

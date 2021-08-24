@@ -8,15 +8,15 @@ if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
         $demandeSprint[$cr]['ID']=$row['ID'];
-        $demandeSprint[$cr]['initiateur']=$row['initiateur'];
-        $demandeSprint[$cr]['prenom']=$row['prenom'];
-        $demandeSprint[$cr]['nom']=$row['nom'];
-        $demandeSprint[$cr]['avecQui']=$row['avecQui'];
-        $demandeSprint[$cr]['prenomAbonne']=$row['prenomAbonne'];
-        $demandeSprint[$cr]['rangAbonne']=$row['rangAbonne'];
-        $demandeSprint[$cr]['prenomExterieure']=$row['prenomExterieure'];
-        $demandeSprint[$cr]['raison']=$row['raison'];
-        $demandeSprint[$cr]['creneaux']=$row['creneaux'];
+        $demandeSprint[$cr]['initiateur']=htmlspecialchars_decode($row['initiateur'],ENT_QUOTES);
+        $demandeSprint[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $demandeSprint[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $demandeSprint[$cr]['avecQui']=htmlspecialchars_decode($row['avecQui'],ENT_QUOTES);
+        $demandeSprint[$cr]['prenomAbonne']=htmlspecialchars_decode($row['prenomAbonne'],ENT_QUOTES);
+        $demandeSprint[$cr]['rangAbonne']=htmlspecialchars_decode($row['rangAbonne'],ENT_QUOTES);
+        $demandeSprint[$cr]['prenomExterieure']=htmlspecialchars_decode($row['prenomExterieure'],ENT_QUOTES);
+        $demandeSprint[$cr]['raison']=htmlspecialchars_decode($row['raison'],ENT_QUOTES);
+        $demandeSprint[$cr]['creneaux']=htmlspecialchars_decode($row['creneaux'],ENT_QUOTES);
         $demandeSprint[$cr]['date']=$row['date'];
 
         $cr++;

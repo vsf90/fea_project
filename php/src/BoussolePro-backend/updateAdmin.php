@@ -12,14 +12,14 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      print_r($request);
 
      $id=$_GET['id'];
-     $nom=$request->nom;
-     $prenom=$request->prenom;
-     $email=$request->email;
-     $pays=$request->pays;
-     $ville=$request->ville;
-     $entreprise=$request->entreprise;
-     $objetEntreprise=$request->objetEntreprise;
-     $activiteProfessionnelle=$request->activiteProfessionnelle;
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
+     $prenom=htmlspecialchars($request->prenom,ENT_QUOTES);
+     $email=htmlspecialchars($request->email,ENT_QUOTES);
+     $pays=htmlspecialchars($request->pays,ENT_QUOTES);
+     $ville=htmlspecialchars($request->ville,ENT_QUOTES);
+     $entreprise=htmlspecialchars($request->entreprise,ENT_QUOTES);
+     $objetEntreprise=htmlspecialchars($request->objetEntreprise,ENT_QUOTES);
+     $activiteProfessionnelle=htmlspecialchars($request->activiteProfessionnelle,ENT_QUOTES);
      $role="Admin";
 
 

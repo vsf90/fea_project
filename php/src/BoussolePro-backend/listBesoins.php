@@ -8,11 +8,11 @@ if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
         $listBesoins[$cr]['ID']=$row['ID'];
-        $listBesoins[$cr]['prenom']=$row['prenom'];
-        $listBesoins[$cr]['nom']=$row['nom'];
-        $listBesoins[$cr]['besoins']=$row['besoins'];
-        $listBesoins[$cr]['dateDeplacement']=$row['dateDeplacement'];
-        $listBesoins[$cr]['autresDemandes']=$row['autresDemandes'];
+        $listBesoins[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $listBesoins[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $listBesoins[$cr]['besoins']=htmlspecialchars_decode($row['besoins'],ENT_QUOTES);
+        $listBesoins[$cr]['dateDeplacement']=htmlspecialchars_decode($row['dateDeplacement'],ENT_QUOTES);
+        $listBesoins[$cr]['autresDemandes']=htmlspecialchars_decode($row['autresDemandes'],ENT_QUOTES);
         $listBesoins[$cr]['date']=$row['date'];
 
         $cr++;

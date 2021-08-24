@@ -22,7 +22,7 @@ export default class RecordsListRelais extends Component {
         >
             <Meta style={{paddingBottom: "60px"}}
             avatar={<Avatar src={this.props.obj.image} />}
-            title={this.props.obj.prenom+" "+this.props.obj.nom[0]+this.props.obj.nom[1]}
+            title={this.props.obj.nom}
             description={this.props.obj.competances}
             />
         </Card>

@@ -10,13 +10,13 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      $request=json_decode($postdata);
    
      print_r($request);
-     $PrénomContact1=$request->PrénomContact1;
-     $NomContact1=$request->NomContact1;
-     $TeleContact1=$request->TeleContact1;
+     $PrénomContact1=htmlspecialchars($request->PrénomContact1,ENT_QUOTES);
+     $NomContact1=htmlspecialchars($request->NomContact1,ENT_QUOTES);
+     $TeleContact1=htmlspecialchars($request->TeleContact1,ENT_QUOTES);
 
-     $PrénomContact2=$request->PrénomContact2;
-     $NomContact2=$request->NomContact2;
-     $TeleContact2=$request->TeleContact2;
+     $PrénomContact2=htmlspecialchars($request->PrénomContact2,ENT_QUOTES);
+     $NomContact2=htmlspecialchars($request->NomContact2,ENT_QUOTES);
+     $TeleContact2=htmlspecialchars($request->TeleContact2,ENT_QUOTES);
     
 
      $req="INSERT INTO abonnement (`PrénomContact1`,`NomContact1`,`TeleContact1`, `PrénomContact2`,`NomContact2`,`TeleContact2`) 

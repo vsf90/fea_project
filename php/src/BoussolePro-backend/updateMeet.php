@@ -12,13 +12,13 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      print_r($request);
 
      $id=$_GET['id'];
-     $nom=$request->nom;
-     $prenom=$request->prenom;
-     $avecQui=$request->AvecQui;
-     $prenomContactSouhaite=$request->prenomContactSouhaite;
-     $nomContactSouhaite=$request->nomContactSouhaite;
-     $raisonMeet=$request->raisonMeet;
-     $autreInfos=$request->autreInfos;
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
+     $prenom=htmlspecialchars($request->prenom,ENT_QUOTES);
+     $avecQui=htmlspecialchars($request->AvecQui,ENT_QUOTES);
+     $prenomContactSouhaite=htmlspecialchars($request->prenomContactSouhaite,ENT_QUOTES);
+     $nomContactSouhaite=htmlspecialchars($request->nomContactSouhaite,ENT_QUOTES);
+     $raisonMeet=htmlspecialchars($request->raisonMeet,ENT_QUOTES);
+     $autreInfos=htmlspecialchars($request->autreInfos,ENT_QUOTES);
     // $date=$request->date;
 
      //store:

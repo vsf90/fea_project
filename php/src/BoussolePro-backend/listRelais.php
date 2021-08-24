@@ -8,12 +8,12 @@ if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
         $demandeRelais[$cr]['ID']=$row['ID'];
-        $demandeRelais[$cr]['initiateur']=$row['initiateur'];
-        $demandeRelais[$cr]['prenom']=$row['prenom'];
-        $demandeRelais[$cr]['nom']=$row['nom'];
-        $demandeRelais[$cr]['avecQui']=$row['avecQui'];
-        $demandeRelais[$cr]['objet']=$row['objet'];
-        $demandeRelais[$cr]['creneaux']=$row['creneaux'];
+        $demandeRelais[$cr]['initiateur']=htmlspecialchars_decode($row['initiateur'],ENT_QUOTES);
+        $demandeRelais[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $demandeRelais[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $demandeRelais[$cr]['avecQui']=htmlspecialchars_decode($row['avecQui'],ENT_QUOTES);
+        $demandeRelais[$cr]['objet']=htmlspecialchars_decode($row['objet'],ENT_QUOTES);
+        $demandeRelais[$cr]['creneaux']=htmlspecialchars_decode($row['creneaux'],ENT_QUOTES);
         $demandeRelais[$cr]['date']=$row['date'];
 
         $cr++;

@@ -8,12 +8,12 @@ if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
         $demandeExpert[$cr]['ID']=$row['ID'];
-        $demandeExpert[$cr]['initiateur']=$row['initiateur'];
-        $demandeExpert[$cr]['prenom']=$row['prenom'];
-        $demandeExpert[$cr]['nom']=$row['nom'];
-        $demandeExpert[$cr]['avecQui']=$row['avecQui'];
-        $demandeExpert[$cr]['objet']=$row['objet'];
-        $demandeExpert[$cr]['creneaux']=$row['creneaux'];
+        $demandeExpert[$cr]['initiateur']=htmlspecialchars_decode($row['initiateur'],ENT_QUOTES);
+        $demandeExpert[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $demandeExpert[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $demandeExpert[$cr]['avecQui']=htmlspecialchars_decode($row['avecQui'],ENT_QUOTES);
+        $demandeExpert[$cr]['objet']=htmlspecialchars_decode($row['objet'],ENT_QUOTES);
+        $demandeExpert[$cr]['creneaux']=htmlspecialchars_decode($row['creneaux'],ENT_QUOTES);
         $demandeExpert[$cr]['date']=$row['date'];
 
         $cr++;

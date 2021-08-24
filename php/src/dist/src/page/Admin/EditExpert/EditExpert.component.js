@@ -154,18 +154,18 @@ import axios from 'axios';
          <Form.Item  >
           <div class="question">
           <label><b>Avec-qui souhaitez vous avoir le sprint PRO?</b><span class="required">*</span></label>
-               <input  className="inputB" type="text" name="name" value={this.state.AvecQui} onChange={this.onChangeAvecQui} placeholder="Nom de l'expert" required/>
+               <Input  className="input" type="text" name="name" value={this.state.AvecQui} onChange={this.onChangeAvecQui} placeholder="Nom de l'expert" required/>
         </div>
         </Form.Item  >
         <Form.Item  >
          <div class="item">
              <label><b>Objet de la demande</b><span class="required">*</span></label>
-               <textarea  className="inputB" type="text" name="name" value={this.state.objet} onChange={this.onChangeObjet}  required/>
+               <Input.TextArea  className="input" type="text" name="name" value={this.state.objet} onChange={this.onChangeObjet}  required/>
            </div>
          </Form.Item>
          <Form.Item >
           <label><b>Quelles sont vos préférences pour les créneaux de 15min ? (Plusieurs choix)</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" name="Ville" value={this.state.creneaux} onChange={this.onChangeCreneaux}  required/>
+          <Input  className="input" type="text" name="Ville" value={this.state.creneaux} onChange={this.onChangeCreneaux}  required/>
 
          </Form.Item>
            

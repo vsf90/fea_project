@@ -12,16 +12,16 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      print_r($request);
 
      $id=$_GET['id'];
-     $confirmationAbonne=$request->confirmationAbonne;
-     $nom=$request->nom;
-     $prenom=$request->prenom;
-     $entreprise=$request->entreprise;
-     $secteur=$request->secteur;
-     $contact=$request->contact;
-     $typeCompagne=$request->typeCompagne;
-     $objetCompagne=$request->objetCompagne;
-     $montant=$request->montant;
-     $commentaire=$request->commentaire;
+     $confirmationAbonne=htmlspecialchars($request->confirmationAbonne,ENT_QUOTES);
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
+     $prenom=htmlspecialchars($request->prenom,ENT_QUOTES);
+     $entreprise=htmlspecialchars($request->entreprise,ENT_QUOTES);
+     $secteur=htmlspecialchars($request->secteur,ENT_QUOTES);
+     $contact=htmlspecialchars($request->contact,ENT_QUOTES);
+     $typeCompagne=htmlspecialchars($request->typeCompagne,ENT_QUOTES);
+     $objetCompagne=htmlspecialchars($request->objetCompagne,ENT_QUOTES);
+     $montant=htmlspecialchars($request->montant,ENT_QUOTES);
+     $commentaire=htmlspecialchars($request->commentaire,ENT_QUOTES);
 
     // $date=$request->date;
    

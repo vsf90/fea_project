@@ -8,13 +8,13 @@ if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
         $demandeMeet[$cr]['ID']=$row['ID'];
-        $demandeMeet[$cr]['prenom']=$row['prenom'];
-        $demandeMeet[$cr]['nom']=$row['nom'];
-        $demandeMeet[$cr]['avecQui']=$row['avecQui'];
-        $demandeMeet[$cr]['prenomContactSouhaite']=$row['prenomContactSouhaite'];
-        $demandeMeet[$cr]['nomContactSouhaite']=$row['nomContactSouhaite'];
-        $demandeMeet[$cr]['raisonMeet']=$row['raisonMeet'];
-        $demandeMeet[$cr]['autreInfos']=$row['autreInfos'];
+        $demandeMeet[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $demandeMeet[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $demandeMeet[$cr]['avecQui']=htmlspecialchars_decode($row['avecQui'],ENT_QUOTES);
+        $demandeMeet[$cr]['prenomContactSouhaite']=htmlspecialchars_decode($row['prenomContactSouhaite'],ENT_QUOTES);
+        $demandeMeet[$cr]['nomContactSouhaite']=htmlspecialchars_decode($row['nomContactSouhaite'],ENT_QUOTES);
+        $demandeMeet[$cr]['raisonMeet']=htmlspecialchars_decode($row['raisonMeet'],ENT_QUOTES);
+        $demandeMeet[$cr]['autreInfos']=htmlspecialchars_decode($row['autreInfos'],ENT_QUOTES);
         $demandeMeet[$cr]['date']=$row['date'];
         $cr++;
     }

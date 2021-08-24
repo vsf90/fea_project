@@ -11,16 +11,16 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
    
      print_r($request);
 
-     $prénom=$request->prénom;
-     $nom=$request->nom;
-     $pays=$request->pays;
-     $ville=$request->ville;
-     $entreprise=$request->entreprise;
-     $objet=$request->objet;
-     $activité=$request->activité;
-     $email=$request->email;
-     $password=$request->password;
-     $confirmpassword=$request->confirmpassword;
+     $prénom=htmlspecialchars($request->prénom,ENT_QUOTES);
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
+     $pays=htmlspecialchars($request->pays,ENT_QUOTES);
+     $ville=htmlspecialchars($request->ville,ENT_QUOTES);
+     $entreprise=htmlspecialchars($request->entreprise,ENT_QUOTES);
+     $objet=htmlspecialchars($request->objet,ENT_QUOTES);
+     $activité=htmlspecialchars($request->activité,ENT_QUOTES);
+     $email=htmlspecialchars($request->email,ENT_QUOTES);
+     $password=htmlspecialchars($request->password,ENT_QUOTES);
+     $confirmpassword=htmlspecialchars($request->confirmpassword,ENT_QUOTES);
 
     echo $nom;
     echo $prénom;

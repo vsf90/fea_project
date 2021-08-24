@@ -8,10 +8,10 @@ if($result){
     $i=0;
     while($row=mysqli_fetch_assoc($result)){
         $listUtilisateur[$i]['ID']=$row['ID'];
-        $listUtilisateur[$i]['prenom']=$row['prenom'];
-        $listUtilisateur[$i]['nom']=$row['nom'];
-        $listUtilisateur[$i]['profession']=$row['profession'];
-        $listUtilisateur[$i]['urlImage']=$row['urlImage'];
+        $listUtilisateur[$i]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $listUtilisateur[$i]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $listUtilisateur[$i]['profession']=htmlspecialchars_decode($row['profession'],ENT_QUOTES);
+        $listUtilisateur[$i]['urlImage']=htmlspecialchars_decode($row['urlImage'],ENT_QUOTES);
 
 
         $i++;

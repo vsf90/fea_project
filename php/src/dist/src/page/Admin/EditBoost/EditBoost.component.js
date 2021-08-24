@@ -190,15 +190,15 @@ import axios from 'axios';
        
          <Form.Item >
          <label><b>Votre entreprise</b><span class="required">*</span></label>
-            <input  className="inputB" type="text" name="Ville" value={this.state.entreprise} onChange={this.onChangeEntreprise} placeholder="entreprise" required/>
+            <Input  className="input" type="text" name="Ville" value={this.state.entreprise} onChange={this.onChangeEntreprise} placeholder="entreprise" required/>
            </Form.Item>
            <Form.Item >
           <label><b>Votre secteur d'activité</b><span class="required">*</span></label>
-             <input  className="inputB" type="text" name="Entreprise"  value={this.state.secteur} onChange={this.onChangeSecteur}  placeholder="secteur d'activité" required/>
+             <Input  className="input" type="text" name="Entreprise"  value={this.state.secteur} onChange={this.onChangeSecteur}  placeholder="secteur d'activité" required/>
             </Form.Item>
             <Form.Item >
           <label><b>Qui sera notre contact pour toute demande de support concernant la campagne?</b><span class="required">*</span></label>
-             <textarea  className="inputB" type="text" name="Entreprise"  value={this.state.contact} onChange={this.onChangeContact}   required/>
+             <Input.TextArea  className="input" type="text" name="Entreprise"  value={this.state.contact} onChange={this.onChangeContact}   required/>
             </Form.Item>
             <Form.Item  >
           <div class="question">
@@ -218,15 +218,15 @@ import axios from 'axios';
         </Form.Item  >
             <Form.Item >
           <label><b>Quel est l'objet de la campagne et en quoi est-ce important pour vous ?</b><span class="required"> *</span></label>
-             <textarea  className="inputB" type="text" name="Entreprise"  value={this.state.objetCompagne} onChange={this.onChangeObjetCompagne}   required/>
+             <Input.TextArea  className="input" type="text" name="Entreprise"  value={this.state.objetCompagne} onChange={this.onChangeObjetCompagne}   required/>
             </Form.Item>  
             <Form.Item >
           <label><b>Souhaitez-vous donner un pourcentage ou un montant à Boussole Pro? Si oui, lequel?</b></label>
-             <input  className="inputB" type="text" name="Entreprise"  value={this.state.montant} onChange={this.onChangeMontant}   required/>
+             <Input  className="input" type="text" name="Entreprise"  value={this.state.montant} onChange={this.onChangeMontant}   required/>
             </Form.Item>
             <Form.Item >
           <label><b>Tout commentaire est le bienvenue si vous en avez</b></label>
-             <textarea  className="inputB" type="text" name="Entreprise"  value={this.state.commentaire} onChange={this.onChangeCommentaire}   required/>
+             <Input.TextArea  className="input" type="text" name="Entreprise"  value={this.state.commentaire} onChange={this.onChangeCommentaire}   required/>
             </Form.Item>
             
            

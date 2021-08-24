@@ -11,11 +11,11 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
    
      print_r($request);
 
-     $prenom=$request->prenom;
-     $nom=$request->nom;
-     $besoins=$request->besoins;
+     $prenom=htmlspecialchars($request->prenom,ENT_QUOTES);
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
+     $besoins=htmlspecialchars($request->besoins,ENT_QUOTES);
      $date1=$request->date1;
-     $autresdemandes=$request->autresdemandes;
+     $autresdemandes=htmlspecialchars($request->autresdemandes,ENT_QUOTES);
     
      echo $nom;
     echo $prenom;

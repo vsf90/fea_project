@@ -8,13 +8,13 @@ if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
         $demandeShoura[$cr]['ID']=$row['ID'];
-        $demandeShoura[$cr]['initiateur']=$row['initiateur'];
-        $demandeShoura[$cr]['prenom']=$row['prenom'];
-        $demandeShoura[$cr]['nom']=$row['nom'];
-        $demandeShoura[$cr]['avecQui']=$row['avecQui'];
-        $demandeShoura[$cr]['problematique']=$row['problematique'];
-        $demandeShoura[$cr]['domainesExpert']=$row['domainesExpert'];
-        $demandeShoura[$cr]['creneaux']=$row['creneaux'];
+        $demandeShoura[$cr]['initiateur']=htmlspecialchars_decode($row['initiateur'],ENT_QUOTES);
+        $demandeShoura[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $demandeShoura[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $demandeShoura[$cr]['avecQui']=htmlspecialchars_decode($row['avecQui'],ENT_QUOTES);
+        $demandeShoura[$cr]['problematique']=htmlspecialchars_decode($row['problematique'],ENT_QUOTES);
+        $demandeShoura[$cr]['domainesExpert']=htmlspecialchars_decode($row['domainesExpert'],ENT_QUOTES);
+        $demandeShoura[$cr]['creneaux']=htmlspecialchars_decode($row['creneaux'],ENT_QUOTES);
         $demandeShoura[$cr]['date']=$row['date'];
         $cr++;
     }

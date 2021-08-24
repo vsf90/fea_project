@@ -11,16 +11,16 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
    
      print_r($request);
 
-     $radio=$request->radio;
-     $nom=$request->nom;
-     $prenom=$request->prenom;
-     $entreprise=$request->entreprise;
-     $secteur=$request->secteur;
-     $contact=$request->contact;
-     $radio1=$request->radio1;
-     $objetif=$request->objetif;
-     $montant=$request->montant;
-     $commentaire=$request->commentaire;
+     $radio=htmlspecialchars($request->radio,ENT_QUOTES);
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
+     $prenom=htmlspecialchars($request->prenom,ENT_QUOTES);
+     $entreprise=htmlspecialchars($request->entreprise,ENT_QUOTES);
+     $secteur=htmlspecialchars($request->secteur,ENT_QUOTES);
+     $contact=htmlspecialchars($request->contact,ENT_QUOTES);
+     $radio1=htmlspecialchars($request->radio1,ENT_QUOTES);
+     $objetif=htmlspecialchars($request->objetif,ENT_QUOTES);
+     $montant=htmlspecialchars($request->montant,ENT_QUOTES);
+     $commentaire=htmlspecialchars($request->commentaire,ENT_QUOTES);
     
     echo $radio;
     echo $prenom;

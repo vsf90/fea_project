@@ -181,11 +181,11 @@ import axios from 'axios';
        
          <Form.Item >
          <label><b>Quelle est la raison professionnelle de ce meet'up pro? </b><span class="required">*</span></label>
-            <textarea  className="inputB" type="text" name="Ville" value={this.state.raisonMeet} onChange={this.onChangeRaisonMeet}  required/>
+            <Input.TextArea  className="input" type="text" name="Ville" value={this.state.raisonMeet} onChange={this.onChangeRaisonMeet}  required/>
            </Form.Item>
            <Form.Item >
           <label><b>Autres infos utiles (Date de dispo, ville, et toute information utile)</b></label>
-             <textarea  className="inputB" type="text" name="Entreprise"  value={this.state.autreInfos} onChange={this.onChangeAutreInfos}   required/>
+             <Input.TextArea  className="input" type="text" name="Entreprise"  value={this.state.autreInfos} onChange={this.onChangeAutreInfos}   required/>
             </Form.Item>
            
            

@@ -10,13 +10,10 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      $request=json_decode($postdata);
    
      print_r($request);
-    //  $prenom=$request->prenom;
-     $nom=$request->nom;
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
      $img=$request->img;
-     $role=$request->role;
-     $compétances=$request->compétances;
-     
-   // echo $prenom;
+     $role=htmlspecialchars($request->role,ENT_QUOTES);
+     $compétances=htmlspecialchars($request->compétances,ENT_QUOTES);
     echo $nom;
     echo $role;
     echo $img;
@@ -24,8 +21,8 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
    
   
  
-     $req="INSERT INTO profilerelaisexpert (`nom`, `image`, `role`, `competances`) 
-     VALUES ('{$nom}','{$img}', '{$role}','{$compétances}')";
+     $req="INSERT INTO profilerelaisexpert ( `nom`, `image`, `role`, `competances`) 
+     VALUES ( '{$nom}','{$img}', '{$role}','{$compétances}')";
        
      $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
      if ($resultat){

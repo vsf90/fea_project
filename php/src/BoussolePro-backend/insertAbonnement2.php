@@ -9,31 +9,31 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
  {
      $request=json_decode($postdata);
      print_r($request);
-     $chosesessentielles=$request->chosesessentielles;//text 
-     $CadreTravail=$request->CadreTravail; //radio
+     $chosesessentielles=htmlspecialchars($request->chosesessentielles,ENT_QUOTES);//text 
+     $CadreTravail=htmlspecialchars($request->CadreTravail,ENT_QUOTES); //radio
 
-     $FontConfiance1=$request->FontConfiance1;
-     $FontConfiance2=$request->FontConfiance2;
-     $FontConfiance3=$request->FontConfiance3;
+     $FontConfiance1=htmlspecialchars($request->FontConfiance1,ENT_QUOTES);
+     $FontConfiance2=htmlspecialchars($request->FontConfiance2,ENT_QUOTES);
+     $FontConfiance3=htmlspecialchars($request->FontConfiance3,ENT_QUOTES);
 
-     $RéseauQualité1=$request->RéseauQualité1;
-     $RéseauQualité2=$request->RéseauQualité2;
-     $RéseauQualité3=$request->RéseauQualité3;
-     $RéseauQualité4=$request->RéseauQualité4;
+     $RéseauQualité1=htmlspecialchars($request->RéseauQualité1,ENT_QUOTES);
+     $RéseauQualité2=htmlspecialchars($request->RéseauQualité2,ENT_QUOTES);
+     $RéseauQualité3=htmlspecialchars($request->RéseauQualité3,ENT_QUOTES);
+     $RéseauQualité4=htmlspecialchars($request->RéseauQualité4,ENT_QUOTES);
 
-     $InformationImportante1=$request->InformationImportante1;
-     $InformationImportante2=$request->InformationImportante2;
-     $InformationImportante3=$request->InformationImportante3;
+     $InformationImportante1=htmlspecialchars($request->InformationImportante1,ENT_QUOTES);
+     $InformationImportante2=htmlspecialchars($request->InformationImportante2,ENT_QUOTES);
+     $InformationImportante3=htmlspecialchars($request->InformationImportante3,ENT_QUOTES);
 
-     $NouveauxClients1=$request->NouveauxClients1;
-     $NouveauxClients2=$request->NouveauxClients2;
-     $NouveauxClients3=$request->NouveauxClients3;
+     $NouveauxClients1=htmlspecialchars($request->NouveauxClients1,ENT_QUOTES);
+     $NouveauxClients2=htmlspecialchars($request->NouveauxClients2,ENT_QUOTES);
+     $NouveauxClients3=htmlspecialchars($request->NouveauxClients3,ENT_QUOTES);
 
-     $AiderDévelopper=$request->AiderDévelopper; //radio 
+     $AiderDévelopper=htmlspecialchars($request->AiderDévelopper,ENT_QUOTES); //radio 
 
-     $Bénéfices1=$request->Bénéfices1;
-     $Bénéfices2=$request->Bénéfices2;
-     $Bénéfices3=$request->Bénéfices3;
+     $Bénéfices1=htmlspecialchars($request->Bénéfices1,ENT_QUOTES);
+     $Bénéfices2=htmlspecialchars($request->Bénéfices2,ENT_QUOTES);
+     $Bénéfices3=htmlspecialchars($request->Bénéfices3,ENT_QUOTES);
 
     //  les conditions pour rempler les chekbox
     $FontConfiance="";

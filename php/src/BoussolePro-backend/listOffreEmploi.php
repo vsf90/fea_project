@@ -8,10 +8,10 @@ if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
         $OffreEmploi[$cr]['prenom']=$row['prenom'];
-        $OffreEmploi[$cr]['nom']=$row['nom'];
-        $OffreEmploi[$cr]['titre']=$row['titre'];
-        $OffreEmploi[$cr]['image']=$row['image'];
-        $OffreEmploi[$cr]['contenu']=$row['contenu'];
+        $OffreEmploi[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $OffreEmploi[$cr]['titre']=htmlspecialchars_decode($row['titre'],ENT_QUOTES);
+        $OffreEmploi[$cr]['image']=htmlspecialchars_decode($row['image'],ENT_QUOTES);
+        $OffreEmploi[$cr]['contenu']=htmlspecialchars_decode($row['contenu'],ENT_QUOTES);
         $OffreEmploi[$cr]['date']=$row['date'];
         $cr++;
     }

@@ -7,11 +7,11 @@ $result=mysqli_query($con,$sql) or die(mysqli_error($con));;
 if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
-        $DemandeStage[$cr]['prenom']=$row['prenom'];
-        $DemandeStage[$cr]['nom']=$row['nom'];
-        $DemandeStage[$cr]['titre']=$row['titre'];
-        $DemandeStage[$cr]['image']=$row['image'];
-        $DemandeStage[$cr]['contenu']=$row['contenu'];
+        $DemandeStage[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $DemandeStage[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $DemandeStage[$cr]['titre']=htmlspecialchars_decode($row['titre'],ENT_QUOTES);
+        $DemandeStage[$cr]['image']=htmlspecialchars_decode($row['image'],ENT_QUOTES);
+        $DemandeStage[$cr]['contenu']=htmlspecialchars_decode($row['contenu'],ENT_QUOTES);
         $DemandeStage[$cr]['date']=$row['date'];
         $cr++;
     }

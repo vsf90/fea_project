@@ -12,19 +12,19 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      print_r($request);
 
      $id=$_GET['ID'];
-     $nom=$request->nom;
-     $prenom=$request->prenom;
-     $email=$request->email;
-     $pays=$request->pays;
-     $ville=$request->ville;
-     $entreprise=$request->entreprise;
-     $objetEntreprise=$request->objetEntreprise;
-     $activiteProfessionnelle=$request->activiteProfessionnelle;
-     $topVille=$request->topVille;
-     $verset=$request->verset;
-     $expertise=$request->expertise;
-     $expertiseSouhaitez=$request->expertiseSouhaitez;
-     $centresInteret=$request->centresInteret;
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
+     $prenom=htmlspecialchars($request->prenom,ENT_QUOTES);
+     $email=htmlspecialchars($request->email,ENT_QUOTES);
+     $pays=htmlspecialchars($request->pays,ENT_QUOTES);
+     $ville=htmlspecialchars($request->ville,ENT_QUOTES);
+     $entreprise=htmlspecialchars($request->entreprise,ENT_QUOTES);
+     $objetEntreprise=htmlspecialchars($request->objetEntreprise,ENT_QUOTES);
+     $activiteProfessionnelle=htmlspecialchars($request->activiteProfessionnelle,ENT_QUOTES);
+     $topVille=htmlspecialchars($request->topVille,ENT_QUOTES);
+     $verset=htmlspecialchars($request->verset,ENT_QUOTES);
+     $expertise=htmlspecialchars($request->expertise,ENT_QUOTES);
+     $expertiseSouhaitez=htmlspecialchars($request->expertiseSouhaitez,ENT_QUOTES);
+     $centresInteret=htmlspecialchars($request->centresInteret,ENT_QUOTES);
 
      //store:
      $sql="UPDATE `utilisateur` SET `nom`='$nom',`prenom`='$prenom',`email`='$email',`pays`='$pays',`ville`='$ville',`entreprise`='$entreprise',`objetEntreprise`='$objetEntreprise',`activiteProfessionnelle`='$activiteProfessionnelle' ,`verset`='$verset',`expertiseSouhaitez`='$expertiseSouhaitez',`expertise`='$expertise',`centresInteret`='$centresInteret',`topVille`='$topVille' WHERE ID='{$id}' LIMIT 1";

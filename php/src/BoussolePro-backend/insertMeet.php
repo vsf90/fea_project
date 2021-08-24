@@ -11,13 +11,13 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
    
      print_r($request);
 
-     $nom=$request->nom;
-     $prenom=$request->prenom;
-     $radio=$request->radio;
-     $prenommeet=$request->prenommeet;
-     $nommeet=$request->nommeet;
-     $raison=$request->raison;
-     $info=$request->info;
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
+     $prenom=htmlspecialchars($request->prenom,ENT_QUOTES);
+     $radio=htmlspecialchars($request->radio,ENT_QUOTES);
+     $prenommeet=htmlspecialchars($request->prenommeet,ENT_QUOTES);
+     $nommeet=htmlspecialchars($request->nommeet,ENT_QUOTES);
+     $raison=htmlspecialchars($request->raison,ENT_QUOTES);
+     $info=htmlspecialchars($request->info,ENT_QUOTES);
 
      echo $nom;
      echo $prenom;

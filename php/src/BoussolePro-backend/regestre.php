@@ -15,13 +15,13 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
    
      print_r($request);
 
-     $email=$request->email;
-     $pass=$request->pass;
-     $nom=$request->nom;
-     $prenom=$request->prenom;
-     $ville=$request->ville;
-     $pays=$request->pays;
-     $role=$request->role;
+     $email=htmlspecialchars($request->email,ENT_QUOTES);
+     $pass=htmlspecialchars($request->pass,ENT_QUOTES);
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
+     $prenom=htmlspecialchars($request->prenom,ENT_QUOTES);
+     $ville=htmlspecialchars($request->ville,ENT_QUOTES);
+     $pays=htmlspecialchars($request->pays,ENT_QUOTES);
+     $role=htmlspecialchars($request->role,ENT_QUOTES);
 
 
 

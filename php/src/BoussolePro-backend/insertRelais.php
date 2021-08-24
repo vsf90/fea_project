@@ -11,16 +11,16 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
    
      print_r($request);
 
-     $radio=$request->radio;
-     $nom=$request->nom;
-     $prenom=$request->prenom;
-     $avecqui=$request->avecqui;
-     $objet=$request->objet;
-     $matin=$request->matin;
-     $apresmidi=$request->apresmidi;
-     $soir=$request->soir;
-     $semaine=$request->semaine;
-     $weekend=$request->weekend;
+     $radio=htmlspecialchars($request->radio,ENT_QUOTES);
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
+     $prenom=htmlspecialchars($request->prenom,ENT_QUOTES);
+     $avecqui=htmlspecialchars($request->avecqui,ENT_QUOTES);
+     $objet=htmlspecialchars($request->objet,ENT_QUOTES);
+     $matin=htmlspecialchars($request->matin,ENT_QUOTES);
+     $apresmidi=htmlspecialchars($request->apresmidi,ENT_QUOTES);
+     $soir=htmlspecialchars($request->soir,ENT_QUOTES);
+     $semaine=htmlspecialchars($request->semaine,ENT_QUOTES);
+     $weekend=htmlspecialchars($request->weekend,ENT_QUOTES);
 
 
     echo $radio;

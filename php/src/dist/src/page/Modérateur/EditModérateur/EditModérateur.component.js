@@ -137,7 +137,7 @@ import history from '../../../history';
          <Col span={24}>
              
              <Alert
-             message="Bienveneu sur la page modifier  Modérateur"
+             message="Bienvenue sur la page modifier  Modérateur"
              description=" Pour Modifier les informations d'un Modérateur merci de remplir le formulaire suivant."
                    type="info"
                    showIcon
@@ -422,19 +422,19 @@ import history from '../../../history';
          </Form.Item>
          <Form.Item >
          <label><b>Ville</b><span class="required">*</span></label>
-            <input  className="inputB" type="text" name="Ville" value={this.state.Ville} onChange={this.onChangeVille} placeholder="Ville" required/>
+            <Input  className="input" type="text" name="Ville" value={this.state.Ville} onChange={this.onChangeVille} placeholder="Ville" required/>
            </Form.Item>
            <Form.Item >
           <label><b>Entreprise</b><span class="required">*</span></label>
-             <input  className="inputB" type="text" name="Entreprise"  value={this.state.Entreprise} onChange={this.onChangeEntreprise}  placeholder="Entreprise" required/>
+             <Input  className="input" type="text" name="Entreprise"  value={this.state.Entreprise} onChange={this.onChangeEntreprise}  placeholder="Entreprise" required/>
             </Form.Item>
             <Form.Item >
           <label><b>Objet de l'entreprise</b><span class="required">*</span></label>
-             <input  className="inputB" type="text" value={this.state.Objet} onChange={this.onChangeObjet} name="Objetentreprise" required/>
+             <Input  className="input" type="text" value={this.state.Objet} onChange={this.onChangeObjet} name="Objetentreprise" required/>
             </Form.Item>
             <Form.Item >
           <label><b>Activité Professionnelle</b><span class="required">*</span></label>
-             <input  className="inputB" type="text" value={this.state.Activité} onChange={this.onChangeActivité} name="ActivitéPro" required/>
+             <Input  className="input" type="text" value={this.state.Activité} onChange={this.onChangeActivité} name="ActivitéPro" required/>
             </Form.Item>
            <Form.Item name={['user', 'email']}  rules={[{ type: 'email' }]}>
          <label><b>Email</b><span class="required">*</span></label>

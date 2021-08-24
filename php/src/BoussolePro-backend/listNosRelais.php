@@ -8,10 +8,10 @@ if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
         $profilerelais[$cr]['ID']=$row['ID'];
-        $profilerelais[$cr]['prenom']=$row['prenom'];
-        $profilerelais[$cr]['nom']=$row['nom'];
+        $profilerelais[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $profilerelais[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
         $profilerelais[$cr]['image']=$row['image'];
-        $profilerelais[$cr]['competances']=$row['competances'];
+        $profilerelais[$cr]['competances']=htmlspecialchars_decode($row['competances'],ENT_QUOTES);
         $cr++;
     }
    // print_r($demandeSprint);

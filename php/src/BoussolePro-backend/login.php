@@ -15,8 +15,8 @@ $db = mysqli_connect("localhost", "root", "", "boussolepro");
  {
      $request=json_decode($postdata);
 
-     $myusername=$request->email;
-     $mypassword=$request->pass;
+     $myusername=htmlspecialchars_decode($request->email,ENT_QUOTES);
+     $mypassword=htmlspecialchars_decode($request->pass,ENT_QUOTES);
 
       $sql = "SELECT * FROM utilisateur WHERE email = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($db,$sql);

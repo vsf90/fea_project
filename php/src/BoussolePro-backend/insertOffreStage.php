@@ -10,11 +10,11 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      $request=json_decode($postdata);
    
      print_r($request);
-     $prenom=$request->prenom;
-     $nom=$request->nom;
-     $titre=$request->titre;
-    $img=$request->img;
-     $contenu=$request->contenu;
+     $prenom=htmlspecialchars($request->prenom,ENT_QUOTES);
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
+     $titre=htmlspecialchars($request->titre,ENT_QUOTES);
+    $img=htmlspecialchars($request->img,ENT_QUOTES);
+     $contenu=htmlspecialchars($request->contenu,ENT_QUOTES);
   
     echo $prenom;
     echo $nom;

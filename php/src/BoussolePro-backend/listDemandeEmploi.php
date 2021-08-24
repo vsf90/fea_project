@@ -7,11 +7,11 @@ $result=mysqli_query($con,$sql) or die(mysqli_error($con));;
 if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
-        $DemandeEmploi[$cr]['prenom']=$row['prenom'];
-        $DemandeEmploi[$cr]['nom']=$row['nom'];
-        $DemandeEmploi[$cr]['titre']=$row['titre'];
-        $DemandeEmploi[$cr]['image']=$row['image'];
-        $DemandeEmploi[$cr]['contenu']=$row['contenu'];
+        $DemandeEmploi[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $DemandeEmploi[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $DemandeEmploi[$cr]['titre']=htmlspecialchars_decode($row['titre'];
+        $DemandeEmploi[$cr]['image']=htmlspecialchars_decode($row['image'];
+        $DemandeEmploi[$cr]['contenu']=htmlspecialchars_decode($row['contenu'],ENT_QUOTES);
         $DemandeEmploi[$cr]['date']=$row['date'];
         $cr++;
     }

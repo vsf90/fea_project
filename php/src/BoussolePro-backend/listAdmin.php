@@ -8,15 +8,15 @@ if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
         $listAdmin[$cr]['ID']=$row['ID'];
-        $listAdmin[$cr]['prenom']=$row['prenom'];
-        $listAdmin[$cr]['nom']=$row['nom'];
-        $listAdmin[$cr]['email']=$row['email'];
-        $listAdmin[$cr]['pays']=$row['pays'];
-        $listAdmin[$cr]['ville']=$row['ville'];
-        $listAdmin[$cr]['entreprise']=$row['entreprise'];
-        $listAdmin[$cr]['objetEntreprise']=$row['objetEntreprise'];
-        $listAdmin[$cr]['activiteProfessionnelle']=$row['activiteProfessionnelle'];
-        $listAdmin[$cr]['password']=$row['password'];
+        $listAdmin[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $listAdmin[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $listAdmin[$cr]['email']=htmlspecialchars_decode($row['email'],ENT_QUOTES);
+        $listAdmin[$cr]['pays']=htmlspecialchars_decode($row['pays'],ENT_QUOTES);
+        $listAdmin[$cr]['ville']=htmlspecialchars_decode($row['ville'],ENT_QUOTES);
+        $listAdmin[$cr]['entreprise']=htmlspecialchars_decode($row['entreprise'],ENT_QUOTES);
+        $listAdmin[$cr]['objetEntreprise']=htmlspecialchars_decode($row['objetEntreprise'],ENT_QUOTES);
+        $listAdmin[$cr]['activiteProfessionnelle']=htmlspecialchars_decode($row['activiteProfessionnelle'],ENT_QUOTES);
+        $listAdmin[$cr]['password']=htmlspecialchars_decode($row['password'],ENT_QUOTES);
 
         $cr++;
     } 

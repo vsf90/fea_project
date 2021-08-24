@@ -8,10 +8,10 @@ if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
         $profileexpert[$cr]['ID']=$row['ID'];
-        $profileexpert[$cr]['prenom']=$row['prenom'];
-        $profileexpert[$cr]['nom']=$row['nom'];
-        $profileexpert[$cr]['image']=$row['image'];
-        $profileexpert[$cr]['competances']=$row['competances'];
+        $profileexpert[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $profileexpert[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $profileexpert[$cr]['image']=htmlspecialchars_decode($row['image'],ENT_QUOTES);
+        $profileexpert[$cr]['competances']=htmlspecialchars_decode($row['competances'],ENT_QUOTES);
         $cr++;
     }
    // print_r($demandeSprint);

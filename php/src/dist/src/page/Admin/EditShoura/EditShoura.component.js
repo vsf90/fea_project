@@ -169,15 +169,15 @@ import axios from 'axios';
        
          <Form.Item >
          <label><b>Quelle est votre problématique?</b><span class="required">*</span></label>
-            <textarea  className="inputB" type="text" name="Ville" value={this.state.problematique} onChange={this.onChangeProblematique}  required/>
+            <Input.TextArea  className="input" type="text" name="Ville" value={this.state.problematique} onChange={this.onChangeProblematique}  required/>
            </Form.Item>
            <Form.Item >
           <label><b>Quels sont les domaines des experts/consultants souhaités?</b><span class="required">*</span></label>
-             <textarea  className="inputB" type="text" name="Entreprise"  value={this.state.domainesExpert} onChange={this.onChangeDomainesExpert}  required/>
+             <Input.TextArea  className="input" type="text" name="Entreprise"  value={this.state.domainesExpert} onChange={this.onChangeDomainesExpert}  required/>
             </Form.Item>
             <Form.Item >
           <label><b>Quelles sont vos préférences pour les créneaux de 15min ? (Plusieurs choix)</b><span class="required">*</span></label>
-          <input  className="inputB" type="text" name="Ville" value={this.state.creneaux} onChange={this.onChangeCreneaux}  required/>
+          <Input  className="input" type="text" name="Ville" value={this.state.creneaux} onChange={this.onChangeCreneaux}  required/>
 
          </Form.Item>
             

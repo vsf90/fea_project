@@ -12,15 +12,15 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      print_r($request);
 
      $id=$_GET['id'];
-     $initiateur=$request->Initiateur;
-     $nom=$request->nom;
-     $prenom=$request->prenom;
-     $avecQui=$request->AvecQui;
-     $prenomAbonne=$request->prenomAbonne;
-     $rangAbonne=$request->rangAbonne;
-     $prenomExterieure=$request->prenomExterieure;
-     $raison=$request->raison;
-     $creneaux=$request->creneaux;
+     $initiateur=htmlspecialchars($request->Initiateur,ENT_QUOTES);
+     $nom=htmlspecialchars($request->nom,ENT_QUOTES);
+     $prenom=htmlspecialchars($request->prenom,ENT_QUOTES);
+     $avecQui=htmlspecialchars($request->AvecQui,ENT_QUOTES);
+     $prenomAbonne=htmlspecialchars($request->prenomAbonne,ENT_QUOTES);
+     $rangAbonne=htmlspecialchars($request->rangAbonne,ENT_QUOTES);
+     $prenomExterieure=htmlspecialchars($request->prenomExterieure,ENT_QUOTES);
+     $raison=htmlspecialchars($request->raison,ENT_QUOTES);
+     $creneaux=htmlspecialchars($request->creneaux,ENT_QUOTES);
     // $date=$request->date;
 
 

@@ -8,16 +8,16 @@ if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
         $demandeBoost[$cr]['ID']=$row['ID'];
-        $demandeBoost[$cr]['confirmationAbonne']=$row['confirmationAbonne'];
-        $demandeBoost[$cr]['prenom']=$row['prenom'];
-        $demandeBoost[$cr]['nom']=$row['nom'];
-        $demandeBoost[$cr]['entreprise']=$row['entreprise'];
-        $demandeBoost[$cr]['secteur']=$row['secteur'];
-        $demandeBoost[$cr]['contact']=$row['contact'];
-        $demandeBoost[$cr]['typeCompagne']=$row['typeCompagne'];
-        $demandeBoost[$cr]['objetCompagne']=$row['objetCompagne'];
-        $demandeBoost[$cr]['montant']=$row['montant'];
-        $demandeBoost[$cr]['commentaire']=$row['commentaire'];
+        $demandeBoost[$cr]['confirmationAbonne']=htmlspecialchars_decode($row['confirmationAbonne'],ENT_QUOTES);
+        $demandeBoost[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
+        $demandeBoost[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
+        $demandeBoost[$cr]['entreprise']=htmlspecialchars_decode($row['entreprise'],ENT_QUOTES);
+        $demandeBoost[$cr]['secteur']=htmlspecialchars_decode($row['secteur'],ENT_QUOTES);
+        $demandeBoost[$cr]['contact']=htmlspecialchars_decode($row['contact'],ENT_QUOTES);
+        $demandeBoost[$cr]['typeCompagne']=htmlspecialchars_decode($row['typeCompagne'],ENT_QUOTES);
+        $demandeBoost[$cr]['objetCompagne']=htmlspecialchars_decode($row['objetCompagne'],ENT_QUOTES);
+        $demandeBoost[$cr]['montant']=htmlspecialchars_decode($row['montant'],ENT_QUOTES);
+        $demandeBoost[$cr]['commentaire']=htmlspecialchars_decode($row['commentaire'],ENT_QUOTES);
         $demandeBoost[$cr]['date']=$row['date'];
         $cr++;
     } 
