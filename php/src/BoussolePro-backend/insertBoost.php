@@ -36,8 +36,9 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
    
     $date=date("Y-m-d H:i:s");    
   echo $date;
-     $req="INSERT INTO boostpro ( `confirmationAbonne`, `prenom`, `nom`, `entreprise`, `secteur`, `contact`,  `typeCompagne`, `objetCompagne`, `montant`, `commentaire`, `date`) 
-     VALUES ( '{$radio}', '{$prenom}', '{$nom}', '{$entreprise}','{$secteur}','{$contact}','{$radio1}','{$objetif}', '{$montant}','{$commentaire}', '{$date}' )";
+  $valider=0;
+     $req="INSERT INTO boostpro ( `confirmationAbonne`, `prenom`, `nom`, `entreprise`, `secteur`, `contact`,  `typeCompagne`, `objetCompagne`, `montant`, `commentaire`, `date`, `valider`) 
+     VALUES ( '{$radio}', '{$prenom}', '{$nom}', '{$entreprise}','{$secteur}','{$contact}','{$radio1}','{$objetif}', '{$montant}','{$commentaire}', '{$date}', '{$valider}' )";
        
      $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
      if ($resultat){

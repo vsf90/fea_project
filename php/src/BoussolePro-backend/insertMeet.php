@@ -29,9 +29,9 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
 
     $date=date("Y-m-d H:i:s");    
      echo $date;
-  
-     $reqMeet="INSERT INTO meetup (`prenom`, `nom`, `avecQui`, `prenomContactSouhaite`, `nomContactSouhaite`, `raisonMeet`, `autreInfos`, `date`) 
-     VALUES ( '{$prenom}', '{$nom}', '{$radio}', '{$prenommeet}', '{$nommeet}','{$raison}','{$info}', '{$date}' )";
+  $valider=0;
+     $reqMeet="INSERT INTO meetup (`prenom`, `nom`, `avecQui`, `prenomContactSouhaite`, `nomContactSouhaite`, `raisonMeet`, `autreInfos`, `date`, `valider`) 
+     VALUES ( '{$prenom}', '{$nom}', '{$radio}', '{$prenommeet}', '{$nommeet}','{$raison}','{$info}', '{$date}', '{$valider}' )";
        
      $resultat=mysqli_query($con,$reqMeet) or die(mysqli_error($con));
      if ($resultat){

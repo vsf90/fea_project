@@ -52,8 +52,9 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
     $date=date("Y-m-d H:i:s");    
   echo $date;
   echo $creneaux;
-     $req="INSERT INTO expertbp (`initiateur`, `prenom`, `nom`,`avecQui`, `objet`, `creneaux`, `date`) 
-     VALUES ( '{$radio}', '{$prenom}','{$nom}', '{$avecqui}','{$objet}', '{$creneaux}', '{$date}' )";
+  $valider=0;
+     $req="INSERT INTO expertbp (`initiateur`, `prenom`, `nom`,`avecQui`, `objet`, `creneaux`, `date`, `valider`) 
+     VALUES ( '{$radio}', '{$prenom}','{$nom}', '{$avecqui}','{$objet}', '{$creneaux}', '{$date}', '{$valider}' )";
        
      $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
      if ($resultat){

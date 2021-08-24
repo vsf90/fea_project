@@ -58,8 +58,9 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
     $date=date("Y-m-d H:i:s");    
   echo $date;
   echo $creneaux;
-     $req="INSERT INTO sprintpro (`initiateur`, `prenom`, `nom`,`avecQui`, `prenomAbonne`, `rangAbonne`, `prenomExterieure`, `raison`, `creneaux`, `date`) 
-     VALUES ( '{$radio}', '{$prenom}', '{$nom}','{$avecqui}', '{$prenomabonné}','{$rang}','{$prenomexterieure}','{$raisonsprint}', '{$creneaux}', '{$date}' )";
+  $valider=0;
+     $req="INSERT INTO sprintpro (`initiateur`, `prenom`, `nom`,`avecQui`, `prenomAbonne`, `rangAbonne`, `prenomExterieure`, `raison`, `creneaux`, `date`, `valider`) 
+     VALUES ( '{$radio}', '{$prenom}', '{$nom}','{$avecqui}', '{$prenomabonné}','{$rang}','{$prenomexterieure}','{$raisonsprint}', '{$creneaux}', '{$date}', '{$valider}' )";
        
      $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
      if ($resultat){
