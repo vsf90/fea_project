@@ -171,7 +171,7 @@ function Navbar(props) {
       <img src={logo} style={{height:"60px",backgroundPositionY:"center"}} />
       </div>
 
-        <Menu.Item key="1" className={role === "Inscrit" ? 'hidden' : ''} icon={< HomeOutlined />}><Link  to="/Acueil"></Link>Accueil  </Menu.Item>
+        <Menu.Item key="1" className={role === "Inscrit" ? 'hidden' : ''} icon={< HomeOutlined  />}><Link  to="/Acueil"></Link>Accueil  </Menu.Item>
         <Menu.Item key="2" className={role === "Inscrit" ? 'hidden' : ''} icon={<GlobalOutlined />}> <Link  to="/NosReseaux"></Link>  Notre Resaux  </Menu.Item>
         
         
@@ -238,7 +238,7 @@ function Navbar(props) {
               <Menu.Item key="29" className={role === "Inscrit" ? 'hidden' : ''} icon={<PullRequestOutlined />} ><Link  to="/OffreEmploi"></Link>Offres d'emploi</Menu.Item>
             </SubMenu>
 
-            <SubMenu key="sub8" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} title="les demandes">
+            <SubMenu key="sub8" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined  />} title="les demandes">
 
               <Menu.Item key="30" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
               <Menu.Item key="31" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
@@ -252,13 +252,12 @@ function Navbar(props) {
     <Layout className="site-layout" className="l">
       <Header className="site-layout-background"  >
       <Button onClick={props.signout} style={{float:"right",marginTop:"15px",padding:"2px",borderRadius:"16px"}}  >
-   <LogoutOutlined/> <span style={{color:"#30a8ff"}}>Déconnexion</span>
+   <LogoutOutlined/> <span style={{color:"#30a8ff",fontWeight:"bold"}}>Déconnexion</span>
   </Button>
       <Dropdown overlay={menu}  >
     <a className="ant-dropdown-link" 
      style={{color:"#fff",float: "right",marginRight:"10px"}}>
-      <Avatar icon={<UserOutlined style={{marginBottom:"20px"}} />} 
-      style={{marginLeft:"3px"}} /> <CaretDownFilled />
+      <Avatar  icon={<UserOutlined style={{marginBottom:"20px"}} />} style={{marginLeft:"3px",backgroundColor:"#76bff5"}} /> <CaretDownFilled />
     </a>
   </Dropdown>
  

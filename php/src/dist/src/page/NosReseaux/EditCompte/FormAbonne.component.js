@@ -79,17 +79,11 @@ function FormAbonne() {
     }
   }
     return (
-      <form  className="first" style={{padding: "14px",marginTop:"19px"}}>
+      <form  className="first" style={{padding: "14px",marginTop:"19px",backgroundColor:"white"}}>
       <Row>
       <Col span={24}>
           
-              <Alert
-                message="Un réseau de confiance et de qualité"
-                description="Bienveneu sur formulaire d'abonne."
-                type="info"
-                showIcon
-                />
-            
+             
                   <h4 >Un réseau de confiance et de qualité</h4>
                     <p class="top-info" >
                     Merci pour l’intérêt porté a FEA Boussole Pro. Afin de garantir un réseau de qualité à l’ensemble de ses abonnés nous demandons à chaque abonné de confirmer 2 recommandations.
@@ -98,25 +92,22 @@ function FormAbonne() {
                     soit la même association soit enfin avoir voyagé avec elle durant une période supérieure a une semaine.
                     </p>
           
-       
-              
-              <div class="item">
-              <p style={{color:"#171617"}}> <b>Contacts 1ere recommandation </b><span class="required">*</span> </p>
-              <div class="name-item">
-                    <div className="col-md-6">
-                        <Input className="inputB" type="text" style={{width: "400px"}} name="name"  placeholder="Prénom" value={PrénomContact1} onChange={(e)=>setPrénomContact1(e.target.value)} required/>
-                    </div>
-                    <div className="col-md-6">
-                        <Input className="inputB" style={{width: "430px"}} type="text" name="name" placeholder="Nom"  value={NomContact1} onChange={(e)=>setNomContact1(e.target.value)} required/>
-                    </div>
-                    <div className="col-md-6">
+                     
+            <Form.Item  >
+         <div class="item">
+             <label><b>Contacts 1ere recommandation</b><span class="required">*</span></label>
+             <div class="name-item">
+               <input  className="inputB" type="text" name="name" value={PrénomContact1} onChange={(e)=>setPrénomContact1(e.target.value)} placeholder="Prénom" required/>
+               <input  className="inputB" type="text" name="name" value={NomContact1} onChange={(e)=>setNomContact1(e.target.value)}  placeholder="Nom" required/>
+               <div className="col-md-6">
                         <spam><b style={{color: "red"}}>{PrénomContact1Err}</b></spam>
                     </div>
                     <div className="col-md-6">
                         <spam><b style={{color: "red"}}>{NomContact1Err}</b></spam>
                     </div>
-                </div>
-            </div>
+             </div>
+           </div>
+         </Form.Item>       
             <div class="item">
             <label class="form-label form-label-left form-label-auto" id="label_6" for="input_6">
             <b> Téléphone de votre première recommandation</b><span class="form-required"> *</span></label>
@@ -126,23 +117,22 @@ function FormAbonne() {
                </div>
             </div>
 
-            <div class="item">
-              <p style={{color:"#171617"}}><b> Contacts 2nde recommandation</b><span class="required">*</span> </p>
-              <div class="name-item">
-                    <div className="col-md-6">
-                        <Input className="inputB" type="text" style={{width: "400px"}} name="name"  placeholder="Prénom" value={PrénomContact2} onChange={(e)=>setPrénomContact2(e.target.value)} required/>
-                    </div>
-                    <div className="col-md-6">
-                        <Input className="inputB" style={{width: "430px"}} type="text" name="name" placeholder="Nom"  value={NomContact2} onChange={(e)=>setNomContact2(e.target.value)} required/>
-                    </div>
-                    <div className="col-md-6">
+            
+            <Form.Item  >
+         <div class="item">
+             <label><b>Contacts 2nde recommandation</b><span class="required">*</span></label>
+             <div class="name-item">
+               <input  className="inputB" type="text" name="name"  value={PrénomContact2} onChange={(e)=>setPrénomContact2(e.target.value)} placeholder="Prénom" required/>
+               <input  className="inputB" type="text" name="name"  value={NomContact2} onChange={(e)=>setNomContact2(e.target.value)}  placeholder="Nom" required/>
+               <div className="col-md-6">
                         <spam><b style={{color: "red"}}>{PrénomContact2Err}</b></spam>
                     </div>
                     <div className="col-md-6">
                         <spam><b style={{color: "red"}}>{NomContact2Err}</b></spam>
                     </div>
-                </div>
-            </div>
+             </div>
+           </div>
+         </Form.Item>      
             <div class="item">
             <label class="form-label form-label-left form-label-auto" id="label_6" for="input_6">
             <b>Téléphone de votre seconde recommandation</b>

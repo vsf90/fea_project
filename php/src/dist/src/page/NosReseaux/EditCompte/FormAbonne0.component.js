@@ -109,33 +109,31 @@ function FormAbonne0() {
             }}
     return (
         <div>
-           <form  className="second" style={{padding: "14px",marginTop:"19px"}}>
+           <form  className="second" style={{padding: "14px",marginTop:"19px",backgroundColor:"white"}}>
         <Row>
         <Col span={24}>
             
-            <Alert   message="Un réseau de confiance et de qualité"
-                  description="Bienveneu sur formulaire d'abonne."
-                  type="info"
-                  showIcon/>
+           
              <div style={{textAlign:"center"}}> 
               <h4 style={{color:"#171617"}}>Formulaire d’abonnement à FEA Boussole Pro</h4></div>
-
-              <div class="item">              
-                <p style={{color:"#171617"}}><b>CONTACTS</b><span class="required">*</span></p>
-                <div class="name-item">
-                    <div className="col-md-6">
-                        <Input className="inputB" type="text" style={{width: "400px"}} name="name"  placeholder="Prénom"  value={Prénom} onChange={(e)=>setPrénom(e.target.value)}  required/>
-                    </div>
-                    <div className="col-md-6">
-                        <Input className="inputB" style={{width: "430px"}} type="text" name="name" placeholder="Nom"  value={Nom} onChange={(e)=>setNom(e.target.value)} required/>
-                    </div>
-                    <div className="col-md-6">
+              
+              <div class="item"> 
+              <Form.Item  >
+         <div class="item">
+             <label><b>CONTACTS</b><span class="required">*</span></label>
+             <div class="name-item">
+               <input  className="inputB" type="text" name="name" value={Prénom} onChange={(e)=>setPrénom(e.target.value)} placeholder="Prénom" required/>
+               <input  className="inputB" type="text" name="name" value={Nom} onChange={(e)=>setNom(e.target.value)}  placeholder="Nom" required/>
+               <div className="col-md-6">
                         <spam><b style={{color: "red"}}>{PrénomErr}</b></spam>
                     </div>
                     <div className="col-md-6">
                         <spam><b style={{color: "red"}}>{NomErr}</b></spam>
                     </div>
-                </div>
+             </div>
+           </div>
+         </Form.Item>              
+               
 
 
               <Col>
@@ -154,7 +152,7 @@ function FormAbonne0() {
                </Form.Item>
               </Col>
                <Form.Item >
-            <label><b>Vous êtes?</b><span className="required">*</span></label>
+            <label><b>Vous êtes?</b><span className="required">*</span></label> <br></br>
               <Radio.Group value={Radio1} onChange={(e)=>setRadio1(e.target.value)}>
                 <Radio value="Professionnel" >Professionnel</Radio><br/>
                 <Radio value="Jeune" >Jeune diplômé-e</Radio><br/>

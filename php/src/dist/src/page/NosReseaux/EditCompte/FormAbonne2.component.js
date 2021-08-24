@@ -127,14 +127,13 @@ function FormAbonne2() {
       }
     }
     return (
-        <form  className="ss">
+     
+     
+        <form  className="ss" style={{marginTop:"30px"}}>
         <Row>
         <Col span={24}>
             
-            <Alert   message="Un réseau de confiance et de qualité"
-                  description="Bienveneu sur formulaire d'abonne."
-                  type="info"
-                  showIcon/>
+          
           
               <img className="card-img-top" src={tof1} alt="1" style={{width:"600px", display:"block", margin:"auto",padding:"auto"}} />
              <div style={{textAlign:"center"}}> <h4 >SALAM</h4>

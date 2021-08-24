@@ -104,7 +104,7 @@ export default class Feedbacks extends Component {
     return (
       <div className="DdSprintPro">
           <Alert
-                 message="Les besoins pros immédiats"
+                 message="La liste des Feedbacks"
                  description=" "
                 
                  type="info"

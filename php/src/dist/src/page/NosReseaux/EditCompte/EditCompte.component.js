@@ -1,5 +1,5 @@
 
-import { Steps, Button, message, Input } from 'antd';
+import { Steps, Button, message, Input,Alert } from 'antd';
 import Form from 'antd/lib/form/Form';
 import React from 'react';
 import First from './First.component';
@@ -41,6 +41,10 @@ export default function EditCompte(){
         return (
            
             <div className="col-md-10" style={{padding: "20px",margin:"50px",marginRight:"100px"}}>
+               <Alert   message="Un réseau de confiance et de qualité" style={{marginBottom:"29px"}}
+      description="Bienvenue sur le formulaire d'abonnement."
+      type="info"
+      showIcon/>
                <Steps current={current}>
                     <Step key="First" title="First" />
                     <Step key="Second" title="Second" />
@@ -49,12 +53,12 @@ export default function EditCompte(){
       <div className="steps-content">{steps[current].content}</div>
       <div className="steps-action">
         {current < steps.length - 1 && (
-          <Button type="primary" onClick={() => next()}>
+          <Button style={{marginTop:"10px"}} type="primary" onClick={() => next()}>
             Next
           </Button>
         )}
         {current === steps.length - 1 && (
-          <Button type="primary" onClick={() =>{
+          <Button style={{marginTop:"10px"}}  type="primary" onClick={() =>{
             message.success('Processing complete!');
 
           } }>
