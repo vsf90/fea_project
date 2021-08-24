@@ -68,6 +68,7 @@ export default class DdBoostPro extends Component {
       <th >Souhaitez-vous donner un pourcentage ou un montant à Boussole Pro? Si oui, lequel?</th>
       <th >Tout commentaire est le bienvenue si vous en avez</th>
       <th >Date</th>
+      <th >Etat</th>
       <th >Actions</th>
     </tr>
   </thead>

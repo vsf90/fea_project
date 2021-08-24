@@ -60,6 +60,7 @@ export default class DdSprintPro extends Component {
       <th >Pourquoi souhaitez-vous ce sprint Pro?</th>
       <th >Créneaux</th>
       <th >Date</th>
+      <th >Etat</th>
       <th >Actions</th>
 
 

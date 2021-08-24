@@ -8,6 +8,21 @@ import {Redirect} from 'react-router';
 import axios from 'axios';
 
 export default class RecordsListExpert extends Component {
+    refreshPage(){ 
+        window.location.reload(); 
+    }
+    constructor(props){
+        super(props);
+        this.delete=this.delete.bind(this);
+        this.state={
+            redirect:false
+        }
+    }
+    delete(){
+        axios.get('http://localhost/BoussolePro-backend/ValiderExpert.php/?id='+this.props.obj.ID)
+  .then(console.log('deleted'))
+ .catch(err=>console.log(err))
+    }
    
     render() {
       
@@ -23,7 +38,8 @@ export default class RecordsListExpert extends Component {
      <td >{this.props.obj.objet}</td>
      <td >{this.props.obj.creneaux}</td>
      <td >{this.props.obj.date}</td>
-     <td > Valider <Link to={"/EditExpert/"+this.props.obj.ID}><EditFilled style={{fontSize:"20px"}}/></Link></td>
+     <td >{this.props.obj.valider}</td>
+     <td ><button id="delete" onClick={this.delete}  style={{backgroundColor:"transparent",color:"#0d6efd",padding:"2px"}} >Valider</button>  <Link to={"/EditExpert/"+this.props.obj.ID}><EditFilled style={{fontSize:"20px"}}/></Link></td>
 
  </tr>
    

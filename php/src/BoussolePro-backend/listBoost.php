@@ -19,6 +19,12 @@ if($result){
         $demandeBoost[$cr]['montant']=htmlspecialchars_decode($row['montant'],ENT_QUOTES);
         $demandeBoost[$cr]['commentaire']=htmlspecialchars_decode($row['commentaire'],ENT_QUOTES);
         $demandeBoost[$cr]['date']=$row['date'];
+        if($row['valider']==1){
+            $demandeBoost[$cr]['valider']="validée";
+        }else{
+            $demandeBoost[$cr]['valider']="non validée";
+        }
+
         $cr++;
     } 
    // print_r($demandeSprint);

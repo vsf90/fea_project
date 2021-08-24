@@ -18,6 +18,12 @@ if($result){
         $demandeSprint[$cr]['raison']=htmlspecialchars_decode($row['raison'],ENT_QUOTES);
         $demandeSprint[$cr]['creneaux']=htmlspecialchars_decode($row['creneaux'],ENT_QUOTES);
         $demandeSprint[$cr]['date']=$row['date'];
+        if($row['valider']==1){
+            $demandeSprint[$cr]['valider']="validée";
+        }else{
+            $demandeSprint[$cr]['valider']="non validée";
+        }
+
 
         $cr++;
     }

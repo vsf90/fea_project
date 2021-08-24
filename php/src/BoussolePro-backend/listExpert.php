@@ -15,6 +15,13 @@ if($result){
         $demandeExpert[$cr]['objet']=htmlspecialchars_decode($row['objet'],ENT_QUOTES);
         $demandeExpert[$cr]['creneaux']=htmlspecialchars_decode($row['creneaux'],ENT_QUOTES);
         $demandeExpert[$cr]['date']=$row['date'];
+       
+        if($row['valider']==1){
+            $demandeExpert[$cr]['valider']="validée";
+        }else{
+            $demandeExpert[$cr]['valider']="non validée";
+        }
+
 
         $cr++;
     }

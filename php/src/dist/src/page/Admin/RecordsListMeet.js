@@ -8,9 +8,23 @@ import {Redirect} from 'react-router';
 import axios from 'axios';
 
 export default class RecordsListMeet extends Component {
+    refreshPage(){ 
+        window.location.reload(); 
+    }
+    constructor(props){
+        super(props);
+        this.delete=this.delete.bind(this);
+        this.state={
+            redirect:false
+        }
+    }
+    delete(){
+        axios.get('http://localhost/BoussolePro-backend/ValiderMeet.php/?id='+this.props.obj.ID)
+  .then(console.log('deleted'))
+ .catch(err=>console.log(err))
+    }
    
     render() {
-      
         return (
           
     
@@ -24,7 +38,8 @@ export default class RecordsListMeet extends Component {
      <td >{this.props.obj.raisonMeet}</td>
      <td >{this.props.obj.autreInfos}</td>
      <td >{this.props.obj.date}</td>
-     <td > Valider <Link to={"/EditMeet/"+this.props.obj.ID}><EditFilled style={{fontSize:"20px"}}/></Link></td>
+     <td >{this.props.obj.valider}</td>
+     <td > <button id="delete" onClick={this.delete}  style={{backgroundColor:"transparent",color:"#0d6efd",padding:"2px"}} >Valider</button> <Link to={"/EditMeet/"+this.props.obj.ID}><EditFilled style={{fontSize:"20px"}}/></Link></td>
 
   
  </tr>

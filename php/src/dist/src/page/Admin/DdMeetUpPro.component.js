@@ -68,6 +68,7 @@ export default class DdMeetUpPro extends Component {
       <th >la raison professionnelle de ce meetUp pro</th>
       <th >Autres infos utiles</th>
       <th >Date</th>
+      <th >Etat</th>
       <th >Actions</th>
 
 

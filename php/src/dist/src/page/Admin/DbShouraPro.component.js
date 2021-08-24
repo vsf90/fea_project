@@ -62,6 +62,7 @@ export default class DdShouraPro extends Component {
       <th >Quels sont les domaines des experts/consultants souhaités?</th>
       <th >Créneaux</th>
       <th >Date</th>
+      <th >Etat</th>
       <th >Actions</th>
     </tr>
   </thead>

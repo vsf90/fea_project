@@ -57,6 +57,7 @@ export default class DdExpertBP extends Component {
       <th >Objet de la demande</th>
       <th >Créneaux</th>
       <th >Date</th>
+      <th >Etat</th>
       <th >Actions</th>
     </tr>
   </thead>

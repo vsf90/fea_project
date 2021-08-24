@@ -15,6 +15,12 @@ if($result){
         $demandeRelais[$cr]['objet']=htmlspecialchars_decode($row['objet'],ENT_QUOTES);
         $demandeRelais[$cr]['creneaux']=htmlspecialchars_decode($row['creneaux'],ENT_QUOTES);
         $demandeRelais[$cr]['date']=$row['date'];
+        if($row['valider']==1){
+            $demandeRelais[$cr]['valider']="validée";
+        }else{
+            $demandeRelais[$cr]['valider']="non validée";
+        }
+
 
         $cr++;
     }

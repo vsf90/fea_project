@@ -5,7 +5,7 @@ $demandeMeet=[];
 $sql="SELECT * FROM meetup ORDER BY ID DESC";
 $result=mysqli_query($con,$sql) or die(mysqli_error($con));;
 if($result){
-    $cr=0;
+    $cr=0; 
     while($row=mysqli_fetch_assoc($result)){
         $demandeMeet[$cr]['ID']=$row['ID'];
         $demandeMeet[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
@@ -16,6 +16,12 @@ if($result){
         $demandeMeet[$cr]['raisonMeet']=htmlspecialchars_decode($row['raisonMeet'],ENT_QUOTES);
         $demandeMeet[$cr]['autreInfos']=htmlspecialchars_decode($row['autreInfos'],ENT_QUOTES);
         $demandeMeet[$cr]['date']=$row['date'];
+        if($row['valider']==1){
+            $demandeMeet[$cr]['valider']="validée";
+        }else{
+            $demandeMeet[$cr]['valider']="non validée";
+        }
+
         $cr++;
     }
    // print_r($demandeSprint);

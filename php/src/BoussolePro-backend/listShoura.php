@@ -16,6 +16,12 @@ if($result){
         $demandeShoura[$cr]['domainesExpert']=htmlspecialchars_decode($row['domainesExpert'],ENT_QUOTES);
         $demandeShoura[$cr]['creneaux']=htmlspecialchars_decode($row['creneaux'],ENT_QUOTES);
         $demandeShoura[$cr]['date']=$row['date'];
+        if($row['valider']==1){
+            $demandeShoura[$cr]['valider']="validée";
+        }else{
+            $demandeShoura[$cr]['valider']="non validée";
+        }
+
         $cr++;
     }
    // print_r($demandeSprint);

@@ -17,7 +17,7 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
     echo $nom;
     echo $role;
     echo $img;
-    echo $compétances;
+    echo $compétances; 
    
   
  
