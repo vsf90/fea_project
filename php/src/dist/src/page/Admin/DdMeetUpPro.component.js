@@ -18,7 +18,7 @@ export default class DdMeetUpPro extends Component {
   
 
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listMeet.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listMeet.php')
     .then(response=>{
       this.setState({listMeet: response.data});
    })

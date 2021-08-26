@@ -11,7 +11,7 @@ export default class DdExpertBP extends Component {
   }
   
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listExpert.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listExpert.php')
     .then(response=>{
       this.setState({listExpert: response.data});
    })

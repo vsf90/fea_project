@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Button,Table } from "antd";
 import RecordsList from './RecordsList.js';
 
-import { CheckCircleTwoTone } from "@ant-design/icons";
 import { Alert } from "antd";
 
 
@@ -18,8 +17,9 @@ export default class Feedbacks extends Component {
   
 
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listFeedback.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listFeedback.php')
     .then(response=>{
+      console.log("response---->feedback",response);
       this.setState({listFeedback: response.data});
    })
    .catch(function (error){

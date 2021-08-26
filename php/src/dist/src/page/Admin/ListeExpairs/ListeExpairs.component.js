@@ -14,7 +14,7 @@ export default class ListeExpairs extends Component {
       }
       
       componentDidMount(){
-        axios.get('http://localhost/BoussolePro-backend/listNosExperts.php')
+        axios.get('http://localhost:8080/BoussolePro-backend/listNosExperts.php')
         .then(response=>{
             console.log('data ',response.data);
           this.setState({listeExpairs: response.data});
@@ -26,7 +26,7 @@ export default class ListeExpairs extends Component {
         }
         
         delete(id){
-            axios.get('http://localhost/BoussolePro-backend/deleteRelaisExpairs.php/?id='+id)
+            axios.get('http://localhost:8080/BoussolePro-backend/deleteRelaisExpairs.php/?id='+id)
                 .then(res=>{
                     console.log('deleted');
                    

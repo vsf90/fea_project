@@ -121,7 +121,7 @@ import axios from 'axios';
         
         } else {
           message.success('Les informations ont été modifiées avec succès');
-        axios.post('http://localhost/BoussolePro-backend/updateSprint.php?id='+this.props.match.params.id,EditSprint).then(res=>console.log(res.data));
+        axios.post('http://localhost:8080/BoussolePro-backend/updateSprint.php?id='+this.props.match.params.id,EditSprint).then(res=>console.log(res.data));
 
         }
 

@@ -53,7 +53,7 @@ export default function AjouterRelais() {
     
     }else{
       message.success('La demande est faite avec succès');
-     axios.post('http://localhost/BoussolePro-backend/insertRelaisExpert.php',AjoutRE).then(res=>console.log(res.data));
+     axios.post('http://localhost:8080/BoussolePro-backend/insertRelaisExpert.php',AjoutRE).then(res=>console.log(res.data));
   
       setNom('');
       setRole('');

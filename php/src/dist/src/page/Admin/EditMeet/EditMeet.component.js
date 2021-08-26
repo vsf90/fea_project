@@ -32,7 +32,7 @@ import axios from 'axios';
       }
       componentDidMount(){
         console.log(this.props.match.params.id);
-        axios.get('http://localhost/BoussolePro-backend/getMeetById.php?id='+this.props.match.params.id)
+        axios.get('http://localhost:8080/BoussolePro-backend/getMeetById.php?id='+this.props.match.params.id)
         .then(response=>{
           this.setState({
                         Initiateur:response.data.initiateur,

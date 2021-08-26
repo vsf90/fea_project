@@ -12,7 +12,7 @@ export default class NosExperts extends Component {
       }
 
       componentDidMount(){
-        axios.get('http://localhost/BoussolePro-backend/listNosExperts.php')
+        axios.get('http://localhost:8080/BoussolePro-backend/listNosExperts.php')
         .then(response=>{
           this.setState({listeExperts: response.data});
        })

@@ -17,7 +17,7 @@ import { Alert} from 'antd';
   }
   
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listPublication.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listPublication.php')
     .then(response=>{
         console.log("pubs --------->",response);
       this.setState({Publication: response.data});
@@ -37,7 +37,7 @@ import { Alert} from 'antd';
  
       render() {
           return (
-            <div className="containerBody">
+            <div className="containerBody" style={{minWidth:"1000px"}}>
             <div className="row">
            
                 <div className="col-lg-8"> 

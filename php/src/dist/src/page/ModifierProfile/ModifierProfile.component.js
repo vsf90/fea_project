@@ -153,7 +153,7 @@ import axios from 'axios';
         
         } else {
           message.success('Les informations ont été modifiées avec succès');
-        axios.post('http://localhost/BoussolePro-backend/updateAbonne.php?id='+localStorage.getItem('ID'),EditAbonné).then(res=>console.log(res.data));
+        axios.post('http://localhost:8080/BoussolePro-backend/updateAbonne.php?id='+localStorage.getItem('ID'),EditAbonné).then(res=>console.log(res.data));
 
         }
 
@@ -181,10 +181,6 @@ import axios from 'axios';
                    <b/> 
                   
                    <div className="EditM">
-   
-             
-             
-        
          <Form.Item  >
          <div class="item">
              <label><b>Votre Nom complet</b><span class="required">*</span></label>

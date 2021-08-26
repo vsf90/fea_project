@@ -12,7 +12,7 @@ import axios from 'axios';
 export default class RecordsListPublications extends Component {
 
    delete(id){
-        axios.get('http://localhost/BoussolePro-backend/deletePublication.php/?id='+id)
+        axios.get('http://localhost:8080/BoussolePro-backend/deletePublication.php/?id='+id)
             .then(res=>{
                 console.log('deleted');
                

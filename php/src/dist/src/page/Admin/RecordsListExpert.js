@@ -19,7 +19,7 @@ export default class RecordsListExpert extends Component {
         }
     }
     delete(){
-        axios.get('http://localhost/BoussolePro-backend/ValiderExpert.php/?id='+this.props.obj.ID)
+        axios.get('http://localhost:8080/BoussolePro-backend/ValiderExpert.php/?id='+this.props.obj.ID)
   .then(console.log('deleted'))
  .catch(err=>console.log(err))
     }

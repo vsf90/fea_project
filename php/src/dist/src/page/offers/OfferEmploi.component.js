@@ -13,7 +13,7 @@ import RecordsListOffreEmploi from './RecordsListOffreEmploi.js';
   }
   
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listOffreEmploi.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listOffreEmploi.php')
     .then(response=>{
       this.setState({OffreEmploi: response.data});
    })

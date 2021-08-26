@@ -3,8 +3,6 @@ import Search from "antd/lib/input/Search";
 import React, { Component } from "react";
 import history from "../../history";
 import "./NosReseaux.component.css";
-import { Link, NavLink, Route, Switch } from 'react-router-dom';
-import ss from '../../img/picturesExperts/2.jpg';
 import RecordsListNotreReseau from './RecordsListNotreReseau.js';
 import axios from 'axios';
 
@@ -16,7 +14,7 @@ class NosReseaux extends Component {
   }
   
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listNotreReseau.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listNotreReseau.php')
     .then(response=>{
       this.setState({listNotreReseau: response.data});
    })

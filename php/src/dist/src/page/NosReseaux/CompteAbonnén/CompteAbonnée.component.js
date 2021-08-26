@@ -1,6 +1,6 @@
 import { Alert } from 'antd';
 import React from 'react'
-import { Link } from 'react-router-dom';
+import test from "../../../img/picturesExperts/1.jpg";
 import './CompteAbonnée.component.css';
 import axios from 'axios';
 import {Component} from 'react';
@@ -35,7 +35,7 @@ export default class CompteAbonnée extends Component{
               }
           };
           console.log(localStorage.getItem('email'));
-        axios.get('http://localhost/BoussolePro-backend/listUser.php?email='+localStorage.getItem('email'))
+        axios.get('http://localhost:8080/BoussolePro-backend/listUser.php?email='+localStorage.getItem('email'))
         .then(response=>{
             console.log(response);
           this.setState({Nom: response.data.nom,
@@ -64,7 +64,7 @@ export default class CompteAbonnée extends Component{
     render() {
        
     return (
-        <div className="clearfix" style={{minWidth:"1000px"}}>
+        <div className="clearfix" style={{minWidth:"1200px"}}>
       <Alert
                 message="Compte Boussole Pro"
                 description="Bienvenue sur votre compte de Boussole Pro."
@@ -78,7 +78,7 @@ export default class CompteAbonnée extends Component{
             <div class="row" >
                 <div class="col-md-4">
                     <div class="profile-img">
-                        <img src={this.state.urlImage} />
+                        <img src={test} />
                         
                     </div>
                 </div>

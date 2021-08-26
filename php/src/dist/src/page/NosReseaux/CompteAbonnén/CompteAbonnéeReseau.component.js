@@ -15,7 +15,7 @@ export default class CompteAbonnéeReseau extends Component{
       }
     componentDidMount(){
         console.log("id",this.props.match.params.id);
-        axios.get('http://localhost/BoussolePro-backend/listUsersReseau.php?id='+this.props.match.params.id)
+        axios.get('http://localhost:8080/BoussolePro-backend/listUsersReseau.php?id='+this.props.match.params.id)
         .then(response=>{
           console.log("------------------------> response!!!!!",response)
           this.setState({

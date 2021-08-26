@@ -11,11 +11,26 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
    
      print_r($request);
 
+<<<<<<< Updated upstream
      $img=htmlspecialchars($request->img,ENT_QUOTES);
      $nom=htmlspecialchars($request->nom,ENT_QUOTES);
      $activité=htmlspecialchars($request->activité,ENT_QUOTES);
      $avantage=htmlspecialchars($request->avantage,ENT_QUOTES);
      $lien=htmlspecialchars($request->lien,ENT_QUOTES);
+=======
+     $img=$request->img;
+     $nom=$request->nom;
+     $activité=$request->activité;
+     $avantage=$request->avantage;
+     $lien=$request->lien;
+
+
+     $nom = htmlspecialchars($nom);
+     $nom = preg_replace("/\'/", "&#39;", $nom);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
     echo $img;
     echo $nom;

@@ -28,7 +28,7 @@ export default function Login(props) {
 		  };
 		console.log("---------------------------->Login",Login);	   
 		  
-		  axios.post('http://localhost/BoussolePro-backend/login.php', Login, config)
+		  axios.post('http://localhost:8080/BoussolePro-backend/login.php', Login, config)
 		  .then(res => {
 			console.log("--------*****-------->res.ata",res.data)
 			localStorage.setItem('loggedIn', true);

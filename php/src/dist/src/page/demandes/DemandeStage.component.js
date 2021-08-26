@@ -13,7 +13,7 @@ import RecordsListDemandeStage from './RecordsListDemandeStage.js';
   }
   
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listDemandeStage.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listDemandeStage.php')
     .then(response=>{
       this.setState({DemandeStageList: response.data});
    })

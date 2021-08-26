@@ -13,7 +13,7 @@ export default class DdSprintPro extends Component {
   }
   
   componentDidMount(){
-    axios.get('http://localhost/BoussolePro-backend/listSprint.php')
+    axios.get('http://localhost:8080/BoussolePro-backend/listSprint.php')
     .then(response=>{
       console.log("****----------------> dd sprint", response);
        this.setState({demandeSprint: response.data});

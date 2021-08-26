@@ -17,7 +17,7 @@ export default class Modérateurs extends Component {
 }
 
 componentDidMount(){
-  axios.get('http://localhost/BoussolePro-backend/listModérateur.php')
+  axios.get('http://localhost:8080/BoussolePro-backend/listModérateur.php')
   .then(response=>{
     console.log("*-*-*-*->",response);
     this.setState({listModerateur: response.data});

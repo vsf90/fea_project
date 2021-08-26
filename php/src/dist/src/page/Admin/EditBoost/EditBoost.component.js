@@ -36,7 +36,7 @@ import axios from 'axios';
       }
       componentDidMount(){
         console.log(this.props.match.params.id);
-        axios.get('http://localhost/BoussolePro-backend/getBoostById.php?id='+this.props.match.params.id)
+        axios.get('http://localhost:8080/BoussolePro-backend/getBoostById.php?id='+this.props.match.params.id)
         .then(response=>{
           this.setState({
                         confirmationAbonne:response.data.confirmationAbonne,

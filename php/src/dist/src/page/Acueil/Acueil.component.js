@@ -6,7 +6,7 @@ function Acueil() {
   
    
   return (
-    <div className="Acueil">
+    <div style={{minWidth:"1000px"}}>
        <Body></Body>
     </div>
   );

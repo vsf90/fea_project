@@ -63,7 +63,7 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu==''  ){
   
   }else{
     message.success("L'offre d'emploi a été publiée avec succès");
-    axios.post('http://localhost/BoussolePro-backend/insertOffreEmploi.php',OffreEmploi).then(res=>console.log(res.data));
+    axios.post('http://localhost:8080/BoussolePro-backend/insertOffreEmploi.php',OffreEmploi).then(res=>console.log(res.data));
 
     setNom('');
     setPrénom('');

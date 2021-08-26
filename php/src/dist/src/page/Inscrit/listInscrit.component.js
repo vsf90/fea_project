@@ -15,7 +15,7 @@ export default class Inscrit extends Component {
 }
 
 componentDidMount(){
-  axios.get('http://localhost/BoussolePro-backend/listInscrit.php')
+  axios.get('http://localhost:8080/BoussolePro-backend/listInscrit.php')
   .then(response=>{
     this.setState({listInscrit: response.data});
  })

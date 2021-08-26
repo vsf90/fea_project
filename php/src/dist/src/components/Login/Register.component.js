@@ -26,7 +26,7 @@ function Register() {
 		  email:Email,
 		  pass:Password,
 		  passConf: PasswwordCof,
-		  role: "khalid"
+		  role: "Inscrit"
 		
 		}
 		console.log("---------------------------->",user);
@@ -34,7 +34,7 @@ function Register() {
 		  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		  };
 		
-		  axios.post('http://localhost/BoussolePro-backend/regestre.php', user, config)
+		  axios.post('http://localhost:8080/BoussolePro-backend/regestre.php', user, config)
 		  .then(res =>{
 			console.log("------------------------>data returned",res.data);
 			history.push('/inscription');

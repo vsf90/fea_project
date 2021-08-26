@@ -17,7 +17,7 @@ export default class Nosrelais extends Component {
       }
 
       componentDidMount(){
-        axios.get('http://localhost/BoussolePro-backend/listNosRelais.php')
+        axios.get('http://localhost:8080/BoussolePro-backend/listNosRelais.php')
         .then(response=>{
           this.setState({profilerelais: response.data});
        })

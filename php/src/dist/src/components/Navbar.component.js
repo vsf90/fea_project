@@ -5,26 +5,18 @@ import logo from '../img/logo.PNG';
 import './Navbar.component.css';
 import {
   HomeOutlined,
-  BookOutlined,
   SettingFilled,
-  AppstoreOutlined,
   BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
   TeamOutlined,
   UserOutlined,
-  UploadOutlined,
-  VideoCameraOutlined,
   GlobalOutlined,
   EditOutlined,
   FileDoneOutlined,
-  MailOutlined,
   LogoutOutlined,
   TagOutlined,
   ScheduleOutlined,
   FormOutlined,
   GiftOutlined,
-  CarryOutOutlined,
   ProfileOutlined,
   CaretDownFilled,
   WechatOutlined,
@@ -33,7 +25,7 @@ import {
 } from '@ant-design/icons';
 
 import SubMenu from 'antd/lib/menu/SubMenu';
-import { Link, NavLink, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import Avatar from 'antd/lib/avatar/avatar';
 import Acueil from '../page/Acueil/Acueil.component';
  import NosReseaux from '../page/NosReseaux/NosReseaux.component';
@@ -52,7 +44,6 @@ import Relaisform from '../page/RelaisBP/RelaisBP/Relaisform';
 import Expertform from '../page/ExpertBP/ExpertBP/Expertform';
 import Nosrelais from '../page/NosRelais/Nosrelais';
 import Nosexperts from '../page/NosExperts/Nosexperts';
-import ReactDOM from 'react-dom'
 
 import NosPartenaires from '../page/NosPartenaire/NosPartenaires.component';
 import FeedbackMesBesions from '../page/FeedBack/FeedbackMesBesions.component';
@@ -82,7 +73,6 @@ import Besoins from '../page/Admin/Besions.component';
 import Feedbacks from '../page/Admin/Feedbacks.component';
 import AddPublication from '../page/Acueil/AddPublication';
 
-import DdExpairBP from '../page/Admin/DdExpairBP.compnent';
 
 import AjouterRelaisOuExpert from '../page/AjouterRelais/AjouterRelais'
 
@@ -128,13 +118,13 @@ function Navbar(props) {
 
   const [role, SetRole] = useState("")
 
-   console.log('---------------------> id',localStorage.getItem('ID'));
+   console.log('reponse---------------------> id',localStorage.getItem('ID'));
 
    useEffect(() => {
     console.log(localStorage.getItem('ID'));
     axios.get('http://localhost:8080/BoussolePro-backend/getUserById.php?id='+localStorage.getItem('ID'))
     .then(response=>{
-      console.log("reponse of request ===>",response.data);
+      console.log("reponse of request ==***=>",response.data);
       SetRole(response.data.role);
       console.log("--------------------->role",role);
 
@@ -167,8 +157,8 @@ function Navbar(props) {
 
 
       <Menu  theme="light" mode="inline" defaultSelectedKeys={['4']} mode="vertical">
-      <div className="logo" style={{height: "60px", background: "rgba(255, 255, 255, 0.4)"}} >
-      <img src={logo} style={{height:"60px",backgroundPositionY:"center"}} />
+      <div className="logo" style={{height: "42px", background: "rgba(255, 255, 255, 0.4)"}} >
+      <img src={logo} style={{height:"42px",backgroundPositionY:"center"}} />
       </div>
 
         <Menu.Item key="1" className={role === "Inscrit" ? 'hidden' : ''} icon={< HomeOutlined />}><Link  to="/Acueil"></Link>Accueil  </Menu.Item>
@@ -216,34 +206,30 @@ function Navbar(props) {
               <Menu.Item key="22" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} ><Link  to="/AddPartenaire"></Link>Ajouter un partenaire</Menu.Item>
 
             </SubMenu>
-
-
-           
-             
-          
-           
               <SubMenu key="sub6" className={role === "Inscrit" ? 'hidden' : ''} icon={< SettingFilled />} title="Parametres">
                <Menu.Item key="23" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />}><Link  to="/Modérateur"></Link>Liste des Modérateurs</Menu.Item>
                 <Menu.Item key="24" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/AdminList"></Link>Liste des admins</Menu.Item>
-                <Menu.Item key="24"  icon={<ProfileOutlined />} ><Link  to="/listInscrit"></Link>Liste des inscrits </Menu.Item>
-                <Menu.Item key="25" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListPublications"></Link>Liste des publication</Menu.Item>
-                <Menu.Item key="26" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListeExpairs"></Link>Liste des Experts</Menu.Item>
-                <Menu.Item key="27" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListeRelais"></Link>Liste des Relais</Menu.Item>
+                <Menu.Item key="25"  icon={<ProfileOutlined />} ><Link  to="/listInscrit"></Link>Liste des inscrits </Menu.Item>
+                <Menu.Item key="26" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListPublications"></Link>Liste des publication</Menu.Item>
+                <Menu.Item key="27" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListeExpairs"></Link>Liste des Experts</Menu.Item>
+                <Menu.Item key="28" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListeRelais"></Link>Liste des Relais</Menu.Item>
 
 
               </SubMenu>
              
             <SubMenu key="sub7" className={role === "Inscrit" ? 'hidden' : ''} icon={<FundOutlined />} title="les offres">
-              <Menu.Item key="28" className={role === "Inscrit" ? 'hidden' : ''} icon={<PullRequestOutlined />}><Link  to="/OffreStage"></Link>Offres de stage</Menu.Item>
-              <Menu.Item key="29" className={role === "Inscrit" ? 'hidden' : ''} icon={<PullRequestOutlined />} ><Link  to="/OffreEmploi"></Link>Offres d'emploi</Menu.Item>
+              <Menu.Item key="29" className={role === "Inscrit" ? 'hidden' : ''} icon={<PullRequestOutlined />}><Link  to="/OffreStage"></Link>Offres de stage</Menu.Item>
+              <Menu.Item key="30" className={role === "Inscrit" ? 'hidden' : ''} icon={<PullRequestOutlined />} ><Link  to="/OffreEmploi"></Link>Offres d'emploi</Menu.Item>
             </SubMenu>
 
             <SubMenu key="sub8" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} title="les demandes">
 
-              <Menu.Item key="30" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
-              <Menu.Item key="31" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
-             
+              <Menu.Item key="31" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
+              <Menu.Item key="32" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
             </SubMenu>
+            <Menu.Item key="33" className={role === "Admin" ||role === "Modérateur" ||role === "Abonnée" ? 'hidden' : ''} icon={<FormOutlined />}>
+               <Link to="/EditCompte"></Link>L'inscription
+             </Menu.Item>
             
            
       </Menu>
@@ -268,95 +254,178 @@ function Navbar(props) {
         
 
         <Switch>
-        <Route path="/Acueil" exact component={Acueil} />
-        <Route path="/Services" exact component={Services}/> 
-        <Route path="/NosReseaux" exact component={NosReseaux} />
-        <Route path="/NosPartenaires" exact component={NosPartenaires} />   
+        {
+          (role === "Admin" || role === "Modérateur" ||role === "Abonnée" || role === "Inscrit") 
+          && (<Route path="/CompteAbonnée" exact component={CompteAbonnée}/>)
+        }
+        {
+          (role === "Admin" || role === "Modérateur" ||role === "Abonnée" || role === "Inscrit") 
+          && (<Route path="/ModifierProfile" exact component={ModifierProfile}/>)
+        }
 
-        <Route path="/BoostPro" exact component={BoostPro} />  
-        <Route path="/MeetUpPro" exact component={MeetUpPro} />  
-        <Route path="/Relais" exact component={Relais} />  
-        <Route path="/Expert" exact component={Expert} /> 
-        <Route path="/ShouraPro" exact component={ShouraPro} />  
-        <Route path="/MesBesoins" exact component={FeedbackMesBesions} /> 
-        <Route path="/MonFeedback" exact component={FeedbackMonFeedback} /> 
-        <Route path="/SprintPro" exact component={SprintPro} />
-        <Route path="/Sprintform" exact component={Sprintform} /> 
-        <Route path="/Meetform" exact component={Meetform} /> 
-        <Route path="/Shouraform" exact component={Shouraform} /> 
-        <Route path="/Boostform" exact component={Boostform} /> 
-        <Route path="/Relaisform" exact component={Relaisform} /> 
-        <Route path="/Expertform" exact component={Expertform} /> 
-        <Route path="/CompteAbonnée/" exact component={CompteAbonnée} /> 
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée") && (
+          <Route exact path="/Acueil" component={Acueil} />) }
+          
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/Services" exact component={Services}/>)}
 
-        <Route path="/CompteAbonnéeReseau/:id" exact component={CompteAbonnéeReseau} /> 
-        <Route path="/EditCompte" exact component={EditCompte} /> 
-        <Route path="/NosRelais" exact component={Nosrelais} /> 
-        <Route path="/NosExperts" exact component={Nosexperts} /> 
-        <Route path="/AddPublication" exact component={AddPublication} /> 
-        <Route path="/EditAdmin" exact component={EditAdmin}/>
-        <Route path="/AddPartenaire" exact component={AddPartenaire}/>
-        <Route path="/ModifierProfile" exact component={ModifierProfile}/>
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")  
+        && (<Route path="/NosReseaux" exact component={NosReseaux} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        &&(<Route path="/listInscrit" exact component={listInscrit} />) }
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/NosPartenaires" exact component={NosPartenaires} />)}
 
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/BoostPro" exact component={BoostPro} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/MeetUpPro" exact component={MeetUpPro} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/Relais" exact component={Relais} /> )}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/Expert" exact component={Expert} /> )}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/ShouraPro" exact component={ShouraPro} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/MesBesoins" exact component={FeedbackMesBesions} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/SprintPro" exact component={SprintPro} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/MonFeedback" exact component={FeedbackMonFeedback} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/Sprintform" exact component={Sprintform} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/Meetform" exact component={Meetform} /> )}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/Shouraform" exact component={Shouraform} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/Boostform" exact component={Boostform} /> )}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/Relaisform" exact component={Relaisform} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/CompteAbonnéeReseau/:id" exact component={CompteAbonnéeReseau}/>)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/Expertform" exact component={Expertform} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/Expertform" exact component={Expertform} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/NosRelais" exact component={Nosrelais} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        && (<Route path="/NosExperts" exact component={Nosexperts} />)}
 
-
-
-      {/* admin's routes  */}
-        <Route path="/DdSprintPro" exact component={DdSprintPro} />
-        <Route path="/DdShouraPro" exact component={DdShouraPro} />
-        <Route path="/DdMeetUpPro" exact component={DdMeetUpPro} />
-        <Route path="/DdBoostPro" exact component={DdBoostPro} />
-        <Route path="/DdRelaisBP" exact component={DdRelaisBP} />
-        <Route path="/DdExpertBP" exact component={DdExpertBP} />
-        <Route path="/ListPublications" exact component={ListPublications} />
-        <Route path="/ListeRelais" exact component={ListeRelais} />
-        <Route path="/ListeExpairs" exact component={ListeExpairs} />
-
-
-        <Route path="/AjouterRelaisExpert" exact component={AjouterRelaisOuExpert} />
-        <Route path="/Besoins" exact component={Besoins}/>
-        <Route path="/feedbacks" exact component={Feedbacks} />
-        <Route path="/BesionsPro" exact component={BesionsPro} />
-
-
-        
-        {/* offer's routes */}
-        <Route path="/OffreStage" exact component={OfferStage} /> 
-        <Route path="/OffreEmploi" exact component={OfferEmploi} /> 
-        <Route path="/AddOffreEmploi" exact component={AddOffreEmploi}/>
-        <Route path="/AddOffreStage" exact component={AddOffreStage}/>
-
+          {/*  offer's routes  */}
+          {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        &&(<Route path="/OffreStage" exact component={OfferStage} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée") 
+        &&(<Route path="/OffreEmploi" exact component={OfferEmploi} />) }
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        &&(<Route path="/AddOffreEmploi" exact component={AddOffreEmploi}/>)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        &&(<Route path="/AddOffreStage" exact component={AddOffreStage}/>)}
 
         {/* Demande's routes */}
-        <Route path="/DemandeStage" exact component={DemandeStage} /> 
-        <Route path="/DemandeEmploi" exact component={DemandeEmploi} /> 
-        <Route path="/AddDemandeEmploi" exact component={AddDemandeEmploi}/>
-        <Route path="/AddDemandeStage" exact component={AddDemandeStage}/>
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        &&(<Route path="/DemandeStage" exact component={DemandeStage} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée") 
+        &&(<Route path="/DemandeEmploi" exact component={DemandeEmploi} />)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée") 
+        &&(<Route path="/AddDemandeEmploi" exact component={AddDemandeEmploi}/>)}
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        &&(<Route path="/AddDemandeStage" exact component={AddDemandeStage}/>)}
+
+        {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/AddPublication" exact component={AddPublication} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/AddPartenaire" exact component={AddPartenaire}/>)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/EditAdmin" exact component={EditAdmin}/>)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/DdSprintPro" exact component={DdSprintPro} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&( <Route path="/DdShouraPro" exact component={DdShouraPro} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/DdMeetUpPro" exact component={DdMeetUpPro} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/DdBoostPro" exact component={DdBoostPro} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/DdRelaisBP" exact component={DdRelaisBP} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/DdExpertBP" exact component={DdExpertBP} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/ListPublications" exact component={ListPublications} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/ListeRelais" exact component={ListeRelais} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/ListeExpairs" exact component={ListeExpairs} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/AjouterRelaisExpert" exact component={AjouterRelaisOuExpert} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/Besoins" exact component={Besoins}/>)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/feedbacks" exact component={Feedbacks} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/BesionsPro" exact component={BesionsPro} />)}
+
+         {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/EditSprint/:id"  component={EditSprint} /> )}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/EditShoura/:id"  component={EditShoura} />) }
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/EditRelais/:id"  component={EditRelais} />) }
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/EditMeet/:id"  component={EditMeet} />)}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/EditBoost/:id"  component={EditBoost} /> )}
+          {
+          (role === "Admin" || role === "Modérateur")
+          &&(<Route path="/EditExpert/:id"  component={EditExpert} />) }
+          {
+          (role === "Admin" || role === "Modérateur")
+          
+          &&(<Route path="/EditInscrit/:id" exact component={EditInscrit} />) }
+        
+          
+      {(role === "Admin")     
+       &&(<Route path="/Modérateur" exact component={Modérateurs} />) }
+       {(role === "Admin") 
+       &&(<Route path="/AddModérateur" exact component={AddModérateur} />)}
+       {(role === "Admin")  
+       &&(<Route path="/EditModérateur/:id" component={EditModérateur} />)}
+
+       {/* route de admin */}
+       {(role === "Admin") 
+      &&(<Route path="/AdminList" exact component={AdminList} />) }
+      {(role === "Admin") 
+      &&(<Route path="/AddAdmin" exact component={AddAdmin} /> )}
+      {(role === "Admin") 
+      &&(<Route path="/EditAdmin/:id"  component={EditAdmin} /> )
+      }
+
+        {
+          role==="Inscrit" && (<Route path="/EditCompte"exact component={EditCompte} /> )
+        }
        
-
-       {/* route de moderateur */}
-       <Route path="/Modérateur" exact component={Modérateurs} /> 
-       <Route path="/AddModérateur" exact component={AddModérateur} /> 
-       <Route path="/EditModérateur/:id" component={EditModérateur} />
-
-     {/* route de admin */}
-      <Route path="/AdminList" exact component={AdminList} /> 
-      <Route path="/AddAdmin" exact component={AddAdmin} /> 
-      <Route path="/EditAdmin/:id"  component={EditAdmin} /> 
-          {/* route de inscrit */}
-      <Route path="/listInscrit" exact component={listInscrit} /> 
-      <Route path="/EditInscrit/:id" exact component={EditInscrit} /> 
-
-
-
-      {/* edit services */}
-      <Route path="/EditSprint/:id"  component={EditSprint} /> 
-      <Route path="/EditShoura/:id"  component={EditShoura} /> 
-      <Route path="/EditRelais/:id"  component={EditRelais} /> 
-      <Route path="/EditMeet/:id"  component={EditMeet} />
-      <Route path="/EditBoost/:id"  component={EditBoost} /> 
-      <Route path="/EditExpert/:id"  component={EditExpert} />  
-
 
         </Switch>
          

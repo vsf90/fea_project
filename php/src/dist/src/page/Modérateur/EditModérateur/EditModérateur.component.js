@@ -111,7 +111,7 @@ import history from '../../../history';
         
         } else {
           message.success('Les informations ont été modifiées avec succès');
-        axios.post('http://localhost/BoussolePro-backend/updateModerateur.php?id='+this.props.match.params.id,EditModerateur)
+        axios.post('http://localhost:8080/BoussolePro-backend/updateModerateur.php?id='+this.props.match.params.id,EditModerateur)
         .then(res=>
           {
             console.log(res.data);
