@@ -4,6 +4,8 @@ header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 // require 'connect.php';
 $con = mysqli_connect("localhost", "root", "", "boussolepro");
+$id=$_GET['id'];
+
  $postdata=file_get_contents("php://input");
  if(isset($postdata) && !empty($postdata))
  {
@@ -98,8 +100,8 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
 
 
 
-     $req="INSERT INTO abonnement2 (`chosesessentielles`, `CadreTravail`, `FontConfiance`, `RéseauQualité`, `InformationImportante`, `NouveauxClients`, `AiderDévelopper`, `Bénéfices`) 
-     VALUES ('{$chosesessentielles}','{$CadreTravail}', '{$FontConfiance}', '{$RéseauQualité}', '{$InformationImportante}' , '{$NouveauxClients}' , '{$AiderDévelopper}', '{$Bénéfices}'  )";
+     $req="INSERT INTO utilisateur (`chosesessentielles`, `CadreTravail`, `FontConfiance`, `ReseauQualite`, `InformationImportante`, `NouveauxClients`, `AiderDevelopper`, `Benefices`) 
+     VALUES ('{$chosesessentielles}','{$CadreTravail}', '{$FontConfiance}', '{$RéseauQualité}', '{$InformationImportante}' , '{$NouveauxClients}' , '{$AiderDévelopper}', '{$Bénéfices}'  ) WHERE ID='{$id}'";
        $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
        if ($resultat){
            http_response_code(201);

@@ -4,6 +4,7 @@ header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 // require 'connect.php';
 $con = mysqli_connect("localhost", "root", "", "boussolepro");
+$id=$_GET['id'];
  $postdata=file_get_contents("php://input");
  if(isset($postdata) && !empty($postdata))
  {
@@ -19,8 +20,8 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      $TeleContact2=htmlspecialchars($request->TeleContact2,ENT_QUOTES);
     
 
-     $req="INSERT INTO abonnement (`PrénomContact1`,`NomContact1`,`TeleContact1`, `PrénomContact2`,`NomContact2`,`TeleContact2`) 
-     VALUES ('{$PrénomContact1}','{$NomContact1}','{$TeleContact1}','{$PrénomContact2}','{$NomContact2}','{$TeleContact2}' )";
+     $req="INSERT INTO utilisateur (`NomContact1`,`PrenomContact1`,`TeleContact1`,`NomContact2`, `PrenomContact2`,`TeleContact2`) 
+     VALUES ('{$NomContact1}','{$PrénomContact1}','{$TeleContact1}','{$NomContact2}','{$PrénomContact2}','{$TeleContact2}' ) WHERE ID='{$id}'";
        $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
        if ($resultat){
            http_response_code(201);

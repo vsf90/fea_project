@@ -13,7 +13,7 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
  {
      $request=json_decode($postdata);
    
-     print_r($request);
+     print_r($request); 
 
      $email=htmlspecialchars($request->email,ENT_QUOTES);
      $pass=htmlspecialchars($request->pass,ENT_QUOTES);
