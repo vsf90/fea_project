@@ -122,7 +122,7 @@ function Navbar(props) {
 
    useEffect(() => {
     console.log(localStorage.getItem('ID'));
-    axios.get('http://localhost:8080/BoussolePro-backend/getUserById.php?id='+localStorage.getItem('ID'))
+    axios.get('http://localhost/BoussolePro-backend/getUserById.php?id='+localStorage.getItem('ID'))
     .then(response=>{
       console.log("reponse of request ==***=>",response.data);
       SetRole(response.data.role);

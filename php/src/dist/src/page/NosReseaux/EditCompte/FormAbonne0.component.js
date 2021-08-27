@@ -1,12 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
-
+import axios from 'axios';
 import { Form, Input,Checkbox, Alert, Button,  Radio, Space , Row, Col,message  } from 'antd';
 function FormAbonne0() {
-    const [Nom, setNom] = useState("");
-    const [Prénom, setPrénom] = useState("");
+   
     const [Télé, setTélé] = useState("");
-    const [Email, setEmail] = useState("");
+    const [secteur, setSecteur] = useState("");
+    const [expertise, setExpertise] = useState("");
+    const [expertiseSouhaitez, setExpertiseSouhaitez] = useState("");
+    const [centresInteret, setCentresInteret] = useState("");
+
     const [ObjectifProfess, setObjectifProfess] = useState("");
     const [Radio1, setRadio1] = useState("");
     const [Radio2, setRadio2] = useState("");
@@ -16,15 +19,13 @@ function FormAbonne0() {
     const [verset, setVerset] = useState("");
     const [profession, setProfession] = useState("");
     const [entreprise, setEntreprise] = useState("");
-    const [ville, setVille] = useState("");
     const [villeTop, setVilleTop] = useState("");
-    const [pays, setPays] = useState("");
+    const [Img, setImg] = useState("");
+
     
-    
-    const [NomErr, setNomErr] = useState("");
-    const [PrénomErr, setPrénomErr] = useState("");
+    console.log(Img);
+  
     const [TéléErr, setTéléErr] = useState("");
-    const [EmailErr, setEmailErr] = useState("");
     const [ObjectifProfessErr, setObjectifProfessErr] = useState("");
     const [Radio1Err, setRadio1Err] = useState("");
     const [Radio2Err, setRadio2Err] = useState("");
@@ -34,9 +35,7 @@ function FormAbonne0() {
     const [versetErr, setVersetErr] = useState("");
     const [professionErr, setProfessionErr] = useState("");
     const [entrepriseErr, setEntrepriseErr] = useState("");
-    const [villeErr, setVilleErr] = useState("");
     const [villeTopErr, setVilleTopErr] = useState("");
-    const [paysErr, setPaysErr] = useState("");
 
 
 
@@ -46,11 +45,9 @@ function FormAbonne0() {
         e.preventDefault();
        
         const abonnement0={
-          nom:Nom,
-          prenom:Prénom,
-          Télé:Télé,
-          Email:Email,
-          Radio1:Radio1,
+         
+          telephone:Télé,
+          type:Radio1,
           Radio2:Radio2,
           Radio3:Radio3,
           Radio4:Radio4,
@@ -59,21 +56,22 @@ function FormAbonne0() {
           profession:profession,
           ObjectifProfess:ObjectifProfess,
           entreprise:entreprise,
-          ville:ville,
           villeTop:villeTop,
-          pays:pays,
+          secteur:secteur,
+          urlImage:Img,
+          expertise:expertise,
+          expertiseSouhaitez:expertiseSouhaitez,
+          centresInteret:centresInteret
 
         }
         console.log(abonnement0);
-        if(  Nom=='' || Prénom==''|| Radio1==''|| Radio2==''|| Radio3==''|| Radio4=='' 
-        || Radio5=='' || Télé=='' || Email==''|| ObjectifProfess=='' || profession=='' || entreprise==''
-        || ville=='' || villeTop=='' || pays==''){
+        if(  Radio1==''|| Radio2==''|| Radio3==''|| Radio4=='' 
+        || Radio5=='' || Télé=='' ||  ObjectifProfess=='' || profession=='' || entreprise==''
+        || villeTop=='' ){
       
             message.error('Vous devez remplir les champs obligatoires');
-            setNomErr("le champ Nom est obligatoire merci de le remplir !!");
-            setPrénomErr("le champ Prénom est obligatoire merci de le remplir !!");
+           
             setTéléErr("le champ Téléphone est obligatoire  !!");
-            setEmailErr("le champ Email est obligatoire  !!");
             setObjectifProfessErr("le champ Email est obligatoire  !!");
             setRadio1Err("le champ est obligatoire  !!");
             setRadio2Err("le champ est obligatoire  !!");
@@ -83,19 +81,17 @@ function FormAbonne0() {
             setVersetErr("le champ est obligatoire  !!");
             setProfessionErr("le champ est obligatoire  !!");
             setEntrepriseErr("le champ est obligatoire  !!");
-            setVilleErr("le champ est obligatoire  !!");
             setVilleTopErr("le champ est obligatoire  !!");
-            setPaysErr("le champ est obligatoire  !!");
 
 
 }
             else{
                 message.success('La demande est faite avec succès');
-                setPrénom('');
-                setNom(''); 
+                axios.post('http://localhost/BoussolePro-backend/insertAbonne.php',abonnement0).then(res=>console.log(res.data));
+
+               /* 
                 setObjectifProfess('');
                 setTélé('');
-                setEmail('');
                 setRadio1('');
                 setRadio2('');
                 setRadio3('');
@@ -103,40 +99,20 @@ function FormAbonne0() {
                 setVerset('');
                 setProfession('');
                 setEntreprise('');
-                setVille('');
-                setPays('');
-                setVilleTop('');
+              
+                setVilleTop('');*/
             }}
     return (
         <div>
-           <form  className="second" style={{padding: "14px",marginTop:"19px"}}>
+           <form  className="second" style={{padding: "14px",marginTop:"19px",backgroundColor:"white"}}>
         <Row>
         <Col span={24}>
             
-            <Alert   message="Un réseau de confiance et de qualité"
-                  description="Bienveneu sur formulaire d'abonne."
-                  type="info"
-                  showIcon/>
+           
              <div style={{textAlign:"center"}}> 
               <h4 style={{color:"#171617"}}>Formulaire d’abonnement à FEA Boussole Pro</h4></div>
 
-              <div class="item">              
-                <p style={{color:"#171617"}}><b>CONTACTS</b><span class="required">*</span></p>
-                <div class="name-item">
-                    <div className="col-md-6">
-                        <Input className="inputB" type="text" style={{width: "400px"}} name="name"  placeholder="Prénom"  value={Prénom} onChange={(e)=>setPrénom(e.target.value)}  required/>
-                    </div>
-                    <div className="col-md-6">
-                        <Input className="inputB" style={{width: "430px"}} type="text" name="name" placeholder="Nom"  value={Nom} onChange={(e)=>setNom(e.target.value)} required/>
-                    </div>
-                    <div className="col-md-6">
-                        <spam><b style={{color: "red"}}>{PrénomErr}</b></spam>
-                    </div>
-                    <div className="col-md-6">
-                        <spam><b style={{color: "red"}}>{NomErr}</b></spam>
-                    </div>
-                </div>
-
+              <div class="item">                      
 
               <Col>
               <Form.Item >
@@ -147,17 +123,13 @@ function FormAbonne0() {
                   <spam><b style={{color: "red"}}>{TéléErr}</b></spam>
                </Form.Item> 
 
-               <Form.Item name={['user', 'email']}  rules={[{ type: 'email' }]}>
-                <label><b>Email</b><span class="required">*</span></label>
-                  <Input  placeholder="Exmple: boussole@fea.com" value={Email} onChange={(e)=>setEmail(e.target.value)} required />
-                  <spam><b style={{color: "red"}}>{EmailErr}</b></spam>
-               </Form.Item>
+             
               </Col>
                <Form.Item >
-            <label><b>Vous êtes?</b><span className="required">*</span></label>
+            <label><b>Vous êtes?</b><span className="required">*</span></label><br></br>
               <Radio.Group value={Radio1} onChange={(e)=>setRadio1(e.target.value)}>
                 <Radio value="Professionnel" >Professionnel</Radio><br/>
-                <Radio value="Jeune" >Jeune diplômé-e</Radio><br/>
+                <Radio value="Jeune diplômé-e" >Jeune diplômé-e</Radio><br/>
               </Radio.Group><br/>
               <spam><b style={{color: "red"}}>{Radio1Err}</b></spam>
         </Form.Item>
@@ -190,25 +162,12 @@ function FormAbonne0() {
 {/* pas encore fait !!!!!!!!!!!!!!!!!!!!!!!! */}
         <Form.Item >
         <label><b>Le secteur de votre entreprise</b></label>
-        <select class="form-control">
-          <option value="un">Un</option>
-          <option value="deux">Deux</option>
-          <option value="trois">Trois</option>
-        </select>
+        <Input  type="text" name="ville" value={secteur} onChange={(e)=>setSecteur(e.target.value)} required />
+
         </Form.Item>
          
 
-        <Form.Item >
-          <label><b>Votre ville</b><span className="required">*</span></label>
-            <Input  type="text" name="ville" value={ville} onChange={(e)=>setVille(e.target.value)} required />
-            <spam><b style={{color: "red"}}>{villeErr}</b></spam>
-        </Form.Item>
-
-        <Form.Item >
-          <label><b>Pays</b><span className="required">*</span></label>
-            <Input  type="text" name="Pays" value={pays} onChange={(e)=>setPays(e.target.value)} required />
-            <spam><b style={{color: "red"}}>{paysErr}</b></spam>
-        </Form.Item>
+     
         
         <Form.Item >
           <label><b>Top 3 des villes où vous êtes en déplacement</b></label>
@@ -219,7 +178,7 @@ function FormAbonne0() {
         {/* pas encore fait !!!!!!!!!!!! */}
         <Form.Item >
         <label><b>Votre expertise (5 années d'expérience minimum, plusieurs choix possible) </b><span class="required">*</span></label>
-        <select class="form-control">
+        <select class="form-control" value={expertise} onChange={(e)=>setExpertise(e.target.value)}>
           <option value="un">Un</option>
           <option value="deux">Deux</option>
           <option value="trois">Trois</option>
@@ -228,7 +187,7 @@ function FormAbonne0() {
 {/* pas encore fait !!!!!!!!!!!! */}
         <Form.Item >
         <label><b>L' expertise que vous souhaitez développer (plusieurs choix possible)  </b><span class="required">*</span></label>
-        <select class="form-control">
+        <select class="form-control" value={expertiseSouhaitez} onChange={(e)=>setExpertiseSouhaitez(e.target.value)}>
           <option value="un">Un</option>
           <option value="deux">Deux</option>
           <option value="trois">Trois</option>
@@ -237,18 +196,15 @@ function FormAbonne0() {
 {/* pas encore fait !!!!!!!!!!!! */}
         <Form.Item >
         <label><b>Vos centres d'intérêt  </b></label>
-        <select class="form-control">
-          <option value="un">sport</option>
-          <option value="deux">voyage</option>
-          <option value="trois">Lecture</option>
-        </select>
+        <Input  type="text" name="villeTop" value={centresInteret} onChange={(e)=>setCentresInteret(e.target.value)}required />
+
         </Form.Item>
 
        <Form.Item >
             <label><b>Je confirme soumettre 2 contacts. Tout abonné-e doit être recommandé par 2 personnes. Remarque : ce sont les 2 personnes qui peuvent vous recommander et qui vous connaissent (de votre entourage ou autres).</b><span class="required">*</span></label>
               <Radio.Group value={Radio5} onChange={(e)=>setRadio5(e.target.value)}>
-              <Radio value="confirme" >OUI je confirme</Radio><br/>
-              <Radio value="nonconfirm" >NON je ne confirme pas</Radio><br/>
+              <Radio value="OUI je confirme" >OUI je confirme</Radio><br/>
+              <Radio value="NON je ne confirme pas" >NON je ne confirme pas</Radio><br/>
               </Radio.Group><br/>
               <spam><b style={{color: "red"}}>{Radio5Err}</b></spam>
         </Form.Item> 
@@ -256,8 +212,8 @@ function FormAbonne0() {
         <Form.Item >
             <label><b>êtes vous un membre de FEA?</b><span className="required">*</span></label><br/>
               <Radio.Group value={Radio2} onChange={(e)=>setRadio2(e.target.value)}>
-              <Radio value="membre" >Membre de FEA</Radio><br/>
-              <Radio value="nonmembre" >Non membre de FEA</Radio><br/>
+              <Radio value="Membre de FEA" >Membre de FEA</Radio><br/>
+              <Radio value="Non membre de FEA" >Non membre de FEA</Radio><br/>
               </Radio.Group><br/>
               <spam><b style={{color: "red"}}>{Radio2Err}</b></spam>
         </Form.Item>
@@ -265,10 +221,10 @@ function FormAbonne0() {
         <Form.Item >
             <label><b>Quel abonnement choisissez-vous?</b><span className="required">*</span></label><br/>
               <Radio.Group value={Radio3} onChange={(e)=>setRadio3(e.target.value)} >
-              <Radio value="Standard15" >Standard à 15 euros par mois - avec engagement annuel</Radio><br/>
-              <Radio value="Standard180" >Standard à 180 euros par an + 5% de réduction</Radio><br/>
-              <Radio value="Premium25" >Premium à 25 euros par mois - avec engagement annuel</Radio><br/>
-              <Radio value="Premium300" >Premium à 300 euros par an + 5% de réduction</Radio><br/>
+              <Radio value="Standard 15 euros par mois" >Standard à 15 euros par mois - avec engagement annuel</Radio><br/>
+              <Radio value="Standard à 180 euros par an" >Standard à 180 euros par an + 5% de réduction</Radio><br/>
+              <Radio value="Premium à 25 euros par mois" >Premium à 25 euros par mois - avec engagement annuel</Radio><br/>
+              <Radio value="Premium à 300 euros par an" >Premium à 300 euros par an + 5% de réduction</Radio><br/>
               </Radio.Group>
               <br/>
               <spam><b style={{color: "red"}}>{Radio3Err}</b></spam>
@@ -277,16 +233,16 @@ function FormAbonne0() {
         <Form.Item >
             <label><b>Conformément à la loi 09-08, vous disposez d’un droit d’accès, de rectification et d’opposition au traitement de vos données personnelles. </b><span class="required">*</span></label><br/>
               <Radio.Group value={Radio4} onChange={(e)=>setRadio4(e.target.value)}>
-              <Radio value="Accepteconditions" >J'accepte les conditions d'utilisation</Radio><br/>
-              <Radio value="NonAccepteconditions" >Je n'accepte pas les conditions d'utilisation</Radio><br/>
+              <Radio value="J accepte les conditions d'utilisation" >J'accepte les conditions d'utilisation</Radio><br/>
+              <Radio value="Je n accepte pas les conditions d'utilisation" >Je n'accepte pas les conditions d'utilisation</Radio><br/>
               </Radio.Group><br/>
               <spam><b style={{color: "red"}}>{Radio4Err}</b></spam>
         </Form.Item>
         
         <Form.Item >
         <label><b>Merci d’uploader votre future photo de profil. Vous pouvez également uploader une photo de paysage. </b><span class="required">*</span></label><br/>
-        <input type="file" /*className={this.state.urlImage != null  ? 'hidden' : ''}*/ />
-        </Form.Item>
+        <input type="file" selected={Img} onChange={(info)=>setImg(URL.createObjectURL(info.target.files[0]))} />
+        </Form.Item> 
         
 
               <p>Notre équipe entrera en contact avec vous et sera à votre disposition pour toutes demandes.

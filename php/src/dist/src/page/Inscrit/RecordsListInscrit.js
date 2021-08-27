@@ -32,14 +32,42 @@ export default class RecordsListInscrit extends Component {
           
      <tr>
       <th scope="row">{this.props.obj.ID}</th>
+      <td>{this.props.obj.urlImage}</td>
       <td>{this.props.obj.prenom}</td>
       <td>{this.props.obj.nom}</td>
       <td>{this.props.obj.email}</td>
+      <td>{this.props.obj.telephone}</td>
+      <td>{this.props.obj.type}</td>
+      <td>{this.props.obj.verset}</td>
       <td>{this.props.obj.pays}</td>
       <td>{this.props.obj.ville}</td>
       <td>{this.props.obj.entreprise}</td>
-      <td>{this.props.obj.objetEntreprise}</td>
+      <td>{this.props.obj.objetEntreprise}</td> 
       <td>{this.props.obj.activiteProfessionnelle}</td>
+      <td>{this.props.obj.secteur}</td>
+      <td>{this.props.obj.expertiseSouhaitez}</td>
+      <td>{this.props.obj.expertise}</td>
+      <td>{this.props.obj.centresInteret}</td>
+      <td>{this.props.obj.confirmation}</td>
+      <td>{this.props.obj.membreFEA}</td>
+      <td>{this.props.obj.abonnement}</td>
+      <td>{this.props.obj.topVille}</td>
+      <td>{this.props.obj.confirmationLoi}</td>
+      <td>{this.props.obj.PrenomContact1}  {this.props.obj.NomContact1}</td>
+      <td>{this.props.obj.TeleContact1}</td>
+      <td>{this.props.obj.PrenomContact2}  {this.props.obj.NomContac2}</td>
+      <td>{this.props.obj.chosesessentielles}</td>
+      <td>{this.props.obj.CadreTravail}</td>
+      <td>{this.props.obj.FontConfiance}</td>
+      <td>{this.props.obj.ReseauQualite}</td>
+      <td>{this.props.obj.InformationImportante}</td>
+      <td>{this.props.obj.NouveauxClients}</td>
+      <td>{this.props.obj.AiderDevelopper}</td>
+      <td>{this.props.obj.Benefices}</td>
+
+
+
+
       <td><Link to={"/EditInscrit/"+this.props.obj.ID}><EditFilled style={{fontSize:"20px"}}/></Link>
 
        <button id="delete" onClick={this.delete}

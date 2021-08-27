@@ -139,7 +139,7 @@ import axios from 'axios';
          <Col span={24}>
              
              <Alert
-             message="Bienveneu sur la page modifier un inscrit"
+             message="Bienvenue sur la page modifier un inscrit"
              description=" Pour Modifier les informations d'inscrit merci de remplir le formulaire suivant."
                    type="info"
                    showIcon
@@ -160,6 +160,7 @@ import axios from 'axios';
              </div>
            </div>
          </Form.Item>
+         
    
          <Form.Item  >
          <label><b>Pays</b><span class="required">*</span></label>

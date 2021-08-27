@@ -36,12 +36,13 @@ class App extends Component {
     
     return (
       <div className="back">
-     <Router>
+     {/*<Router>
      <Switch>
         <Route to="/app" component={app}/> 
         <Route to="/register" exact component={Register}/>
       </Switch>
-     </Router>
+     </Router>*/}
+     {app}
       </div>
     )
   }
