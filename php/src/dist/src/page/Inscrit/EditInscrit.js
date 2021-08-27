@@ -34,8 +34,8 @@ import axios from 'axios';
       
       componentDidMount(){
         console.log(this.props.match.params.id);
-        axios.get('http://localhost:8080/BoussolePro-backend/getInscritById.php?id='+this.props.match.params.id)
-        .then(response=>{
+        axios.get('http://localhost/BoussolePro-backend/getInscritById.php?id='+this.props.match.params.id)
+        .then(response=>{  console.log(response.data);
           this.setState({
                         nom: response.data.nom,
                         Prénom:response.data.prenom,
@@ -52,8 +52,9 @@ import axios from 'axios';
        .catch(function (error){
          console.log(error);
         })
+       
       }
-      
+     
       onChangeNom(e){
         this.setState({
           nom:e.target.value
@@ -109,7 +110,7 @@ import axios from 'axios';
           entreprise:this.state.Entreprise,
           objetEntreprise:this.state.Objet,
           activiteProfessionnelle:this.state.Activité,
-          Role:this.state.Role,
+          role:this.state.Role,
           email:this.state.Email
         };
         console.log(EditInscrit);       
@@ -445,14 +446,14 @@ import axios from 'axios';
        <select value={this.state.Role} onChange={this.onChangeRole} name="Role">
  <option value="Inscrit" selected="selected">Inscrit</option>
  
- <option value="Abonne">Abonne </option>
+ <option value="Abonnee">Abonne </option>
  <option value="Admin">Admin </option>
  <option value="Modérateur">Modérateur </option>
 
  </select>
  </Form.Item>
-            <label><b>Email</b><span class="required">*</span></label>
-           <Form.Item name={['user', 'email']}  rules={[{ type: 'email' }]}>
+            <label><b>Email</b><span class="required">*</span></label> 
+           <Form.Item >
            <Input value={this.state.Email} onChange={this.onChangeEmail} placeholder="Exmple: boussole@fea.com" required />
            </Form.Item>
    

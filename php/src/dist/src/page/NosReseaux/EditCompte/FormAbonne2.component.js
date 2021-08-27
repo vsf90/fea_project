@@ -71,12 +71,7 @@ function FormAbonne2() {
           Bénéfices3:Bénéfices3,
         }
         console.log(abonnement2);
-       var config = {
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-          };
-        axios.post('http://localhost:8080/BoussolePro-backend/insertAbonnement2.php?id='+localStorage.getItem('ID'),abonnement2,config)
-        .then(res=>console.log(res.data));
-
+      
           if(chosesessentielles===''){
              setchosesessentiellesErr("Ce champ est obligatoire !!")
           }
@@ -113,6 +108,12 @@ function FormAbonne2() {
      }
       else{
         message.success('La demande est faite avec succès');
+        var config = {
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+          };
+        axios.post('http://localhost/BoussolePro-backend/insertAbonnement2.php?id='+localStorage.getItem('ID'),abonnement2,config)
+        .then(res=>console.log(res.data));
+
       
       
        

@@ -16,7 +16,35 @@ if($result){
         $listInscrit[$cr]['entreprise']=htmlspecialchars_decode($row['entreprise'],ENT_QUOTES);
         $listInscrit[$cr]['objetEntreprise']=htmlspecialchars_decode($row['objetEntreprise'],ENT_QUOTES);
         $listInscrit[$cr]['activiteProfessionnelle']=htmlspecialchars_decode($row['activiteProfessionnelle'],ENT_QUOTES);
-        $listInscrit[$cr]['password']=htmlspecialchars_decode($row['password'],ENT_QUOTES);
+        $listInscrit[$cr]['type']=htmlspecialchars_decode($row['type'],ENT_QUOTES);
+        $listInscrit[$cr]['verset']=htmlspecialchars_decode($row['verset'],ENT_QUOTES);
+        $listInscrit[$cr]['secteur']=htmlspecialchars_decode($row['secteur'],ENT_QUOTES);
+        $listInscrit[$cr]['expertiseSouhaitez']=htmlspecialchars_decode($row['expertiseSouhaitez'],ENT_QUOTES);
+        $listInscrit[$cr]['expertise']=htmlspecialchars_decode($row['expertise'],ENT_QUOTES);
+        $listInscrit[$cr]['centresInteret']=htmlspecialchars_decode($row['centresInteret'],ENT_QUOTES);
+        $listInscrit[$cr]['confirmation']=htmlspecialchars_decode($row['confirmation'],ENT_QUOTES);
+        $listInscrit[$cr]['membreFEA']=htmlspecialchars_decode($row['membreFEA'],ENT_QUOTES);
+        $listInscrit[$cr]['abonnement']=htmlspecialchars_decode($row['abonnement'],ENT_QUOTES);
+        $listInscrit[$cr]['topVille']=htmlspecialchars_decode($row['topVille'],ENT_QUOTES);
+        $listInscrit[$cr]['urlImage']=htmlspecialchars_decode($row['urlImage'],ENT_QUOTES);
+        $listInscrit[$cr]['confirmationLoi']=htmlspecialchars_decode($row['confirmationLoi'],ENT_QUOTES);
+        $listInscrit[$cr]['telephone']=htmlspecialchars_decode($row['telephone'],ENT_QUOTES);
+        $listInscrit[$cr]['NomContact1']=htmlspecialchars_decode($row['NomContact1'],ENT_QUOTES);
+        $listInscrit[$cr]['PrenomContact1']=htmlspecialchars_decode($row['PrenomContact1'],ENT_QUOTES);
+        $listInscrit[$cr]['TeleContact1']=htmlspecialchars_decode($row['TeleContact1'],ENT_QUOTES);
+        $listInscrit[$cr]['NomContact2']=htmlspecialchars_decode($row['NomContact2'],ENT_QUOTES);
+        $listInscrit[$cr]['PrenomContact2']=htmlspecialchars_decode($row['PrenomContact2'],ENT_QUOTES);
+        $listInscrit[$cr]['TeleContact2']=htmlspecialchars_decode($row['TeleContact2'],ENT_QUOTES);
+        $listInscrit[$cr]['chosesessentielles']=htmlspecialchars_decode($row['chosesessentielles'],ENT_QUOTES);
+        $listInscrit[$cr]['CadreTravail']=htmlspecialchars_decode($row['CadreTravail'],ENT_QUOTES);
+        $listInscrit[$cr]['FontConfiance']=htmlspecialchars_decode($row['FontConfiance'],ENT_QUOTES);
+        $listInscrit[$cr]['ReseauQualite']=htmlspecialchars_decode($row['ReseauQualite'],ENT_QUOTES);
+        $listInscrit[$cr]['InformationImportante']=htmlspecialchars_decode($row['InformationImportante'],ENT_QUOTES);
+        $listInscrit[$cr]['NouveauxClients']=htmlspecialchars_decode($row['NouveauxClients'],ENT_QUOTES);
+        $listInscrit[$cr]['AiderDevelopper']=htmlspecialchars_decode($row['AiderDevelopper'],ENT_QUOTES);
+        $listInscrit[$cr]['Benefices']=htmlspecialchars_decode($row['Benefices'],ENT_QUOTES);
+
+
 
         $cr++;
     } 

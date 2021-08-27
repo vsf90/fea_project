@@ -6,6 +6,8 @@ header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 // require 'connect.php';
 $con = mysqli_connect("localhost", "root", "", "boussolepro");
+$id=$_GET['id'];
+
 // print_r($con);
   $postdata=file_get_contents("php://input");
   print_r($postdata);
@@ -39,33 +41,12 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
     //$role="Inscrit";
 
      //store:
-     $sql="INSERT INTO utilisateur (
-      
-     
-     `entreprise`, 
-     `objetEntreprise`,
-     `activiteProfessionnelle`,
-     `role`,
-     `type`,
-     `verset`,
-     `secteur`,
-     `expertiseSouhaitez`,
-     `expertise`, 
-     `centresInteret`, 
-     `confirmation`, 
-     `membreFEA`, 
-     `abonnement`,
-     `topVille`,
-     `urlImage`,
-     `confirmationLoi`,
-     `telephone`) 
-     VALUES (
-            '{$entreprise}','{$objectifPro}','{$profession}','{$role}','{$type}',
-            '{$verset}', '{$secteur}',
-            '{$expertiseSouhaitez}','{$expertise}','{$centresInteret}',
-            '{$confirmation}','{$membreFEA}','{$abonnement}',
-            '{$villeTop}','{$urlImage}','{$confirmationLoi}','{$telephone}'
-            )";
+    
+       $sql="UPDATE `utilisateur` SET `entreprise`='$entreprise',`objetEntreprise`='$objectifPro', `activiteProfessionnelle`='$profession',
+       `type`='$type',`verset`='$verset',`secteur`='$secteur',`expertiseSouhaitez`='$expertiseSouhaitez',
+       `expertise`='$expertise',`centresInteret`='$centresInteret',`confirmation`='$confirmation',`membreFEA`='$membreFEA'
+       ,`abonnement`='$abonnement',`topVille`='$villeTop',`urlImage`='$urlImage'
+       ,`confirmationLoi`='$confirmationLoi',`telephone`='$telephone' WHERE ID='{$id}' ";  
      print_r($sql);   
      $resultat=mysqli_query($con,$sql) or die(mysqli_error($con));
      if ($resultat){

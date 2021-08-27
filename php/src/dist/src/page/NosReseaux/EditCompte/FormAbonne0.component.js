@@ -87,9 +87,9 @@ function FormAbonne0() {
 }
             else{
                 message.success('La demande est faite avec succès');
-                axios.post('http://localhost/BoussolePro-backend/insertAbonne.php',abonnement0).then(res=>console.log(res.data));
+                axios.post('http://localhost/BoussolePro-backend/insertAbonne.php?id='+localStorage.getItem('ID'),abonnement0).then(res=>console.log(res.data));
 
-               /* 
+                
                 setObjectifProfess('');
                 setTélé('');
                 setRadio1('');
@@ -100,7 +100,7 @@ function FormAbonne0() {
                 setProfession('');
                 setEntreprise('');
               
-                setVilleTop('');*/
+                setVilleTop('');
             }}
     return (
         <div>
@@ -177,21 +177,17 @@ function FormAbonne0() {
         
         {/* pas encore fait !!!!!!!!!!!! */}
         <Form.Item >
-        <label><b>Votre expertise (5 années d'expérience minimum, plusieurs choix possible) </b><span class="required">*</span></label>
-        <select class="form-control" value={expertise} onChange={(e)=>setExpertise(e.target.value)}>
-          <option value="un">Un</option>
-          <option value="deux">Deux</option>
-          <option value="trois">Trois</option>
-        </select>
+        <label><b>Votre expertise (5 années d'expérience minimum) </b><span class="required">*</span></label>
+        <Input  type="text" name="villeTop" value={expertise} onChange={(e)=>setExpertise(e.target.value)}required />
+           
+       
         </Form.Item>
 {/* pas encore fait !!!!!!!!!!!! */}
         <Form.Item >
-        <label><b>L' expertise que vous souhaitez développer (plusieurs choix possible)  </b><span class="required">*</span></label>
-        <select class="form-control" value={expertiseSouhaitez} onChange={(e)=>setExpertiseSouhaitez(e.target.value)}>
-          <option value="un">Un</option>
-          <option value="deux">Deux</option>
-          <option value="trois">Trois</option>
-        </select>
+        <label><b>L' expertise que vous souhaitez développer  </b><span class="required">*</span></label>
+        <Input  type="text" name="villeTop" value={expertiseSouhaitez} onChange={(e)=>setExpertiseSouhaitez(e.target.value)} required />
+
+       
         </Form.Item>
 {/* pas encore fait !!!!!!!!!!!! */}
         <Form.Item >

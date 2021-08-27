@@ -5,6 +5,7 @@ import "../Modérateur/Modérateurs.css";
 import { Link } from 'react-router-dom';
 import {Redirect} from 'react-router';
 import axios from 'axios';
+import ss from '../../img/picturesExperts/1.jpg';
 
 export default class RecordsListInscrit extends Component {
     refreshPage(){ 
@@ -19,7 +20,7 @@ export default class RecordsListInscrit extends Component {
     }
 
     delete(){
-        axios.get('http://localhost:8080/BoussolePro-backend/deleteInscrit.php/?id='+this.props.obj.ID)
+        axios.get('http://localhost/BoussolePro-backend/deleteInscrit.php/?id='+this.props.obj.ID)
       .then(console.log('deleted'))
      .catch(err=>console.log(err))
         }
@@ -32,7 +33,7 @@ export default class RecordsListInscrit extends Component {
           
      <tr>
       <th scope="row">{this.props.obj.ID}</th>
-      <td>{this.props.obj.urlImage}</td>
+      <td><img src={this.props.obj.urlImage} style={{maxHeight:"40px"}}></img></td>
       <td>{this.props.obj.prenom}</td>
       <td>{this.props.obj.nom}</td>
       <td>{this.props.obj.email}</td>
@@ -55,7 +56,8 @@ export default class RecordsListInscrit extends Component {
       <td>{this.props.obj.confirmationLoi}</td>
       <td>{this.props.obj.PrenomContact1}  {this.props.obj.NomContact1}</td>
       <td>{this.props.obj.TeleContact1}</td>
-      <td>{this.props.obj.PrenomContact2}  {this.props.obj.NomContac2}</td>
+      <td>{this.props.obj.PrenomContact2}  {this.props.obj.NomContact2}</td>
+      <td>{this.props.obj.TeleContact2}</td>
       <td>{this.props.obj.chosesessentielles}</td>
       <td>{this.props.obj.CadreTravail}</td>
       <td>{this.props.obj.FontConfiance}</td>

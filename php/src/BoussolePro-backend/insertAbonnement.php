@@ -20,8 +20,9 @@ $id=$_GET['id'];
      $TeleContact2=htmlspecialchars($request->TeleContact2,ENT_QUOTES);
     
 
-     $req="INSERT INTO utilisateur (`NomContact1`,`PrenomContact1`,`TeleContact1`,`NomContact2`, `PrenomContact2`,`TeleContact2`) 
-     VALUES ('{$NomContact1}','{$PrénomContact1}','{$TeleContact1}','{$NomContact2}','{$PrénomContact2}','{$TeleContact2}' ) WHERE ID='{$id}'";
+    
+       $req="UPDATE `utilisateur` SET `NomContact1`='$NomContact1', `PrenomContact1`='$PrénomContact1', `TeleContact1`='$TeleContact1',
+        `NomContact2`='$NomContact2', `PrenomContact2`='$PrénomContact2', `TeleContact2`='$TeleContact2' WHERE ID='{$id}'"; 
        $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
        if ($resultat){
            http_response_code(201);

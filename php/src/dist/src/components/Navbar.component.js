@@ -227,7 +227,7 @@ function Navbar(props) {
               <Menu.Item key="31" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
               <Menu.Item key="32" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
             </SubMenu>
-            <Menu.Item key="33" className={role === "Admin" ||role === "Modérateur" ||role === "Abonnée" ? 'hidden' : ''} icon={<FormOutlined />}>
+            <Menu.Item key="33" className={role === "Admin" ||role === "Modérateur" ||role === "Abonnee" ? 'hidden' : ''} icon={<FormOutlined />}>
                <Link to="/EditCompte"></Link>L'inscription
              </Menu.Item>
             
@@ -255,82 +255,82 @@ function Navbar(props) {
 
         <Switch>
         {
-          (role === "Admin" || role === "Modérateur" ||role === "Abonnée" || role === "Inscrit") 
+          (role === "Admin" || role === "Modérateur" ||role === "Abonnee" || role === "Inscrit") 
           && (<Route path="/CompteAbonnée" exact component={CompteAbonnée}/>)
         }
         {
-          (role === "Admin" || role === "Modérateur" ||role === "Abonnée" || role === "Inscrit") 
+          (role === "Admin" || role === "Modérateur" ||role === "Abonnee" || role === "Inscrit") 
           && (<Route path="/ModifierProfile" exact component={ModifierProfile}/>)
         }
 
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée") && (
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee") && (
           <Route exact path="/Acueil" component={Acueil} />) }
           
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/Services" exact component={Services}/>)}
 
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")  
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")  
         && (<Route path="/NosReseaux" exact component={NosReseaux} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         &&(<Route path="/listInscrit" exact component={listInscrit} />) }
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/NosPartenaires" exact component={NosPartenaires} />)}
 
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/BoostPro" exact component={BoostPro} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/MeetUpPro" exact component={MeetUpPro} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/Relais" exact component={Relais} /> )}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/Expert" exact component={Expert} /> )}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/ShouraPro" exact component={ShouraPro} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/MesBesoins" exact component={FeedbackMesBesions} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/SprintPro" exact component={SprintPro} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/MonFeedback" exact component={FeedbackMonFeedback} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/Sprintform" exact component={Sprintform} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/Meetform" exact component={Meetform} /> )}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/Shouraform" exact component={Shouraform} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/Boostform" exact component={Boostform} /> )}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/Relaisform" exact component={Relaisform} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/CompteAbonnéeReseau/:id" exact component={CompteAbonnéeReseau}/>)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/Expertform" exact component={Expertform} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/Expertform" exact component={Expertform} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/NosRelais" exact component={Nosrelais} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         && (<Route path="/NosExperts" exact component={Nosexperts} />)}
 
           {/*  offer's routes  */}
-          {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+          {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         &&(<Route path="/OffreStage" exact component={OfferStage} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée") 
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee") 
         &&(<Route path="/OffreEmploi" exact component={OfferEmploi} />) }
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         &&(<Route path="/AddOffreEmploi" exact component={AddOffreEmploi}/>)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         &&(<Route path="/AddOffreStage" exact component={AddOffreStage}/>)}
 
         {/* Demande's routes */}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         &&(<Route path="/DemandeStage" exact component={DemandeStage} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée") 
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee") 
         &&(<Route path="/DemandeEmploi" exact component={DemandeEmploi} />)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée") 
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee") 
         &&(<Route path="/AddDemandeEmploi" exact component={AddDemandeEmploi}/>)}
-        {(role === "Admin" || role === "Modérateur" ||role === "Abonnée")
+        {(role === "Admin" || role === "Modérateur" ||role === "Abonnee")
         &&(<Route path="/AddDemandeStage" exact component={AddDemandeStage}/>)}
 
         {
@@ -403,7 +403,7 @@ function Navbar(props) {
           {
           (role === "Admin" || role === "Modérateur")
           
-          &&(<Route path="/EditInscrit/:id" exact component={EditInscrit} />) }
+          &&(<Route path="/EditInscrit/:id"  component={EditInscrit} />) }
         
           
       {(role === "Admin")     

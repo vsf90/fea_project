@@ -33,11 +33,7 @@ function FormAbonne() {
         TeleContact2:TeleContact2,
       }
       console.log(abonnement);
-      var config = {
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        };
-      axios.post('http://localhost/BoussolePro-backend/insertAbonnement.php?id='+localStorage.getItem('ID'),abonnement,config)
-      .then(res=>console.log(res.data));
+     
 
       if( PrénomContact1===''){
         setPrénomContact1Err("le champ est obligatoire !!")
@@ -69,6 +65,11 @@ function FormAbonne() {
     
     else{
       message.success('La demande est faite avec succès');
+      var config = {
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        };
+      axios.post('http://localhost/BoussolePro-backend/insertAbonnement.php?id='+localStorage.getItem('ID'),abonnement,config)
+      .then(res=>console.log(res.data));
      
      setNomContact1Err("")
      setPrénomContact1Err("")

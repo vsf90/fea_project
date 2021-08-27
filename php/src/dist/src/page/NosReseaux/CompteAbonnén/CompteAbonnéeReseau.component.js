@@ -82,7 +82,7 @@ export default class CompteAbonnéeReseau extends Component{
                                             <label>Rang</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{this.state.user.rang}</p>
+                                            <p>{this.state.user.ID}</p>
                                         </div>
                                     </div>
                                     <div class="row">

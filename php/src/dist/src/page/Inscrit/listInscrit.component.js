@@ -3,7 +3,8 @@ import { EditFilled,DeleteFilled,PlusCircleOutlined} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import RecordsListInscrit from '../Inscrit/RecordsListInscrit'
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Table from 'react-bootstrap/Table';
 
 export default class Inscrit extends Component {
   
@@ -15,7 +16,7 @@ export default class Inscrit extends Component {
 }
 
 componentDidMount(){
-  axios.get('http://localhost:8080/BoussolePro-backend/listInscrit.php')
+  axios.get('http://localhost/BoussolePro-backend/listInscrit.php')
   .then(response=>{
     this.setState({listInscrit: response.data});
  })
@@ -51,7 +52,7 @@ componentDidMount(){
     <div className="ajouteM">
    
     </div>
-       <table className="table">
+       <Table responsive bordered>
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -101,7 +102,7 @@ componentDidMount(){
   {this.InscritList()}
     
   </tbody>
-</table>
+</Table>
 </Col></Row>
 </div >
 

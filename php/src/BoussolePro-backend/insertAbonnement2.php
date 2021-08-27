@@ -100,9 +100,12 @@ $id=$_GET['id'];
 
 
 
-     $req="INSERT INTO utilisateur (`chosesessentielles`, `CadreTravail`, `FontConfiance`, `ReseauQualite`, `InformationImportante`, `NouveauxClients`, `AiderDevelopper`, `Benefices`) 
-     VALUES ('{$chosesessentielles}','{$CadreTravail}', '{$FontConfiance}', '{$RéseauQualité}', '{$InformationImportante}' , '{$NouveauxClients}' , '{$AiderDévelopper}', '{$Bénéfices}'  ) WHERE ID='{$id}'";
-       $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
+    
+        $req="UPDATE `utilisateur` SET `chosesessentielles`='$chosesessentielles', `CadreTravail`='$CadreTravail',
+         `FontConfiance`='$FontConfiance',
+        `ReseauQualite`='$RéseauQualité', `InformationImportante`='$InformationImportante', `NouveauxClients`='$NouveauxClients', `AiderDevelopper`='$AiderDévelopper',
+         `Benefices`='$Bénéfices' WHERE ID='{$id}'"; 
+      $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
        if ($resultat){
            http_response_code(201);
        }else{

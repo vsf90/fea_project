@@ -7,11 +7,12 @@ import {Component} from 'react';
 export default class CompteAbonnée extends Component{
     constructor(props){
         super(props);
-        this.state={urlImage:'',
+        this.state={ID:'',
+                    urlImage:'',
                      topVille:'',
                     Nom:'',
                     Prenom:'',
-                    Rang:'',
+                  
                     verset:'',
                     activiteProfessionnelle:'',
                     Entreprise:'',
@@ -38,11 +39,11 @@ export default class CompteAbonnée extends Component{
         axios.get('http://localhost:8080/BoussolePro-backend/listUser.php?email='+localStorage.getItem('email'))
         .then(response=>{
             console.log(response);
-          this.setState({Nom: response.data.nom,
+          this.setState({ID: response.data.ID,
+              Nom: response.data.nom,
                         urlImage:response.data.urlImage,
                         topVille:response.data.topVille,
                         Prenom:response.data.prenom,
-                        Rang:response.data.rang,
                         verset:response.data.verset,
                         activiteProfessionnelle:response.data.activiteProfessionnelle,
                         Entreprise:response.data.entreprise,
@@ -78,7 +79,7 @@ export default class CompteAbonnée extends Component{
             <div class="row" >
                 <div class="col-md-4">
                     <div class="profile-img">
-                        <img src={test} />
+                        <img src={this.state.urlImage} />
                         
                     </div>
                 </div>
@@ -121,7 +122,7 @@ export default class CompteAbonnée extends Component{
                                             <label>Rang</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{this.state.Rang}</p>
+                                            <p>{this.state.ID}</p>
                                         </div>
                                     </div>
                                     <div class="row">
