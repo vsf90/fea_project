@@ -97,6 +97,7 @@ import EditMeet from '../page/Admin/EditMeet/EditMeet.component';
 import EditBoost from '../page/Admin/EditBoost/EditBoost.component';
 import EditExpert from '../page/Admin/EditExpert/EditExpert.component';
 import ModifierProfile from '../page/ModifierProfile/ModifierProfile.component';
+import { config } from '../config';
 
 
 
@@ -122,7 +123,7 @@ function Navbar(props) {
 
    useEffect(() => {
     console.log(localStorage.getItem('ID'));
-    axios.get('http://localhost/BoussolePro-backend/getUserById.php?id='+localStorage.getItem('ID'))
+    axios.get(config+'/BoussolePro-backend/getUserById.php?id='+localStorage.getItem('ID'))
     .then(response=>{
       console.log("reponse of request ==***=>",response.data);
       SetRole(response.data.role);

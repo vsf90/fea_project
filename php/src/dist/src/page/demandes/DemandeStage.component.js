@@ -3,6 +3,7 @@ import { Alert } from "antd";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import RecordsListDemandeStage from './RecordsListDemandeStage.js';
+import { config } from '../../config.js';
   
   export default class DemandeStage extends Component {
        //data=[];
@@ -13,7 +14,7 @@ import RecordsListDemandeStage from './RecordsListDemandeStage.js';
   }
   
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listDemandeStage.php')
+    axios.get(config+'/BoussolePro-backend/listDemandeStage.php')
     .then(response=>{
       this.setState({DemandeStageList: response.data});
    })

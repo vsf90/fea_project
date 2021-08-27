@@ -2,6 +2,7 @@ import { Form,Input,Alert, Button, Radio,Rate, Checkbox, Row, Col,message,Space 
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react'
 import axios from 'axios';
+import { config } from '../../../config';
 
      export default class EditExpert extends Component {
        
@@ -31,7 +32,7 @@ import axios from 'axios';
       }
       componentDidMount(){
         console.log(this.props.match.params.id);
-        axios.get('http://localhost:8080/BoussolePro-backend/getExpertById.php?id='+this.props.match.params.id)
+        axios.get(config+'/BoussolePro-backend/getExpertById.php?id='+this.props.match.params.id)
         .then(response=>{
           this.setState({
                         Initiateur:response.data.initiateur,
@@ -95,7 +96,7 @@ import axios from 'axios';
         
         } else {
           message.success('Les informations ont été modifiées avec succès');
-        axios.post('http://localhost/BoussolePro-backend/updateExpert.php?id='+this.props.match.params.id,EditExpert).then(res=>console.log(res.data));
+        axios.post(config+'/BoussolePro-backend/updateExpert.php?id='+this.props.match.params.id,EditExpert).then(res=>console.log(res.data));
 
         }
 

@@ -5,6 +5,7 @@ import tof1 from "../../../image/1.png";
 import './FormAbonne.css';
 import { Form, Input,Checkbox, Alert, Button,  Radio, Space , Row, Col,message  } from 'antd';
 import history from '../../../history';
+import { config } from '../../../config';
 function FormAbonne2() {
     
    
@@ -71,10 +72,10 @@ function FormAbonne2() {
           Bénéfices3:Bénéfices3,
         }
         console.log(abonnement2);
-       var config = {
+       var config1 = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
           };
-        axios.post('http://localhost:8080/BoussolePro-backend/insertAbonnement2.php?id='+localStorage.getItem('ID'),abonnement2,config)
+        axios.post(config+'/BoussolePro-backend/insertAbonnement2.php',abonnement2,config1)
         .then(res=>console.log(res.data));
 
           if(chosesessentielles===''){

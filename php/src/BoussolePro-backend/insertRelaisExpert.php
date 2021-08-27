@@ -10,10 +10,20 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      $request=json_decode($postdata);
    
      print_r($request);
+<<<<<<< Updated upstream
      $nom=htmlspecialchars($request->nom,ENT_QUOTES);
      $img=$request->img;
      $role=htmlspecialchars($request->role,ENT_QUOTES);
      $compétances=htmlspecialchars($request->compétances,ENT_QUOTES);
+=======
+    //  $prenom=$request->prenom;
+     $nom=$request->nom;
+     $img=$request->img;
+     $role=$request->role;
+     $compétances=$request->compétances;
+     
+   // echo $prenom;
+>>>>>>> Stashed changes
     echo $nom;
     echo $role;
     echo $img;
@@ -21,8 +31,13 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
    
   
  
+<<<<<<< Updated upstream
      $req="INSERT INTO profilerelaisexpert ( `nom`, `image`, `role`, `competances`) 
      VALUES ( '{$nom}','{$img}', '{$role}','{$compétances}')";
+=======
+     $req="INSERT INTO profilerelaisexpert (`nom`, `image`, `role`, `competances`) 
+     VALUES ('{$nom}','{$img}', '{$role}','{$compétances}')";
+>>>>>>> Stashed changes
        
      $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
      if ($resultat){

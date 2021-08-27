@@ -19,7 +19,7 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
     echo $prenom;
     echo $nom;
     echo $titre;
-   echo $img;
+    echo $img;
     echo $contenu;
    
     $date=date("Y-m-d H:i:s");  

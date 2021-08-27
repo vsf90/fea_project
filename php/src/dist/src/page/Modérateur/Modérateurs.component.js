@@ -6,6 +6,7 @@ import axios from 'axios';
  import RecordsList from '../Admin/RecordsList.js'
 
 import React, { Component } from 'react'
+import { config } from '../../config';
 
 export default class Modérateurs extends Component {
   
@@ -17,7 +18,7 @@ export default class Modérateurs extends Component {
 }
 
 componentDidMount(){
-  axios.get('http://localhost:8080/BoussolePro-backend/listModérateur.php')
+  axios.get(config+'/BoussolePro-backend/listModérateur.php')
   .then(response=>{
     console.log("*-*-*-*->",response);
     this.setState({listModerateur: response.data});

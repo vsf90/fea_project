@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Alert } from "antd";
 import Table from 'react-bootstrap/Table';
 import RecordsListExpert from './RecordsListExpert.js';
+import { config } from '../../config.js';
 
 export default class DdExpertBP extends Component {
   constructor(props){
@@ -11,7 +12,7 @@ export default class DdExpertBP extends Component {
   }
   
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listExpert.php')
+    axios.get(config+'/BoussolePro-backend/listExpert.php')
     .then(response=>{
       this.setState({listExpert: response.data});
    })

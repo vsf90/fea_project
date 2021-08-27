@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Boostform.css';
 import { useState } from 'react';
 import { message, Button, Space, Input,Radio } from 'antd';
+import { config } from '../../../config';
   
 
 export default function Boostform() {
@@ -52,7 +53,7 @@ if(Nom=='' || Prénom=='' || Radioo=='' || Entreprise=='' || Contact=='' || Radi
   
   }else{
     message.success('La demande est faite avec succès');
-    axios.post('http://localhost:8080/BoussolePro-backend/insertBoost.php',Boost).then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertBoost.php',Boost).then(res=>console.log(res.data));
 
     setRadioo('');
     setNom('');

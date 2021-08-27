@@ -4,6 +4,7 @@ import { useState } from 'react';
 import tof1 from "../../image/1.png";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import { config } from '../../config';
 
 
 function FeedbackMesBesions() {
@@ -39,7 +40,7 @@ if(  Nom=='' || Prénom=='' || Besoins=='' || Date1=='' || AutresDemandes==''){
   
   }else{
     message.success('La demande est faite avec succès');
-   axios.post('http://localhost:8080/BoussolePro-backend/insertBesoins.php',Besoin).then(res=>console.log(res.data));
+   axios.post(config+'/BoussolePro-backend/insertBesoins.php',Besoin).then(res=>console.log(res.data));
 
     setNom('');
     setPrénom('');

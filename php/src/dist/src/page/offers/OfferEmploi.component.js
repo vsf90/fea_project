@@ -3,6 +3,7 @@ import { Alert } from "antd";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import RecordsListOffreEmploi from './RecordsListOffreEmploi.js';
+import { config } from '../../config.js';
   
   export default class OffreEmploi extends Component {
        //data=[];
@@ -13,7 +14,7 @@ import RecordsListOffreEmploi from './RecordsListOffreEmploi.js';
   }
   
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listOffreEmploi.php')
+    axios.get(config+'/BoussolePro-backend/listOffreEmploi.php')
     .then(response=>{
       this.setState({OffreEmploi: response.data});
    })

@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Sprintform.css';
 import { useState } from 'react';
 import { message, Button, Space,Radio } from 'antd';
+import { config } from '../../../config';
 export default function Sprintform() {
   const [Nom, setNom] = useState("");
   const [Prénom, setPrénom] = useState("");
@@ -64,7 +65,7 @@ if(Radioo=='' || Nom=='' || Prénom=='' || AvecQui=='' || RaisonSprint=='' ||(Ma
   
   }else{
     message.success('La demande est faite avec succès');
-    axios.post('http://localhost:8080/BoussolePro-backend/insertSprint.php',Sprint).then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertSprint.php',Sprint).then(res=>console.log(res.data));
 
     setNom('');
     setPrénom('');

@@ -5,6 +5,7 @@ import "../Modérateur/Modérateurs.css";
 import { Link } from 'react-router-dom';
 import {Redirect} from 'react-router';
 import axios from 'axios';
+import { config } from '../../config';
 
 export default class RecordsListInscrit extends Component {
     refreshPage(){ 
@@ -19,7 +20,7 @@ export default class RecordsListInscrit extends Component {
     }
 
     delete(){
-        axios.get('http://localhost:8080/BoussolePro-backend/deleteInscrit.php/?id='+this.props.obj.ID)
+        axios.get(config+'/BoussolePro-backend/deleteInscrit.php/?id='+this.props.obj.ID)
       .then(console.log('deleted'))
      .catch(err=>console.log(err))
         }

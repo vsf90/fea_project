@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Expertform.css';
 import { useState } from 'react';
 import { message, Button, Space,Radio } from 'antd';
+import { config } from '../../../config';
 export default function Expertform() {
  
   const [Radioo, setRadioo] = useState("");
@@ -56,7 +57,7 @@ if(Nom=='' || Prénom=='' || Radio=='' || AvecQui=='' || Objet=='' ||(Matin=='' 
   
   }else{
     message.success('La demande est faite avec succès');
-    axios.post('http://localhost:8080/BoussolePro-backend/insertExpert.php',Expert).then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertExpert.php',Expert).then(res=>console.log(res.data));
 
     setRadioo('');
     setNom('');

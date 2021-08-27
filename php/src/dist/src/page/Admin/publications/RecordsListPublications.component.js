@@ -5,6 +5,7 @@ import { EditFilled,DeleteFilled,PlusCircleOutlined, DeleteOutlined} from '@ant-
 import { Link } from 'react-router-dom';
 import { Alert, Collapse } from "antd";
 import axios from 'axios';
+import { config } from '../../../config';
 
 
 
@@ -12,7 +13,7 @@ import axios from 'axios';
 export default class RecordsListPublications extends Component {
 
    delete(id){
-        axios.get('http://localhost:8080/BoussolePro-backend/deletePublication.php/?id='+id)
+        axios.get(config+'/BoussolePro-backend/deletePublication.php/?id='+id)
             .then(res=>{
                 console.log('deleted');
                

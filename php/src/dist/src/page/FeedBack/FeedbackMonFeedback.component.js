@@ -2,6 +2,7 @@ import { Form,Input,Tablele,Alert, Button, Radio,Rate, Checkbox, Row, Col,messag
 import { useState } from 'react';
 import axios from 'axios';
 import tof1 from "../../image/f6.png";
+import { config } from '../../config';
 
 
 function FeedbackMonFeedback() {
@@ -80,7 +81,7 @@ if(  Nom=='' || Prénom=='' || AvecQui=='' || Service=='' ||Organisation=='' || 
   
   }else{
     message.success('La demande est faite avec succès');
-     axios.post('http://localhost:8080/BoussolePro-backend/insertFeedback.php',Feedback).then(res=>console.log(res.data));
+     axios.post(config+'/BoussolePro-backend/insertFeedback.php',Feedback).then(res=>console.log(res.data));
 
     setNom('');
     setPrénom('');

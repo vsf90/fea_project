@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Form,Input,Alert, Button, Radio,Rate, Checkbox, Row, Col,message } from 'antd';
 import axios from 'axios';
 import { useState } from 'react';
+import { config } from '../../../config';
 function AddAdmin() {
   const [Nom, setNom] = useState("");
   const [Prénom, setPrénom] = useState("");
@@ -52,7 +53,7 @@ if(  Nom==='' || Prénom==='' || Pays==='' || Ville==='' || Entreprise==='' || O
 
   } else {
     message.success('Le modérateur a été fait avec succès');
-    axios.post('http://localhost:8080/BoussolePro-backend/insertAdmin.php',Admin).then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertAdmin.php',Admin).then(res=>console.log(res.data));
 
  
      setNom('');

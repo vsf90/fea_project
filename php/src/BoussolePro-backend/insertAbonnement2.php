@@ -100,8 +100,13 @@ $id=$_GET['id'];
 
 
 
+<<<<<<< Updated upstream
      $req="INSERT INTO utilisateur (`chosesessentielles`, `CadreTravail`, `FontConfiance`, `ReseauQualite`, `InformationImportante`, `NouveauxClients`, `AiderDevelopper`, `Benefices`) 
      VALUES ('{$chosesessentielles}','{$CadreTravail}', '{$FontConfiance}', '{$RéseauQualité}', '{$InformationImportante}' , '{$NouveauxClients}' , '{$AiderDévelopper}', '{$Bénéfices}'  ) WHERE ID='{$id}'";
+=======
+     $req="INSERT INTO utilisateur (`chosesessentielles`, `CadreTravail`, `FontConfiance`, `RéseauQualité`, `InformationImportante`, `NouveauxClients`, `AiderDévelopper`, `Bénéfices`) 
+     VALUES ('{$chosesessentielles}','{$CadreTravail}', '{$FontConfiance}', '{$RéseauQualité}', '{$InformationImportante}' , '{$NouveauxClients}' , '{$AiderDévelopper}', '{$Bénéfices}'  )";
+>>>>>>> Stashed changes
        $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
        if ($resultat){
            http_response_code(201);

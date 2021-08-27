@@ -5,6 +5,7 @@ import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/ico
 import axios from 'axios';
 import { Component } from 'react';
 import RecordsListRelais from './RecordsListRelais';
+import { config } from '../../config';
 
 
 
@@ -17,7 +18,7 @@ export default class Nosrelais extends Component {
       }
 
       componentDidMount(){
-        axios.get('http://localhost:8080/BoussolePro-backend/listNosRelais.php')
+        axios.get(config+'/BoussolePro-backend/listNosRelais.php')
         .then(response=>{
           this.setState({profilerelais: response.data});
        })

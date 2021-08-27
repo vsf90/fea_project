@@ -6,6 +6,7 @@ import Home from '../home.component';
 import Login from './Login.component';
 import axios from 'axios';
 import history from '../../history';
+import {config} from '../../config';
 function Register() {
 	const [Nom, setNom] = useState("");
   	const [Prenom, setPrenom] = useState("");
@@ -30,11 +31,11 @@ function Register() {
 		
 		}
 		console.log("---------------------------->",user);
-		var config = {
+		var config1 = {
 		  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		  };
 		
-		  axios.post('http://localhost:8080/BoussolePro-backend/regestre.php', user, config)
+		  axios.post(config+'/BoussolePro-backend/regestre.php', user, config1)
 		  .then(res =>{
 			console.log("------------------------>data returned",res.data);
 			history.push('/inscription');

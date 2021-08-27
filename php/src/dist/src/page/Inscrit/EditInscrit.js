@@ -2,6 +2,7 @@ import { Form,Input,Alert, Button, Radio,Rate, Checkbox, Row, Col,message } from
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react'
 import axios from 'axios';
+import { config } from '../../config';
 
      export default class EditInscrit extends Component {
        
@@ -34,7 +35,7 @@ import axios from 'axios';
       
       componentDidMount(){
         console.log(this.props.match.params.id);
-        axios.get('http://localhost:8080/BoussolePro-backend/getInscritById.php?id='+this.props.match.params.id)
+        axios.get(config+'/BoussolePro-backend/getInscritById.php?id='+this.props.match.params.id)
         .then(response=>{
           this.setState({
                         nom: response.data.nom,
@@ -119,7 +120,7 @@ import axios from 'axios';
         
         } else {
           message.success('Les informations ont été modifiées avec succès');
-        axios.post('http://localhost/BoussolePro-backend/updateInscrit.php?id='+this.props.match.params.id,EditInscrit).then(res=>console.log(res.data));
+        axios.post(config+'/BoussolePro-backend/updateInscrit.php?id='+this.props.match.params.id,EditInscrit).then(res=>console.log(res.data));
 
         }
 

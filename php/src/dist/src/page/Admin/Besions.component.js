@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { Alert, Button,Table } from "antd";
 import RecordsList from './RecordsList.js';
+import { config } from '../../config.js';
 
 export default class Besoins extends Component {
   //data=[];
@@ -13,7 +14,7 @@ export default class Besoins extends Component {
   }
   
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listBesoins.php')
+    axios.get(config+'/BoussolePro-backend/listBesoins.php')
     .then(response=>{
       this.setState({listBesoins: response.data});
    })

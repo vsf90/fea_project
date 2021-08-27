@@ -4,6 +4,7 @@ import test from "../../../img/picturesExperts/1.jpg";
 import './CompteAbonnée.component.css';
 import axios from 'axios';
 import {Component} from 'react';
+import { config } from '../../../config';
 export default class CompteAbonnée extends Component{
     constructor(props){
         super(props);
@@ -29,13 +30,13 @@ export default class CompteAbonnée extends Component{
       }
       
       componentDidMount(){
-          const config={
+          const config1={
               headers:{
                   Authorization: 'Bearer'+ localStorage.getItem('email')
               }
           };
           console.log(localStorage.getItem('email'));
-        axios.get('http://localhost:8080/BoussolePro-backend/listUser.php?email='+localStorage.getItem('email'))
+        axios.get(config+'/BoussolePro-backend/listUser.php?email='+localStorage.getItem('email'))
         .then(response=>{
             console.log(response);
           this.setState({Nom: response.data.nom,

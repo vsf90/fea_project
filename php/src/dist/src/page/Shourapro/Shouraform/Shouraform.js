@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Shouraform.css';
 import { useState } from 'react';
 import { message, Button, Space,Radio } from 'antd';
+import { config } from '../../../config';
 
  
 export default function Sprintform() {
@@ -59,7 +60,7 @@ if(Nom=='' || Prénom=='' || AvecQui=='' || Problematique=='' || Domaines=='' ||
   
   }else{
     message.success('La demande est faite avec succès');
-    axios.post('http://localhost:8080/BoussolePro-backend/insertShoura.php',Shoura).then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertShoura.php',Shoura).then(res=>console.log(res.data));
 
     setRadioo('');
     setNom('');

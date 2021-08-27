@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import "../Modérateur/Modérateurs.css";
 import {Redirect} from 'react-router';
 import axios from 'axios';
+import { config } from '../../config';
 
 export default class RecordsListBoost extends Component {
     refreshPage(){ 
@@ -19,7 +20,7 @@ export default class RecordsListBoost extends Component {
         }
     }
     delete(){
-        axios.get('http://localhost:8080/BoussolePro-backend/ValiderBoost.php/?id='+this.props.obj.ID)
+        axios.get(config+'/BoussolePro-backend/ValiderBoost.php/?id='+this.props.obj.ID)
   .then(console.log('deleted'))
  .catch(err=>console.log(err))
     }
