@@ -5,6 +5,7 @@ import { Button,Table } from "antd";
 import RecordsList from './RecordsList.js';
 
 import { Alert } from "antd";
+import { config } from '../../config.js';
 
 
 export default class Feedbacks extends Component {
@@ -17,7 +18,7 @@ export default class Feedbacks extends Component {
   
 
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listFeedback.php')
+    axios.get(config+'/BoussolePro-backend/listFeedback.php')
     .then(response=>{
       console.log("response---->feedback",response);
       this.setState({listFeedback: response.data});

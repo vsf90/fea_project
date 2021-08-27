@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { UploadOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import axios from 'axios';
+import { config } from '../../../config';
 
 
 /*const props = {
@@ -63,7 +64,7 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu==''  ){
   
   }else{
     message.success("L'offre d'emploi a été publiée avec succès");
-    axios.post('http://localhost:8080/BoussolePro-backend/insertOffreEmploi.php',OffreEmploi).then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertOffreEmploi.php',OffreEmploi).then(res=>console.log(res.data));
 
     setNom('');
     setPrénom('');

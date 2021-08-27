@@ -9,6 +9,7 @@ import axios from 'axios';
 import RecordsListPartenaire from './RecordsListPartenaire.js'
 
 import React, { Component } from 'react'
+import { config } from "../../config";
   
   export default class NosPartenaires extends Component {
     constructor(props){
@@ -18,7 +19,7 @@ import React, { Component } from 'react'
       }
       
       componentDidMount(){
-        axios.get('http://localhost:8080/BoussolePro-backend/listPartenaire.php')
+        axios.get(config+'/BoussolePro-backend/listPartenaire.php')
         .then(response=>{
           this.setState({listPartenaire: response.data});
        })

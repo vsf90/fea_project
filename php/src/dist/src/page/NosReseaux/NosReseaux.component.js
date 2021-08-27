@@ -5,7 +5,7 @@ import history from "../../history";
 import "./NosReseaux.component.css";
 import RecordsListNotreReseau from './RecordsListNotreReseau.js';
 import axios from 'axios';
-
+import { config } from '../../config';
 class NosReseaux extends Component {
   constructor(props){
     super(props);
@@ -14,7 +14,7 @@ class NosReseaux extends Component {
   }
   
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listNotreReseau.php')
+    axios.get(config+'/BoussolePro-backend/listNotreReseau.php')
     .then(response=>{
       this.setState({listNotreReseau: response.data});
    })

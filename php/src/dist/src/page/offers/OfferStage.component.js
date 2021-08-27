@@ -3,6 +3,7 @@ import { Alert } from "antd";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import RecordsListOffreStage from './RecordsListOffreStage.js';
+import { config } from '../../config.js';
   
   export default class OfferStage extends Component {
        //data=[];
@@ -13,7 +14,7 @@ import RecordsListOffreStage from './RecordsListOffreStage.js';
   }
   
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listOffreStage.php')
+    axios.get(config+'/BoussolePro-backend/listOffreStage.php')
     .then(response=>{
       console.log("response---->stage",response);
       this.setState({OffreStage: response.data});

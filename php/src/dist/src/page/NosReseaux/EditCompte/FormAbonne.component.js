@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { Form, Input, Alert, Button,  DatePicker, Space ,Checkbox, Row, Col ,message } from 'antd';
-
+import { config } from '../../../config';
 
 function FormAbonne() {
  
@@ -65,10 +65,11 @@ function FormAbonne() {
     
     else{
       message.success('La demande est faite avec succès');
-      var config = {
+     
+      var config1 = {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         };
-      axios.post('http://localhost/BoussolePro-backend/insertAbonnement.php?id='+localStorage.getItem('ID'),abonnement,config)
+      axios.post(config+'/BoussolePro-backend/insertAbonnement.php?id='+localStorage.getItem('ID'),abonnement,config1)
       .then(res=>console.log(res.data));
      
      setNomContact1Err("")

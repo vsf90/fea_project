@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import Password from 'antd/lib/input/Password';
 import history from '../../../history';
+import { config } from '../../../config';
 export default function AddModérateur() {
   const [Nom, setNom] = useState("");
   const [Prénom, setPrénom] = useState("");
@@ -53,7 +54,7 @@ if(  Nom=='' || Prénom=='' || Pays=='' || Ville=='' || Entreprise=='' || Objet=
 
   } else {
     message.success('L modérateur a été ajouté avec succès');
-    axios.post('http://localhost:8080/BoussolePro-backend/insertModerateur.php',Moderateur).then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertModerateur.php',Moderateur).then(res=>console.log(res.data));
      setNom('');
      setPrénom('');
      setPays('');

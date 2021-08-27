@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table';
 import { CheckCircleTwoTone } from "@ant-design/icons";
 import { Alert } from "antd";
 import RecordsListBoost from './RecordsListBoost.js';
+import { config } from '../../config.js';
 
 
 export default class DdBoostPro extends Component {
@@ -17,7 +18,7 @@ export default class DdBoostPro extends Component {
   
 
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listBoost.php')
+    axios.get(config+'/BoussolePro-backend/listBoost.php')
     .then(response=>{
       this.setState({listBoost: response.data});
    })

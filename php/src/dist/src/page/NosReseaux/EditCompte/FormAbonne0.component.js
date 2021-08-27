@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { Form, Input,Checkbox, Alert, Button,  Radio, Space , Row, Col,message  } from 'antd';
+import { config } from '../../../config';
 function FormAbonne0() {
    
     const [Télé, setTélé] = useState("");
@@ -87,7 +88,7 @@ function FormAbonne0() {
 }
             else{
                 message.success('La demande est faite avec succès');
-                axios.post('http://localhost/BoussolePro-backend/insertAbonne.php?id='+localStorage.getItem('ID'),abonnement0).then(res=>console.log(res.data));
+                axios.post(config+'/BoussolePro-backend/insertAbonne.php?id='+localStorage.getItem('ID'),abonnement0).then(res=>console.log(res.data));
 
                 
                 setObjectifProfess('');

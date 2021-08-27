@@ -2,6 +2,7 @@ import { Alert } from 'antd';
 import axios from 'axios';
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { config } from '../../../config';
 import './CompteAbonnée.component.css';
 
 export default class CompteAbonnéeReseau extends Component{
@@ -15,7 +16,7 @@ export default class CompteAbonnéeReseau extends Component{
       }
     componentDidMount(){
         console.log("id",this.props.match.params.id);
-        axios.get('http://localhost:8080/BoussolePro-backend/listUsersReseau.php?id='+this.props.match.params.id)
+        axios.get(config+'/BoussolePro-backend/listUsersReseau.php?id='+this.props.match.params.id)
         .then(response=>{
           console.log("------------------------> response!!!!!",response)
           this.setState({

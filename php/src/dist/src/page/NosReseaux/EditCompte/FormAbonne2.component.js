@@ -5,6 +5,7 @@ import tof1 from "../../../image/1.png";
 import './FormAbonne.css';
 import { Form, Input,Checkbox, Alert, Button,  Radio, Space , Row, Col,message  } from 'antd';
 import history from '../../../history';
+import { config } from '../../../config';
 function FormAbonne2() {
     
    
@@ -72,6 +73,7 @@ function FormAbonne2() {
         }
         console.log(abonnement2);
       
+
           if(chosesessentielles===''){
              setchosesessentiellesErr("Ce champ est obligatoire !!")
           }
@@ -108,12 +110,12 @@ function FormAbonne2() {
      }
       else{
         message.success('La demande est faite avec succès');
-        var config = {
+       
+        var config1 = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
           };
-        axios.post('http://localhost/BoussolePro-backend/insertAbonnement2.php?id='+localStorage.getItem('ID'),abonnement2,config)
+        axios.post(config+'/BoussolePro-backend/insertAbonnement2.php?id='+localStorage.getItem('ID'),abonnement2,config1)
         .then(res=>console.log(res.data));
-
       
       
        

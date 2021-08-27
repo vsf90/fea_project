@@ -4,6 +4,7 @@ import { Button,Alert,Row,Col  } from 'antd';
 import { Card, Avatar } from 'antd';
 import { DeleteOutlined, EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import axios from 'axios';
+import { config } from '../../../config';
 
 const { Meta } = Card;
 
@@ -14,7 +15,7 @@ export default class ListeRelais extends Component {
       }
       
       componentDidMount(){
-        axios.get('http://localhost:8080/BoussolePro-backend/listNosRelais.php')
+        axios.get(config+'/BoussolePro-backend/listNosRelais.php')
         .then(response=>{
             console.log('data ',response.data);
           this.setState({listRelais: response.data});
@@ -26,7 +27,7 @@ export default class ListeRelais extends Component {
         }
 
         delete(id){
-            axios.get('http://localhost:8080/BoussolePro-backend/deleteRelaisExpairs.php/?id='+id)
+            axios.get(config+'/BoussolePro-backend/deleteRelaisExpairs.php/?id='+id)
                 .then(res=>{
                     console.log('deleted');
                    

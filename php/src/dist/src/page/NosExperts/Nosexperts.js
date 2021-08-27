@@ -3,6 +3,7 @@ import './Nosexperts.css';
 import axios from 'axios';
 import { Component } from 'react';
 import RecordsListExpert from './RecordsListExpert';
+import { config } from '../../config';
 
 export default class NosExperts extends Component {
     constructor(props){
@@ -12,7 +13,7 @@ export default class NosExperts extends Component {
       }
 
       componentDidMount(){
-        axios.get('http://localhost:8080/BoussolePro-backend/listNosExperts.php')
+        axios.get(config+'/BoussolePro-backend/listNosExperts.php')
         .then(response=>{
           this.setState({listeExperts: response.data});
        })

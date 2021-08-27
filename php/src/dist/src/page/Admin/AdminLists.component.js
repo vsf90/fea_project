@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import "./AdminList.css";
 import axios from 'axios';
  import RecordsListAdmin from '../Admin/RecordsListAdmin.js'
+import { config } from '../../config';
 export default class Modérateurs extends Component {
    
  // data=[];
@@ -15,7 +16,7 @@ export default class Modérateurs extends Component {
 }
 
 componentDidMount(){
-  axios.get('http://localhost:8080/BoussolePro-backend/listAdmin.php')
+  axios.get(config+'/BoussolePro-backend/listAdmin.php')
   .then(response=>{
     this.setState({listAdmin: response.data});
  })

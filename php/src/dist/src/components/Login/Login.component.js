@@ -1,14 +1,10 @@
  import './login.component.css';
 import logo from '../../img/logo.PNG';
-
-
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
-
  import { message, Button, Space } from 'antd';
-
+ import {config} from '../../config';
 export default function Login(props) {
 	const [Email, setEmail] = useState("");
 	const [Password, setPassword] = useState("");
@@ -23,12 +19,12 @@ export default function Login(props) {
 		  pass:Password 
 		
 		}
-		var config = {
+		var config1 = {
 		  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		  };
 		console.log("---------------------------->Login",Login);	   
 		  
-		  axios.post('http://localhost/BoussolePro-backend/login.php', Login, config)
+		  axios.post(config+'/BoussolePro-backend/login.php', Login, config1)
 		  .then(res => {
 			console.log("--------*****-------->res.ata",res.data)
 			localStorage.setItem('loggedIn', true);

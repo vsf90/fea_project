@@ -2,6 +2,7 @@ import { Form,Input,Alert, Button, Radio,Rate, Checkbox, Row, Col,message } from
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react'
 import axios from 'axios';
+import { config } from '../../config';
 
      export default class ModifierProfile extends Component {
        
@@ -41,7 +42,7 @@ import axios from 'axios';
       }
       componentDidMount(){
 
-        axios.get('http://localhost/BoussolePro-backend/getAbonnéById.php?email='+localStorage.getItem('email'))
+        axios.get(config+'/BoussolePro-backend/getAbonnéById.php?email='+localStorage.getItem('email'))
         .then(response=>{
           console.log("------------------------> response!!!!!",response)
           this.setState({
@@ -153,7 +154,7 @@ import axios from 'axios';
         
         } else {
           message.success('Les informations ont été modifiées avec succès');
-        axios.post('http://localhost:8080/BoussolePro-backend/updateAbonne.php?id='+localStorage.getItem('ID'),EditAbonné).then(res=>console.log(res.data));
+        axios.post(config+'/BoussolePro-backend/updateAbonne.php?id='+localStorage.getItem('ID'),EditAbonné).then(res=>console.log(res.data));
 
         }
 

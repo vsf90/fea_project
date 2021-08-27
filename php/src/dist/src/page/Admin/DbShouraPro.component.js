@@ -4,6 +4,7 @@ import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import { Alert } from "antd";
 import RecordsListShoura from './RecordsListShoura';
+import { config } from '../../config';
 
 
 export default class DdShouraPro extends Component {
@@ -15,7 +16,7 @@ export default class DdShouraPro extends Component {
   }
   
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listShoura.php')
+    axios.get(config+'/BoussolePro-backend/listShoura.php')
     .then(response=>{
       this.setState({listShoura: response.data});
    })

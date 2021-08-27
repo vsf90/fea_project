@@ -7,6 +7,7 @@ import RecordsList from './RecordsList.js';
 import { CheckCircleTwoTone } from "@ant-design/icons";
 import { Alert } from "antd";
 import RecordsListRelais from './RecordsListRelais.js';
+import { config } from '../../config.js';
 
 
 export default class DdRelaisBP extends Component {
@@ -17,7 +18,7 @@ export default class DdRelaisBP extends Component {
   }
 
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listRelais.php')
+    axios.get(config+'/BoussolePro-backend/listRelais.php')
     .then(response=>{
       this.setState({listRelais: response.data});
    })

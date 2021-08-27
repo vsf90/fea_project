@@ -3,7 +3,8 @@ import { EditFilled,DeleteFilled,PlusCircleOutlined} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import RecordsListInscrit from '../Inscrit/RecordsListInscrit'
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { config } from '../../config';
 import Table from 'react-bootstrap/Table';
 
 export default class Inscrit extends Component {
@@ -16,7 +17,7 @@ export default class Inscrit extends Component {
 }
 
 componentDidMount(){
-  axios.get('http://localhost/BoussolePro-backend/listInscrit.php')
+  axios.get(config+'/BoussolePro-backend/listInscrit.php')
   .then(response=>{
     this.setState({listInscrit: response.data});
  })

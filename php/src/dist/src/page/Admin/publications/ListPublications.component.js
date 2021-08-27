@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { Alert} from 'antd';
 import RecordsListPublications from "./RecordsListPublications.component";
+import { config } from '../../../config';
 
   
   export default class ListPublications extends Component {
@@ -14,7 +15,7 @@ import RecordsListPublications from "./RecordsListPublications.component";
   }
   
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listPublication.php')
+    axios.get(config+'/BoussolePro-backend/listPublication.php')
     .then(response=>{
       this.setState({Publication: response.data});
       console.log("lis pubs",this.state.Publication);

@@ -100,12 +100,23 @@ $id=$_GET['id'];
 
 
 
+<<<<<<< HEAD
     
         $req="UPDATE `utilisateur` SET `chosesessentielles`='$chosesessentielles', `CadreTravail`='$CadreTravail',
          `FontConfiance`='$FontConfiance',
         `ReseauQualite`='$RéseauQualité', `InformationImportante`='$InformationImportante', `NouveauxClients`='$NouveauxClients', `AiderDevelopper`='$AiderDévelopper',
          `Benefices`='$Bénéfices' WHERE ID='{$id}'"; 
       $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
+=======
+<<<<<<< Updated upstream
+     $req="INSERT INTO utilisateur (`chosesessentielles`, `CadreTravail`, `FontConfiance`, `ReseauQualite`, `InformationImportante`, `NouveauxClients`, `AiderDevelopper`, `Benefices`) 
+     VALUES ('{$chosesessentielles}','{$CadreTravail}', '{$FontConfiance}', '{$RéseauQualité}', '{$InformationImportante}' , '{$NouveauxClients}' , '{$AiderDévelopper}', '{$Bénéfices}'  ) WHERE ID='{$id}'";
+=======
+     $req="INSERT INTO utilisateur (`chosesessentielles`, `CadreTravail`, `FontConfiance`, `RéseauQualité`, `InformationImportante`, `NouveauxClients`, `AiderDévelopper`, `Bénéfices`) 
+     VALUES ('{$chosesessentielles}','{$CadreTravail}', '{$FontConfiance}', '{$RéseauQualité}', '{$InformationImportante}' , '{$NouveauxClients}' , '{$AiderDévelopper}', '{$Bénéfices}'  )";
+>>>>>>> Stashed changes
+       $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
+>>>>>>> 19555fb4583e59c4547d476e8615012923a219be
        if ($resultat){
            http_response_code(201);
        }else{

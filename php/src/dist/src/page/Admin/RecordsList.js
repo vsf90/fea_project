@@ -7,6 +7,7 @@ import axios from 'axios';
 import "../Modérateur/Modérateurs.css";
 import {Redirect} from 'react-router';
 import EditModérateur from '../Modérateur/EditModérateur/EditModérateur.component';
+import { config } from '../../config';
 export default class RecordsList extends Component {
     refreshPage(){ 
         window.location.reload(); 
@@ -19,7 +20,7 @@ export default class RecordsList extends Component {
         }
     }
     delete(){
-        axios.get('http://localhost:8080/BoussolePro-backend/deleteModerateur.php/?id='+this.props.obj.ID)
+        axios.get(config+'/BoussolePro-backend/deleteModerateur.php/?id='+this.props.obj.ID)
   .then(console.log('deleted'))
  .catch(err=>console.log(err))
     }

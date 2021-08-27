@@ -3,6 +3,7 @@ import './Meetform.css';
 import axios from 'axios';
 import { useState } from 'react';
 import { message, Button, Space } from 'antd';
+import { config } from '../../../config';
 
 export default function Meetform() {
   const [Nom, setNom] = useState("");
@@ -42,7 +43,7 @@ if(Nom=='' || Prénom=='' || Radio==''  || Raison=='' ){
   
   }else{
     message.success('La demande est faite avec succès');
-    axios.post('http://localhost:8080/BoussolePro-backend/insertMeet.php',Meet).then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertMeet.php',Meet).then(res=>console.log(res.data));
 
     setNom('');
     setPrénom('');

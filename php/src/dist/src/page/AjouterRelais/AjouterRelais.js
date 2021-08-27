@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { UploadOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import { useState } from 'react';
+import { config } from '../../config';
 
 /*const props = {
     name: 'file',
@@ -53,7 +54,7 @@ export default function AjouterRelais() {
     
     }else{
       message.success('La demande est faite avec succès');
-     axios.post('http://localhost:8080/BoussolePro-backend/insertRelaisExpert.php',AjoutRE).then(res=>console.log(res.data));
+     axios.post(config+'/BoussolePro-backend/insertRelaisExpert.php',AjoutRE).then(res=>console.log(res.data));
   
       setNom('');
       setRole('');

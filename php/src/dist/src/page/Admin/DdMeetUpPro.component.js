@@ -6,6 +6,7 @@ import RecordsList from './RecordsList.js';
 import { CheckCircleTwoTone } from "@ant-design/icons";
 import { Alert } from "antd";
 import RecordsListMeet from './RecordsListMeet.js';
+import { config } from '../../config.js';
 
 
 export default class DdMeetUpPro extends Component {
@@ -18,7 +19,7 @@ export default class DdMeetUpPro extends Component {
   
 
   componentDidMount(){
-    axios.get('http://localhost:8080/BoussolePro-backend/listMeet.php')
+    axios.get(config+'/BoussolePro-backend/listMeet.php')
     .then(response=>{
       this.setState({listMeet: response.data});
    })
