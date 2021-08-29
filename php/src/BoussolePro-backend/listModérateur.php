@@ -2,7 +2,7 @@
 $con = mysqli_connect("localhost", "root", "", "boussolepro");
 error_reporting(E_ERROR);
 $listModerateur=[];
-$sql="SELECT * FROM utilisateur WHERE role='Modérateur' ORDER BY ID DESC";
+$sql="SELECT * FROM utilisateur WHERE role='modérateur' ORDER BY ID DESC";
 $result=mysqli_query($con,$sql) or die(mysqli_error($con));;
 if($result){
     $cr=0;

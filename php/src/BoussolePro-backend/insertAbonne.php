@@ -3,7 +3,7 @@
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Origin, Content-VousEtes, X-Auth-Token');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 // require 'connect.php';
 $con = mysqli_connect("localhost", "root", "", "boussolepro");
 $id=$_GET['id'];
@@ -15,7 +15,6 @@ $id=$_GET['id'];
  {
      $request=json_decode($postdata);
    
-<<<<<<< Updated upstream
      print_r($request);
     // $nom=htmlspecialchars($request->nom,ENT_QUOTES);
     // $prenom=htmlspecialchars($request->prenom,ENT_QUOTES);
@@ -37,99 +36,17 @@ $id=$_GET['id'];
      $membreFEA=htmlspecialchars($request->Radio2,ENT_QUOTES);
      $abonnement=htmlspecialchars($request->Radio3,ENT_QUOTES); 
      $confirmationLoi=htmlspecialchars($request->Radio4,ENT_QUOTES);
-=======
-     print_r($request); 
-     $Prenom=htmlspecialchars($request->Prenom,ENT_QUOTES);
-     $Nom=htmlspecialchars($request->Nom);
-     $Telephone=htmlspecialchars($request->Telephone,ENT_QUOTES);
-     $Email=htmlspecialchars($request->Email,ENT_QUOTES);
-     $VousEtes=htmlspecialchars($request->VousEtes,ENT_QUOTES);
-     $Verset=htmlspecialchars($request->Verset,ENT_QUOTES);
-     $Profession=htmlspecialchars($request->Profession,ENT_QUOTES);
-     $ObjectifProfess=htmlspecialchars($request->ObjectifProfessfess,ENT_QUOTES);
-     $Entreprise=htmlspecialchars($request->Entreprise,ENT_QUOTES);
-     $Secteur=htmlspecialchars($request->Secteur,ENT_QUOTES);
-     $Ville=htmlspecialchars($request->Ville,ENT_QUOTES);
-      $Pays=htmlspecialchars($request->pays,ENT_QUOTES);
-     $VilleTop=htmlspecialchars($request->VilleTop,ENT_QUOTES); 
-     $Expertise=htmlspecialchars($request->Expertise,ENT_QUOTES); 
-     $ExpertiseSouhaitez=htmlspecialchars($request->ExpertiseSouhaitez,ENT_QUOTES); 
-     $CentresInteret=htmlspecialchars($request->CentresInteret,ENT_QUOTES); 
-     $Confirmation=htmlspecialchars($request->Confirmation,ENT_QUOTES); 
-     $MembreFEA=htmlspecialchars($request->MembreFEA,ENT_QUOTES);
-     $Abonnement=htmlspecialchars($request->Abonnement,ENT_QUOTES); 
-     $ConfirmationLoi=htmlspecialchars($request->ConfirmationLoi,ENT_QUOTES);
->>>>>>> Stashed changes
      $urlImage=$request->urlImage;
     //$rang="100";
     //$role="Inscrit";
 
      //store:
-<<<<<<< HEAD
     
        $sql="UPDATE `utilisateur` SET `entreprise`='$entreprise',`objetEntreprise`='$objectifPro', `activiteProfessionnelle`='$profession',
        `type`='$type',`verset`='$verset',`secteur`='$secteur',`expertiseSouhaitez`='$expertiseSouhaitez',
        `expertise`='$expertise',`centresInteret`='$centresInteret',`confirmation`='$confirmation',`membreFEA`='$membreFEA'
        ,`abonnement`='$abonnement',`topVille`='$villeTop',`urlImage`='$urlImage'
        ,`confirmationLoi`='$confirmationLoi',`telephone`='$telephone' WHERE ID='{$id}' ";  
-=======
-     $sql="INSERT INTO utilisateur (
-<<<<<<< Updated upstream
-      
-     
-     `entreprise`, 
-     `objetEntreprise`,
-     `activiteProfessionnelle`,
-     `role`,
-     `type`,
-     `verset`,
-     `secteur`,
-     `expertiseSouhaitez`,
-     `expertise`, 
-     `centresInteret`, 
-     `confirmation`, 
-     `membreFEA`, 
-     `abonnement`,
-     `topVille`,
-     `urlImage`,
-     `confirmationLoi`,
-     `telephone`) 
-     VALUES (
-            '{$entreprise}','{$objectifPro}','{$profession}','{$role}','{$type}',
-            '{$verset}', '{$secteur}',
-            '{$expertiseSouhaitez}','{$expertise}','{$centresInteret}',
-            '{$confirmation}','{$membreFEA}','{$abonnement}',
-            '{$villeTop}','{$urlImage}','{$confirmationLoi}','{$telephone}'
-            )";
-=======
-     `Prenom`,
-     `Nom`,
-     `Telephone`,
-     `Email`,
-     `VousEtes`,
-     `Verset`,
-     `Profession`,
-     `ObjectifProfess`,
-      `Entreprise`,
-      `Secteur`,
-      `Ville`,
-     `Pays`,
-     `TopVille`,
-     `Expertise`,
-     `ExpertiseSouhaitez`,
-     `CentresInteret`,
-     `Confirmation`,
-     `MembreFEA`,
-     `Abonnement`,
-     `ConfirmationLoi`,
-     `urlImage`) 
-     VALUES ({$Prenom}','{$Nom}',''{$Telephone}','{$Email}','{$VousEtes}','{$verset}',
-     '{$Profession}','{$ObjectifProfess}','{$Entreprise}','{$Secteur}','{$Ville}','{$pays}','{$VilleTop}',
-            '{$Expertise}','{$ExpertiseSouhaitez}','{$CentresInteret}'
-            ,'{$Confirmation}','{$MembreFEA}','{$Abonnement}',
-            '{$ConfirmationLoi}','{$img}')";
->>>>>>> Stashed changes
->>>>>>> 19555fb4583e59c4547d476e8615012923a219be
      print_r($sql);   
      $resultat=mysqli_query($con,$sql) or die(mysqli_error($con));
      if ($resultat){

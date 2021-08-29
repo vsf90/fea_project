@@ -10,7 +10,7 @@ if($result){
         $NotreReseau[$cr]['ID']=$row['ID'];
         $NotreReseau[$cr]['prenom']=htmlspecialchars_decode($row['prenom'],ENT_QUOTES);
         $NotreReseau[$cr]['nom']=htmlspecialchars_decode($row['nom'],ENT_QUOTES);
-        $NotreReseau[$cr]['image']=htmlspecialchars_decode($row['image'],ENT_QUOTES);
+        $NotreReseau[$cr]['image']=htmlspecialchars_decode($row['urlImage'],ENT_QUOTES);
         $NotreReseau[$cr]['pays']=htmlspecialchars_decode($row['pays'],ENT_QUOTES);
         $NotreReseau[$cr]['ville']=htmlspecialchars_decode($row['ville'],ENT_QUOTES);
 

@@ -16,10 +16,10 @@ export default class RecordsListNotreReseau extends Component {
          <div className="avatar" >
          <Link to={"/CompteAbonnéeReseau/"+this.props.obj.ID} className="button" > <img style={{maxHeight:"170px"}}
               // ../../../public/Photos Membres/PrenomAbonnee
-             src={ss}
+             src={this.props.obj.image}
              className="card-img-top"
-             alt=""
              
+            
            /></Link>
          </div>
          <h5 className="card-title">

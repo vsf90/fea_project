@@ -25,6 +25,8 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      $expertise=htmlspecialchars($request->expertise,ENT_QUOTES);
      $expertiseSouhaitez=htmlspecialchars($request->expertiseSouhaitez,ENT_QUOTES);
      $centresInteret=htmlspecialchars($request->centresInteret,ENT_QUOTES);
+     $password=htmlspecialchars($request->password,ENT_QUOTES);
+
      echo $nom;
     echo $prenom;
     echo $email;
@@ -37,14 +39,15 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
       echo $verset;
       echo $expertise;
       echo $expertiseSouhaitez;
-      echo $centresInteret;  
+      echo $centresInteret;
+      echo $password;  
     
     //echo 
 
      //store:
      $sql="UPDATE `utilisateur` SET `nom`='$nom',`prenom`='$prenom',`email`='$email',`pays`='$pays',
      `ville`='$ville',`entreprise`='$entreprise',`objetEntreprise`='$objetEntreprise',
-     `activiteProfessionnelle`='$activiteProfessionnelle' ,`verset`='$verset',
+     `activiteProfessionnelle`='$activiteProfessionnelle' ,`password`='$password',`verset`='$verset',
      `expertiseSouhaitez`='$expertiseSouhaitez',`expertise`='$expertise',`centresInteret`='$centresInteret',
      `topVille`='$topVille' WHERE ID='{$id}' LIMIT 1";
      $resultat=mysqli_query($con,$sql) or die(mysqli_error($con));

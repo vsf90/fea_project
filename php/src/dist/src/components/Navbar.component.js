@@ -335,7 +335,7 @@ function Navbar(props) {
         &&(<Route path="/AddDemandeStage" exact component={AddDemandeStage}/>)}
 
         {
-          (role === "Admin" || role === "Modérateur")
+          (role === "Admin" || role === "Modérateur" ||role === "Abonnee")
           &&(<Route path="/AddPublication" exact component={AddPublication} />)}
           {
           (role === "Admin" || role === "Modérateur")

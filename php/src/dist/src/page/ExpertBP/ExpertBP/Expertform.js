@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import './Expertform.css';
 import { useState } from 'react';
-import { message, Button, Space,Radio } from 'antd';
+import { message, Button, Space,Radio,Input } from 'antd';
 import { config } from '../../../config';
 export default function Expertform() {
  
@@ -107,11 +107,9 @@ if(Nom=='' || Prénom=='' || Radio=='' || AvecQui=='' || Objet=='' ||(Matin=='' 
 		<div class="question">
           <p style={{color:"#171617"}}>Avec-qui souhaitez vous avoir le sprint PRO?<span class="required">*</span></p>
           <div class="question-answer">
-            
-            <Space direction="vertical"  >
-          <Radio style={{color:"#666"}} value="Sonia B" checked={AvecQui === "Sonia B"}   onChange={(e)=>setAvecQui(e.target.value)}>Sonia B</Radio>
-          <Radio style={{color:"#666"}}   value="Mohamed L" checked={AvecQui === "Mohamed L"}   onChange={(e)=>setAvecQui(e.target.value)} >Mohamed L</Radio>
-        </Space>
+          <Input className="input" type="text" name="name" value={AvecQui} onChange={(e)=>setAvecQui(e.target.value)}  required/>
+
+           
            
           </div>
         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import './Relaisform.css';
 import { useState } from 'react';
-import { message, Button, Space,Radio } from 'antd';
+import { message, Button, Space,Radio,Input } from 'antd';
 import { config } from '../../../config';
 export default function Relaisform() {
   const [Radioo, setRadioo] = useState("");
@@ -105,12 +105,9 @@ if(Nom=='' || Prénom=='' || Radioo=='' || AvecQui=='' || Objet=='' ||(Matin==''
 		<div class="question">
           <p style={{color:"#171617"}}>Avec-qui souhaitez vous avoir le sprint PRO?<span class="required">*</span></p>
           <div class="question-answer">
-            
-            <Space direction="vertical"  >
-          <Radio style={{color:"#666"}} value="Mimoun K" checked={AvecQui === "Mimoun K"}   onChange={(e)=>setAvecQui(e.target.value)}>Mimoun K</Radio>
-          <Radio style={{color:"#666"}}   value="Hamou B" checked={AvecQui === "Hamou B"}   onChange={(e)=>setAvecQui(e.target.value)} >Hamou B</Radio>
-          <Radio style={{color:"#666"}}   value="Sid-Ahmed Be" checked={AvecQui === "Sid-Ahmed Be"}   onChange={(e)=>setAvecQui(e.target.value)} >Sid-Ahmed Be</Radio>
-        </Space>
+          <Input  className="input" type="text" name="name" value={AvecQui} onChange={(e)=>setAvecQui(e.target.value)}  required/>
+
+          
           </div>
         </div>
        

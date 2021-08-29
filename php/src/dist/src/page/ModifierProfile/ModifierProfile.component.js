@@ -22,6 +22,7 @@ import { config } from '../../config';
         this.onChangeExpertise=this.onChangeExpertise.bind(this);
         this.onChangeExpertiseSouhaitez=this.onChangeExpertiseSouhaitez.bind(this);
         this.onChangeCentresInteret=this.onChangeCentresInteret.bind(this);
+        this.onChangePassword=this.onChangePassword.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
         this.state={
                    topVille:'',
@@ -36,7 +37,8 @@ import { config } from '../../config';
                     Email:'',
                     expertise:'',
                     expertiseSouhaitez:'',
-                    centresInteret:''              
+                    centresInteret:'',
+                    password:''             
         }
          
       }
@@ -59,6 +61,7 @@ import { config } from '../../config';
                       expertise:response.data.expertise,
                       expertiseSouhaitez:response.data.expertiseSouhaitez,
                       centresInteret:response.data.centresInteret,
+                      password:response.data.password
                       });
        })
        .catch(function (error){
@@ -130,6 +133,11 @@ import { config } from '../../config';
           expertise:e.target.value
         })
       }
+      onChangePassword(e){
+        this.setState({
+          password:e.target.value
+        })
+      }
       onSubmit(e){
         e.preventDefault();
         const EditAbonné={
@@ -145,16 +153,17 @@ import { config } from '../../config';
           verset:this.state.verset,
           expertiseSouhaitez:this.state.expertiseSouhaitez,
           expertise:this.state.expertise,
-          centresInteret:this.state.centresInteret
+          centresInteret:this.state.centresInteret,
+          password:this.state.password
         };
         console.log(EditAbonné);       
-        if( this.state.topVille=='' || this.state.nom=='' || this.state.Prenom=='' || this.state.Pays=='' || this.state.Ville=='' || this.state.Entreprise=='' || this.state.objetEntreprise=='' || this.state.activiteProfessionnelle=='' || this.state.Email==''|| this.state.verset==''|| this.state.expertise=='' || this.state.expertiseSouhaitez=='' || this.state.centresInteret=='' ){
+        if( this.state.topVille=='' || this.state.nom=='' || this.state.Prenom=='' || this.state.Pays=='' || this.state.Ville=='' || this.state.Entreprise=='' || this.state.objetEntreprise=='' || this.state.activiteProfessionnelle=='' || this.state.Email==''|| this.state.verset==''|| this.state.expertise=='' || this.state.expertiseSouhaitez=='' || this.state.centresInteret=='' || this.state.password=='' ){
   
           message.error('Vous devez remplir tous les champs obligatoires');
         
         } else {
           message.success('Les informations ont été modifiées avec succès');
-        axios.post(config+'/BoussolePro-backend/updateAbonne.php?id='+localStorage.getItem('ID'),EditAbonné).then(res=>console.log(res.data));
+        axios.post(config+'BoussolePro-backend/updateAbonne.php?id='+localStorage.getItem('ID'),EditAbonné).then(res=>console.log(res.data));
 
         }
 
@@ -499,6 +508,10 @@ import { config } from '../../config';
            <Form.Item >
          <label><b>Mes centres d'interets professionnels</b><span class="required">*</span></label>
            <Input.TextArea value={this.state.centresInteret} onChange={this.onChangeCentresInteret}  required />
+           </Form.Item>
+           <Form.Item >
+         <label><b>Mot de passe</b><span class="required">*</span></label>
+           <Input.Password value={this.state.password} onChange={this.onChangePassword}  required />
            </Form.Item>
    
    
