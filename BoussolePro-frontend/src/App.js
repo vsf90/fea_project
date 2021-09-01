@@ -4,8 +4,8 @@ import "@ant-design/icons"
 import Home from './components/home.component';
 import Login from './components/Login/Login.component';
 import { Component } from 'react';
-import { BrowserRouter as Router, Route,Switch } from 'react-router-dom';
-import Register from './components/Login/Register.component';
+//import { BrowserRouter as Router, Route,Switch } from 'react-router-dom';
+//import Register from './components/Login/Register.component';
 
 let  currentUser  ={};
 class App extends Component {
