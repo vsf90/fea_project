@@ -21,7 +21,9 @@ export default class RecordsListShoura extends Component {
     }
     delete(){
         axios.get(config+'/BoussolePro-backend/ValiderShoura.php/?id='+this.props.obj.ID)
-  .then(console.log('deleted'))
+  .then(()=>{
+    window.location.reload(); 
+      console.log('deleted')})
  .catch(err=>console.log(err))
     }
    

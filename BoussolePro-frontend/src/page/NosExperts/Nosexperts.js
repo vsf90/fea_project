@@ -13,9 +13,10 @@ export default class NosExperts extends Component {
       }
 
       componentDidMount(){
-        axios.get(config+'/BoussolePro-backend/listNosExperts.php')
+        axios.get(config+'/BoussolePro-backend/listNosExperts.php?role=Expert')
         .then(response=>{
-          this.setState({listeExperts: response.data});
+          console.log("*****listNosExperts.php",response);
+           this.setState({listeExperts: response.data});
        })
        .catch(function (error){
          console.log(error);

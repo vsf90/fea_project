@@ -15,14 +15,19 @@ export default class RecordsListExpert extends Component {
             cover={
             <img
                 alt="example"
-                src={this.props.obj.image}
+                loading="lazy"
+                src={`https://www.boussolepro.net/BoussolePro-backend/images/${this.props.obj.image}`} 
+                // src={`${process.env.PUBLIC_URL}/assets/images/${this.props.obj.image}`}
             />
             }
-            
+  
         >
             <Meta style={{paddingBottom: "60px"}}
-            avatar={<Avatar src={this.props.obj.image} />}
-            title={this.props.obj.prenom+" "+this.props.obj.nom[0]+this.props.obj.nom[1]}
+            avatar={<Avatar 
+                src={`https://www.boussolepro.net/BoussolePro-backend/images/${this.props.obj.image}`} 
+                // src={`${process.env.PUBLIC_URL}/assets/images/${this.props.obj.image}`} 
+                />}
+            title={this.props.obj.nom}
             description={this.props.obj.competances}
             />
         </Card>

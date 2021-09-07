@@ -6,32 +6,17 @@ import { useState } from 'react';
 import axios from 'axios';
 import { config } from '../../../config';
 
-
-/*const props = {
-    name: 'file',
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    headers: {
-      authorization: 'authorization-text',
-    },
-    onChange(info) {
-      if (info.file.status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-  };*/
-
 function AddDemandeEmploi() {
+
+  const [selectedFile, setSelectedFile] = useState(""); 
+
 
   const [Nom, setNom] = useState("");
   const [Prénom, setPrénom] = useState("");
   const [Titre, setTitre] = useState("");
   const [Contenu, setContenu] = useState("");
   const [Img, setImg] = useState("");
+ 
 
   const handleChange=(event) =>{
     //console.log("comme",event.target.files[0]);
@@ -42,17 +27,23 @@ function AddDemandeEmploi() {
   console.log(Prénom);
   console.log(Titre);
   console.log(Contenu);
-  console.log(Img);
+  
 
  
   const handleFormSubmit=(e)=>{
     e.preventDefault();
+    const dd = new FormData(); 
+    if(selectedFile){
+      dd.append('image', selectedFile, selectedFile.name); 
+    }
+  
     const DemandeEmploi={
      nom: Nom,
       prenom:Prénom,
       titre:Titre,
-      img:Img,
-      contenu:Contenu
+      // img:Img,
+      contenu:Contenu,
+      image:selectedFile? selectedFile.name: "DemandeDemploi.jfif"
       
      
     }
@@ -65,6 +56,8 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu=='' /*|| Img==''*/ ){
   }else{
     message.success("La demande d'emploi a été publiée avec succès");
     axios.post(config+'/BoussolePro-backend/insertDemandeEmploi.php',DemandeEmploi).then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertRelaisExpertFileInput.php',dd).then(res=>console.log(res.data)); 
+
 
     setNom('');
     setPrénom('');
@@ -118,7 +111,7 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu=='' /*|| Img==''*/ ){
 
 <Form.Item >
   <label><b>Image</b></label> <br></br>
-  <input type="file" className={Img} onChange={handleChange}/>
+  <input selected={Img} onChange={(info)=>{/*setImg(URL.createObjectURL(info.target.files[0]));*/setSelectedFile(info.target.files[0]);}} type="file" name="file"></input> 
   </Form.Item >
 
 

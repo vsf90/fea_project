@@ -4,41 +4,45 @@ import "@ant-design/icons"
 import Home from './components/home.component';
 import Login from './components/Login/Login.component';
 import { Component } from 'react';
-//import { BrowserRouter as Router, Route,Switch } from 'react-router-dom';
-//import Register from './components/Login/Register.component';
+import { BrowserRouter as Router, Redirect, Route,Switch } from 'react-router-dom';
+import Register from './components/Login/Register.component';
+import start from './page/start';
+import history from './history';
+import { AppConfig, AppConfigContext } from './config';
+import PrivateRoute from './components/privateRoute/privteRoute';
+import Authentication from './page/auth';
+
 
 let  currentUser  ={};
 class App extends Component {
-   constructor(props) {    
-      super(props);
-       currentUser = localStorage.getItem('user'); 
-      this.state = {
-        loggedIn: localStorage.getItem('loggedIn') === "true" ?  true : false,
-        user: {
-          email: currentUser ? currentUser.email : '',
-        },
-      }
-    }
-    DoIdsd(){
-      localStorage.removeItem('user')
-      localStorage.removeItem('loggedIn')
-      this.setState({ loggedIn: false, user: null})
-    }
- 
- 
- 
-  render() {
 
-    console.log('this.state.loggedIn',this.state.loggedIn)
-    const app = this.state.loggedIn?
-    <Home signout={() =>  this.DoIdsd()  }/>: 
-    <Login signIn={() => this.setState({ loggedIn: true })} />;
-    
+  clearStorage(){
+    localStorage.removeItem('user')
+    localStorage.removeItem('loggedIn')
+    localStorage.removeItem('email')
+    localStorage.removeItem('ID')
+    this.setState({ loggedIn: false, user: null})
+  }
+  
+  render() {
     return (
-      <div className="back">
-     {app}
-     
-      </div>
+      <AppConfigContext.Provider value={AppConfig()}>
+        <div className="back">
+          <Switch>
+            <Route path='/auth' component={Authentication} />
+            <PrivateRoute path='/' component={()=><Home signout={this.clearStorage.bind(this)}/>} />
+            <Redirect from='*' to='/' />
+          </Switch>
+
+        {/* <Router >
+          <Switch>
+            <Route path="/" component={Register} exact/>
+            <Route path="/Login" component={start} exact/> 
+          </Switch>
+        </Router> */}
+        
+        </div>
+      </AppConfigContext.Provider>
     )
   }
 }

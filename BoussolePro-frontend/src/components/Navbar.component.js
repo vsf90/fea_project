@@ -84,7 +84,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ListPublications from '../page/Admin/publications/ListPublications.component';
 import ListeRelais from '../page/Admin/ListeRelais/ListeRelais.component';
-import ListeExpairs from '../page/Admin/ListeExpairs/ListeExpairs.component';
 import CompteAbonnée from '../page/NosReseaux/CompteAbonnén/CompteAbonnée.component';
 
 import CompteAbonnéeReseau from '../page/NosReseaux/CompteAbonnén/CompteAbonnéeReseau.component';
@@ -98,6 +97,7 @@ import EditBoost from '../page/Admin/EditBoost/EditBoost.component';
 import EditExpert from '../page/Admin/EditExpert/EditExpert.component';
 import ModifierProfile from '../page/ModifierProfile/ModifierProfile.component';
 import { config } from '../config';
+import RegenererPassword from '../page/regenererPassword/RegenererPassword.component';
 
 
 
@@ -118,6 +118,7 @@ const menu = (
 function Navbar(props) {
 
   const [role, SetRole] = useState("")
+  const [Img, SetImg] = useState("")
 
    console.log('reponse---------------------> id',localStorage.getItem('ID'));
 
@@ -125,8 +126,9 @@ function Navbar(props) {
     console.log(localStorage.getItem('ID'));
     axios.get(config+'/BoussolePro-backend/getUserById.php?id='+localStorage.getItem('ID'))
     .then(response=>{
-      console.log("reponse of request ==***=>",response.data);
+      console.log("reponse of request ==***=>",response.data.role);
       SetRole(response.data.role);
+      SetImg(response.data.urlImage);
       console.log("--------------------->role",role);
 
    })
@@ -145,90 +147,89 @@ function Navbar(props) {
     <Sider
     className="logo"
       style={{
-        overflow: 'auto',
-        height: '100vh',
+        // overflow: 'auto',
+        // height: '800px',
         // position: 'fixed',
-        width: '250px',
-        left: 0,
-        width:"1000px",
-        maxWidth: '250px'
+       // width: '250px',
+        
+        //minWidth:"273px"
+
       }}
     >
 
 
 
-      <Menu  theme="light" mode="inline" defaultSelectedKeys={['4']} mode="vertical">
-      <div className="logo" style={{height: "42px", background: "rgba(255, 255, 255, 0.4)"}} >
+      <Menu  theme="light" mode="inline" defaultSelectedKeys={['4']} 
+      // style={{
+      //   minWidth: '270px'
+      // }}
+      >
+      <div className="logo" style={{height: "42px"}} >
       <img src={logo} style={{height:"42px",backgroundPositionY:"center"}} />
       </div>
 
         <Menu.Item key="1" className={role === "Inscrit" ? 'hidden' : ''} icon={< HomeOutlined />}><Link  to="/Acueil"></Link>Accueil  </Menu.Item>
         <Menu.Item key="2" className={role === "Inscrit" ? 'hidden' : ''} icon={<GlobalOutlined />}> <Link  to="/NosReseaux"></Link>  Notre Resaux  </Menu.Item>
-        
-        
-            <SubMenu key="sub1" className={role === "Inscrit" ? 'hidden' : ''} icon={<GiftOutlined />}  title="Nos Services" ><Link  to="/Services"
-           ></Link>
-                  <Menu.Item key="3"  className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/SprintPro"></Link>Sprint Pro</Menu.Item>
-                  <Menu.Item key="4" className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/MeetUpPro"></Link>Meet'Up Pro</Menu.Item>
-                  <Menu.Item key="5" className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/ShouraPro"></Link>Shoura Pro</Menu.Item>
-                  <Menu.Item key="6" className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/BoostPro"></Link>Boost Pro </Menu.Item>
-                         
-        <SubMenu key="sub2" className={role === "Inscrit" ? 'hidden' : ''} icon={<TagOutlined />} title="Relais BP"> <Link  to="/Relais"></Link> 
-                <Menu.Item key="7"  className={role === "Inscrit" ? 'hidden' : ''} icon={<TeamOutlined />}><Link  to="/NosRelais" ></Link>Nos Relais</Menu.Item>
-        </SubMenu>
-      
-         
-             <SubMenu key="sub3" className={role === "Inscrit" ? 'hidden' : ''} icon={<TagOutlined />} title="Expert BP"><Link  to="/Expert"> </Link>
-                 <Menu.Item key="8" className={role === "Inscrit" ? 'hidden' : ''} icon={<TeamOutlined />}><Link  to="/NosExperts" ></Link>Nos Experts</Menu.Item>
-          </SubMenu>
-       </SubMenu>
 
-        <Menu.Item key="9" className={role === "Inscrit" ? 'hidden' : ''} icon={<BarChartOutlined />}>
+        <SubMenu key="sub1" className={role === "Inscrit" ? 'hidden' : ''} icon={<GiftOutlined />}  title="Nos Services" > 
+        <Menu.Item key="3"  className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/Services"></Link>Tous les Services </Menu.Item>
+         <Menu.Item key="4"  className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/SprintPro"></Link>Sprint Pro</Menu.Item>
+                  <Menu.Item key="5" className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/MeetUpPro"></Link>Meet'Up Pro</Menu.Item>
+                  <Menu.Item key="6" className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/ShouraPro"></Link>Shoura Pro</Menu.Item>
+                  <Menu.Item key="7" className={role === "Inscrit" ? 'hidden' : ''}><Link  to="/BoostPro"></Link>Boost Pro </Menu.Item>        
+                  <Link  to="/Relais"><SubMenu key="sub2" className={role === "Inscrit" ? 'hidden' : ''} icon={<TagOutlined />} title="Relais BP"> 
+                <Menu.Item key="8"  className={role === "Inscrit" ? 'hidden' : ''} icon={<TeamOutlined />}><Link  to="/NosRelais" ></Link>Nos Relais</Menu.Item>
+        </SubMenu></Link> 
+        <Link  to="/Expert">  <SubMenu key="sub3" className={role === "Inscrit" ? 'hidden' : ''} icon={<TagOutlined />} title="Expert BP">
+                 <Menu.Item key="9" className={role === "Inscrit" ? 'hidden' : ''} icon={<TeamOutlined />}><Link  to="/NosExperts" ></Link>Nos Experts</Menu.Item>
+          </SubMenu></Link>
+       </SubMenu> 
+
+        <Menu.Item key="10" className={role === "Inscrit" ? 'hidden' : ''} icon={<BarChartOutlined />}>
 
           <Link  to="/NosPartenaires"></Link  >Nos Partenaires
         </Menu.Item>
             <SubMenu key="sub4" className={role === "Inscrit" ? 'hidden' : ''} icon={<WechatOutlined /> } title="Feedback">
-              <Menu.Item key="10" className={role === "Inscrit" ? 'hidden' : ''} icon={<WechatOutlined /> }> <Link  to="/MesBesoins"></Link>Mes besions Pro immédiate</Menu.Item>
-              <Menu.Item key="11" className={role === "Inscrit" ? 'hidden' : ''} icon={<WechatOutlined /> }><Link  to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
+              <Menu.Item key="11" className={role === "Inscrit" ? 'hidden' : ''} icon={<WechatOutlined /> }> <Link  to="/MesBesoins"></Link>Mes besions Pro immédiate</Menu.Item>
+              <Menu.Item key="12" className={role === "Inscrit" ? 'hidden' : ''} icon={<WechatOutlined /> }><Link  to="/MonFeedback"></Link>Mon feedback sur un service</Menu.Item>
             </SubMenu>
 
 
 
-            <SubMenu key="sub5" className={role === "Inscrit" ? 'hidden' : ''} icon={<UserOutlined />} title="Admin">
-              <Menu.Item key="13" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdSprintPro"></Link>Demandes Sprint Pro</Menu.Item>
-              <Menu.Item key="14" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileDoneOutlined />} ><Link  to="/DdMeetUpPro"></Link>Demandes Meet'Up Pro</Menu.Item>
-              <Menu.Item key="15" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdShouraPro"></Link>Demandes Shoura Pro</Menu.Item>
-              <Menu.Item key="16" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdBoostPro"></Link>Demandes Boost Pro</Menu.Item>
-              <Menu.Item key="17" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdRelaisBP"></Link>Demandes Relais BP</Menu.Item>
-              <Menu.Item key="18" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdExpertBP"></Link>Demandes Expert BP</Menu.Item>
-              <Menu.Item key="29" className={role === "Inscrit" ? 'hidden' : ''} icon={<ScheduleOutlined />}><Link  to="/feedbacks"></Link>Listes des feedbacks</Menu.Item>
-              <Menu.Item key="20" className={role === "Inscrit" ? 'hidden' : ''} icon={<ProfileOutlined />}><Link  to="/besoins"></Link>Listes des besoins Pro</Menu.Item>
-              <Menu.Item key="21" className={role === "Inscrit" ? 'hidden' : ''} icon={<ProfileOutlined />}><Link  to="/AjouterRelaisExpert"></Link>Ajouter Relais/Expert</Menu.Item>
-              <Menu.Item key="22" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} ><Link  to="/AddPartenaire"></Link>Ajouter un partenaire</Menu.Item>
+            <SubMenu key="sub5" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={<UserOutlined />} title="Admin">
+              <Menu.Item key="13" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdSprintPro"></Link>Demandes Sprint Pro</Menu.Item>
+              <Menu.Item key="14" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={<FileDoneOutlined />} ><Link  to="/DdMeetUpPro"></Link>Demandes Meet'Up Pro</Menu.Item>
+              <Menu.Item key="15" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdShouraPro"></Link>Demandes Shoura Pro</Menu.Item>
+              <Menu.Item key="16" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdBoostPro"></Link>Demandes Boost Pro</Menu.Item>
+              <Menu.Item key="17" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdRelaisBP"></Link>Demandes Relais BP</Menu.Item>
+              <Menu.Item key="18" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={<FileDoneOutlined />}><Link  to="/DdExpertBP"></Link>Demandes Expert BP</Menu.Item>
+              <Menu.Item key="29" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={<ScheduleOutlined />}><Link  to="/feedbacks"></Link>Listes des feedbacks</Menu.Item>
+              <Menu.Item key="20" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={<ProfileOutlined />}><Link  to="/besoins"></Link>Listes des besoins Pro</Menu.Item>
+              <Menu.Item key="21" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={<ProfileOutlined />}><Link  to="/AjouterRelaisExpert"></Link>Ajouter Relais/Expert</Menu.Item>
+              <Menu.Item key="22" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={<FileTextOutlined />} ><Link  to="/AddPartenaire"></Link>Ajouter un partenaire</Menu.Item>
 
             </SubMenu>
-              <SubMenu key="sub6" className={role === "Inscrit" ? 'hidden' : ''} icon={< SettingFilled />} title="Parametres">
-               <Menu.Item key="23" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />}><Link  to="/Modérateur"></Link>Liste des Modérateurs</Menu.Item>
-                <Menu.Item key="24" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/AdminList"></Link>Liste des admins</Menu.Item>
-                <Menu.Item key="25"  icon={<ProfileOutlined />} ><Link  to="/listInscrit"></Link>Liste des inscrits </Menu.Item>
-                <Menu.Item key="26" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListPublications"></Link>Liste des publication</Menu.Item>
-                <Menu.Item key="27" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListeExpairs"></Link>Liste des Experts</Menu.Item>
-                <Menu.Item key="28" className={role === "Inscrit" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListeRelais"></Link>Liste des Relais</Menu.Item>
+              <SubMenu key="sub6" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={< SettingFilled />} title="Parametres">
+               <Menu.Item key="23" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''}  icon={<ProfileOutlined />}><Link  to="/Modérateur"></Link>Liste des Modérateurs</Menu.Item>
+                <Menu.Item key="24" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/AdminList"></Link>Liste des admins</Menu.Item>
+                <Menu.Item key="25" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''} icon={<ProfileOutlined />} ><Link  to="/listInscrit"></Link>Liste des inscrits </Menu.Item>
+                <Menu.Item key="26" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListPublications"></Link>Liste des publication</Menu.Item>
+                <Menu.Item key="27" className={role === "Inscrit" || role === "Abonnee" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/ListeRelais"></Link>Liste des Relais et Experts</Menu.Item>
 
-
+                <Menu.Item key="34" className={role === "Inscrit" || role === "Modérateur" ? 'hidden' : ''}  icon={<ProfileOutlined />} ><Link  to="/RegenererPassword"></Link>Regénerer un mot de passe</Menu.Item>
               </SubMenu>
              
             <SubMenu key="sub7" className={role === "Inscrit" ? 'hidden' : ''} icon={<FundOutlined />} title="les offres">
-              <Menu.Item key="29" className={role === "Inscrit" ? 'hidden' : ''} icon={<PullRequestOutlined />}><Link  to="/OffreStage"></Link>Offres de stage</Menu.Item>
-              <Menu.Item key="30" className={role === "Inscrit" ? 'hidden' : ''} icon={<PullRequestOutlined />} ><Link  to="/OffreEmploi"></Link>Offres d'emploi</Menu.Item>
+              <Menu.Item key="28" className={role === "Inscrit" ? 'hidden' : ''} icon={<PullRequestOutlined />}><Link  to="/OffreStage"></Link>Offres de stage</Menu.Item>
+              <Menu.Item key="29" className={role === "Inscrit" ? 'hidden' : ''} icon={<PullRequestOutlined />} ><Link  to="/OffreEmploi"></Link>Offres d'emploi</Menu.Item>
             </SubMenu>
 
             <SubMenu key="sub8" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} title="les demandes">
 
-              <Menu.Item key="31" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
-              <Menu.Item key="32" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
+              <Menu.Item key="30" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />}><Link  to="/DemandeStage"></Link>Demandes de stage</Menu.Item>
+              <Menu.Item key="31" className={role === "Inscrit" ? 'hidden' : ''} icon={<FileTextOutlined />} ><Link  to="/DemandeEmploi"></Link>Demandes d'emploi</Menu.Item>
             </SubMenu>
-            <Menu.Item key="33" className={role === "Admin" ||role === "Modérateur" ||role === "Abonnee" ? 'hidden' : ''} icon={<FormOutlined />}>
+            <Menu.Item key="32" className={role === "Admin" ||role === "Modérateur" ||role === "Abonnee" ? 'hidden' : ''} icon={<FormOutlined />}>
                <Link to="/EditCompte"></Link>L'inscription
              </Menu.Item>
             
@@ -237,14 +238,22 @@ function Navbar(props) {
       </Sider>
    
     <Layout className="site-layout" className="l">
-      <Header className="site-layout-background"  >
-      <Button onClick={props.signout} style={{float:"right",marginTop:"15px",padding:"2px",borderRadius:"16px"}}  >
-   <LogoutOutlined/> <span style={{color:"#30a8ff"}}>Déconnexion</span>
-  </Button>
+      <Header className="site-layout-background"  style={{backgroundColor:"#30ABFF"}}>
+      <Button type="primary" shape="round" onClick={props.signout} 
+      style={{float:"right",marginTop:"15px",padding:"2px",borderRadius:"16px",color:"#FFFFFF",backgroundColor:"#171617"}}
+       icon={<LogoutOutlined />} size="middle">
+          Déconnexion
+        </Button>
+{/* 
+      <Button  onClick={props.signout} style={{float:"right",marginTop:"15px",padding:"2px",borderRadius:"16px"}}  >
+   <LogoutOutlined/> <span style={{color:"#FFFFFF"}} >Déconnexion</span>
+  </Button> */}
       <Dropdown overlay={menu}  >
     <a className="ant-dropdown-link" 
      style={{color:"#fff",float: "right",marginRight:"10px"}}>
-      <Avatar icon={<UserOutlined style={{marginBottom:"20px"}} />} 
+      <Avatar icon={<img 
+      src={`https://www.boussolepro.net/BoussolePro-backend/images/${Img}`}
+       style={{marginBottom:"20px"}} />} 
       style={{marginLeft:"3px"}} /> <CaretDownFilled />
     </a>
   </Dropdown>
@@ -254,7 +263,6 @@ function Navbar(props) {
       <Content >
         
 
-        <Switch>
         {
           (role === "Admin" || role === "Modérateur" ||role === "Abonnee" || role === "Inscrit") 
           && (<Route path="/CompteAbonnée" exact component={CompteAbonnée}/>)
@@ -369,9 +377,6 @@ function Navbar(props) {
           &&(<Route path="/ListeRelais" exact component={ListeRelais} />)}
           {
           (role === "Admin" || role === "Modérateur")
-          &&(<Route path="/ListeExpairs" exact component={ListeExpairs} />)}
-          {
-          (role === "Admin" || role === "Modérateur")
           &&(<Route path="/AjouterRelaisExpert" exact component={AjouterRelaisOuExpert} />)}
           {
           (role === "Admin" || role === "Modérateur")
@@ -413,6 +418,8 @@ function Navbar(props) {
        &&(<Route path="/AddModérateur" exact component={AddModérateur} />)}
        {(role === "Admin")  
        &&(<Route path="/EditModérateur/:id" component={EditModérateur} />)}
+       {(role === "Admin") 
+        && (<Route path="/RegenererPassword" exact component={RegenererPassword} />) }
 
        {/* route de admin */}
        {(role === "Admin") 
@@ -428,7 +435,6 @@ function Navbar(props) {
         }
        
 
-        </Switch>
          
     
       </Content>

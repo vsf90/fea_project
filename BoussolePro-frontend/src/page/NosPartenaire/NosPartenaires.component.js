@@ -21,6 +21,7 @@ import { config } from "../../config";
       componentDidMount(){
         axios.get(config+'/BoussolePro-backend/listPartenaire.php')
         .then(response=>{
+          console.log("--------------->listPartenaire.php",response.data);
           this.setState({listPartenaire: response.data});
        })
        .catch(function (error){

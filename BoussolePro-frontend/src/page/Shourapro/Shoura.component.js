@@ -11,7 +11,7 @@ export default function Shoura() {
 
 <main>
   
-  <a href="#" class="carte cardshoura" style={{height: "500px",
+  <a  class="carte cardshoura" style={{height: "500px",
 position: "relative",
 padding: "20px",
 boxSizing: "border-box",

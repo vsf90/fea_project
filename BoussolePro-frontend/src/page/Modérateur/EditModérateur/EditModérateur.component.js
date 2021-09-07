@@ -33,7 +33,7 @@ import { config } from '../../../config';
       }
       componentDidMount(){
         console.log(this.props.match.params.id);
-        axios.get('http://localhost:8080/BoussolePro-backend/getModerateurById.php?id='+this.props.match.params.id)
+        axios.get(config+'/BoussolePro-backend/getModerateurById.php?id='+this.props.match.params.id)
         .then(response=>{
           this.setState({
                         nom: response.data.nom,
@@ -116,8 +116,8 @@ import { config } from '../../../config';
         .then(res=>
           {
             console.log(res.data);
-            history.push("/Modérateur");
-            window.location.reload(false);
+            // history.push("/Modérateur");
+            // window.location.reload(false);
           });
 
         }

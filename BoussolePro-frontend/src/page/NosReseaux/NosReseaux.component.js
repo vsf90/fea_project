@@ -9,14 +9,19 @@ import { config } from '../../config';
 class NosReseaux extends Component {
   constructor(props){
     super(props);
-    this.state={listNotreReseau: []};
+    this.state = {
+      val:'',
+      listNotreReseau: [],
+      listFilter: []
+  };
     //console.log(this.state.demandeSprint);
   }
   
   componentDidMount(){
     axios.get(config+'/BoussolePro-backend/listNotreReseau.php')
     .then(response=>{
-      this.setState({listNotreReseau: response.data});
+      console.log("------------------>listNotreReseau.php",response.data);
+      this.setState({listNotreReseau: response.data, listFilter: response.data});
    })
    .catch(function (error){
      console.log(error);
@@ -25,27 +30,27 @@ class NosReseaux extends Component {
     
     NotreReseauList(){
       console.log(this.state.listNotreReseau);
-       return this.state.listNotreReseau.map(function(object,i){
+      return Array.isArray(this.state.listFilter) && this.state.listFilter.map(function(object,i){
         return <RecordsListNotreReseau obj={object} key={i} />
        
        });
     }
  
 
-  OnchangeState(e){
-       console.log("we are here !!!!")
-    this.setState({
-        
-        val:e.target.value,
-
-    },()=>{
-        this.setState({
-          ListPubs:this.state.Publication.filter(elm=>(elm.nom.includes(this.state.val)))
-            })
-        }
-    )
-    console.log(this.state.val)
-}
+    recherche(e){
+      console.log("hey we are *******************");
+      this.setState({
+          
+          val:e.target.value,
+  
+      },()=>{
+          this.setState({
+              listFilter:this.state.listNotreReseau.filter(elm=>(elm.prenom.includes(this.state.val)))
+              })
+          }
+      )
+      console.log("----------------------- val ",this.state.val)
+  }
 
   render() {
     return (
@@ -57,8 +62,18 @@ class NosReseaux extends Component {
                 showIcon
                 />
                 <br></br>
-                <Search placeholder="Recherche" allowClear  size="large" enterButton 
-                value={this.state.val} onChange={(e)=>{this.OnchangeState(e)}}  />
+                    <div className="se mb-4">
+                            <div className="se-header">Search</div>
+                            <div className="se-body">
+                                <div className="input-group">
+                                    <input className="form-control" type="text" 
+                                    placeholder="Enter search titre..." 
+                                    aria-label="Enter search term..." 
+                                    value={this.state.val} onChange={(e)=>{this.recherche(e)}} aria-describedby="button-search" />
+                                    <button className="btn btn-primary" id="button-search" type="button">Go!</button>
+                                </div>
+                            </div>
+                </div>
                 <br></br>
                 <br></br>
 

@@ -3,8 +3,7 @@
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');*/
 // require 'connect.php';
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
-
+include 'connect.php';
 $id=$_GET['id'];
 
  $sql="UPDATE `relaisbp` SET `valider`=1 WHERE ID='{$id}' LIMIT 1" ; 

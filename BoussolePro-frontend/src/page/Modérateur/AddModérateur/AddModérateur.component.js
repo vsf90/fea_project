@@ -66,8 +66,8 @@ if(  Nom=='' || Prénom=='' || Pays=='' || Ville=='' || Entreprise=='' || Objet=
      setPassword('');
      setConfirmPassword('');
      
-     history.push("/Modérateur");
-     window.location.reload(false);
+    //  history.push("/Modérateur");
+    //  window.location.reload(false);
   } 
 }
     return (

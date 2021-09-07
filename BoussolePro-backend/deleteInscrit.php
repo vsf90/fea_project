@@ -3,7 +3,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
+include 'connect.php';
 $id=$_GET['id'];
 echo $sql="DELETE FROM utilisateur WHERE ID='{$id}' LIMIT 1" ;
  

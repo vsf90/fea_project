@@ -3,7 +3,8 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 // require 'connect.php';
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
+// $con = mysqli_connect("localhost", "root", "", "boussolepro1");
+include 'connect.php';
  $postdata=file_get_contents("php://input");
  if(isset($postdata) && !empty($postdata))
  {
@@ -21,6 +22,7 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      $email=htmlspecialchars($request->email,ENT_QUOTES);
      $password=htmlspecialchars($request->password,ENT_QUOTES);
      $confirmpassword=htmlspecialchars($request->confirmpassword,ENT_QUOTES);
+     $password=password_hash($password, PASSWORD_DEFAULT);
 
     echo $nom;
     echo $prénom;

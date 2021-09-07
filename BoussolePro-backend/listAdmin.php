@@ -1,5 +1,6 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
+// $con = mysqli_connect("localhost", "root", "", "boussolepro1");
+include 'connect.php';
 error_reporting(E_ERROR);
 $listAdmin=[];
 $sql="SELECT * FROM utilisateur WHERE role='Admin' ORDER BY ID DESC";

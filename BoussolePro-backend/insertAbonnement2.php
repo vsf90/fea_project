@@ -3,7 +3,8 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 // require 'connect.php';
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
+// $con = mysqli_connect("localhost", "root", "", "boussolepro1");
+include 'connect.php';
 $id=$_GET['id'];
 
  $postdata=file_get_contents("php://input");
@@ -98,14 +99,12 @@ $id=$_GET['id'];
         pour faciliter nos frères et sœurs dans leur besoin professionnellement, Votre abonnement finance la structure qui encourage la résilience professionnelle et économique de notre communauté";
     }
 
-
-
-    
         $req="UPDATE `utilisateur` SET `chosesessentielles`='$chosesessentielles', `CadreTravail`='$CadreTravail',
          `FontConfiance`='$FontConfiance',
         `ReseauQualite`='$RéseauQualité', `InformationImportante`='$InformationImportante', `NouveauxClients`='$NouveauxClients', `AiderDevelopper`='$AiderDévelopper',
          `Benefices`='$Bénéfices' WHERE ID='{$id}'"; 
       $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
+
        if ($resultat){
            http_response_code(201);
        }else{

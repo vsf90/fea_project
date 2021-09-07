@@ -12,7 +12,7 @@ export default function Boostpro() {
 
 <main>
   
-  <a href="#" class="carte cardboost" style={{height: "500px",
+  <a class="carte cardboost" style={{height: "500px",
         position: "relative",
         padding: "20px",
         boxSizing: "border-box",

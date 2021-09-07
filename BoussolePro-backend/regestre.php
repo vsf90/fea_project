@@ -5,15 +5,16 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 // require 'connect.php';
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
-// print_r($con);
+// $con = mysqli_connect("localhost", "root", "", "boussolepro1");
+include 'connect.php';
+ print_r($con);
   $postdata=file_get_contents("php://input");
   print_r($postdata);
  if(isset($postdata) && !empty($postdata))
  {
      $request=json_decode($postdata);
    
-     print_r($request); 
+     print_r($request);
 
      $email=htmlspecialchars($request->email,ENT_QUOTES);
      $pass=htmlspecialchars($request->pass,ENT_QUOTES);
@@ -22,12 +23,15 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
      $ville=htmlspecialchars($request->ville,ENT_QUOTES);
      $pays=htmlspecialchars($request->pays,ENT_QUOTES);
      $role=htmlspecialchars($request->role,ENT_QUOTES);
+     $pass=password_hash($pass, PASSWORD_DEFAULT);
+     $image=htmlspecialchars($request->image,ENT_QUOTES);
+
 
 
 
      store:
-     $sql="INSERT INTO utilisateur (`prenom`,`nom`,`email`,`pays`,`ville`,`role`,`password`) 
-     VALUES ('{$prenom}','{$nom}','{$email}','{$pays}','{$ville}','{$role}','{$pass}')";
+     $sql="INSERT INTO utilisateur (`prenom`,`nom`,`email`,`pays`,`ville`,`role`,`password`,`urlImage`) 
+     VALUES ('{$prenom}','{$nom}','{$email}','{$pays}','{$ville}','{$role}','{$pass}','{$image}')";
      print_r($sql);   
      $resultat=mysqli_query($con,$sql) or die(mysqli_error($con));
      if ($resultat){

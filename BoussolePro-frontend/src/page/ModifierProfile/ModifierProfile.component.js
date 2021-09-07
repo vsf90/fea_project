@@ -163,7 +163,7 @@ import { config } from '../../config';
         
         } else {
           message.success('Les informations ont été modifiées avec succès');
-        axios.post(config+'BoussolePro-backend/updateAbonne.php?id='+localStorage.getItem('ID'),EditAbonné).then(res=>console.log(res.data));
+        axios.post(config+'/BoussolePro-backend/updateAbonne.php?id='+localStorage.getItem('ID'),EditAbonné).then(res=>console.log(res.data));
 
         }
 

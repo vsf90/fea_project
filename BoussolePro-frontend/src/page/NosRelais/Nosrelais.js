@@ -18,7 +18,7 @@ export default class Nosrelais extends Component {
       }
 
       componentDidMount(){
-        axios.get(config+'/BoussolePro-backend/listNosRelais.php')
+        axios.get(config+'/BoussolePro-backend/RealaisList.php?role=relais')
         .then(response=>{
           this.setState({profilerelais: response.data});
        })

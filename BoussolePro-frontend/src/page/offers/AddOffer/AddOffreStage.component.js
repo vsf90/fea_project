@@ -1,32 +1,16 @@
 import { Form, Input, Alert, Row, Col } from 'antd';
 import { Upload, message, Button,Space} from 'antd';
 import { Link } from 'react-router-dom';
-import { UploadOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import axios from 'axios';
 import { config } from '../../../config';
 
 
-/*const props = {
-    name: 'file',
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    headers: {
-      authorization: 'authorization-text',
-    },
-    onChange(info) {
-      if (info.file.status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-  };*/
+
 
 function AddOffreStage() {
 
+  const [selectedFile, setSelectedFile] = useState(""); 
   const [Nom, setNom] = useState("");
   const [Prénom, setPrénom] = useState("");
   const [Titre, setTitre] = useState("");
@@ -39,32 +23,35 @@ function AddOffreStage() {
   console.log(Contenu);
   console.log(Img);
 
-  const handleChange=(event) =>{
-    //console.log("comme",event.target.files[0]);
-    setImg(URL.createObjectURL(event.target.files[0]));
-  }
-    
+  
  
   const handleFormSubmit=(e)=>{
     e.preventDefault();
+    const dd = new FormData(); 
+    if(selectedFile){
+      dd.append('image', selectedFile, selectedFile.name);
+    }
+    
     const OffreStage={
      nom: Nom,
       prenom:Prénom,
       titre:Titre,
+       contenu:Contenu,
       img:Img,
-      contenu:Contenu
+      image:selectedFile? selectedFile.name:"offreStage.jpg",
       
      
     }
     console.log(OffreStage);
 
-if(Nom=='' || Prénom=='' || Titre==''  || Contenu==''  ){
+if(Nom=='' || Prénom=='' || Titre==''  || Contenu=='' ){
   
     message.error('Vous devez remplir les champs obligatoires');
   
   }else{
     message.success("L'offre de stage a été publiée avec succès");
     axios.post(config+'/BoussolePro-backend/insertOffreStage.php',OffreStage).then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertRelaisExpertFileInput.php',dd).then(res=>console.log(res.data));
 
     setNom('');
     setPrénom('');
@@ -119,7 +106,7 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu==''  ){
   
   <Form.Item >
   <label><b>Image</b></label> <br></br>
-  <input type="file" className={Img} onChange={handleChange}/>
+  <input selected={Img} onChange={(info)=>{setSelectedFile(info.target.files[0]);}} type="file" name="file"/>
   </Form.Item >
 
  <Form.Item >

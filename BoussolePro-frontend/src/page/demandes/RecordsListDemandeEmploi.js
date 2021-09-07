@@ -11,7 +11,11 @@ export default class RecordsListDemandeEmploi extends Component {
         return (
           
             <div className="se mb-4">
-           <img className="se-img-top" style={{height:"350px"}} src={this.props.obj.image}  />
+           <img className="se-img-top" style={{height:"350px"}}
+           loading="lazy"
+           src={`https://www.boussolepro.net/BoussolePro-backend/images/${this.props.obj.image}`}
+            // src={this.props.obj.image}  
+            />
             <hr></hr>
             <div className="se-body">
             <div style={{fontSize:"20px",color:"black"}} className="small "> <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>{this.props.obj.prenom[0]}</Avatar> {this.props.obj.prenom+" "+this.props.obj.nom[0]+this.props.obj.nom[1]}</div>

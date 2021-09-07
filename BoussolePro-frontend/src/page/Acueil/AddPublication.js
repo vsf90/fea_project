@@ -7,25 +7,9 @@ import axios from 'axios';
 import { config } from '../../config';
 
 
-/*const props = {
-    name: 'file',
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    headers: {
-      authorization: 'authorization-text',
-    },
-    onChange(info) {
-      if (info.file.status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-  };*/
 
 function AddPublication() { 
+  const [selectedFile, setSelectedFile] = useState(""); 
 
   const [Nom, setNom] = useState("");
   const [Prénom, setPrénom] = useState("");
@@ -33,28 +17,26 @@ function AddPublication() {
   const [Contenu, setContenu] = useState("");
   const [Img, setImg] = useState("");
 
-  const handleChange=(event) =>{
-    //console.log("comme",event.target.files[0]);
-    setImg(URL.createObjectURL(event.target.files[0]));
-  }
-
   console.log(Nom);
   console.log(Prénom);
   console.log(Titre);
   console.log(Contenu);
   console.log(Img);
 
- 
   const handleFormSubmit=(e)=>{
     e.preventDefault();
+    const dd = new FormData(); 
+    if(selectedFile){
+      dd.append('image', selectedFile, selectedFile.name); 
+    }
+   
     const publication={
      nom: Nom,
       prenom:Prénom,
       titre:Titre,
+      image:selectedFile? selectedFile.name: "publication.png",
+      contenu:Contenu,
       img:Img,
-      contenu:Contenu
-      
-     
     }
     console.log(publication);
 
@@ -64,8 +46,8 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu==''){
   
   }else{
     message.success("La publication a été publiée avec succès");
-    axios.post(config+'/BoussolePro-backend/insertPublication.php',publication)
-    .then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertPublication.php',publication).then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertRelaisExpertFileInput.php',dd).then(res=>console.log(res.data)); 
 
     setNom('');
     setPrénom('');
@@ -119,7 +101,7 @@ if(Nom=='' || Prénom=='' || Titre==''  || Contenu==''){
 
 <Form.Item>
   <label><b>Image</b></label> <br></br>
-  <input type="file"  onChange={handleChange}/>
+  <input selected={Img} onChange={(info)=>{/*setImg(URL.createObjectURL(info.target.files[0]));*/setSelectedFile(info.target.files[0]);}} type="file" name="file"></input>
 </Form.Item>
 
 

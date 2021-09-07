@@ -3,8 +3,8 @@
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');*/
 // require 'connect.php';
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
-
+// $con = mysqli_connect("localhost", "root", "", "boussolepro1");
+include 'connect.php';
 $id=$_GET['id'];
 
  $sql="SELECT * FROM sprintpro WHERE ID='{$id}' LIMIT 1" ;

@@ -13,11 +13,12 @@ import { config } from '../../../config';
 export default class RecordsListPublications extends Component {
 
    delete(id){
+       console.log("--------------->id",id);
         axios.get(config+'/BoussolePro-backend/deletePublication.php/?id='+id)
-            .then(res=>{
-                console.log('deleted');
-               
-            })
+            .then(()=>{
+                window.location.reload();
+                console.log('deleted')
+              })
             .catch(err=>console.log(err))
              alert("Vous êtes sur de supprimer cette publication ?!")
                 window.location.reload(false);
@@ -29,7 +30,11 @@ export default class RecordsListPublications extends Component {
           
             <div className="se mb-4">
                     
-                        <img className="se-img-top" src={this.props.obj.image}  />
+                        <img className="se-img-top"
+                        //  src={`${process.env.PUBLIC_URL}/assets/images/${this.props.obj.image}`} 
+                        loading="lazy" 
+                         src={`https://www.boussolepro.net/BoussolePro-backend/images/${this.props.obj.image}`}
+                          />
                         <div className="se-body">
                         <div style={{fontSize:"20px",color:"black"}} className="small "> <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>{this.props.obj.prenom[0]}</Avatar> {this.props.obj.prenom+" "+this.props.obj.nom[0]+this.props.obj.nom[1]}</div>
 
@@ -39,7 +44,8 @@ export default class RecordsListPublications extends Component {
                             <p className="se-text">{this.props.obj.contenu}</p>
                             
                             <span>
-                            <Button style={{marginLeft: "250px"}} className="btn-danger" onClick={() => { this.delete(this.props.obj.ID)}} >
+                            <Button style={{marginLeft: "250px"}} className="btn-danger" 
+                            onClick={() => { this.delete(this.props.obj.ID)}} >
                             <DeleteOutlined  /></Button>
                             </span>
                         </div>

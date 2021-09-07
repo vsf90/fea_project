@@ -3,7 +3,8 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 // require 'connect.php';
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
+// $con = mysqli_connect("localhost", "root", "", "boussolepro1");
+include 'connect.php';
 $id=$_GET['id'];
  $postdata=file_get_contents("php://input");
  if(isset($postdata) && !empty($postdata))
@@ -19,10 +20,10 @@ $id=$_GET['id'];
      $NomContact2=htmlspecialchars($request->NomContact2,ENT_QUOTES);
      $TeleContact2=htmlspecialchars($request->TeleContact2,ENT_QUOTES);
     
-
     
        $req="UPDATE `utilisateur` SET `NomContact1`='$NomContact1', `PrenomContact1`='$PrénomContact1', `TeleContact1`='$TeleContact1',
         `NomContact2`='$NomContact2', `PrenomContact2`='$PrénomContact2', `TeleContact2`='$TeleContact2' WHERE ID='{$id}'"; 
+
        $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
        if ($resultat){
            http_response_code(201);

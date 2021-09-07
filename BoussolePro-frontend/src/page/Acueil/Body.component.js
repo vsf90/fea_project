@@ -62,7 +62,7 @@ import { config } from '../../config.js';
                 
                 <div className="col-lg-4">
                     
-                    <div className="se mb-4">
+                    {/* <div className="se mb-4">
                         <div className="se-header">Search</div>
                         <div className="se-body">
                             <div className="input-group">
@@ -70,7 +70,7 @@ import { config } from '../../config.js';
                                 <button className="btn btn-primary" id="button-search" type="button">Go!</button>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                   
                     <div className="se mb-4">
                         <div className="se-header">Categories</div>
@@ -78,18 +78,18 @@ import { config } from '../../config.js';
                             <div className="row">
                                 <div className="col-sm-6">
                                     <ul className="list-unstyled mb-0">
-                                        <li><a href="#!">Offre de Stage/Emploi</a></li>
-                                        <li><a href="#!">Sprint Pro</a></li>
-                                        <li><a href="#!">Shoura Pro</a></li>
+                                        <li> <Link to="/OffreStage"><a href="#!">Offre de Stage/Emploi</a></Link></li>
+                                        <li> <Link to="/SprintPro"><a href="#!">Sprint Pro</a></Link></li>
+                                        <li> <Link to="/ShouraPro"><a href="#!">Shoura Pro</a></Link></li>
                                     </ul>
                                 </div>
                                 <div className="col-sm-6">
                                     <ul className="list-unstyled mb-0">
-                                        <li><a href="#!">Demande de Stage/Emploi</a></li>
-                                        <li><a href="#!">Boost Pro</a></li>
-                                        <li><a href="#!">Meet Up Pro</a></li>
-                                        <li><a href="#!">Expert BP</a></li>
-                                        <li><a href="#!">Relais BP</a></li>
+                                        <li> <Link to="/DemandeStage"><a href="#!">Demande de Stage/Emploi</a></Link></li>
+                                        <li><Link to="/BoostPro"><a href="#!">Boost Pro</a></Link></li>
+                                        <li><Link to="/MeetUpPro"><a href="#!">Meet Up Pro</a></Link></li>
+                                        <li><Link to="/NosExperts"><a href="#!">Expert BP</a></Link></li>
+                                        <li><Link to="/NosRelais"><a href="#!">Relais BP</a></Link></li>
                                     </ul>
                                 </div>
                             </div>

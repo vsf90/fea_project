@@ -9,7 +9,9 @@ export default class DdSprintPro extends Component {
   data=[];
   constructor(props){
     super(props);
-    this.state={demandeSprint: []};
+    this.state={demandeSprint: [],
+      val:'',
+      listFilter: []};
     
   }
   
@@ -17,7 +19,8 @@ export default class DdSprintPro extends Component {
     axios.get(config+'/BoussolePro-backend/listSprint.php')
     .then(response=>{
       console.log("****----------------> dd sprint", response);
-       this.setState({demandeSprint: response.data});
+       this.setState({demandeSprint: response.data,
+        listFilter:response.data});
    })
    .catch(function (error){
      console.log(error);
@@ -27,11 +30,25 @@ export default class DdSprintPro extends Component {
     
     SprintList(){
       console.log(this.state.demandeSprint);
-       return this.state.demandeSprint.map(function(object,i){
+      return Array.isArray(this.state.listFilter) && this.state.listFilter.map(function(object,i){
         return <RecordsListSprint obj={object} key={i}/>
        
        });
     }
+    OnchangeState(e){
+      console.log("hey we are *******************");
+      this.setState({
+          
+          val:e.target.value,
+  
+      },()=>{
+          this.setState({
+              listFilter:this.state.demandeSprint.filter(elm=>(elm.nom.includes(this.state.val)))
+              })
+          }
+      )
+      console.log("----------------------- val ",this.state.val)
+  }
  
   render() {
     
@@ -40,12 +57,19 @@ export default class DdSprintPro extends Component {
       <div className="DdSprintPro">
       <h2>Les demandes de SprintPro</h2>
       
-                          <div className="se-body">
-                              <div className="input-group">
-                                  <input className="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                  <button className="btn btn-primary" id="button-search" type="button">Go!</button>
-                              </div>
-                          </div>
+                    <div className="se mb-4">
+                            <div className="se-header">Search</div>
+                            <div className="se-body">
+                                <div className="input-group">
+                                    <input className="form-control" type="text" 
+                                    placeholder="Enter search titre..." 
+                                    aria-label="Enter search term..." 
+                                    value={this.state.val} onChange={(e)=>{this.OnchangeState(e)}}
+                                    aria-describedby="button-search" />
+                                    <button className="btn btn-primary" id="button-search" type="button">Go!</button>
+                                </div>
+                            </div>
+                </div>
 
      
                           <Table responsive bordered>

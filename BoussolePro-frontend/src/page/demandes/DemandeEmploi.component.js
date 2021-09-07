@@ -9,14 +9,17 @@ import { config } from '../../config.js';
        //data=[];
   constructor(props){
     super(props);
-    this.state={DemandeEmploi: []};
+    this.state={DemandeEmploi: [],
+      val:'',
+      listFilter: []};
     //console.log(this.state.OffreStage);
   }
   
   componentDidMount(){
     axios.get(config+'/BoussolePro-backend/listDemandeEmploi.php')
     .then(response=>{
-      this.setState({DemandeEmploi: response.data});
+      this.setState({DemandeEmploi: response.data,
+        listFilter:response.data});
    })
    .catch(function (error){
      console.log(error);
@@ -25,12 +28,25 @@ import { config } from '../../config.js';
     
     DemandeEmploiList(){
       //console.log(this.state.OffreStage);
-       return this.state.DemandeEmploi.map(function(object,i){
+      return Array.isArray(this.state.listFilter) && this.state.listFilter.map(function(object,i){
         return <RecordsListDemandeEmploi obj={object} key={i} />
        
        });
     }
- 
+    recherche(e){
+      console.log("hey we are *******************");
+      this.setState({
+          
+          val:e.target.value,
+  
+      },()=>{
+          this.setState({
+              listFilter:this.state.DemandeEmploi.filter(elm=>(elm.titre.includes(this.state.val)))
+              })
+          }
+      )
+      console.log("----------------------- val ",this.state.val)
+  }
       render() {
           //console.log(this.state.OffreStage);
           return (
@@ -47,7 +63,10 @@ import { config } from '../../config.js';
                             <div className="se-header">Search</div>
                             <div className="se-body">
                                 <div className="input-group">
-                                    <input className="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                    <input className="form-control" type="text" 
+                                    placeholder="Enter search titre..." 
+                                    aria-label="Enter search term..." 
+                                    value={this.state.val} onChange={(e)=>{this.recherche(e)}}aria-describedby="button-search" />
                                     <button className="btn btn-primary" id="button-search" type="button">Go!</button>
                                 </div>
                             </div>

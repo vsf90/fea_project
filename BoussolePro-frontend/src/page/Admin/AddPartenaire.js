@@ -5,16 +5,18 @@ import axios from 'axios';
 import { useState } from 'react';
 import { config } from '../../config';
 function AddPartenaire() {
+  const [selectedFile, setSelectedFile] = useState(""); 
+
   const [Img, setImg] = useState("");
   const [Nom, setNom] = useState("");
   const [Activité, setActivité] = useState("");
   const [Avantage, setAvantage] = useState("");
   const [Lien, setLien] = useState("");
   
-  const handleChange=(event) =>{
-    //console.log("comme",event.target.files[0]);
-    setImg(URL.createObjectURL(event.target.files[0]));
-  }
+  // const handleChange=(event) =>{
+  //   //console.log("comme",event.target.files[0]);
+  //   setImg(URL.createObjectURL(event.target.files[0]));
+  // }
 
   console.log(Img);
   console.log(Nom);
@@ -24,31 +26,34 @@ function AddPartenaire() {
  
   const handleFormSubmit=(e)=>{
     e.preventDefault();
+    const dd = new FormData(); 
+    dd.append('image', selectedFile, selectedFile.name);
     const Partenaire={
-      img:Img,
+    
       nom:Nom,
       activité:Activité,
       avantage:Avantage,
-      lien:Lien
+      lien:Lien,
+      image:selectedFile.name,
+      img:Img,
     }
     console.log(Partenaire);
 
 
-if(  Nom==='' || Img==='' || Activité==='' || Avantage==='' || Lien==='' ){
+if(  Nom==='' || /*Img===''*/  Activité==='' || Avantage==='' || Lien==='' ){
   
     message.error('Vous devez remplir les champs obligatoires');
   
   } else {
     message.success('Le Partenaire a été ajouté avec succès');
-    axios.post(config+'/BoussolePro-backend/insertPartenaire.php',Partenaire).then(
-      res=>console.log(res.data));
-
+    axios.post(config+'/BoussolePro-backend/insertPartenaire.php',Partenaire).then(res=>console.log(res.data));
+    axios.post(config+'/BoussolePro-backend/insertRelaisExpertFileInput.php',dd).then(res=>console.log(res.data)); 
  
-     setNom('');
-     setImg('');
-    setActivité('');
-    setAvantage('');
-    setLien('');
+      setNom('');
+      setImg('');
+      setActivité('');
+      setAvantage('');
+      setLien('');
   } 
 }
     return (
@@ -76,7 +81,7 @@ if(  Nom==='' || Img==='' || Activité==='' || Avantage==='' || Lien==='' ){
        
         <Form.Item >
         <label><b>Image</b></label><span class="required"> *</span> <br></br>
-        <input type="file" className={Img} onChange={handleChange}/>
+        <input selected={Img} onChange={(info)=>{/*setImg(URL.createObjectURL(info.target.files[0]));*/setSelectedFile(info.target.files[0]);}} type="file" name="file"></input>
         </Form.Item >
         
       

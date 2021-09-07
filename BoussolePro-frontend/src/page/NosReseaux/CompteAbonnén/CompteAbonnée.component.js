@@ -80,7 +80,9 @@ export default class CompteAbonnée extends Component{
             <div class="row" >
                 <div class="col-md-4">
                     <div class="profile-img">
-                        <img src={this.state.urlImage} />
+                        <img loading="lazy"
+                        src={`https://www.boussolepro.net/BoussolePro-backend/images/${this.state.urlImage}`} 
+                        />
                         
                     </div>
                 </div>

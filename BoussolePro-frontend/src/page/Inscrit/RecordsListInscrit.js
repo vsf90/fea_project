@@ -22,7 +22,10 @@ export default class RecordsListInscrit extends Component {
 
     delete(){
         axios.get(config+'/BoussolePro-backend/deleteInscrit.php/?id='+this.props.obj.ID)
-      .then(console.log('deleted'))
+      .then(()=>{
+          this.refreshPage();
+          console.log('deleted')
+        })
      .catch(err=>console.log(err))
         }
     render() {
@@ -73,9 +76,9 @@ export default class RecordsListInscrit extends Component {
 
       <td><Link to={"/EditInscrit/"+this.props.obj.ID}><EditFilled style={{fontSize:"20px"}}/></Link>
 
-       <button id="delete" onClick={this.delete}
+       <button id="delete" onClick={()=>{this.delete()}}
         style={{backgroundColor:"transparent",color:"#0d6efd",padding:"2px"}} >
-            <DeleteFilled onClick={ this.refreshPage } style={{fontSize:"20px"}}/></button></td>
+            <DeleteFilled style={{fontSize:"20px"}}/></button></td>
      
     </tr>
    

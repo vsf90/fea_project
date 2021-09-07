@@ -3,7 +3,8 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 // require 'connect.php';
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
+// $con = mysqli_connect("localhost", "root", "", "boussolepro1");
+include 'connect.php';
  $postdata=file_get_contents("php://input");
  if(isset($postdata) && !empty($postdata))
  {
@@ -36,9 +37,8 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
    
     $date=date("Y-m-d H:i:s");    
   echo $date;
-  $valider=0;
-     $req="INSERT INTO boostpro ( `confirmationAbonne`, `prenom`, `nom`, `entreprise`, `secteur`, `contact`,  `typeCompagne`, `objetCompagne`, `montant`, `commentaire`, `date`, `valider`) 
-     VALUES ( '{$radio}', '{$prenom}', '{$nom}', '{$entreprise}','{$secteur}','{$contact}','{$radio1}','{$objetif}', '{$montant}','{$commentaire}', '{$date}', '{$valider}' )";
+     $req="INSERT INTO boostpro ( `confirmationAbonne`, `prenom`, `nom`, `entreprise`, `secteur`, `contact`,  `typeCompagne`, `objetCompagne`, `montant`, `commentaire`, `date`) 
+     VALUES ( '{$radio}', '{$prenom}', '{$nom}', '{$entreprise}','{$secteur}','{$contact}','{$radio1}','{$objetif}', '{$montant}','{$commentaire}', '{$date}' )";
        
      $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
      if ($resultat){

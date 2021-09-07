@@ -3,7 +3,8 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 // require 'connect.php';
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
+// $con = mysqli_connect("localhost", "root", "", "boussolepro1");
+include 'connect.php';
  $postdata=file_get_contents("php://input");
  if(isset($postdata) && !empty($postdata))
  {
@@ -58,9 +59,8 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
     $date=date("Y-m-d H:i:s");    
   echo $date;
   echo $creneaux;
-  $valider=0;
-     $req="INSERT INTO sprintpro (`initiateur`, `prenom`, `nom`,`avecQui`, `prenomAbonne`, `rangAbonne`, `prenomExterieure`, `raison`, `creneaux`, `date`, `valider`) 
-     VALUES ( '{$radio}', '{$prenom}', '{$nom}','{$avecqui}', '{$prenomabonné}','{$rang}','{$prenomexterieure}','{$raisonsprint}', '{$creneaux}', '{$date}', '{$valider}' )";
+     $req="INSERT INTO sprintpro (`initiateur`, `prenom`, `nom`,`avecQui`, `prenomAbonne`, `rangAbonne`, `prenomExterieure`, `raison`, `creneaux`, `date`) 
+     VALUES ( '{$radio}', '{$prenom}', '{$nom}','{$avecqui}', '{$prenomabonné}','{$rang}','{$prenomexterieure}','{$raisonsprint}', '{$creneaux}', '{$date}' )";
        
      $resultat=mysqli_query($con,$req) or die(mysqli_error($con));
      if ($resultat){

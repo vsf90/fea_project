@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Form, Input,Checkbox, Alert, Button,  Radio, Space , Row, Col,message  } from 'antd';
 import { config } from '../../../config';
 function FormAbonne0() {
+  const [selectedFile, setSelectedFile] = useState(""); 
+
    
     const [Télé, setTélé] = useState("");
     const [secteur, setSecteur] = useState("");
@@ -44,7 +46,8 @@ function FormAbonne0() {
 
     const handleFormSubmit=(e)=>{
         e.preventDefault();
-       
+        const dd = new FormData(); 
+        dd.append('image', selectedFile, selectedFile.name); 
         const abonnement0={
          
           telephone:Télé,
@@ -59,10 +62,11 @@ function FormAbonne0() {
           entreprise:entreprise,
           villeTop:villeTop,
           secteur:secteur,
-          urlImage:Img,
+          // urlImage:Img,
           expertise:expertise,
           expertiseSouhaitez:expertiseSouhaitez,
-          centresInteret:centresInteret
+          centresInteret:centresInteret,
+          image:selectedFile.name,
 
         }
         console.log(abonnement0);
@@ -89,6 +93,7 @@ function FormAbonne0() {
             else{
                 message.success('La demande est faite avec succès');
                 axios.post(config+'/BoussolePro-backend/insertAbonne.php?id='+localStorage.getItem('ID'),abonnement0).then(res=>console.log(res.data));
+                axios.post(config+'/BoussolePro-backend/insertRelaisExpertFileInput.php',dd).then(res=>console.log(res.data));
 
                 
                 setObjectifProfess('');
@@ -238,7 +243,7 @@ function FormAbonne0() {
         
         <Form.Item >
         <label><b>Merci d’uploader votre future photo de profil. Vous pouvez également uploader une photo de paysage. </b><span class="required">*</span></label><br/>
-        <input type="file" selected={Img} onChange={(info)=>setImg(URL.createObjectURL(info.target.files[0]))} />
+        <input selected={Img} onChange={(info)=>{setSelectedFile(info.target.files[0]);}} type="file" name="file"></input>
         </Form.Item> 
         
 

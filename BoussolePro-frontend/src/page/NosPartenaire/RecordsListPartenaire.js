@@ -12,8 +12,12 @@ export default class RecordsListPartenaire extends Component {
         return (
           
             <div className="se mb-4 "   >
-            <a href={this.props.obj.lien} target="_blank"
- ><img className="se-img-top" src={this.props.obj.image} alt="f1" /></a>
+            <a href={this.props.obj.lien} target="_blank"> 
+                <img className="se-img-top" 
+                // src={`${process.env.PUBLIC_URL}/assets/images/${this.props.obj.image}` } 
+                loading="lazy"
+                src={`https://www.boussolepro.net/BoussolePro-backend/images/${this.props.obj.image}`} 
+                alt="f1" /></a>
             <div className="se-body">
                 
                 <h2 className="se-title">{this.props.obj.nom}</h2>

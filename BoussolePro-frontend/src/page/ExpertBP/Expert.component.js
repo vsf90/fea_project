@@ -11,7 +11,7 @@ export default function Expert() {
 
 <main>
   
-  <a href="#" class="carte cardexpert" style={{height: "500px",
+  <a class="carte cardexpert" style={{height: "500px",
 position: "relative",
 padding: "20px",
 boxSizing: "border-box",

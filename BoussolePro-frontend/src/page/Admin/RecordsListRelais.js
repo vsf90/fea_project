@@ -21,7 +21,9 @@ export default class RecordsListRelais extends Component {
     }
     delete(){
         axios.get(config+'/BoussolePro-backend/ValiderRelais.php/?id='+this.props.obj.ID)
-  .then(console.log('deleted'))
+  .then(()=>{
+    window.location.reload(); 
+      console.log('deleted')})
  .catch(err=>console.log(err))
     }
    

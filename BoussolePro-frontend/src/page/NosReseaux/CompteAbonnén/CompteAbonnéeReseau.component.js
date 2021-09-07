@@ -44,7 +44,10 @@ export default class CompteAbonnéeReseau extends Component{
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-img">
-                        <img src={this.state.user.urlImage} />
+                        <img loading="lazy" 
+                         src={`https://www.boussolepro.net/BoussolePro-backend/images/${this.state.user.urlImage}`} 
+                        
+                        />
                         
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
+// $con = mysqli_connect("localhost", "root", "", "boussolepro1");
+include 'connect.php';
 error_reporting(E_ERROR);
 $demandeRelais=[];
 $sql="SELECT * FROM relaisbp ORDER BY ID DESC";

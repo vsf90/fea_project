@@ -11,7 +11,7 @@ export default function Meetup() {
 
 <main>
   
-  <a href="#" class="carte cardmeet" style={{height: "500px",
+  <a  class="carte cardmeet" style={{height: "500px",
 position: "relative",
 padding: "20px",
 boxSizing: "border-box",

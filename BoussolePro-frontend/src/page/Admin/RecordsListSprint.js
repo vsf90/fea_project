@@ -14,14 +14,19 @@ export default class RecordsListSprint extends Component {
     }
     constructor(props){
         super(props);
-        this.delete=this.delete.bind(this);
+        this.valider=this.valider.bind(this);
         this.state={
             redirect:false
         }
     }
-    delete(){
+    valider(){
         axios.get(config+'/BoussolePro-backend/ValiderSprint.php/?id='+this.props.obj.ID)
-  .then(console.log('deleted'))
+  .then(res=>{
+      console.log('valider');
+      this.refreshPage();
+  }
+      
+    )
  .catch(err=>console.log(err))
     }
    
@@ -30,7 +35,7 @@ export default class RecordsListSprint extends Component {
         return (
           
     
-     <tr key={this.props.key}>
+     <tr key={this.props.obj.ID}>
      
      <td >{this.props.obj.ID}</td>
      <td >{this.props.obj.initiateur}</td>
@@ -43,7 +48,9 @@ export default class RecordsListSprint extends Component {
      <td >{this.props.obj.creneaux}</td>
      <td >{this.props.obj.date}</td>
      <td >{this.props.obj.valider}</td>
-     <td > <button id="delete" onClick={this.delete}  style={{backgroundColor:"transparent",color:"#0d6efd",padding:"2px"}} >Valider</button><Link to={"/EditSprint/"+this.props.obj.ID}>
+     <td > <button id="valider" onClick={this.valider}  
+     style={{backgroundColor:"transparent",color:"#0d6efd",padding:"2px"}} >
+         Valider</button><Link to={"/EditSprint/"+this.props.obj.ID}>
      <EditFilled style={{fontSize:"20px"}}/></Link></td>
 
   

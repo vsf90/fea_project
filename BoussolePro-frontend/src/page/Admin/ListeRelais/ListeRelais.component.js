@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Button,Alert,Row,Col  } from 'antd';
 import { Card, Avatar } from 'antd';
-import { DeleteOutlined, EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import { config } from '../../../config';
 
@@ -29,6 +29,7 @@ export default class ListeRelais extends Component {
         delete(id){
             axios.get(config+'/BoussolePro-backend/deleteRelaisExpairs.php/?id='+id)
                 .then(res=>{
+                    window.location.reload();
                     console.log('deleted');
                    
                 })
@@ -37,18 +38,22 @@ export default class ListeRelais extends Component {
                     window.location.reload(false);
         }
 
+        Capitalize(str){
+            return str.charAt(0).toUpperCase() + str.slice(1);
+            }
+
     render() {
        
         return (
 
             <div >
             <Alert style={{minWidth:'900px'}}
-            message="Liste des Relais Boussole Pro"
-            description="Bienvenue sur Liste des Relais Boussole Pro." 
+            message="Liste des Relais et Experts Boussole Pro"
+            description="Bienvenue sur Liste des Relais et Experts Boussole Pro." 
             type="info"
             showIcon
             />
-        <h1>Liste des Relais</h1>
+        <h1>Liste des Relais et Experts</h1>
         <br></br>
         <br></br>
         <br></br>
@@ -56,12 +61,16 @@ export default class ListeRelais extends Component {
            
             {this.state.listRelais.map((realis) => (
                 <Col>            
-                            <Card className="carteRelais"
+                            <Card key={realis.ID} className="carteRelais"
                             style={{ width: 300,marginBottom:"17px" }}
                             cover={
                             <img
                                 alt="example"
-                                src={realis.image}
+                                loading="lazy"
+                                // src={realis.image}
+                                // src={`${process.env.PUBLIC_URL}/assets/images/${realis.image}`}
+                                src={`https://www.boussolepro.net/BoussolePro-backend/images/${realis.image}`} 
+
                             />
                             }
                             actions={[
@@ -69,12 +78,15 @@ export default class ListeRelais extends Component {
                             <DeleteOutlined/></Button>,
                             ]}
                             >
-                           
                             <Meta style={{paddingBottom: "60px"}}
-                            avatar={<Avatar src={realis.image} />}
-                            title={/*realis.prenom+" "+*/realis.nom[0]+realis.nom[1]}
+                            avatar={<Avatar 
+                                // src={`${process.env.PUBLIC_URL}/assets/images/${realis.image}`}
+                                src={`https://www.boussolepro.net/BoussolePro-backend/images/${realis.image}`} 
+                                 />}
+                            title={realis.nom}
                             description={realis.competances}
                             />
+                            <b style={{float: "center"}}>{this.Capitalize(realis.role)}</b>
                              
                             </Card>
                         </Col>

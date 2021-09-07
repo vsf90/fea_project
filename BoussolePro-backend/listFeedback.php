@@ -1,9 +1,10 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
+// $con = mysqli_connect("localhost", "root", "", "boussolepro1");
+include 'connect.php';
 error_reporting(E_ERROR);
 $listFeedback=[];
 $sql="SELECT * FROM feedback  ORDER BY ID DESC";
-$result=mysqli_query($con,$sql) or die(mysqli_error($con));;
+$result=mysqli_query($con,$sql) or die(mysqli_error($con));
 if($result){
     $cr=0;
     while($row=mysqli_fetch_assoc($result)){
@@ -16,7 +17,7 @@ if($result){
         $listFeedback[$cr]['ponctualite']=htmlspecialchars_decode($row['ponctualite'],ENT_QUOTES);
         $listFeedback[$cr]['qualite']=htmlspecialchars_decode($row['qualite'],ENT_QUOTES);
         $listFeedback[$cr]['informations']=htmlspecialchars_decode($row['informations'],ENT_QUOTES);
-        $listFeedback[$cr]['informationBoussolePro']=$row['informationBoussolePro'],ENT_QUOTES);
+        $listFeedback[$cr]['informationBoussolePro']=htmlspecialchars_decode($row['informationBoussolePro'],ENT_QUOTES);
         $listFeedback[$cr]['importance']=htmlspecialchars_decode($row['importance'],ENT_QUOTES);
         $listFeedback[$cr]['evaluation']=htmlspecialchars_decode($row['evaluation'],ENT_QUOTES);
         $listFeedback[$cr]['valeurAjoutee']=htmlspecialchars_decode($row['valeurAjoutee'],ENT_QUOTES);

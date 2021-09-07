@@ -21,7 +21,10 @@ export default class RecordsListBoost extends Component {
     }
     delete(){
         axios.get(config+'/BoussolePro-backend/ValiderBoost.php/?id='+this.props.obj.ID)
-  .then(console.log('deleted'))
+  .then(()=>{
+    window.location.reload(false);
+      console.log('deleted')}
+      )
  .catch(err=>console.log(err))
     }
    

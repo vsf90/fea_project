@@ -3,7 +3,8 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 // require 'connect.php';
-$con = mysqli_connect("localhost", "root", "", "boussolepro");
+// $con = mysqli_connect("localhost", "root", "", "boussolepro1");
+include 'connect.php';
  $postdata=file_get_contents("php://input");
  if(isset($postdata) && !empty($postdata))
  {
@@ -29,9 +30,9 @@ $con = mysqli_connect("localhost", "root", "", "boussolepro");
 
     $date=date("Y-m-d H:i:s");    
      echo $date;
-  $valider=0;
-     $reqMeet="INSERT INTO meetup (`prenom`, `nom`, `avecQui`, `prenomContactSouhaite`, `nomContactSouhaite`, `raisonMeet`, `autreInfos`, `date`, `valider`) 
-     VALUES ( '{$prenom}', '{$nom}', '{$radio}', '{$prenommeet}', '{$nommeet}','{$raison}','{$info}', '{$date}', '{$valider}' )";
+  
+     $reqMeet="INSERT INTO meetup (`prenom`, `nom`, `avecQui`, `prenomContactSouhaite`, `nomContactSouhaite`, `raisonMeet`, `autreInfos`, `date`) 
+     VALUES ( '{$prenom}', '{$nom}', '{$radio}', '{$prenommeet}', '{$nommeet}','{$raison}','{$info}', '{$date}' )";
        
      $resultat=mysqli_query($con,$reqMeet) or die(mysqli_error($con));
      if ($resultat){
