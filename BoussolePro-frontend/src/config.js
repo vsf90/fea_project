@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';  
-export const config =  'https://www.boussolepro.net'
+export const config =  'https://boussolepro.net'
 //export const config =  'http://localhost:8080'
 
 export const AppConfigContext = React.createContext({});
