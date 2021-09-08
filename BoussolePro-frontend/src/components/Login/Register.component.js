@@ -17,55 +17,67 @@ function Register() {
   	const [Password, setPassword] = useState("");
 	const [PasswwordCof, setPasswordCof] = useState("");
 
-	const [nomEror, setNomEror] = useState("");
-  	const [prenomEror, setPrenomEror] = useState("");
-	const [paysEror, setPaysEror] = useState("");
-  	const [VilleEror, setVilleEror] = useState("");
-	const [emailEror, setEmailEror] = useState("");
-  	const [PasswordEror, setPasswordEror] = useState("");
-	const [PasswordCofEror, setPasswordConfEror] = useState("");
+	const [nomError, setNomError] = useState("");
+  	const [prenomError, setPrenomError] = useState("");
+	const [paysError, setPaysError] = useState("");
+  	const [VilleError, setVilleError] = useState("");
+	const [emailError, setEmailError] = useState("");
+  	const [PasswordError, setPasswordError] = useState("");
+	const [PasswordCofError, setPasswordConfError] = useState("");
 
 
 
 
 	const Valider=()=>{
-		let nomEror="";
-		let prenomEror="";
-		let emailEror="";
-		let paysEror="";
-		let villeEror="";
-		let passwordEror="";
-		let PasswordCofEror="";
+		let nomError="";
+		let prenomError="";
+		let emailError="";
+		let paysError="";
+		let villeError="";
+		let passwordError="";
+		let PasswordCofError="";
 		if(!Nom){
-			nomEror="le champ Nom est obligatiore"
+			nomError="Le champ Nom est obligatiore"
 		}
 		if(!Prenom){
-			prenomEror="le champ Prenom est obligatiore"
+			prenomError="Le champ Prénom est obligatiore"
 		}
 		if(!Pays){
-			paysEror="le champ pays est obligatiore"
+			paysError="Le champ Pays est obligatiore"
 		}
 		if(!Ville){
-			villeEror="le champ ville est obligatiore"
+			villeError="Le champ Ville est obligatiore"
 		}
 		
-		if(!Password.match(/^([\w.%+-]+)/i)){
-			passwordEror="le champ mot de passe est obligatiore"
+		//if(!Password.match(/^([\w.%+-]+)/i)){
+		//^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? "]).*$
+		//---
+		//^.*              : Start
+		//(?=.{8,})        : Length
+		//(?=.*[a-zA-Z])   : Letters
+		//(?=.*\d)         : Digits
+		//(?=.*[!#$%&? "]) : Special characters
+		//.*$              : End
+		//---
+		if(!Password.match(/^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$@%&? "]).*$/i)){
+			passwordError="Le champ mot de passe doit contenir 8 caractères de préférences un caractère spécial, un majiscule et des caractères alphanumériques"
 		}
 		if(PasswwordCof!=Password || !PasswwordCof){
-			PasswordCofEror="la confirmation de mot de passe ne correspond pas  "
+			PasswordCofError="La confirmation de mot de passe ne correspond pas  "
 		}
-		if(!Email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)){
-			emailEror="l'email est non validé, il faut avoire la forme suivante : *****@****.***";
+		//if(!Email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)){
+		//if(!Email.match(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/i)){
+		if(!Email.match(/^.*(?=.{3,})(?=.*[a-zA-Z0-9_.+-])+@(?=.[a-zA-Z0-9-]+\.)+[A-Za-z-\.]+$/i)){
+			emailError="L'email doit avoir la forme suivante : *****@****.**";
 		}
-		if(emailEror||nomEror||prenomEror||passwordEror||paysEror|| villeEror|| PasswordCofEror){
-			setEmailEror(emailEror);
-			setNomEror(nomEror);
-			setPrenomEror(prenomEror);
-			setPasswordConfEror(PasswordCofEror);
-			setPaysEror(paysEror);
-			setPasswordEror(passwordEror);
-			setVilleEror(villeEror);
+		if(emailError||nomError||prenomError||passwordError||paysError|| villeError|| PasswordCofError){
+			setEmailError(emailError);
+			setNomError(nomError);
+			setPrenomError(prenomError);
+			setPasswordConfError(PasswordCofError);
+			setPaysError(paysError);
+			setPasswordError(passwordError);
+			setVilleError(villeError);
 			
 			return false;
 		}
@@ -76,7 +88,7 @@ function Register() {
 
 	const handleFormSubmit=(e)=>{
 		e.preventDefault();
-		console.log("hello evry one :!!!!!!:");
+		console.log("hello every one :!!!!!!:");
 		const user={
 		  nom:Nom,
 		  prenom: Prenom,
@@ -92,7 +104,7 @@ function Register() {
 		console.log("---------------------------->",user);
 		var config1 = {
 		  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-		  };
+		};
 		const isValid= Valider();
 		  if(!!isValid){
 		  axios.post(config+'/BoussolePro-backend/regestre.php', user, config1)
@@ -138,13 +150,13 @@ function Register() {
 							<div className="form-group mb-3" style={{marginRight:"4px"}}>
 			      			   <label className="label" for="name">Prénom</label>
 			      			<input type="text" className="form-control" placeholder="Prénom" value={Prenom} onChange={(e)=>setPrenom(e.target.value)} style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
-							  <div style={{color:"red"}}>{prenomEror}</div>
+							  <div style={{color:"red"}}>{prenomError}</div>
 
 							  </div>
 						  <div className="form-group mb-3" style={{display: 'inline-block'}}>
 			      			<label className="label" for="name">Nom</label>
 			      			<input type="text" className="form-control" placeholder="Nom" value={Nom} onChange={(e)=>setNom(e.target.value)} style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
-							  <div style={{color:"red"}}>{nomEror}</div>
+							  <div style={{color:"red"}}>{nomError}</div>
 
 						  </div>
 						  </div>
@@ -152,32 +164,32 @@ function Register() {
 						  <div className="form-group mb-3" style={{marginRight:"4px"}}>
 			      			<label className="label" for="name">Pays</label>
 			      			<input type="text" className="form-control" placeholder="Pays" value={Pays} onChange={(e)=>setPays(e.target.value)} style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
-							  <div style={{color:"red"}}>{paysEror}</div>
+							  <div style={{color:"red"}}>{paysError}</div>
 
 						  </div>
 						  <div className="form-group mb-3">
 			      			<label className="label" for="name">Ville</label>
 			      			<input type="text" className="form-control" placeholder="Ville" value={Ville} onChange={(e)=>setVille(e.target.value)} style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
-							  <div style={{color:"red"}}>{VilleEror}</div>
+							  <div style={{color:"red"}}>{VilleError}</div>
 
 						  </div>
 						  </div>
 			      		<div className="form-group mb-3">
 			      			<label className="label" for="name">Email</label>
 			      			<input type="text" className="form-control" placeholder="email" value={Email} onChange={(e)=>setEmail(e.target.value)} style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
-							  <div style={{color:"red"}}>{emailEror}</div>
+							  <div style={{color:"red"}}>{emailError}</div>
 
 						  </div>
 		            <div className="form-group mb-3">
 		            	<label className="label" for="password">Mot de passe</label>
 		              <input type="password" className="form-control" placeholder="Mot de passe" value={Password} onChange={(e)=>setPassword(e.target.value)} style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
-					  <div style={{color:"red"}}>{PasswordEror}</div>
+					  <div style={{color:"red"}}>{PasswordError}</div>
 
 					</div>
 					<div className="form-group mb-3">
 		            	<label className="label" for="password">Confimer le mot de passe</label>
 		              <input type="password" className="form-control" placeholder="Confimer le mot de passe" value={PasswwordCof} onChange={(e)=>setPasswordCof(e.target.value)} style={{borderRadius:"50px",backgroundColor:"rgba(0, 0, 0, 0.05)",borderStyle:"none"}} required/>
-					  <div style={{color:"red"}}>{PasswordCofEror}</div>
+					  <div style={{color:"red"}}>{PasswordCofError}</div>
 
 				    </div>
 		            <div className="form-group">

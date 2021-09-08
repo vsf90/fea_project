@@ -14,18 +14,20 @@ export default function Login(props) {
 	console.log(Email);
 	console.log(Password);
 	const Valider=()=>{
-		let emailEror="";
-		let passwordEror = "";
+		let emailError="";
+		let passwordError = "";
 
-		   if(!Email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)){
-			   emailEror="l'email est non validé, il faut avoire la forme suivante : *****@****.***";
+		   //if(!Email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)){
+		   if(!Email.match(/^.*(?=.{3,})(?=.*[a-zA-Z0-9_.+-])+@(?=.[a-zA-Z0-9-]+\.)+[A-Za-z-\.]+$/i)){
+			   emailError="L'email avoir la forme suivante : *****@****.**";
 		   }
-		   if(!Password.match(/^([\w.%+-]+)/i)){
-			 passwordEror="le champ mot de passe est obligatiore"
+		   //if(!Password.match(/^([\w.%+-]+)/i)){
+		   if(!Password.match(/^.{3,}$/i)){
+			 passwordError="Le champ mot de passe est obligatiore"
 		   }
-		   if(emailEror||passwordEror){
-			 setEmailERR(emailEror);
-			 setPasswordERR(passwordEror);
+		   if(emailError||passwordError){
+			 setEmailERR(emailError);
+			 setPasswordERR(passwordError);
 			 return false;
 		 }
 	 
